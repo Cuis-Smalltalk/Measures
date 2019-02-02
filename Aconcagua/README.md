@@ -1,4 +1,4 @@
-# Cuis-Smalltalk-Aconcagua
+# Aconcagua
 Implementation of Aconcagua (measure and units) for Cuis Smalltalk
 Presented at OOSPLA 2005 with the paper *Arithmetic with Measurements on Dynamically Typed Object Oriented Languages*
 
