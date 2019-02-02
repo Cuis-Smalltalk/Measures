@@ -12,7 +12,7 @@ Mathematically speaking, a measure is a number multiplied by a variable that has
 There are many benefits that this model provides. Among them, we can name the sense of security that it creates for the programmer when programming arithmetic expressions.
 The fact that it is the system and not the programmer who must assure the result’s of any arithmetic operation regarding the units minimizes the error rate produced by the incorrect evaluation of formulas.  If the programmer performs incorrect operations with measures, then this error will not go unnoticed, and the system will inform it when evaluating a mathematical expression.
 
-## How do I create measures?
+## How do I create measures?
 The model allows to create measures very easily. For example the following Smalltalk expression creates the same measure:
 ```Smalltalk
 2 * meter.  
