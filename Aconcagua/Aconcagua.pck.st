@@ -1,6 +1,6 @@
-'From Cuis 5.0 of 7 November 2016 [latest update: #3526] on 17 December 2018 at 6:34:44 pm'!
-'Description #asFloatAmount, #asIntegerAmount and #asFractionAmount'!
-!provides: 'Aconcagua' 1 7!
+'From Cuis 5.0 of 7 November 2016 [latest update: #3562] on 4 February 2019 at 3:08:35 pm'!
+'Description Better comment in SimpleMeasure>>#between:and:'!
+!provides: 'Aconcagua' 1 8!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -34,10 +34,7 @@ IntervalAwareMagnitude subclass: #TestIntervalAwareMagnitude
 	instanceVariableNames: 'number'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModelTests'
-"
-number : <SmallInteger>
-"!
+	category: 'Aconcagua-ArithmeticModelTests'!
 !classDefinition: 'TestIntervalAwareMagnitude class' category: #'Aconcagua-ArithmeticModelTests'!
 TestIntervalAwareMagnitude class
 	instanceVariableNames: ''!
@@ -47,14 +44,7 @@ SequenceableCollection variableSubclass: #ArithmeticObjectInterval
 	instanceVariableNames: 'from to by size intervalStrategy'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModel'
-"
-from : <SmallInteger | TestIntervalAwareMagnitude | InfinityDefinition | MinusInfinityDefinition | SimpleMeasure | TimeOfDay | FixedGregorianDate | GregorianDateTime | GregorianDay | GregorianDayOfMonth> # Object
-to : <SmallInteger | TestIntervalAwareMagnitude | InfinityDefinition | MinusInfinityDefinition | SimpleMeasure | TimeOfDay | FixedGregorianDate | GregorianDateTime | GregorianDay | GregorianDayOfMonth> # Object
-by : <SmallInteger | TestIntervalAwareMagnitude | SimpleMeasure> # Object
-size : <SmallInteger | InfinityDefinition> # Object
-intervalStrategy : <ArithmeticObjectIntervalStrategy | TestIntervalStrategy | InfinityIntervalStrategy | RoundedTimelineIntervalStrategy | DefaultPointInTimeIntervalStrategy> # IntervalStrategy
-"!
+	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'ArithmeticObjectInterval class' category: #'Aconcagua-ArithmeticModel'!
 ArithmeticObjectInterval class
 	instanceVariableNames: ''!
@@ -64,12 +54,7 @@ Error subclass: #IndeterminateOperationException
 	instanceVariableNames: 'operation leftOperand rightOperand'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-operation : <String>
-leftOperand : <InfinityDefinition | MinusInfinityDefinition | SmallInteger> # Object
-rightOperand : <BaseUnit | DividedUnit | MinusInfinityDefinition | InfinityDefinition | SmallInteger | MultipliedUnit | SimpleMeasure> # Object
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'IndeterminateOperationException class' category: #'Aconcagua-MeasureModel'!
 IndeterminateOperationException class
 	instanceVariableNames: ''!
@@ -79,11 +64,7 @@ Error subclass: #InvalidProportionalUnitConversionFunctionException
 	instanceVariableNames: 'sourceMeasure equivalentMeasure'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-sourceMeasure : <SimpleMeasure>
-equivalentMeasure : <SimpleMeasure>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'InvalidProportionalUnitConversionFunctionException class' category: #'Aconcagua-MeasureModel'!
 InvalidProportionalUnitConversionFunctionException class
 	instanceVariableNames: ''!
@@ -93,11 +74,7 @@ Error subclass: #NoUnitConversionRuleException
 	instanceVariableNames: 'targetUnit sourceUnit'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-targetUnit : <BaseUnit>
-sourceUnit : <BaseUnit>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'NoUnitConversionRuleException class' category: #'Aconcagua-MeasureModel'!
 NoUnitConversionRuleException class
 	instanceVariableNames: ''!
@@ -107,11 +84,7 @@ Error subclass: #IndexOutOfRangeException
 	instanceVariableNames: 'index collection'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModel'
-"
-index : <SmallInteger>
-collection : <ArithmeticObjectInterval>
-"!
+	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'IndexOutOfRangeException class' category: #'Aconcagua-ArithmeticModel'!
 IndexOutOfRangeException class
 	instanceVariableNames: ''!
@@ -121,12 +94,7 @@ Error subclass: #InvalidIntervalException
 	instanceVariableNames: 'from to by'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModel'
-"
-from : <SmallInteger>
-to : <SmallInteger>
-by : <SmallInteger>
-"!
+	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'InvalidIntervalException class' category: #'Aconcagua-ArithmeticModel'!
 InvalidIntervalException class
 	instanceVariableNames: ''!
@@ -146,11 +114,7 @@ InvalidOperationException subclass: #CanNotConvertMeasureException
 	instanceVariableNames: 'targetUnit sourceMeasure'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-targetUnit : <BaseUnit | NullUnit | ProportionalDerivedUnit> # Unit
-sourceMeasure : <InfinityDefinition | SimpleMeasure | MinusInfinityDefinition | SmallInteger> # Object
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'CanNotConvertMeasureException class' category: #'Aconcagua-MeasureModel'!
 CanNotConvertMeasureException class
 	instanceVariableNames: ''!
@@ -160,12 +124,7 @@ InvalidOperationException subclass: #InvalidBinaryOperationException
 	instanceVariableNames: 'operationName leftOperand rightOperand'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModel'
-"
-operationName : <String>
-leftOperand : <CompoundMeasure | SmallInteger | SimpleMeasure> # Object
-rightOperand : <CompoundMeasure | SimpleMeasure> # Measure
-"!
+	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'InvalidBinaryOperationException class' category: #'Aconcagua-ArithmeticModel'!
 InvalidBinaryOperationException class
 	instanceVariableNames: ''!
@@ -175,11 +134,7 @@ InvalidOperationException subclass: #InvalidUnaryOperationException
 	instanceVariableNames: 'operationName operand'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModel'
-"
-operationName : <String>
-operand : <CompoundMeasureFraction>
-"!
+	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'InvalidUnaryOperationException class' category: #'Aconcagua-ArithmeticModel'!
 InvalidUnaryOperationException class
 	instanceVariableNames: ''!
@@ -189,10 +144,7 @@ Error subclass: #UndefinedArithmeticObjectValueException
 	instanceVariableNames: 'arithmeticObject'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModel'
-"
-arithmeticObject : <SmallInteger>
-"!
+	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'UndefinedArithmeticObjectValueException class' category: #'Aconcagua-ArithmeticModel'!
 UndefinedArithmeticObjectValueException class
 	instanceVariableNames: ''!
@@ -202,10 +154,7 @@ Error subclass: #CannotApplyTopologicalSortToACyclicGraphException
 	instanceVariableNames: 'graph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-graph : <>
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'CannotApplyTopologicalSortToACyclicGraphException class' category: #'Aconcagua-GraphModel'!
 CannotApplyTopologicalSortToACyclicGraphException class
 	instanceVariableNames: ''!
@@ -215,12 +164,7 @@ Error subclass: #EdgeEndpointNotIncludedInNodesException
 	instanceVariableNames: 'invalidEdge edges nodes'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-invalidEdge : <>
-edges : <>
-nodes : <>
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'EdgeEndpointNotIncludedInNodesException class' category: #'Aconcagua-GraphModel'!
 EdgeEndpointNotIncludedInNodesException class
 	instanceVariableNames: ''!
@@ -230,11 +174,7 @@ Error subclass: #GraphPathNotFoundException
 	instanceVariableNames: 'source target'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-source : <BaseUnit>
-target : <BaseUnit>
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'GraphPathNotFoundException class' category: #'Aconcagua-GraphModel'!
 GraphPathNotFoundException class
 	instanceVariableNames: ''!
@@ -244,11 +184,7 @@ Error subclass: #NodeNotFoundException
 	instanceVariableNames: 'node graph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-node : <>
-graph : <>
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'NodeNotFoundException class' category: #'Aconcagua-GraphModel'!
 NodeNotFoundException class
 	instanceVariableNames: ''!
@@ -318,11 +254,7 @@ TestCase subclass: #GraphPathFinderTest
 	instanceVariableNames: 'finder graph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModelTests'
-"
-finder : <>
-graph : <>
-"!
+	category: 'Aconcagua-GraphModelTests'!
 !classDefinition: 'GraphPathFinderTest class' category: #'Aconcagua-GraphModelTests'!
 GraphPathFinderTest class
 	instanceVariableNames: ''!
@@ -362,11 +294,7 @@ TestCase subclass: #CircularReadStreamTest
 	instanceVariableNames: 'stream streamStaringInThirdElement'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-stream : <CircularReadStream>
-streamStaringInThirdElement : <CircularReadStream>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'CircularReadStreamTest class' category: #'Aconcagua-MeasureModelTests'!
 CircularReadStreamTest class
 	instanceVariableNames: ''!
@@ -376,10 +304,7 @@ TestCase subclass: #CompoundMeasureTest
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-units : <UnitsTestResource>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'CompoundMeasureTest class' category: #'Aconcagua-MeasureModelTests'!
 CompoundMeasureTest class
 	instanceVariableNames: ''!
@@ -389,10 +314,7 @@ TestCase subclass: #ConversionTableTest
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-units : <UnitsTestResource>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'ConversionTableTest class' category: #'Aconcagua-MeasureModelTests'!
 ConversionTableTest class
 	instanceVariableNames: ''!
@@ -402,12 +324,7 @@ TestCase subclass: #DividedUnitTest
 	instanceVariableNames: 'meter second meterOverSecond'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-meter : <BaseUnit>
-second : <BaseUnit>
-meterOverSecond : <DividedUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'DividedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 DividedUnitTest class
 	instanceVariableNames: ''!
@@ -417,14 +334,7 @@ TestCase subclass: #EvaluationTest
 	instanceVariableNames: 'formulaOfTenPesos formulaOfTwentyPesos messageName peso dollar'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-formulaOfTenPesos : <DummyEvaluation>
-formulaOfTwentyPesos : <DummyEvaluation>
-messageName : <Symbol>
-peso : <BaseUnit>
-dollar : <BaseUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'EvaluationTest class' category: #'Aconcagua-MeasureModelTests'!
 EvaluationTest class
 	instanceVariableNames: ''!
@@ -434,11 +344,7 @@ TestCase subclass: #InfinityClassTest
 	instanceVariableNames: 'meter second'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-meter : <BaseUnit>
-second : <BaseUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'InfinityClassTest class' category: #'Aconcagua-MeasureModelTests'!
 InfinityClassTest class
 	instanceVariableNames: ''!
@@ -448,11 +354,7 @@ TestCase subclass: #MeasureConverterTest
 	instanceVariableNames: 'units moneyConverter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-units : <UnitsTestResource>
-moneyConverter : <MeasureConverter>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'MeasureConverterTest class' category: #'Aconcagua-MeasureModelTests'!
 MeasureConverterTest class
 	instanceVariableNames: ''!
@@ -462,11 +364,7 @@ TestCase subclass: #MinusInfinityClassTest
 	instanceVariableNames: 'meter second'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-meter : <BaseUnit>
-second : <BaseUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'MinusInfinityClassTest class' category: #'Aconcagua-MeasureModelTests'!
 MinusInfinityClassTest class
 	instanceVariableNames: ''!
@@ -476,12 +374,7 @@ TestCase subclass: #MultipliedUnitTest
 	instanceVariableNames: 'meter second meterBySecond'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-meter : <BaseUnit>
-second : <BaseUnit>
-meterBySecond : <MultipliedUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'MultipliedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 MultipliedUnitTest class
 	instanceVariableNames: ''!
@@ -491,10 +384,7 @@ TestCase subclass: #NotProportionalDerivedUnitTest
 	instanceVariableNames: 'kelvin'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-kelvin : <BaseUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'NotProportionalDerivedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 NotProportionalDerivedUnitTest class
 	instanceVariableNames: ''!
@@ -504,10 +394,7 @@ TestCase subclass: #NullUnitTest
 	instanceVariableNames: 'nullUnit'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-nullUnit : <NullUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'NullUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 NullUnitTest class
 	instanceVariableNames: ''!
@@ -527,11 +414,7 @@ TestCase subclass: #ProportionalDerivedUnitTest
 	instanceVariableNames: 'peso centavo'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-peso : <BaseUnit>
-centavo : <ProportionalDerivedUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'ProportionalDerivedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 ProportionalDerivedUnitTest class
 	instanceVariableNames: ''!
@@ -541,13 +424,7 @@ TestCase subclass: #ProportionalUnitConversionFunctionTest
 	instanceVariableNames: 'peso dollar onePeso tenDollars'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-peso : <BaseUnit>
-dollar : <BaseUnit>
-onePeso : <SimpleMeasure>
-tenDollars : <SimpleMeasure>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'ProportionalUnitConversionFunctionTest class' category: #'Aconcagua-MeasureModelTests'!
 ProportionalUnitConversionFunctionTest class
 	instanceVariableNames: ''!
@@ -557,10 +434,7 @@ TestCase subclass: #SimpleMeasureTest
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-units : <UnitsTestResource>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'SimpleMeasureTest class' category: #'Aconcagua-MeasureModelTests'!
 SimpleMeasureTest class
 	instanceVariableNames: ''!
@@ -580,11 +454,7 @@ TestCase subclass: #UnitConversionRuleToEdgeAdapterTest
 	instanceVariableNames: 'peso dollar'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-peso : <BaseUnit>
-dollar : <BaseUnit>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'UnitConversionRuleToEdgeAdapterTest class' category: #'Aconcagua-MeasureModelTests'!
 UnitConversionRuleToEdgeAdapterTest class
 	instanceVariableNames: ''!
@@ -594,10 +464,7 @@ TestResource subclass: #UnitsTestResource
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-units : <Dictionary>
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'UnitsTestResource class' category: #'Aconcagua-MeasureModelTests'!
 UnitsTestResource class
 	instanceVariableNames: ''!
@@ -607,14 +474,7 @@ Object subclass: #CircularReadStream
 	instanceVariableNames: 'collection position unit firstIndex lastIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-collection : <Array>
-position : <SmallInteger>
-unit : <NullUnit>
-firstIndex : <>
-lastIndex : <>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'CircularReadStream class' category: #'Aconcagua-MeasureModel'!
 CircularReadStream class
 	instanceVariableNames: ''!
@@ -624,11 +484,7 @@ Object subclass: #ConversionTable
 	instanceVariableNames: 'graph unitConversionRules'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-graph : <UndefinedObject | Graph> # Graph
-unitConversionRules : <OrderedCollection>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'ConversionTable class' category: #'Aconcagua-MeasureModel'!
 ConversionTable class
 	instanceVariableNames: ''!
@@ -638,10 +494,7 @@ Object subclass: #MeasureConverter
 	instanceVariableNames: 'graphPathFinder'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-graphPathFinder : <GraphPathFinder>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'MeasureConverter class' category: #'Aconcagua-MeasureModel'!
 MeasureConverter class
 	instanceVariableNames: ''!
@@ -671,11 +524,7 @@ CompoundUnit subclass: #DividedUnit
 	instanceVariableNames: 'numerator denominator'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-numerator : <BaseUnit | ProportionalDerivedUnit | MultipliedUnit | NullUnit> # Unit
-denominator : <BaseUnit | ProportionalDerivedUnit | MultipliedUnit | NotProportionalDerivedUnit> # Unit
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'DividedUnit class' category: #'Aconcagua-MeasureModel'!
 DividedUnit class
 	instanceVariableNames: ''!
@@ -685,10 +534,7 @@ CompoundUnit subclass: #MultipliedUnit
 	instanceVariableNames: 'factors'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-factors : <OrderedCollection>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'MultipliedUnit class' category: #'Aconcagua-MeasureModel'!
 MultipliedUnit class
 	instanceVariableNames: ''!
@@ -701,10 +547,7 @@ Unit subclass: #NullUnit
 	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'NullUnit class' category: #'Aconcagua-MeasureModel'!
 NullUnit class
-	instanceVariableNames: 'uniqueInstance'
-"
-uniqueInstance : <NullUnit>
-"!
+	instanceVariableNames: 'uniqueInstance'!
 
 !classDefinition: #SimpleUnit category: #'Aconcagua-MeasureModel'!
 Unit subclass: #SimpleUnit
@@ -721,12 +564,7 @@ SimpleUnit subclass: #BaseUnit
 	instanceVariableNames: 'nameForOne nameForMany sign'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-nameForOne : <String>
-nameForMany : <String>
-sign : <String>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'BaseUnit class' category: #'Aconcagua-MeasureModel'!
 BaseUnit class
 	instanceVariableNames: ''!
@@ -746,15 +584,7 @@ DerivedUnit subclass: #NotProportionalDerivedUnit
 	instanceVariableNames: 'nameForOne nameForMany sign baseUnit conversionBlock reciprocalConversionBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-nameForOne : <String>
-nameForMany : <String>
-sign : <String>
-baseUnit : <BaseUnit>
-conversionBlock : <BlockClosure>
-reciprocalConversionBlock : <BlockClosure>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'NotProportionalDerivedUnit class' category: #'Aconcagua-MeasureModel'!
 NotProportionalDerivedUnit class
 	instanceVariableNames: ''!
@@ -764,14 +594,7 @@ DerivedUnit subclass: #ProportionalDerivedUnit
 	instanceVariableNames: 'nameForOne nameForMany sign baseUnit conversionFactor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-nameForOne : <String>
-nameForMany : <String>
-sign : <String>
-baseUnit : <BaseUnit>
-conversionFactor : <Fraction | SmallInteger> # Number
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'ProportionalDerivedUnit class' category: #'Aconcagua-MeasureModel'!
 ProportionalDerivedUnit class
 	instanceVariableNames: ''!
@@ -791,12 +614,7 @@ UnitConversionFunctionInterface subclass: #ProportionalUnitConversionFunction
 	instanceVariableNames: 'sourceMeasure equivalentMeasure proportionalMeasure'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-sourceMeasure : <SimpleMeasure>
-equivalentMeasure : <SimpleMeasure>
-proportionalMeasure : <SimpleMeasure>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'ProportionalUnitConversionFunction class' category: #'Aconcagua-MeasureModel'!
 ProportionalUnitConversionFunction class
 	instanceVariableNames: ''!
@@ -816,12 +634,7 @@ UnitConversionRuleInterface subclass: #UnitConversionRule
 	instanceVariableNames: 'sourceUnit targetUnit function'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-sourceUnit : <BaseUnit | SmallInteger> # Object
-targetUnit : <BaseUnit | SmallInteger> # Object
-function : <ProportionalUnitConversionFunction | BlockClosure> # Object
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'UnitConversionRule class' category: #'Aconcagua-MeasureModel'!
 UnitConversionRule class
 	instanceVariableNames: ''!
@@ -831,10 +644,7 @@ UnitConversionRuleInterface subclass: #UnitConversionRuleToEdgeAdapter
 	instanceVariableNames: 'unitConversionRule'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-unitConversionRule : <UnitConversionRule>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'UnitConversionRuleToEdgeAdapter class' category: #'Aconcagua-MeasureModel'!
 UnitConversionRuleToEdgeAdapter class
 	instanceVariableNames: ''!
@@ -864,11 +674,7 @@ Evaluation subclass: #CachedEvaluation
 	instanceVariableNames: 'cachedValue evaluation'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-cachedValue : <>
-evaluation : <>
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'CachedEvaluation class' category: #'Aconcagua-MeasureModel'!
 CachedEvaluation class
 	instanceVariableNames: ''!
@@ -878,10 +684,7 @@ Evaluation subclass: #DummyEvaluation
 	instanceVariableNames: 'measure'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'
-"
-measure : <SimpleMeasure | CompoundMeasure> # Measure
-"!
+	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'DummyEvaluation class' category: #'Aconcagua-MeasureModelTests'!
 DummyEvaluation class
 	instanceVariableNames: ''!
@@ -894,10 +697,7 @@ ArithmeticObject subclass: #InfinityDefinition
 	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'InfinityDefinition class' category: #'Aconcagua-MeasureModel'!
 InfinityDefinition class
-	instanceVariableNames: 'uniqueInstance'
-"
-uniqueInstance : <InfinityDefinition>
-"!
+	instanceVariableNames: 'uniqueInstance'!
 
 !classDefinition: #Measure category: #'Aconcagua-MeasureModel'!
 ArithmeticObject subclass: #Measure
@@ -914,10 +714,7 @@ Measure subclass: #CompoundMeasure
 	instanceVariableNames: 'measures'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-measures : <OrderedCollection | Array> # SequenceableCollection
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'CompoundMeasure class' category: #'Aconcagua-MeasureModel'!
 CompoundMeasure class
 	instanceVariableNames: ''!
@@ -927,11 +724,7 @@ Measure subclass: #SimpleMeasure
 	instanceVariableNames: 'amount unit'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'
-"
-amount : <SmallInteger | Fraction | LargeNegativeInteger | LargePositiveInteger | SmallFloat64 | InfinityDefinition | MinusInfinityDefinition> # Object
-unit : <BaseUnit | ProportionalDerivedUnit | DividedUnit | MultipliedUnit | NotProportionalDerivedUnit> # Unit
-"!
+	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'SimpleMeasure class' category: #'Aconcagua-MeasureModel'!
 SimpleMeasure class
 	instanceVariableNames: ''!
@@ -944,10 +737,7 @@ ArithmeticObject subclass: #MinusInfinityDefinition
 	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'MinusInfinityDefinition class' category: #'Aconcagua-MeasureModel'!
 MinusInfinityDefinition class
-	instanceVariableNames: 'uniqueInstance'
-"
-uniqueInstance : <MinusInfinityDefinition>
-"!
+	instanceVariableNames: 'uniqueInstance'!
 
 !classDefinition: #IntervalStrategy category: #'Aconcagua-ArithmeticModel'!
 Object subclass: #IntervalStrategy
@@ -967,10 +757,7 @@ IntervalStrategy subclass: #InfinityIntervalStrategy
 	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'InfinityIntervalStrategy class' category: #'Aconcagua-MeasureModel'!
 InfinityIntervalStrategy class
-	instanceVariableNames: 'uniqueInstance'
-"
-uniqueInstance : <InfinityIntervalStrategy>
-"!
+	instanceVariableNames: 'uniqueInstance'!
 
 !classDefinition: #ArithmeticObjectIntervalStrategy category: #'Aconcagua-ArithmeticModel'!
 IntervalStrategy subclass: #ArithmeticObjectIntervalStrategy
@@ -980,10 +767,7 @@ IntervalStrategy subclass: #ArithmeticObjectIntervalStrategy
 	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'ArithmeticObjectIntervalStrategy class' category: #'Aconcagua-ArithmeticModel'!
 ArithmeticObjectIntervalStrategy class
-	instanceVariableNames: 'uniqueInstance'
-"
-uniqueInstance : <ArithmeticObjectIntervalStrategy>
-"!
+	instanceVariableNames: 'uniqueInstance'!
 
 !classDefinition: #TestIntervalStrategy category: #'Aconcagua-ArithmeticModelTests'!
 IntervalStrategy subclass: #TestIntervalStrategy
@@ -1000,10 +784,7 @@ Object subclass: #NumberToArithmeticObjectAdapter
 	instanceVariableNames: 'number'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-ArithmeticModel'
-"
-number : <SmallInteger | SmallFloat64 | Fraction> # Number
-"!
+	category: 'Aconcagua-ArithmeticModel'!
 !classDefinition: 'NumberToArithmeticObjectAdapter class' category: #'Aconcagua-ArithmeticModel'!
 NumberToArithmeticObjectAdapter class
 	instanceVariableNames: ''!
@@ -1023,11 +804,7 @@ EdgeInterface subclass: #Edge
 	instanceVariableNames: 'source target'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-source : <BaseUnit>
-target : <BaseUnit | SimpleMeasure> # Object
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'Edge class' category: #'Aconcagua-GraphModel'!
 Edge class
 	instanceVariableNames: ''!
@@ -1037,12 +814,7 @@ Object subclass: #Graph
 	instanceVariableNames: 'edges acyclic nodes'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-edges : <OrderedCollection>
-acyclic : <>
-nodes : <Set>
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'Graph class' category: #'Aconcagua-GraphModel'!
 Graph class
 	instanceVariableNames: ''!
@@ -1052,11 +824,7 @@ Object subclass: #GraphPathFinder
 	instanceVariableNames: 'graph passedByEdges'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-graph : <Graph>
-passedByEdges : <Set>
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'GraphPathFinder class' category: #'Aconcagua-GraphModel'!
 GraphPathFinder class
 	instanceVariableNames: ''!
@@ -1066,10 +834,7 @@ Object subclass: #TopologicalSort
 	instanceVariableNames: 'graph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Aconcagua-GraphModel'
-"
-graph : <>
-"!
+	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'TopologicalSort class' category: #'Aconcagua-GraphModel'!
 TopologicalSort class
 	instanceVariableNames: ''!
@@ -13397,11 +13162,12 @@ truncated
 
 	^(self > aMeasure) or: [ self = aMeasure ]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: 'HAW 1/21/2019 07:47:25'!
 between: min and: max
-	"The comparison this done thus so that if there is error of conversion is generated the exception correctly"
+	
+	"If there is a convertion error the exception right exception is signaled"
 
-	 ^(self >= min) and: [self <= max]! !
+	 ^self >= min and: [self <= max]! !
 
 !SimpleMeasure methodsFor: 'magnitude protocol'!
 between: min andNotInclusive: max
