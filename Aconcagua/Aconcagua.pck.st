@@ -1,5 +1,6 @@
-'From Cuis 5.0 of 7 November 2016 [latest update: #3562] on 4 February 2019 at 3:08:35 pm'!
-'Description Better comment in SimpleMeasure>>#between:and:'!
+'From Cuis 5.0 of 7 November 2016 [latest update: #3590] on 19 February 2019 at 3:07:45 pm'!
+'Description Better documentation for SimpleMeasure>>between: min and: max
+'!
 !provides: 'Aconcagua' 1 8!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
@@ -13162,10 +13163,11 @@ truncated
 
 	^(self > aMeasure) or: [ self = aMeasure ]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol' stamp: 'HAW 1/21/2019 07:47:25'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: 'HAW 2/19/2019 15:07:16'!
 between: min and: max
 	
-	"If there is a convertion error the exception right exception is signaled"
+	"If there is a convertion error the exception right exception is signaled
+	The comparison this done thus so that if there is error of conversion is generated the exception correctly"
 
 	 ^self >= min and: [self <= max]! !
 
