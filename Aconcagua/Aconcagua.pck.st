@@ -1,6 +1,6 @@
-'From Cuis 5.0 of 7 November 2016 [latest update: #3685] on 26 March 2019 at 7:06:35 pm'!
-'Description Rename from Infinity to infinity, MinusInfinity to minusInfinity, InfinityDefinition to Infinity and MinusInfinityDefinition to MinusInfinity'!
-!provides: 'Aconcagua' 1 9!
+'From Cuis 5.0 of 7 November 2016 [latest update: #3685] on 26 March 2019 at 8:11:03 pm'!
+'Description Infinity renamed to PlusInfinity to avoid collition with class var Infinit of Float'!
+!provides: 'Aconcagua' 1 10!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -339,16 +339,6 @@ TestCase subclass: #EvaluationTest
 EvaluationTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #InfinityClassTest category: #'Aconcagua-MeasureModelTests'!
-TestCase subclass: #InfinityClassTest
-	instanceVariableNames: 'meter second'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'InfinityClassTest class' category: #'Aconcagua-MeasureModelTests'!
-InfinityClassTest class
-	instanceVariableNames: ''!
-
 !classDefinition: #MeasureConverterTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #MeasureConverterTest
 	instanceVariableNames: 'units moneyConverter'
@@ -359,14 +349,14 @@ TestCase subclass: #MeasureConverterTest
 MeasureConverterTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #MinusInfinityClassTest category: #'Aconcagua-MeasureModelTests'!
-TestCase subclass: #MinusInfinityClassTest
+!classDefinition: #MinusInfinityTest category: #'Aconcagua-MeasureModelTests'!
+TestCase subclass: #MinusInfinityTest
 	instanceVariableNames: 'meter second'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'MinusInfinityClassTest class' category: #'Aconcagua-MeasureModelTests'!
-MinusInfinityClassTest class
+!classDefinition: 'MinusInfinityTest class' category: #'Aconcagua-MeasureModelTests'!
+MinusInfinityTest class
 	instanceVariableNames: ''!
 
 !classDefinition: #MultipliedUnitTest category: #'Aconcagua-MeasureModelTests'!
@@ -407,6 +397,16 @@ TestCase subclass: #NumberMeasureProtocolTest
 	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'NumberMeasureProtocolTest class' category: #'Aconcagua-MeasureModelTests'!
 NumberMeasureProtocolTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #PlusInfinityTest category: #'Aconcagua-MeasureModelTests'!
+TestCase subclass: #PlusInfinityTest
+	instanceVariableNames: 'meter second'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'PlusInfinityTest class' category: #'Aconcagua-MeasureModelTests'!
+PlusInfinityTest class
 	instanceVariableNames: ''!
 
 !classDefinition: #ProportionalDerivedUnitTest category: #'Aconcagua-MeasureModelTests'!
@@ -689,16 +689,6 @@ Evaluation subclass: #DummyEvaluation
 DummyEvaluation class
 	instanceVariableNames: ''!
 
-!classDefinition: #Infinity category: #'Aconcagua-MeasureModel'!
-ArithmeticObject subclass: #Infinity
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'Infinity class' category: #'Aconcagua-MeasureModel'!
-Infinity class
-	instanceVariableNames: 'uniqueInstance'!
-
 !classDefinition: #Measure category: #'Aconcagua-MeasureModel'!
 ArithmeticObject subclass: #Measure
 	instanceVariableNames: ''
@@ -737,6 +727,16 @@ ArithmeticObject subclass: #MinusInfinity
 	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'MinusInfinity class' category: #'Aconcagua-MeasureModel'!
 MinusInfinity class
+	instanceVariableNames: 'uniqueInstance'!
+
+!classDefinition: #PlusInfinity category: #'Aconcagua-MeasureModel'!
+ArithmeticObject subclass: #PlusInfinity
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'PlusInfinity class' category: #'Aconcagua-MeasureModel'!
+PlusInfinity class
 	instanceVariableNames: 'uniqueInstance'!
 
 !classDefinition: #IntervalStrategy category: #'Aconcagua-ArithmeticModel'!
@@ -928,16 +928,6 @@ printOn: aStream
 	aStream nextPutAll: 'Cache for: '.
 	evaluation printOn: aStream! !
 
-!Infinity methodsFor: 'testing' stamp: 'mx 3/28/2007 21:53'!
-isFixed
-
-	^false! !
-
-!Infinity methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: 'Infinity'! !
-
 !CompoundMeasure methodsFor: 'testing' stamp: 'mx 4/1/2007 18:10'!
 isFixed
 
@@ -973,6 +963,16 @@ isFixed
 printOn: aStream
 
 	aStream nextPutAll: 'Minus Infinity'! !
+
+!PlusInfinity methodsFor: 'testing' stamp: 'mx 3/28/2007 21:53'!
+isFixed
+
+	^false! !
+
+!PlusInfinity methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: 'Infinity'! !
 
 !NumberToArithmeticObjectAdapter methodsFor: 'printing'!
 printOn: aStream
@@ -5512,449 +5512,6 @@ testTruncated
 	formula := DummyEvaluation of: (peso with: 1.3).
 	self assert: formula truncated = (peso with: 1)! !
 
-!InfinityClassTest methodsFor: 'initialization'!
-setUp
-
-	meter := BaseUnit named: 'meter'.
-	second := BaseUnit named: 'second'! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testAdd
-
-	self assert: infinity + infinity = infinity.
-	self assert: 9 + infinity = infinity.
-	self assert: infinity + 9 = infinity.
-	self
-		should: [infinity + minusInfinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Sum operation is indeterminate between Infinity and Minus Infinity'].
-	self
-		should: [minusInfinity + infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Sum operation is indeterminate between Minus Infinity and Infinity']! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testDivide
-
-	self
-		should: [infinity / infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and Infinity'].
-	self
-		should: [infinity / minusInfinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and Minus Infinity'].
-	self
-		should: [minusInfinity / infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and Infinity'].
-	self assert: 9 / infinity = 0.
-	self
-		should: [infinity / 9]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and 9']! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testDivideByUnit
-
-	self assert: (infinity divideByUnit: meter) = (0 * meter)! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testDivideMeasure
-
-	self assert: (infinity divideSimpleMeasure: meter * 5) = 0! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testModulo
-
-	self
-		should: [infinity // infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and Infinity'].
-	self
-		should: [infinity // minusInfinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and Minus Infinity'].
-	self
-		should: [minusInfinity // infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and Infinity'].
-
-	self assert: 9 // infinity = 0.
-
-	self
-		should: [infinity // 9]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and 9']! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testModuloMeasure
-
-	self assert: (infinity moduloSimpleMeasure: 5 * meter) = 0! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testMultiplication
-
-	self assert: infinity * infinity = infinity.
-	self assert: 9 * infinity = infinity.
-	self assert: -9 * infinity = minusInfinity.
-	self assert: infinity * 9 = infinity.
-	self assert: infinity * -9 = minusInfinity.
-	self assert: infinity * minusInfinity = minusInfinity.
-	self assert: minusInfinity * infinity = minusInfinity.
-
-	self
-		should: [0 * infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity'].
-
-	self
-		should: [infinity * 0]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity']! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testMultiplyByUnit
-
-	self assert: (infinity multiplyByUnit: meter) = (infinity * meter)! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
-testMultiplyMeasure
-
-	self assert: (infinity multiplySimpleMeasure: 5 * meter) = infinity! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testNegated
-
-	self assert: infinity negated = minusInfinity! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testRemainder
-
-	self
-		should: [infinity \\ infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and Infinity'].
-	self
-		should: [infinity \\ minusInfinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and Minus Infinity'].
-	self
-		should: [minusInfinity \\ infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and Infinity'].
-	self
-		should: [infinity \\ 9]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and 9'].
-	self
-		should: [9 \\ infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity']! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testRemainderMeasure
-
-	self
-		should: [infinity remainderSimpleMeasure: 5 * meter]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity']! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testRoundTo
-
-	self assert: (infinity roundTo: 2) = infinity! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testSubtract
-
-	self
-		should: [infinity - infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Infinity and Infinity'].
-	self
-		should: [infinity - minusInfinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Infinity and Minus Infinity'].
-	self
-		should: [minusInfinity - infinity]
-		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Minus Infinity and Infinity'].
-	self assert: 9 - infinity = minusInfinity.
-	self assert: infinity - 9 = infinity! !
-
-!InfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
-testTruncated
-
-	self assert: infinity truncated = infinity! !
-
-!InfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
-testAmount
-
-	self assert: infinity = infinity! !
-
-!InfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
-testBaseUnit
-
-	self assert: infinity baseUnit = NullUnit new! !
-
-!InfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
-testDenominator
-
-	self assert: infinity denominator = 1! !
-
-!InfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
-testNumerator
-
-	self assert: infinity numerator = infinity! !
-
-!InfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
-testUnit
-
-	self assert: infinity unit = NullUnit new! !
-
-!InfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
-testUnitNameOf
-
-	| unit |
-
-	unit := BaseUnit named: 'meter'.
-	self assert: (infinity unitNameOf: unit) = 'meters'! !
-
-!InfinityClassTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:04:50'!
-testBagCreationWithNumber
-
-	| bag otherBag |
-
-	bag := 10 + (infinity * second).
-	otherBag := (infinity * meter) + 10.
-
-	self assert: bag isCompoundMeasure.
-	self assert: (bag measures includes: 10).
-	self assert: (bag measures includes: infinity * second).
-
-	self assert: otherBag isCompoundMeasure.
-	self assert: (otherBag measures includes: infinity * meter).
-	self assert: (otherBag measures includes: 10)! !
-
-!InfinityClassTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:04:50'!
-testCompoundMeasureCreationWithMeasure
-
-	| bag |
-
-	bag := (10 * meter) + (infinity * second).
-
-	self assert: bag isCompoundMeasure.
-	self assert: (bag measures includes: 10 * meter).
-	self assert: (bag measures includes: infinity * second)! !
-
-!InfinityClassTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:50'!
-testBetweenAnd
-
-	self assert: (infinity between: 1 and: infinity).
-	self deny: (infinity between: 1 and: 10)! !
-
-!InfinityClassTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:50'!
-testMax
-
-	self assert: (infinity max: 5) = infinity.
-	self assert: (5 max: infinity) = infinity.
-	self assert: (infinity max: minusInfinity) = infinity.
-	self assert: (minusInfinity max: infinity) = infinity.
-	self assert: (infinity max: infinity) = infinity! !
-
-!InfinityClassTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:50'!
-testMin
-
-	self assert: (infinity min: 5) = 5.
-	self assert: (5 min: infinity) = 5.
-	self assert: (infinity min: minusInfinity) = minusInfinity.
-	self assert: (minusInfinity min: infinity) = minusInfinity.
-	self assert: (infinity min: infinity) = infinity! !
-
-!InfinityClassTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
-testConvertAmountToBaseUnit
-
-	self assert: infinity convertAmountToBaseUnit = 0! !
-
-!InfinityClassTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
-testConvertTo
-
-	| unit |
-
-	unit := BaseUnit named: 'peso'.
-	self
-		should: [infinity convertTo: unit]
-		raise: CanNotConvertMeasureException
-		withExceptionDo: [:anException |
-			self assert: anException description = 'It is not possible to convert Infinity to peso']! !
-
-!InfinityClassTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
-testConvertToBaseUnit
-
-	self assert: infinity convertToBaseUnit = infinity! !
-
-!InfinityClassTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:04:50'!
-testEqualsCompoundMeasure
-
-	| measureBag |
-
-	measureBag := ((BaseUnit named: 'peso') with: 5) + ((BaseUnit named: 'dollar') with: 5).
-	self assert: (infinity equalsCompoundMeasure: infinity).
-	self deny: (infinity equalsCompoundMeasure: measureBag)! !
-
-!InfinityClassTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:04:51'!
-testEqualsMeasure
-
-	| measure |
-
-	measure := (BaseUnit named: 'peso') with: 5.
-	self assert: (infinity equalsSimpleMeasure: infinity).
-	self deny: (infinity equalsSimpleMeasure: measure)! !
-
-!InfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
-testIsCompoundMeasure
-
-	self deny: infinity isCompoundMeasure! !
-
-!InfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
-testIsNothing
-
-	self deny: infinity isNothing! !
-
-!InfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
-testNegative
-
-	self deny: infinity negative! !
-
-!InfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
-testPositive
-
-	self assert: infinity positive! !
-
-!InfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
-testSameDomainAs
-
-	self assert: (infinity sameDomainAs: 1).
-	self deny: (infinity sameDomainAs: ((BaseUnit named: 'peso') with: 1))! !
-
-!InfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
-testSameUnitAs
-
-	self assert: (infinity sameUnitAs: 1).
-	self deny: (infinity sameUnitAs: ((BaseUnit named: 'peso') with: 1))! !
-
-!InfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:50'!
-testToBy
-
-	| interval |
-
-	interval := infinity to: infinity by: 5.
-	self
-		assert: interval from = infinity;
-		assert: interval to = infinity;
-		assert: interval size = infinity;
-		assert: interval by = 5! !
-
-!InfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
-testToFromFixed
-
-	| interval |
-
-	interval := 5 toInfinity.
-	self
-		assert: interval from = 5;
-		assert: interval to = infinity;
-		assert: interval size = infinity;
-		assert: interval by = 1! !
-
-!InfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:50'!
-testToInfinity
-
-	| interval |
-
-	interval := infinity to: infinity.
-	self
-		assert: interval from = infinity;
-		assert: interval to = infinity;
-		assert: interval size = infinity;
-		assert: interval by = 1! !
-
-!InfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:50'!
-testToToFixed
-
-	| interval |
-
-	interval := infinity to: 5.
-	self
-		assert: interval from = infinity;
-		assert: interval to = 5;
-		assert: interval size = infinity;
-		assert: interval by = 1! !
-
 !MeasureConverterTest methodsFor: 'initialization'!
 createUnits
 
@@ -6093,13 +5650,13 @@ resources
 
 	^Array with: UnitsTestResource! !
 
-!MinusInfinityClassTest methodsFor: 'initialization'!
+!MinusInfinityTest methodsFor: 'initialization'!
 setUp
 
 	meter := BaseUnit named: 'meter'.
 	second := BaseUnit named: 'second'! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
 testAdd
 
 	self assert: minusInfinity + minusInfinity = minusInfinity.
@@ -6120,7 +5677,7 @@ testAdd
 				anException description =
 					'The Sum operation is indeterminate between Infinity and Minus Infinity']! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
 testDivide
 
 	self
@@ -6153,17 +5710,17 @@ testDivide
 				anException description =
 					'The Division operation is indeterminate between Minus Infinity and 9']! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testDivideByUnit
 
 	self assert: (minusInfinity divideByUnit: meter) = (0 * meter)! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testDivideMeasure
 
 	self assert: (minusInfinity divideSimpleMeasure: meter * 5) = 0! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
 testModulo
 
 	self
@@ -6196,12 +5753,12 @@ testModulo
 				anException description =
 					'The Modulo operation is indeterminate between Minus Infinity and 9']! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:12'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:12'!
 testModuloMeasure
 
 	self assert: (minusInfinity moduloSimpleMeasure: 5 * meter) = 0! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
 testMultiplication
 
 	self assert: minusInfinity * minusInfinity = infinity.
@@ -6228,22 +5785,22 @@ testMultiplication
 				anException description =
 					'The Multiplication operation is indeterminate between 0 and Minus Infinity']! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testMultiplyByUnit
 
 	self assert: (minusInfinity multiplyByUnit: meter) = (minusInfinity * meter)! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:12'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:12'!
 testMultiplyMeasure
 
 	self assert: (minusInfinity multiplySimpleMeasure: 5 * meter) = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
 testNegated
 
 	self assert: minusInfinity negated = infinity! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
 testRemainder
 
 	self
@@ -6282,7 +5839,7 @@ testRemainder
 				anException description =
 					'The Multiplication operation is indeterminate between 0 and Minus Infinity']! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testRemainderMeasure
 
 	self
@@ -6293,12 +5850,12 @@ testRemainderMeasure
 				anException description =
 					'The Multiplication operation is indeterminate between 0 and Minus Infinity']! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testRoundTo
 
 	self assert: (minusInfinity roundTo: 2) = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
 testSubtract
 
 	self
@@ -6325,37 +5882,37 @@ testSubtract
 	self assert: 9 - minusInfinity = infinity.
 	self assert: minusInfinity - 9 = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testTruncated
 
 	self assert: minusInfinity truncated = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
 testAmount
 
 	self assert: minusInfinity = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:12'!
+!MinusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:12'!
 testBaseUnit
 
 	self assert: minusInfinity baseUnit = NullUnit new! !
 
-!MinusInfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
 testDenominator
 
 	self assert: minusInfinity denominator = 1! !
 
-!MinusInfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:12'!
+!MinusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:12'!
 testNumerator
 
 	self assert: minusInfinity numerator = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
 testUnit
 
 	self assert: minusInfinity unit = NullUnit new! !
 
-!MinusInfinityClassTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:03:11'!
 testUnitNameOf
 
 	| unit |
@@ -6363,7 +5920,7 @@ testUnitNameOf
 	unit := BaseUnit named: 'meter'.
 	self assert: (minusInfinity unitNameOf: unit) = 'meters'! !
 
-!MinusInfinityClassTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:03:12'!
+!MinusInfinityTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:03:12'!
 testBagCreationWithNumber
 
 	| bag otherBag |
@@ -6379,7 +5936,7 @@ testBagCreationWithNumber
 	self assert: (otherBag measures includes: minusInfinity * meter).
 	self assert: (otherBag measures includes: 10)! !
 
-!MinusInfinityClassTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:03:11'!
 testCompoundMeasureCreationWithMeasure
 
 	| bag |
@@ -6390,7 +5947,7 @@ testCompoundMeasureCreationWithMeasure
 	self assert: (bag measures includes: 10 * meter).
 	self assert: (bag measures includes: minusInfinity * second)! !
 
-!MinusInfinityClassTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:03:11'!
 testBetweenAnd
 
 
@@ -6398,7 +5955,7 @@ testBetweenAnd
 	self assert: (minusInfinity between: minusInfinity and: minusInfinity).
 	self deny: (minusInfinity between: 1 and: 10)! !
 
-!MinusInfinityClassTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:51'!
 testMax
 
 	self assert: (minusInfinity max: 5) = 5.
@@ -6407,7 +5964,7 @@ testMax
 	self assert: (minusInfinity max: infinity) = infinity.
 	self assert: (minusInfinity max: minusInfinity) = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:51'!
 testMin
 
 	self assert: (minusInfinity min: 5) = minusInfinity.
@@ -6416,12 +5973,12 @@ testMin
 	self assert: (minusInfinity min: infinity) = minusInfinity.
 	self assert: (minusInfinity min: minusInfinity) = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
 testConvertAmountToBaseUnit
 
 	self assert: minusInfinity convertAmountToBaseUnit = 0! !
 
-!MinusInfinityClassTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
 testConvertTo
 
 	| unit |
@@ -6434,12 +5991,12 @@ testConvertTo
 			self assert:
 				anException description = 'It is not possible to convert Minus Infinity to peso']! !
 
-!MinusInfinityClassTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
 testConvertToBaseUnit
 
 	self assert: minusInfinity convertToBaseUnit = minusInfinity! !
 
-!MinusInfinityClassTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:03:11'!
 testEqualsCompoundMeasure
 
 	| measureBag |
@@ -6448,7 +6005,7 @@ testEqualsCompoundMeasure
 	self assert: (minusInfinity equalsCompoundMeasure: minusInfinity).
 	self deny: (minusInfinity equalsCompoundMeasure: measureBag)! !
 
-!MinusInfinityClassTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:03:12'!
+!MinusInfinityTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:03:12'!
 testEqualsMeasure
 
 	| measure |
@@ -6457,39 +6014,39 @@ testEqualsMeasure
 	self assert: (minusInfinity equalsSimpleMeasure: minusInfinity).
 	self deny: (minusInfinity equalsSimpleMeasure: measure)! !
 
-!MinusInfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
 testIsCompoundMeasure
 
 	self deny: minusInfinity isCompoundMeasure! !
 
-!MinusInfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
 testIsNothing
 
 	self deny: minusInfinity isNothing! !
 
-!MinusInfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
 testNegative
 
 	self deny: minusInfinity negative! !
 
-!MinusInfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:12'!
+!MinusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:12'!
 testPositive
 
 	self assert: minusInfinity positive! !
 
-!MinusInfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
 testSameDomainAs
 
 	self assert: (minusInfinity sameDomainAs: 1).
 	self deny: (minusInfinity sameDomainAs: ((BaseUnit named: 'peso') with: 1))! !
 
-!MinusInfinityClassTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:03:11'!
 testSameUnitAs
 
 	self assert: (minusInfinity sameUnitAs: 1).
 	self deny: (minusInfinity sameUnitAs: ((BaseUnit named: 'peso') with: 1))! !
 
-!MinusInfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
 testToBy
  
 	| interval |
@@ -6501,7 +6058,7 @@ testToBy
 		assert: interval size = infinity;
 		assert: interval by = 5! !
 
-!MinusInfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
 testToFromFixed
 
 	| interval |
@@ -6513,7 +6070,7 @@ testToFromFixed
 		assert: interval size = infinity;
 		assert: interval by = 1! !
 
-!MinusInfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
 testToInfinity
 
 	| interval |
@@ -6525,7 +6082,7 @@ testToInfinity
 		assert: interval size = infinity;
 		assert: interval by = 1! !
 
-!MinusInfinityClassTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
 testToToFixed
 
 	| interval |
@@ -7393,6 +6950,449 @@ testIsNothing
 
 	self assert: 0 isNothing.
 	self deny: 1 isNothing.! !
+
+!PlusInfinityTest methodsFor: 'initialization'!
+setUp
+
+	meter := BaseUnit named: 'meter'.
+	second := BaseUnit named: 'second'! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testAdd
+
+	self assert: infinity + infinity = infinity.
+	self assert: 9 + infinity = infinity.
+	self assert: infinity + 9 = infinity.
+	self
+		should: [infinity + minusInfinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Sum operation is indeterminate between Infinity and Minus Infinity'].
+	self
+		should: [minusInfinity + infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Sum operation is indeterminate between Minus Infinity and Infinity']! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testDivide
+
+	self
+		should: [infinity / infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Division operation is indeterminate between Infinity and Infinity'].
+	self
+		should: [infinity / minusInfinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Division operation is indeterminate between Infinity and Minus Infinity'].
+	self
+		should: [minusInfinity / infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Division operation is indeterminate between Minus Infinity and Infinity'].
+	self assert: 9 / infinity = 0.
+	self
+		should: [infinity / 9]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Division operation is indeterminate between Infinity and 9']! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testDivideByUnit
+
+	self assert: (infinity divideByUnit: meter) = (0 * meter)! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testDivideMeasure
+
+	self assert: (infinity divideSimpleMeasure: meter * 5) = 0! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testModulo
+
+	self
+		should: [infinity // infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Modulo operation is indeterminate between Infinity and Infinity'].
+	self
+		should: [infinity // minusInfinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Modulo operation is indeterminate between Infinity and Minus Infinity'].
+	self
+		should: [minusInfinity // infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Modulo operation is indeterminate between Minus Infinity and Infinity'].
+
+	self assert: 9 // infinity = 0.
+
+	self
+		should: [infinity // 9]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Modulo operation is indeterminate between Infinity and 9']! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testModuloMeasure
+
+	self assert: (infinity moduloSimpleMeasure: 5 * meter) = 0! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testMultiplication
+
+	self assert: infinity * infinity = infinity.
+	self assert: 9 * infinity = infinity.
+	self assert: -9 * infinity = minusInfinity.
+	self assert: infinity * 9 = infinity.
+	self assert: infinity * -9 = minusInfinity.
+	self assert: infinity * minusInfinity = minusInfinity.
+	self assert: minusInfinity * infinity = minusInfinity.
+
+	self
+		should: [0 * infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Multiplication operation is indeterminate between 0 and Infinity'].
+
+	self
+		should: [infinity * 0]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Multiplication operation is indeterminate between 0 and Infinity']! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testMultiplyByUnit
+
+	self assert: (infinity multiplyByUnit: meter) = (infinity * meter)! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+testMultiplyMeasure
+
+	self assert: (infinity multiplySimpleMeasure: 5 * meter) = infinity! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testNegated
+
+	self assert: infinity negated = minusInfinity! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testRemainder
+
+	self
+		should: [infinity \\ infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Remainder operation is indeterminate between Infinity and Infinity'].
+	self
+		should: [infinity \\ minusInfinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Remainder operation is indeterminate between Infinity and Minus Infinity'].
+	self
+		should: [minusInfinity \\ infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Remainder operation is indeterminate between Minus Infinity and Infinity'].
+	self
+		should: [infinity \\ 9]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Remainder operation is indeterminate between Infinity and 9'].
+	self
+		should: [9 \\ infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Multiplication operation is indeterminate between 0 and Infinity']! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testRemainderMeasure
+
+	self
+		should: [infinity remainderSimpleMeasure: 5 * meter]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Multiplication operation is indeterminate between 0 and Infinity']! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testRoundTo
+
+	self assert: (infinity roundTo: 2) = infinity! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testSubtract
+
+	self
+		should: [infinity - infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Subtract operation is indeterminate between Infinity and Infinity'].
+	self
+		should: [infinity - minusInfinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Subtract operation is indeterminate between Infinity and Minus Infinity'].
+	self
+		should: [minusInfinity - infinity]
+		raise: IndeterminateOperationException
+		withExceptionDo: [:anException |
+			self assert:
+				anException description =
+					'The Subtract operation is indeterminate between Minus Infinity and Infinity'].
+	self assert: 9 - infinity = minusInfinity.
+	self assert: infinity - 9 = infinity! !
+
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+testTruncated
+
+	self assert: infinity truncated = infinity! !
+
+!PlusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
+testAmount
+
+	self assert: infinity = infinity! !
+
+!PlusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
+testBaseUnit
+
+	self assert: infinity baseUnit = NullUnit new! !
+
+!PlusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
+testDenominator
+
+	self assert: infinity denominator = 1! !
+
+!PlusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
+testNumerator
+
+	self assert: infinity numerator = infinity! !
+
+!PlusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
+testUnit
+
+	self assert: infinity unit = NullUnit new! !
+
+!PlusInfinityTest methodsFor: 'test accessing' stamp: 'HAW 3/26/2019 19:04:50'!
+testUnitNameOf
+
+	| unit |
+
+	unit := BaseUnit named: 'meter'.
+	self assert: (infinity unitNameOf: unit) = 'meters'! !
+
+!PlusInfinityTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:04:50'!
+testBagCreationWithNumber
+
+	| bag otherBag |
+
+	bag := 10 + (infinity * second).
+	otherBag := (infinity * meter) + 10.
+
+	self assert: bag isCompoundMeasure.
+	self assert: (bag measures includes: 10).
+	self assert: (bag measures includes: infinity * second).
+
+	self assert: otherBag isCompoundMeasure.
+	self assert: (otherBag measures includes: infinity * meter).
+	self assert: (otherBag measures includes: 10)! !
+
+!PlusInfinityTest methodsFor: 'test bag creation' stamp: 'HAW 3/26/2019 19:04:50'!
+testCompoundMeasureCreationWithMeasure
+
+	| bag |
+
+	bag := (10 * meter) + (infinity * second).
+
+	self assert: bag isCompoundMeasure.
+	self assert: (bag measures includes: 10 * meter).
+	self assert: (bag measures includes: infinity * second)! !
+
+!PlusInfinityTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:50'!
+testBetweenAnd
+
+	self assert: (infinity between: 1 and: infinity).
+	self deny: (infinity between: 1 and: 10)! !
+
+!PlusInfinityTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:50'!
+testMax
+
+	self assert: (infinity max: 5) = infinity.
+	self assert: (5 max: infinity) = infinity.
+	self assert: (infinity max: minusInfinity) = infinity.
+	self assert: (minusInfinity max: infinity) = infinity.
+	self assert: (infinity max: infinity) = infinity! !
+
+!PlusInfinityTest methodsFor: 'test magnitude protocol' stamp: 'HAW 3/26/2019 19:04:50'!
+testMin
+
+	self assert: (infinity min: 5) = 5.
+	self assert: (5 min: infinity) = 5.
+	self assert: (infinity min: minusInfinity) = minusInfinity.
+	self assert: (minusInfinity min: infinity) = minusInfinity.
+	self assert: (infinity min: infinity) = infinity! !
+
+!PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
+testConvertAmountToBaseUnit
+
+	self assert: infinity convertAmountToBaseUnit = 0! !
+
+!PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
+testConvertTo
+
+	| unit |
+
+	unit := BaseUnit named: 'peso'.
+	self
+		should: [infinity convertTo: unit]
+		raise: CanNotConvertMeasureException
+		withExceptionDo: [:anException |
+			self assert: anException description = 'It is not possible to convert Infinity to peso']! !
+
+!PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
+testConvertToBaseUnit
+
+	self assert: infinity convertToBaseUnit = infinity! !
+
+!PlusInfinityTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:04:50'!
+testEqualsCompoundMeasure
+
+	| measureBag |
+
+	measureBag := ((BaseUnit named: 'peso') with: 5) + ((BaseUnit named: 'dollar') with: 5).
+	self assert: (infinity equalsCompoundMeasure: infinity).
+	self deny: (infinity equalsCompoundMeasure: measureBag)! !
+
+!PlusInfinityTest methodsFor: 'test comparing' stamp: 'HAW 3/26/2019 19:04:51'!
+testEqualsMeasure
+
+	| measure |
+
+	measure := (BaseUnit named: 'peso') with: 5.
+	self assert: (infinity equalsSimpleMeasure: infinity).
+	self deny: (infinity equalsSimpleMeasure: measure)! !
+
+!PlusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
+testIsCompoundMeasure
+
+	self deny: infinity isCompoundMeasure! !
+
+!PlusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
+testIsNothing
+
+	self deny: infinity isNothing! !
+
+!PlusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
+testNegative
+
+	self deny: infinity negative! !
+
+!PlusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
+testPositive
+
+	self assert: infinity positive! !
+
+!PlusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
+testSameDomainAs
+
+	self assert: (infinity sameDomainAs: 1).
+	self deny: (infinity sameDomainAs: ((BaseUnit named: 'peso') with: 1))! !
+
+!PlusInfinityTest methodsFor: 'test testing' stamp: 'HAW 3/26/2019 19:04:50'!
+testSameUnitAs
+
+	self assert: (infinity sameUnitAs: 1).
+	self deny: (infinity sameUnitAs: ((BaseUnit named: 'peso') with: 1))! !
+
+!PlusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:50'!
+testToBy
+
+	| interval |
+
+	interval := infinity to: infinity by: 5.
+	self
+		assert: interval from = infinity;
+		assert: interval to = infinity;
+		assert: interval size = infinity;
+		assert: interval by = 5! !
+
+!PlusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:51'!
+testToFromFixed
+
+	| interval |
+
+	interval := 5 toInfinity.
+	self
+		assert: interval from = 5;
+		assert: interval to = infinity;
+		assert: interval size = infinity;
+		assert: interval by = 1! !
+
+!PlusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:50'!
+testToInfinity
+
+	| interval |
+
+	interval := infinity to: infinity.
+	self
+		assert: interval from = infinity;
+		assert: interval to = infinity;
+		assert: interval size = infinity;
+		assert: interval by = 1! !
+
+!PlusInfinityTest methodsFor: 'test interval protocol' stamp: 'HAW 3/26/2019 19:04:50'!
+testToToFixed
+
+	| interval |
+
+	interval := infinity to: 5.
+	self
+		assert: interval from = infinity;
+		assert: interval to = 5;
+		assert: interval size = infinity;
+		assert: interval by = 1! !
 
 !ProportionalDerivedUnitTest methodsFor: 'initialization'!
 setUp
@@ -12415,397 +12415,6 @@ of: aMeasure
 
 	^self new initializeMeasure: aMeasure! !
 
-!Infinity methodsFor: 'arithmetic operations'!
-* aMeasure
-
-	aMeasure isNothing
-		ifTrue: [self signalIndeterminateOperation: 'Multiplication' leftOperand: aMeasure].
-	^aMeasure multiplyInfinity: self! !
-
-!Infinity methodsFor: 'arithmetic operations'!
-+ aMeasure
-
-	^aMeasure addInfinity: self! !
-
-!Infinity methodsFor: 'arithmetic operations'!
-- aMeasure
-
-	^aMeasure subtractInfinity: self! !
-
-!Infinity methodsFor: 'arithmetic operations'!
-/ aMeasure
-
-	self signalIndeterminateOperation: 'Division' rightOperand: aMeasure! !
-
-!Infinity methodsFor: 'arithmetic operations'!
-// aMeasure
-
-	self signalIndeterminateOperation: 'Modulo' rightOperand: aMeasure! !
-
-!Infinity methodsFor: 'arithmetic operations'!
-\\ aMeasure
-
-	self signalIndeterminateOperation: 'Remainder' rightOperand: aMeasure! !
-
-!Infinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:04:12'!
-negated
-
-	^MinusInfinity new! !
-
-!Infinity methodsFor: 'arithmetic operations'!
-roundTo: aNumber
-
-	^self! !
-
-!Infinity methodsFor: 'arithmetic operations'!
-truncated
-
-	^self! !
-
-!Infinity methodsFor: 'magnitude protocol'!
-< aMagnitude
-
-	^false! !
-
-!Infinity methodsFor: 'magnitude protocol'!
-<= aMagnitude
-
-	^self = aMagnitude! !
-
-!Infinity methodsFor: 'magnitude protocol' stamp: 'mx 3/28/2007 21:53'!
-> aMagnitude
-
-	^(self = aMagnitude) not! !
-
-!Infinity methodsFor: 'magnitude protocol'!
->= aMagnitude
-
-	^true! !
-
-!Infinity methodsFor: 'magnitude protocol'!
-between: min and: max
-
-	^(self >= min) and: [self <= max]! !
-
-!Infinity methodsFor: 'magnitude protocol'!
-max: aMagnitude
-
-	^self! !
-
-!Infinity methodsFor: 'magnitude protocol'!
-min: aMagnitude
-
-	^aMagnitude! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-addInfinity: anInfinity
-
-	^self! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-addMinusInfinity: aMinusInfinity
-
-	self signalIndeterminateOperation: 'Sum' leftOperand: aMinusInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:31:13'!
-addSimpleMeasure: aMeasure
-
-	^self! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-divFrom: aNumber
-
-	^0! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-divideByUnit: aUnit
-
-	^aUnit with: 1 / self! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-divideInfinity: anInfinity
-
-	self signalIndeterminateOperation: 'Division' leftOperand: anInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-divideMinusInfinity: aMinusInfinity
-
-	self signalIndeterminateOperation: 'Division' leftOperand: aMinusInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:36:07'!
-divideSimpleMeasure: aMeasure
-
-	^0! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-moduloInfinity: anInfinity
-
-	self signalIndeterminateOperation: 'Modulo' leftOperand: anInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-moduloMinusInfinity: aMinusInfinity
-
-	self signalIndeterminateOperation: 'Modulo' leftOperand: aMinusInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:39:38'!
-moduloSimpleMeasure: aMeasure
-
-	^0! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-multiplyByUnit: aUnit
-
-	^aUnit with: self! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-multiplyInfinity: anInfinity
-
-	^self! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-multiplyMinusInfinity: aMinusInfinity
-
-	^aMinusInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:42:54'!
-multiplySimpleMeasure: aMeasure
-
-	^self! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-quoFrom: aNumber
-
-	^aNumber / self! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-remFrom: aNumber
-
-	^aNumber - (self * (self quoFrom: aNumber))! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-remainderInfinity: anInfinity
-
-	self signalIndeterminateOperation: 'Remainder' leftOperand: anInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-remainderMinusInfinity: aMinusInfinity
-
-	self signalIndeterminateOperation: 'Remainder' leftOperand: aMinusInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:46:45'!
-remainderSimpleMeasure: aMeasure
-
-	^aMeasure - (self * (self quoFrom: aMeasure))! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-subtractFrom: aNumber
-
-	^self negated! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-subtractInfinity: anInfinity
-
-	self signalIndeterminateOperation: 'Subtract' leftOperand: anInfinity! !
-
-!Infinity methodsFor: 'arithmetic operations - private'!
-subtractMinusInfinity: aMinusInfinity
-
-	self signalIndeterminateOperation: 'Subtract' leftOperand: aMinusInfinity! !
-
-!Infinity methodsFor: 'accessing'!
-amount
-
-	^self! !
-
-!Infinity methodsFor: 'accessing'!
-baseUnit
-
-	^NullUnit new! !
-
-!Infinity methodsFor: 'accessing'!
-denominator
-
-	^1! !
-
-!Infinity methodsFor: 'accessing'!
-numerator
-
-	 ^self! !
-
-!Infinity methodsFor: 'accessing'!
-unit
-
-	^self baseUnit! !
-
-!Infinity methodsFor: 'accessing'!
-unitNameOf: aUnit
-
-	^aUnit nameForMany! !
-
-!Infinity methodsFor: 'magnitude protocol - private'!
-compareGreaterThan: aNumber
-
-	^true! !
-
-!Infinity methodsFor: 'magnitude protocol - private' stamp: 'HAW 3/25/2017 19:53:23'!
-greaterThanSimpleMeasure: aMeasure
-
-	^true! !
-
-!Infinity methodsFor: 'magnitude protocol - private' stamp: 'HAW 3/25/2017 19:54:50'!
-lessThanSimpleMeasure: aMeasure
-
-	^false! !
-
-!Infinity methodsFor: 'bag creation - private' stamp: 'HAW 3/25/2017 20:02:29'!
-composeWith: aMeasure
-
-	^aMeasure composeWithSimpleMeasure: self! !
-
-!Infinity methodsFor: 'bag creation - private' stamp: 'HAW 3/25/2017 20:03:18'!
-composeWithNumber: aNumber
-
-	^CompoundMeasure measures: (OrderedCollection with: self with: aNumber)! !
-
-!Infinity methodsFor: 'bag creation - private' stamp: 'HAW 3/25/2017 20:01:44'!
-composeWithSimpleMeasure: aMeasure
-
-	^CompoundMeasure measures: (OrderedCollection with: self with: aMeasure)! !
-
-!Infinity methodsFor: 'converting'!
-convertAmountToBaseUnit
-
-	^self unit convertAmountToBaseUnit: self! !
-
-!Infinity methodsFor: 'converting'!
-convertTo: aTargetUnit
-
-	^(self unit sameDomainAs: aTargetUnit)
-		ifTrue: [self convertInSameDomainTo: aTargetUnit]
-		ifFalse: [CanNotConvertMeasureException signalSourceMeasure: self targetUnit: aTargetUnit]! !
-
-!Infinity methodsFor: 'converting'!
-convertToBaseUnit
-
-	^self convertTo: self baseUnit! !
-
-!Infinity methodsFor: 'converting - private'!
-convertInSameDomainTo: aTargetUnit
-
-	^aTargetUnit convertFromBaseUnit: (self unit convertToBaseUnit: self)! !
-
-!Infinity methodsFor: 'converting - private'!
-convertTo: aTargetUnit using: aMeasureConverter
-	"NOT TO USE. Use the message convert:to:  of MeasureConverter.
-	This message is here by a question of double-dispatch.
-	If this message is used, the exceptions will not be correctly handleds."
-
-	^aMeasureConverter convertMeasure: self to: aTargetUnit! !
-
-!Infinity methodsFor: 'comparing' stamp: 'HAW 3/25/2017 19:51:31'!
-equalsCompoundMeasure: aMeasureBag
-
-	^self = aMeasureBag! !
-
-!Infinity methodsFor: 'comparing' stamp: 'HAW 3/25/2017 19:49:50'!
-equalsSimpleMeasure: aMeasure
-
-	^self = aMeasure! !
-
-!Infinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:11'!
-isCompoundMeasure
-
-	^false! !
-
-!Infinity methodsFor: 'testing'!
-isNothing
-
-	^false! !
-
-!Infinity methodsFor: 'testing'!
-negative
-
-	^false! !
-
-!Infinity methodsFor: 'testing'!
-positive
-
-	^true! !
-
-!Infinity methodsFor: 'testing'!
-sameDomainAs: aMeasure 
-	
-	^self unit sameDomainAs: aMeasure unit! !
-
-!Infinity methodsFor: 'testing'!
-sameUnitAs: aMeasure
-
-	^self unit = aMeasure unit! !
-
-!Infinity methodsFor: 'exceptions'!
-signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
-
-	IndeterminateOperationException
-		signalOperation: anOperationString
-		leftOperand: aLeftOperand
-		rightOperand: self! !
-
-!Infinity methodsFor: 'exceptions'!
-signalIndeterminateOperation: anOperationString rightOperand: aRightOperand
-
-	IndeterminateOperationException
-		signalOperation: anOperationString
-		leftOperand: self
-		rightOperand: aRightOperand! !
-
-!Infinity methodsFor: 'interval protocol'!
-to: stop
-
-	^self to: stop by: (self unit with: 1)! !
-
-!Infinity methodsFor: 'interval protocol'!
-to: stop by: step
-
-	^ArithmeticObjectInterval
-		from: self
-		to: stop
-		by: step
-		intervalStrategy: InfinityIntervalStrategy new! !
-
-!Infinity class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 21:00:09'!
-afterLoadInitialization
-
-	self initialize! !
-
-!Infinity class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 20:59:30'!
-initialize
-
-	uniqueInstance isNil ifTrue: [ self initializeUniqueInstance ].
-	self initializeGlobalVariable.
-! !
-
-!Infinity class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 11:33:38'!
-initializeGlobalVariable
-
-	Smalltalk at: self globalName put: uniqueInstance 
-
-! !
-
-!Infinity class methodsFor: 'initialization'!
-initializeUniqueInstance
-
-	uniqueInstance := super new! !
-
-!Infinity class methodsFor: 'naming' stamp: 'HAW 3/26/2019 19:04:51'!
-globalName 
-
-	^ #infinity ! !
-
-!Infinity class methodsFor: 'instance creation'!
-new
-
-	^uniqueInstance! !
-
 !Measure methodsFor: 'accessing'!
 hash 
 	
@@ -13666,10 +13275,10 @@ amount: aNumber unit: aUnit
 
 	self signalIndeterminateOperation: 'Remainder' rightOperand: aMeasure! !
 
-!MinusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:05:20'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:36:58'!
 negated
   
-	^Infinity new! !
+	^PlusInfinity new! !
 
 !MinusInfinity methodsFor: 'arithmetic operations'!
 roundTo: aNumber
@@ -14024,6 +13633,397 @@ new
 
 	^uniqueInstance! !
 
+!PlusInfinity methodsFor: 'arithmetic operations'!
+* aMeasure
+
+	aMeasure isNothing
+		ifTrue: [self signalIndeterminateOperation: 'Multiplication' leftOperand: aMeasure].
+	^aMeasure multiplyInfinity: self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations'!
++ aMeasure
+
+	^aMeasure addInfinity: self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations'!
+- aMeasure
+
+	^aMeasure subtractInfinity: self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations'!
+/ aMeasure
+
+	self signalIndeterminateOperation: 'Division' rightOperand: aMeasure! !
+
+!PlusInfinity methodsFor: 'arithmetic operations'!
+// aMeasure
+
+	self signalIndeterminateOperation: 'Modulo' rightOperand: aMeasure! !
+
+!PlusInfinity methodsFor: 'arithmetic operations'!
+\\ aMeasure
+
+	self signalIndeterminateOperation: 'Remainder' rightOperand: aMeasure! !
+
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:04:12'!
+negated
+
+	^MinusInfinity new! !
+
+!PlusInfinity methodsFor: 'arithmetic operations'!
+roundTo: aNumber
+
+	^self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations'!
+truncated
+
+	^self! !
+
+!PlusInfinity methodsFor: 'magnitude protocol'!
+< aMagnitude
+
+	^false! !
+
+!PlusInfinity methodsFor: 'magnitude protocol'!
+<= aMagnitude
+
+	^self = aMagnitude! !
+
+!PlusInfinity methodsFor: 'magnitude protocol' stamp: 'mx 3/28/2007 21:53'!
+> aMagnitude
+
+	^(self = aMagnitude) not! !
+
+!PlusInfinity methodsFor: 'magnitude protocol'!
+>= aMagnitude
+
+	^true! !
+
+!PlusInfinity methodsFor: 'magnitude protocol'!
+between: min and: max
+
+	^(self >= min) and: [self <= max]! !
+
+!PlusInfinity methodsFor: 'magnitude protocol'!
+max: aMagnitude
+
+	^self! !
+
+!PlusInfinity methodsFor: 'magnitude protocol'!
+min: aMagnitude
+
+	^aMagnitude! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+addInfinity: anInfinity
+
+	^self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+addMinusInfinity: aMinusInfinity
+
+	self signalIndeterminateOperation: 'Sum' leftOperand: aMinusInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:31:13'!
+addSimpleMeasure: aMeasure
+
+	^self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+divFrom: aNumber
+
+	^0! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+divideByUnit: aUnit
+
+	^aUnit with: 1 / self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+divideInfinity: anInfinity
+
+	self signalIndeterminateOperation: 'Division' leftOperand: anInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+divideMinusInfinity: aMinusInfinity
+
+	self signalIndeterminateOperation: 'Division' leftOperand: aMinusInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:36:07'!
+divideSimpleMeasure: aMeasure
+
+	^0! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+moduloInfinity: anInfinity
+
+	self signalIndeterminateOperation: 'Modulo' leftOperand: anInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+moduloMinusInfinity: aMinusInfinity
+
+	self signalIndeterminateOperation: 'Modulo' leftOperand: aMinusInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:39:38'!
+moduloSimpleMeasure: aMeasure
+
+	^0! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+multiplyByUnit: aUnit
+
+	^aUnit with: self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+multiplyInfinity: anInfinity
+
+	^self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+multiplyMinusInfinity: aMinusInfinity
+
+	^aMinusInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:42:54'!
+multiplySimpleMeasure: aMeasure
+
+	^self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+quoFrom: aNumber
+
+	^aNumber / self! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+remFrom: aNumber
+
+	^aNumber - (self * (self quoFrom: aNumber))! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+remainderInfinity: anInfinity
+
+	self signalIndeterminateOperation: 'Remainder' leftOperand: anInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+remainderMinusInfinity: aMinusInfinity
+
+	self signalIndeterminateOperation: 'Remainder' leftOperand: aMinusInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: 'HAW 3/25/2017 19:46:45'!
+remainderSimpleMeasure: aMeasure
+
+	^aMeasure - (self * (self quoFrom: aMeasure))! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+subtractFrom: aNumber
+
+	^self negated! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+subtractInfinity: anInfinity
+
+	self signalIndeterminateOperation: 'Subtract' leftOperand: anInfinity! !
+
+!PlusInfinity methodsFor: 'arithmetic operations - private'!
+subtractMinusInfinity: aMinusInfinity
+
+	self signalIndeterminateOperation: 'Subtract' leftOperand: aMinusInfinity! !
+
+!PlusInfinity methodsFor: 'accessing'!
+amount
+
+	^self! !
+
+!PlusInfinity methodsFor: 'accessing'!
+baseUnit
+
+	^NullUnit new! !
+
+!PlusInfinity methodsFor: 'accessing'!
+denominator
+
+	^1! !
+
+!PlusInfinity methodsFor: 'accessing'!
+numerator
+
+	 ^self! !
+
+!PlusInfinity methodsFor: 'accessing'!
+unit
+
+	^self baseUnit! !
+
+!PlusInfinity methodsFor: 'accessing'!
+unitNameOf: aUnit
+
+	^aUnit nameForMany! !
+
+!PlusInfinity methodsFor: 'magnitude protocol - private'!
+compareGreaterThan: aNumber
+
+	^true! !
+
+!PlusInfinity methodsFor: 'magnitude protocol - private' stamp: 'HAW 3/25/2017 19:53:23'!
+greaterThanSimpleMeasure: aMeasure
+
+	^true! !
+
+!PlusInfinity methodsFor: 'magnitude protocol - private' stamp: 'HAW 3/25/2017 19:54:50'!
+lessThanSimpleMeasure: aMeasure
+
+	^false! !
+
+!PlusInfinity methodsFor: 'bag creation - private' stamp: 'HAW 3/25/2017 20:02:29'!
+composeWith: aMeasure
+
+	^aMeasure composeWithSimpleMeasure: self! !
+
+!PlusInfinity methodsFor: 'bag creation - private' stamp: 'HAW 3/25/2017 20:03:18'!
+composeWithNumber: aNumber
+
+	^CompoundMeasure measures: (OrderedCollection with: self with: aNumber)! !
+
+!PlusInfinity methodsFor: 'bag creation - private' stamp: 'HAW 3/25/2017 20:01:44'!
+composeWithSimpleMeasure: aMeasure
+
+	^CompoundMeasure measures: (OrderedCollection with: self with: aMeasure)! !
+
+!PlusInfinity methodsFor: 'converting'!
+convertAmountToBaseUnit
+
+	^self unit convertAmountToBaseUnit: self! !
+
+!PlusInfinity methodsFor: 'converting'!
+convertTo: aTargetUnit
+
+	^(self unit sameDomainAs: aTargetUnit)
+		ifTrue: [self convertInSameDomainTo: aTargetUnit]
+		ifFalse: [CanNotConvertMeasureException signalSourceMeasure: self targetUnit: aTargetUnit]! !
+
+!PlusInfinity methodsFor: 'converting'!
+convertToBaseUnit
+
+	^self convertTo: self baseUnit! !
+
+!PlusInfinity methodsFor: 'converting - private'!
+convertInSameDomainTo: aTargetUnit
+
+	^aTargetUnit convertFromBaseUnit: (self unit convertToBaseUnit: self)! !
+
+!PlusInfinity methodsFor: 'converting - private'!
+convertTo: aTargetUnit using: aMeasureConverter
+	"NOT TO USE. Use the message convert:to:  of MeasureConverter.
+	This message is here by a question of double-dispatch.
+	If this message is used, the exceptions will not be correctly handleds."
+
+	^aMeasureConverter convertMeasure: self to: aTargetUnit! !
+
+!PlusInfinity methodsFor: 'comparing' stamp: 'HAW 3/25/2017 19:51:31'!
+equalsCompoundMeasure: aMeasureBag
+
+	^self = aMeasureBag! !
+
+!PlusInfinity methodsFor: 'comparing' stamp: 'HAW 3/25/2017 19:49:50'!
+equalsSimpleMeasure: aMeasure
+
+	^self = aMeasure! !
+
+!PlusInfinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:11'!
+isCompoundMeasure
+
+	^false! !
+
+!PlusInfinity methodsFor: 'testing'!
+isNothing
+
+	^false! !
+
+!PlusInfinity methodsFor: 'testing'!
+negative
+
+	^false! !
+
+!PlusInfinity methodsFor: 'testing'!
+positive
+
+	^true! !
+
+!PlusInfinity methodsFor: 'testing'!
+sameDomainAs: aMeasure 
+	
+	^self unit sameDomainAs: aMeasure unit! !
+
+!PlusInfinity methodsFor: 'testing'!
+sameUnitAs: aMeasure
+
+	^self unit = aMeasure unit! !
+
+!PlusInfinity methodsFor: 'exceptions'!
+signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
+
+	IndeterminateOperationException
+		signalOperation: anOperationString
+		leftOperand: aLeftOperand
+		rightOperand: self! !
+
+!PlusInfinity methodsFor: 'exceptions'!
+signalIndeterminateOperation: anOperationString rightOperand: aRightOperand
+
+	IndeterminateOperationException
+		signalOperation: anOperationString
+		leftOperand: self
+		rightOperand: aRightOperand! !
+
+!PlusInfinity methodsFor: 'interval protocol'!
+to: stop
+
+	^self to: stop by: (self unit with: 1)! !
+
+!PlusInfinity methodsFor: 'interval protocol'!
+to: stop by: step
+
+	^ArithmeticObjectInterval
+		from: self
+		to: stop
+		by: step
+		intervalStrategy: InfinityIntervalStrategy new! !
+
+!PlusInfinity class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 21:00:09'!
+afterLoadInitialization
+
+	self initialize! !
+
+!PlusInfinity class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 20:59:30'!
+initialize
+
+	uniqueInstance isNil ifTrue: [ self initializeUniqueInstance ].
+	self initializeGlobalVariable.
+! !
+
+!PlusInfinity class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 11:33:38'!
+initializeGlobalVariable
+
+	Smalltalk at: self globalName put: uniqueInstance 
+
+! !
+
+!PlusInfinity class methodsFor: 'initialization'!
+initializeUniqueInstance
+
+	uniqueInstance := super new! !
+
+!PlusInfinity class methodsFor: 'naming' stamp: 'HAW 3/26/2019 19:04:51'!
+globalName 
+
+	^ #infinity ! !
+
+!PlusInfinity class methodsFor: 'instance creation'!
+new
+
+	^uniqueInstance! !
+
 !IntervalStrategy methodsFor: 'enumerating'!
 advanceFrom: from by: by
 	"The reason of this method over #advanceFrom:steps:by: is only to improve performance"
@@ -14055,10 +14055,10 @@ advanceFrom: from steps: steps by: by
 
 	^from + (steps * by)! !
 
-!InfinityIntervalStrategy methodsFor: 'enumerating' stamp: 'HAW 3/26/2019 19:05:20'!
+!InfinityIntervalStrategy methodsFor: 'enumerating' stamp: 'HAW 3/26/2019 19:36:58'!
 stepsFrom: from to: to by: by
 
-	^Infinity new! !
+	^PlusInfinity new! !
 
 !InfinityIntervalStrategy class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 21:00:16'!
 afterLoadInitialization
@@ -14954,7 +14954,7 @@ unitNameOf: aUnit
 
 	^self abs = 1 ifTrue: [aUnit nameForOne] ifFalse: [aUnit nameForMany]! !
 NullUnit initialize!
-Infinity initialize!
 MinusInfinity initialize!
+PlusInfinity initialize!
 InfinityIntervalStrategy initialize!
 ArithmeticObjectIntervalStrategy initialize!
