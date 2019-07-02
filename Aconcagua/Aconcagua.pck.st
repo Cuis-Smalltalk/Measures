@@ -1,6 +1,6 @@
-'From Cuis 5.0 of 7 November 2016 [latest update: #3685] on 26 March 2019 at 8:11:03 pm'!
+'From Cuis 5.0 [latest update: #3817] on 2 July 2019 at 11:43:50 am'!
 'Description Infinity renamed to PlusInfinity to avoid collition with class var Infinit of Float'!
-!provides: 'Aconcagua' 1 10!
+!provides: 'Aconcagua' 1 11!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -1008,14 +1008,18 @@ numerator: aNumerator denominator: aDenominator
 
 	self setNumerator: aNumerator denominator: aDenominator! !
 
-!CompoundMeasureFraction methodsFor: 'private'!
+!CompoundMeasureFraction methodsFor: 'private' stamp: 'jmv 7/2/2019 08:59:31'!
 setNumerator: aNumerator denominator: aDenominator
 
 	aDenominator = 0
-		ifTrue: [^(ZeroDivide dividend: aNumerator) signal]
-		ifFalse: 
-			[numerator := aNumerator.
-			denominator := aDenominator]! !
+		ifTrue: [
+			^ZeroDivide new
+				signalReceiver: self
+				selector: #setNumerator:denominator:
+				arguments: {aNumerator. aDenominator}]
+		ifFalse: [
+			numerator _ aNumerator.
+			denominator _ aDenominator]! !
 
 !CompoundMeasureFraction methodsFor: 'printing'!
 printOn: aStream base: base
@@ -10300,37 +10304,6 @@ with: aGraphPathFinder
 
 	^self new initializeWith: aGraphPathFinder! !
 
-!Unit methodsFor: 'mathematic operations'!
-* aNumberOrUnit
-
-	^aNumberOrUnit multiplyByUnit: self! !
-
-!Unit methodsFor: 'mathematic operations'!
-/ aNumberOrUnit
-
-	^aNumberOrUnit divideByUnit: self! !
-
-!Unit methodsFor: 'mathematic operations'!
-divideByUnit: aNumberOrUnit
-
-	self subclassResponsibility! !
-
-!Unit methodsFor: 'mathematic operations'!
-multiplyByUnit: aNumberOrUnit
-
-	self subclassResponsibility! !
-
-!Unit methodsFor: 'converting' stamp: 'SeanTAllen 11/28/2009 12:25'!
-adaptToNumber: aNumber andSend: aSelector 
-	^ (NumberToArithmeticObjectAdapter number: aNumber) 
-		perform: aSelector
-		with: self! !
-
-!Unit methodsFor: 'converting'!
-convertAmountToBaseUnit: aNumber
-
-	self subclassResponsibility! !
-
 !Unit methodsFor: 'accessing'!
 baseUnit
 
@@ -10402,6 +10375,37 @@ reciprocal
 
 !Unit methodsFor: 'accessing'!
 sign
+
+	self subclassResponsibility! !
+
+!Unit methodsFor: 'mathematic operations'!
+* aNumberOrUnit
+
+	^aNumberOrUnit multiplyByUnit: self! !
+
+!Unit methodsFor: 'mathematic operations'!
+/ aNumberOrUnit
+
+	^aNumberOrUnit divideByUnit: self! !
+
+!Unit methodsFor: 'mathematic operations'!
+divideByUnit: aNumberOrUnit
+
+	self subclassResponsibility! !
+
+!Unit methodsFor: 'mathematic operations'!
+multiplyByUnit: aNumberOrUnit
+
+	self subclassResponsibility! !
+
+!Unit methodsFor: 'converting' stamp: 'SeanTAllen 11/28/2009 12:25'!
+adaptToNumber: aNumber andSend: aSelector 
+	^ (NumberToArithmeticObjectAdapter number: aNumber) 
+		perform: aSelector
+		with: self! !
+
+!Unit methodsFor: 'converting'!
+convertAmountToBaseUnit: aNumber
 
 	self subclassResponsibility! !
 
@@ -11561,6 +11565,56 @@ for: aConvertionRule
 
 	^self new initializeWith: aConvertionRule! !
 
+!ArithmeticObject methodsFor: 'testing' stamp: 'HernanWilkinson 4/8/2014 12:13'!
+isAmountInteger
+	
+	^self amount isInteger! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:55:58'!
+isCompoundMeasure
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'GabrielOmarCotelli 9/18/2009 20:43'!
+isFraction
+
+	^false! !
+
+!ArithmeticObject methodsFor: 'testing'!
+isNothing
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'GabrielOmarCotelli 9/18/2009 20:42'!
+isNumber
+
+	^false! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'mx 3/17/2007 16:37'!
+isZero
+
+	^self isNothing! !
+
+!ArithmeticObject methodsFor: 'testing'!
+negative
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing'!
+positive
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing'!
+sameDomainAs: aMeasure
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing'!
+sameUnitAs: aMeasure
+
+	self subclassResponsibility! !
+
 !ArithmeticObject methodsFor: 'arithmetic operations'!
 * aMeasure
 
@@ -11912,56 +11966,6 @@ formatOn: aStream using: aFormatter
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'testing' stamp: 'HernanWilkinson 4/8/2014 12:13'!
-isAmountInteger
-	
-	^self amount isInteger! !
-
-!ArithmeticObject methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:55:58'!
-isCompoundMeasure
-
-	self subclassResponsibility! !
-
-!ArithmeticObject methodsFor: 'testing' stamp: 'GabrielOmarCotelli 9/18/2009 20:43'!
-isFraction
-
-	^false! !
-
-!ArithmeticObject methodsFor: 'testing'!
-isNothing
-
-	self subclassResponsibility! !
-
-!ArithmeticObject methodsFor: 'testing' stamp: 'GabrielOmarCotelli 9/18/2009 20:42'!
-isNumber
-
-	^false! !
-
-!ArithmeticObject methodsFor: 'testing' stamp: 'mx 3/17/2007 16:37'!
-isZero
-
-	^self isNothing! !
-
-!ArithmeticObject methodsFor: 'testing'!
-negative
-
-	self subclassResponsibility! !
-
-!ArithmeticObject methodsFor: 'testing'!
-positive
-
-	self subclassResponsibility! !
-
-!ArithmeticObject methodsFor: 'testing'!
-sameDomainAs: aMeasure
-
-	self subclassResponsibility! !
-
-!ArithmeticObject methodsFor: 'testing'!
-sameUnitAs: aMeasure
-
-	self subclassResponsibility! !
-
 !ArithmeticObject methodsFor: 'interval protocol'!
 to: stop
 
@@ -11976,6 +11980,36 @@ to: stop by: step
 toYourself
 
 	^self to: self! !
+
+!Evaluation methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:46'!
+isCompoundMeasure
+
+	^self value isCompoundMeasure! !
+
+!Evaluation methodsFor: 'testing'!
+isNothing
+
+	^self value isNothing! !
+
+!Evaluation methodsFor: 'testing'!
+negative
+
+	^self value negative! !
+
+!Evaluation methodsFor: 'testing'!
+positive
+
+	^self value positive! !
+
+!Evaluation methodsFor: 'testing'!
+sameDomainAs: aMeasure
+
+	^self value sameDomainAs: aMeasure! !
+
+!Evaluation methodsFor: 'testing'!
+sameUnitAs: aMeasure
+
+	^self value sameUnitAs: aMeasure! !
 
 !Evaluation methodsFor: 'mathematic operations'!
 * anAritmethicObject
@@ -12318,36 +12352,6 @@ doesNotUnderstand: aMessage
 
 	^aMessage sendTo: self value! !
 
-!Evaluation methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:46'!
-isCompoundMeasure
-
-	^self value isCompoundMeasure! !
-
-!Evaluation methodsFor: 'testing'!
-isNothing
-
-	^self value isNothing! !
-
-!Evaluation methodsFor: 'testing'!
-negative
-
-	^self value negative! !
-
-!Evaluation methodsFor: 'testing'!
-positive
-
-	^self value positive! !
-
-!Evaluation methodsFor: 'testing'!
-sameDomainAs: aMeasure
-
-	^self value sameDomainAs: aMeasure! !
-
-!Evaluation methodsFor: 'testing'!
-sameUnitAs: aMeasure
-
-	^self value sameUnitAs: aMeasure! !
-
 !Evaluation methodsFor: 'proxy implementation'!
 respondsTo: aSymbol
 
@@ -12424,6 +12428,30 @@ hash
 isZero
 
 	^self isNothing! !
+
+!CompoundMeasure methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:03'!
+isCompoundMeasure
+
+	^true! !
+
+!CompoundMeasure methodsFor: 'testing'!
+isNothing
+
+	^measures allSatisfy: [ :aMeasure | aMeasure isNothing].
+	
+	! !
+
+!CompoundMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/21/2011 17:16'!
+printShowingDecimalPlaces: aNumberOfDecimals
+
+	| stream |
+	
+	stream := WriteStream on: String new.
+	measures 
+		do: [:aMeasure | stream nextPutAll: (aMeasure printShowingDecimalPlaces: aNumberOfDecimals)  ]
+		separatedBy: [stream nextPut: $+].
+		
+	^stream contents! !
 
 !CompoundMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 3/25/2017 19:45:21'!
 * aMeasure
@@ -12693,30 +12721,6 @@ initializeMeasures: aCollection
 
 	measures := aCollection! !
 
-!CompoundMeasure methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:03'!
-isCompoundMeasure
-
-	^true! !
-
-!CompoundMeasure methodsFor: 'testing'!
-isNothing
-
-	^measures allSatisfy: [ :aMeasure | aMeasure isNothing].
-	
-	! !
-
-!CompoundMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/21/2011 17:16'!
-printShowingDecimalPlaces: aNumberOfDecimals
-
-	| stream |
-	
-	stream := WriteStream on: String new.
-	measures 
-		do: [:aMeasure | stream nextPutAll: (aMeasure printShowingDecimalPlaces: aNumberOfDecimals)  ]
-		separatedBy: [stream nextPut: $+].
-		
-	^stream contents! !
-
 !CompoundMeasure class methodsFor: 'instance creation - private'!
 measures: aCollection 
 	"NOTE: THIS METHOD IS PRIVATE. IT ASSUMES THE COLLECTION HAS NO ZERO MEASURES AND
@@ -12737,6 +12741,46 @@ with: aMeasure with: anotherMeasure
 	^(aMeasure sameDomainAs: anotherMeasure)
 		ifTrue: [aMeasure addSameDomainMeasure: anotherMeasure]
 		ifFalse: [aMeasure composeWith: anotherMeasure]! !
+
+!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:26'!
+isCompoundMeasure
+
+	^false! !
+
+!SimpleMeasure methodsFor: 'testing'!
+isNothing
+
+	^self convertToBaseUnit amount = self baseUnit nothingAmount! !
+
+!SimpleMeasure methodsFor: 'testing'!
+negative
+
+	^amount negative! !
+
+!SimpleMeasure methodsFor: 'testing'!
+positive
+
+	^amount positive! !
+
+!SimpleMeasure methodsFor: 'testing'!
+sameDomainAs: aMeasure 
+	
+	^self unit sameDomainAs: aMeasure unit! !
+
+!SimpleMeasure methodsFor: 'testing'!
+sameUnitAs: aMeasure 
+	
+	^unit = aMeasure unit! !
+
+!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 6/2/2009 16:09'!
+strictlyPositive
+	
+	^amount strictlyPositive! !
+
+!SimpleMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/20/2011 17:42'!
+printShowingDecimalPlaces: aNumberOfDecimals
+
+	^(amount printShowingDecimalPlaces: aNumberOfDecimals),  ' ', (self unit nameFor: self amount) asString! !
 
 !SimpleMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 3/25/2017 19:43:51'!
 * aMeasure
@@ -13188,46 +13232,6 @@ initializeAmount: aNumber unit: aUnit
 	amount := aNumber.
 	unit := aUnit! !
 
-!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:26'!
-isCompoundMeasure
-
-	^false! !
-
-!SimpleMeasure methodsFor: 'testing'!
-isNothing
-
-	^self convertToBaseUnit amount = self baseUnit nothingAmount! !
-
-!SimpleMeasure methodsFor: 'testing'!
-negative
-
-	^amount negative! !
-
-!SimpleMeasure methodsFor: 'testing'!
-positive
-
-	^amount positive! !
-
-!SimpleMeasure methodsFor: 'testing'!
-sameDomainAs: aMeasure 
-	
-	^self unit sameDomainAs: aMeasure unit! !
-
-!SimpleMeasure methodsFor: 'testing'!
-sameUnitAs: aMeasure 
-	
-	^unit = aMeasure unit! !
-
-!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 6/2/2009 16:09'!
-strictlyPositive
-	
-	^amount strictlyPositive! !
-
-!SimpleMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/20/2011 17:42'!
-printShowingDecimalPlaces: aNumberOfDecimals
-
-	^(amount printShowingDecimalPlaces: aNumberOfDecimals),  ' ', (self unit nameFor: self amount) asString! !
-
 !SimpleMeasure methodsFor: 'interval protocol'!
 to: stop
 
@@ -13242,6 +13246,36 @@ to: stop by: step
 amount: aNumber unit: aUnit
 
 	^self new initializeAmount: aNumber unit: aUnit! !
+
+!MinusInfinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:15'!
+isCompoundMeasure
+
+	^false! !
+
+!MinusInfinity methodsFor: 'testing'!
+isNothing
+
+	^false! !
+
+!MinusInfinity methodsFor: 'testing'!
+negative
+
+	^false! !
+
+!MinusInfinity methodsFor: 'testing'!
+positive
+
+	^true! !
+
+!MinusInfinity methodsFor: 'testing'!
+sameDomainAs: aMeasure 
+	
+	^self unit sameDomainAs: aMeasure unit! !
+
+!MinusInfinity methodsFor: 'testing'!
+sameUnitAs: aMeasure
+
+	^self unit = aMeasure unit! !
 
 !MinusInfinity methodsFor: 'arithmetic operations'!
 * aMeasure
@@ -13540,36 +13574,6 @@ equalsSimpleMeasure: aMeasure
 
 	^self = aMeasure! !
 
-!MinusInfinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:15'!
-isCompoundMeasure
-
-	^false! !
-
-!MinusInfinity methodsFor: 'testing'!
-isNothing
-
-	^false! !
-
-!MinusInfinity methodsFor: 'testing'!
-negative
-
-	^false! !
-
-!MinusInfinity methodsFor: 'testing'!
-positive
-
-	^true! !
-
-!MinusInfinity methodsFor: 'testing'!
-sameDomainAs: aMeasure 
-	
-	^self unit sameDomainAs: aMeasure unit! !
-
-!MinusInfinity methodsFor: 'testing'!
-sameUnitAs: aMeasure
-
-	^self unit = aMeasure unit! !
-
 !MinusInfinity methodsFor: 'exceptions'!
 signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
 
@@ -13632,6 +13636,36 @@ globalName
 new
 
 	^uniqueInstance! !
+
+!PlusInfinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:11'!
+isCompoundMeasure
+
+	^false! !
+
+!PlusInfinity methodsFor: 'testing'!
+isNothing
+
+	^false! !
+
+!PlusInfinity methodsFor: 'testing'!
+negative
+
+	^false! !
+
+!PlusInfinity methodsFor: 'testing'!
+positive
+
+	^true! !
+
+!PlusInfinity methodsFor: 'testing'!
+sameDomainAs: aMeasure 
+	
+	^self unit sameDomainAs: aMeasure unit! !
+
+!PlusInfinity methodsFor: 'testing'!
+sameUnitAs: aMeasure
+
+	^self unit = aMeasure unit! !
 
 !PlusInfinity methodsFor: 'arithmetic operations'!
 * aMeasure
@@ -13929,36 +13963,6 @@ equalsCompoundMeasure: aMeasureBag
 equalsSimpleMeasure: aMeasure
 
 	^self = aMeasure! !
-
-!PlusInfinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:11'!
-isCompoundMeasure
-
-	^false! !
-
-!PlusInfinity methodsFor: 'testing'!
-isNothing
-
-	^false! !
-
-!PlusInfinity methodsFor: 'testing'!
-negative
-
-	^false! !
-
-!PlusInfinity methodsFor: 'testing'!
-positive
-
-	^true! !
-
-!PlusInfinity methodsFor: 'testing'!
-sameDomainAs: aMeasure 
-	
-	^self unit sameDomainAs: aMeasure unit! !
-
-!PlusInfinity methodsFor: 'testing'!
-sameUnitAs: aMeasure
-
-	^self unit = aMeasure unit! !
 
 !PlusInfinity methodsFor: 'exceptions'!
 signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
