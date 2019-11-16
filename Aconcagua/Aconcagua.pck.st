@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #3817] on 2 July 2019 at 11:43:50 am'!
-'Description Infinity renamed to PlusInfinity to avoid collition with class var Infinit of Float'!
-!provides: 'Aconcagua' 1 11!
+'From Cuis 5.0 [latest update: #3958] on 16 November 2019 at 1:00:17 pm'!
+'Description Rename from ...FomOne... to ...ForOne...'!
+!provides: 'Aconcagua' 1 12!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -1008,18 +1008,14 @@ numerator: aNumerator denominator: aDenominator
 
 	self setNumerator: aNumerator denominator: aDenominator! !
 
-!CompoundMeasureFraction methodsFor: 'private' stamp: 'jmv 7/2/2019 08:59:31'!
+!CompoundMeasureFraction methodsFor: 'private'!
 setNumerator: aNumerator denominator: aDenominator
 
 	aDenominator = 0
-		ifTrue: [
-			^ZeroDivide new
-				signalReceiver: self
-				selector: #setNumerator:denominator:
-				arguments: {aNumerator. aDenominator}]
-		ifFalse: [
-			numerator _ aNumerator.
-			denominator _ aDenominator]! !
+		ifTrue: [^(ZeroDivide dividend: aNumerator) signal]
+		ifFalse: 
+			[numerator := aNumerator.
+			denominator := aDenominator]! !
 
 !CompoundMeasureFraction methodsFor: 'printing'!
 printOn: aStream base: base
@@ -11141,22 +11137,22 @@ convertToBaseUnit: aMeasure
 	
 	^aMeasure! !
 
-!BaseUnit methodsFor: 'initialization'!
-initializeNameFomOne: aString nameForMany: anotherString sign: aSignString
+!BaseUnit methodsFor: 'initialization' stamp: 'HAW 11/16/2019 12:53:25'!
+initializeNameForOne: aString nameForMany: anotherString sign: aSignString
 
 	nameForOne := aString.
 	nameForMany := anotherString.
 	sign := aSignString.! !
 
-!BaseUnit class methodsFor: 'instance creation'!
+!BaseUnit class methodsFor: 'instance creation' stamp: 'HAW 11/16/2019 12:53:25'!
 nameForOne: aString nameForMany: anotherString
 
-	^self new initializeNameFomOne: aString nameForMany: anotherString sign: self defaultSign! !
+	^self new initializeNameForOne: aString nameForMany: anotherString sign: self defaultSign! !
 
-!BaseUnit class methodsFor: 'instance creation'!
+!BaseUnit class methodsFor: 'instance creation' stamp: 'HAW 11/16/2019 12:53:25'!
 nameForOne: aString nameForMany: anotherString sign: aSignString
 
-	^self new initializeNameFomOne: aString nameForMany: anotherString sign: aSignString! !
+	^self new initializeNameForOne: aString nameForMany: anotherString sign: aSignString! !
 
 !BaseUnit class methodsFor: 'instance creation'!
 named: aString 
