@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #3958] on 16 November 2019 at 1:00:17 pm'!
-'Description Rename from ...FomOne... to ...ForOne...'!
-!provides: 'Aconcagua' 1 12!
+'From Cuis 5.0 [latest update: #4109] on 1 May 2020 at 11:11:14 pm'!
+'Description Fix for 0 = (0*meter)'!
+!provides: 'Aconcagua' 1 13!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -4360,6 +4360,16 @@ testNotEqual
 
 	self deny: (CompoundMeasure with: self zeroPesos with: 1) = Object new.
 	self deny: Object new = (CompoundMeasure with: self zeroPesos with: 1)! !
+
+!CompoundMeasureTest methodsFor: 'test comparing' stamp: 'HAW 5/1/2020 22:57:15'!
+testTheZeroOfTheDomainIsEqualToZero
+
+	self assert: self zeroMeters + self zeroPesos = 0! !
+
+!CompoundMeasureTest methodsFor: 'test comparing' stamp: 'HAW 5/1/2020 22:57:06'!
+testZeroEqualsTheZeroOfTheDomain
+
+	self assert: 0 = (self zeroMeters + self zeroPesos)! !
 
 !CompoundMeasureTest methodsFor: 'test truncated'!
 testInvalidTruncated
@@ -9090,6 +9100,16 @@ testNotEqual
 	self deny: self oneMeter = Object new.
 	self deny: Object new = self oneMeter! !
 
+!SimpleMeasureTest methodsFor: 'test comparing' stamp: 'HAW 5/1/2020 22:57:23'!
+testTheZeroOfTheDomainIsEqualToZero
+
+	self assert: self zeroMeters = 0! !
+
+!SimpleMeasureTest methodsFor: 'test comparing' stamp: 'HAW 5/1/2020 22:57:43'!
+testZeroIsEqualToTheZeroOfTheDomain
+
+	self assert: 0 = self zeroMeters ! !
+
 !SimpleMeasureTest methodsFor: 'test testing' stamp: 'HAW 3/25/2017 19:11:51'!
 testIsNothing
 
@@ -13243,6 +13263,16 @@ amount: aNumber unit: aUnit
 
 	^self new initializeAmount: aNumber unit: aUnit! !
 
+!SimpleMeasure class methodsFor: 'class initialization' stamp: 'HAW 5/1/2020 23:07:30'!
+checkTimeStampOf: aMethod is: expectedTimeStamp
+
+	aMethod timeStamp = expectedTimeStamp ifFalse: [ self error: aMethod classAndSelector, ' has changed' ].! !
+
+!SimpleMeasure class methodsFor: 'class initialization' stamp: 'HAW 5/1/2020 23:07:19'!
+initialize
+
+	self checkTimeStampOf: Integer>>#= is: 'jmv 5/27/2014 11:04'! !
+
 !MinusInfinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:15'!
 isCompoundMeasure
 
@@ -14953,7 +14983,24 @@ unit
 unitNameOf: aUnit
 
 	^self abs = 1 ifTrue: [aUnit nameForOne] ifFalse: [aUnit nameForMany]! !
+
+!Integer methodsFor: '*Aconcagua-Extensions' stamp: 'HAW 5/1/2020 23:09:10'!
+= aNumber
+
+	"Any object is equal to itself"
+	self == aNumber ifTrue: [ ^ true ].
+
+	aNumber isNumber 
+		ifTrue: [
+			aNumber isInteger ifTrue: [
+				aNumber class == self class ifFalse: [ ^false ].
+				^ (self digitCompare: aNumber) = 0] ]
+		 ifFalse: [
+			(aNumber isKindOf: Measure) ifFalse: [ ^ false ]].
+		
+	^ aNumber adaptToInteger: self andSend: #=! !
 NullUnit initialize!
+SimpleMeasure initialize!
 MinusInfinity initialize!
 PlusInfinity initialize!
 InfinityIntervalStrategy initialize!
