@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4109] on 1 May 2020 at 11:11:14 pm'!
-'Description Fix for 0 = (0*meter)'!
-!provides: 'Aconcagua' 1 13!
+'From Cuis 5.0 [latest update: #4109] on 2 May 2020 at 12:36:53 am'!
+'Description Change how Integer>>#= is compiled'!
+!provides: 'Aconcagua' 1 14!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -467,6 +467,16 @@ TestResource subclass: #UnitsTestResource
 	category: 'Aconcagua-MeasureModelTests'!
 !classDefinition: 'UnitsTestResource class' category: #'Aconcagua-MeasureModelTests'!
 UnitsTestResource class
+	instanceVariableNames: ''!
+
+!classDefinition: #Aconcagua category: #'Aconcagua-MeasureModel'!
+Object subclass: #Aconcagua
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'Aconcagua class' category: #'Aconcagua-MeasureModel'!
+Aconcagua class
 	instanceVariableNames: ''!
 
 !classDefinition: #CircularReadStream category: #'Aconcagua-MeasureModel'!
@@ -9932,6 +9942,64 @@ installUnitsAsGlobals
 		installUnitsAsGlobals.
 	! !
 
+!Aconcagua class methodsFor: 'initialization-private' stamp: 'HAW 5/2/2020 00:32:19'!
+compile: aNewSourceCode in: aClass ifOriginalSourceCodeIs: anOriginalSourceCode
+	
+	| newSourceCodeMethodNode originalSourceMethodNode |
+	
+	newSourceCodeMethodNode := aClass methodNodeFor: aNewSourceCode.
+	originalSourceMethodNode := aClass methodNodeFor: anOriginalSourceCode.
+	
+	newSourceCodeMethodNode selector = originalSourceMethodNode selector ifFalse: [ self error: 'New source code selector is not equal to original source code selector' ].
+	(aClass sourceCodeAt: originalSourceMethodNode selector) = anOriginalSourceCode ifFalse: [ self error: 'Current source code of ', aClass name, '>>', originalSourceMethodNode selector, ' is not equal to the expected one' ].
+	
+	aClass compile: aNewSourceCode ! !
+
+!Aconcagua class methodsFor: 'initialization-private' stamp: 'HAW 5/2/2020 00:33:29'!
+compileAfterInstallMethods.
+
+	self 
+		compile: self integerEqualSourceCode 
+		in: Integer 
+		ifOriginalSourceCodeIs: self integerEqualOriginalSourceCode! !
+
+!Aconcagua class methodsFor: 'initialization-private' stamp: 'HAW 5/2/2020 00:34:56'!
+integerEqualOriginalSourceCode
+		
+	^'= aNumber
+
+	"Any object is equal to itself"
+	self == aNumber ifTrue: [ ^ true ].
+
+	aNumber isNumber ifFalse: [^ false].
+	aNumber isInteger ifTrue: [
+		aNumber class == self class ifFalse: [ ^false ].
+		^ (self digitCompare: aNumber) = 0].
+	^ aNumber adaptToInteger: self andSend: #='! !
+
+!Aconcagua class methodsFor: 'initialization-private' stamp: 'HAW 5/2/2020 00:34:27'!
+integerEqualSourceCode
+		
+	^'= aNumber
+
+	"Any object is equal to itself"
+	self == aNumber ifTrue: [ ^ true ].
+
+	aNumber isNumber 
+		ifTrue: [
+			aNumber isInteger ifTrue: [
+				aNumber class == self class ifFalse: [ ^false ].
+				^ (self digitCompare: aNumber) = 0] ]
+		 ifFalse: [
+			(aNumber isKindOf: Measure) ifFalse: [ ^ false ]].
+		
+	^ aNumber adaptToInteger: self andSend: #='! !
+
+!Aconcagua class methodsFor: 'initialization' stamp: 'HAW 5/2/2020 00:32:13'!
+initialize
+
+	self compileAfterInstallMethods ! !
+
 !CircularReadStream methodsFor: 'enumerating - private' stamp: 'mx 11/1/2007 20:33'!
 advancePositions: aMeasure
 
@@ -13263,16 +13331,6 @@ amount: aNumber unit: aUnit
 
 	^self new initializeAmount: aNumber unit: aUnit! !
 
-!SimpleMeasure class methodsFor: 'class initialization' stamp: 'HAW 5/1/2020 23:07:30'!
-checkTimeStampOf: aMethod is: expectedTimeStamp
-
-	aMethod timeStamp = expectedTimeStamp ifFalse: [ self error: aMethod classAndSelector, ' has changed' ].! !
-
-!SimpleMeasure class methodsFor: 'class initialization' stamp: 'HAW 5/1/2020 23:07:19'!
-initialize
-
-	self checkTimeStampOf: Integer>>#= is: 'jmv 5/27/2014 11:04'! !
-
 !MinusInfinity methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:15'!
 isCompoundMeasure
 
@@ -14983,24 +15041,8 @@ unit
 unitNameOf: aUnit
 
 	^self abs = 1 ifTrue: [aUnit nameForOne] ifFalse: [aUnit nameForMany]! !
-
-!Integer methodsFor: '*Aconcagua-Extensions' stamp: 'HAW 5/1/2020 23:09:10'!
-= aNumber
-
-	"Any object is equal to itself"
-	self == aNumber ifTrue: [ ^ true ].
-
-	aNumber isNumber 
-		ifTrue: [
-			aNumber isInteger ifTrue: [
-				aNumber class == self class ifFalse: [ ^false ].
-				^ (self digitCompare: aNumber) = 0] ]
-		 ifFalse: [
-			(aNumber isKindOf: Measure) ifFalse: [ ^ false ]].
-		
-	^ aNumber adaptToInteger: self andSend: #=! !
+Aconcagua initialize!
 NullUnit initialize!
-SimpleMeasure initialize!
 MinusInfinity initialize!
 PlusInfinity initialize!
 InfinityIntervalStrategy initialize!
