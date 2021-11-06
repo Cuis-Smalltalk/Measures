@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4532] on 2 May 2021 at 3:30:29 pm'!
-'Description Change how Integer>>#= is compiled'!
-!provides: 'Aconcagua' 1 15!
+'From Cuis 5.0 [latest update: #4913] on 5 November 2021 at 9:09:28 pm'!
+'Description Operations with MultipliedUnit and DividedUnit of DerivedUnit fixed'!
+!provides: 'Aconcagua' 1 16!
 SystemOrganization addCategory: 'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModelTests'!
@@ -957,11 +957,11 @@ isFixed
 
 	^amount isFixed! !
 
-!SimpleMeasure methodsFor: 'printing'!
+!SimpleMeasure methodsFor: 'printing' stamp: 'HAW 11/5/2021 20:37:16'!
 printOn: aStream
 
 	amount printOn: aStream.
-	aStream space.
+	self unit numerator = NullUnit new ifFalse: [ aStream nextPutAll: ' * ' ].
 	aStream nextPutAll: (self unit nameFor: self amount) asString! !
 
 !MinusInfinity methodsFor: 'testing' stamp: 'mx 4/1/2007 18:10'!
@@ -4632,19 +4632,19 @@ testSubtractNothing
 	self assert: (self zeroPesos - self zeroDollars) = self zeroDollars.
 	! !
 
-!CompoundMeasureTest methodsFor: 'test printing'!
+!CompoundMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:15:09'!
 testPrintingForMany
 
-	self assert: self tenPesos printString = '10 pesos' description: 'Printing for many with correct creation'.
-	self assert: self tenDollars printString = '10 dollars' description: 'Printing for many with invalid creation'.
+	self assert: self tenPesos printString = '10 * pesos' description: 'Printing for many with correct creation'.
+	self assert: self tenDollars printString = '10 * dollars' description: 'Printing for many with invalid creation'.
 	
 	! !
 
-!CompoundMeasureTest methodsFor: 'test printing'!
+!CompoundMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:15:21'!
 testPrintingForOne
 
-	self assert: self onePeso printString = '1 peso' description: 'Printing for one with correct creation'.
-	self assert: self oneDollar printString = '1 dollar' description: 'Printing for one with invalid creation'.
+	self assert: self onePeso printString = '1 * peso' description: 'Printing for one with correct creation'.
+	self assert: self oneDollar printString = '1 * dollar' description: 'Printing for one with invalid creation'.
 	
 	! !
 
@@ -5008,13 +5008,25 @@ testConvertAmountToBaseUnit
 	self assert: (meterOverSecond convertAmountToBaseUnit: 0) = 0.
 	self assert: (meterOverSecond convertAmountToBaseUnit: 10) = 10! !
 
-!DividedUnitTest methodsFor: 'test converting' stamp: 'HAW 3/25/2017 19:11:51'!
+!DividedUnitTest methodsFor: 'test converting' stamp: 'HAW 11/5/2021 20:02:11'!
 testConvertToBaseUnit
 
 	| measure |
 	
 	measure := SimpleMeasure amount: 10 unit: meterOverSecond.
-	self assert: (meterOverSecond convertToBaseUnit: measure) == measure! !
+	self assert: (meterOverSecond convertToBaseUnit: measure) equals: measure! !
+
+!DividedUnitTest methodsFor: 'test converting' stamp: 'HAW 11/5/2021 19:48:40'!
+testConvertToBaseUnitFromDerivedUnitFactors
+
+	| measure km min |
+	
+	km := ProportionalDerivedUnit baseUnit: meter conversionFactor: 1000 named: 'kilometer'.
+	min := ProportionalDerivedUnit baseUnit: second conversionFactor: 60 named: 'minute'.
+	measure := SimpleMeasure amount: 10 unit: km / min.
+	
+	self assert: 10 * 1000 / 60 * meterOverSecond equals: measure convertToBaseUnit 
+! !
 
 !DividedUnitTest methodsFor: 'test arithmetic operations'!
 testDivideByDividedUnit
@@ -5993,10 +6005,10 @@ testMin
 	self assert: (minusInfinity min: infinity) = minusInfinity.
 	self assert: (minusInfinity min: minusInfinity) = minusInfinity! !
 
-!MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 11/5/2021 20:18:06'!
 testConvertAmountToBaseUnit
 
-	self assert: minusInfinity convertAmountToBaseUnit = 0! !
+	self assert: minusInfinity equals: minusInfinity convertAmountToBaseUnit ! !
 
 !MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
 testConvertTo
@@ -6131,20 +6143,20 @@ testDenominator
 
 	self assert: meterBySecond denominator = NullUnit new! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/5/2021 19:42:53'!
 testName
 
-	self assert: meterBySecond name = 'meter.second'! !
+	self assert: meterBySecond name = 'meter*second'! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/5/2021 19:42:57'!
 testNameForMany
 
-	self assert: meterBySecond nameForMany = 'meters.seconds'! !
+	self assert: meterBySecond nameForMany = 'meters*seconds'! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/5/2021 19:43:01'!
 testNameForOne
 
-	self assert: meterBySecond name = 'meter.second'! !
+	self assert: meterBySecond name = 'meter*second'! !
 
 !MultipliedUnitTest methodsFor: 'test accessing'!
 testNothingAmount
@@ -6169,10 +6181,10 @@ testReciprocal
 
 	self assert: meterBySecond reciprocal = (NullUnit new / meterBySecond)! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/5/2021 19:43:05'!
 testSign
 
-	self assert: meterBySecond sign = 'm.s'! !
+	self assert: meterBySecond sign = 'm*s'! !
 
 !MultipliedUnitTest methodsFor: 'test converting'!
 testConvertAmountToBaseUnit
@@ -6180,15 +6192,27 @@ testConvertAmountToBaseUnit
 	self assert: (meterBySecond convertAmountToBaseUnit: 0) = 0.
 	self assert: (meterBySecond convertAmountToBaseUnit: 10) = 10! !
 
-!MultipliedUnitTest methodsFor: 'test converting' stamp: 'HAW 3/25/2017 19:11:51'!
+!MultipliedUnitTest methodsFor: 'test converting' stamp: 'HAW 11/5/2021 19:33:14'!
 testConvertToBaseUnit
 
 	| measure |
 	
 	measure := SimpleMeasure amount: 10 unit: meterBySecond.
-	self assert: (meterBySecond convertToBaseUnit: measure) == measure.
+	self assert: (meterBySecond convertToBaseUnit: measure) = measure.
 	
 	
+! !
+
+!MultipliedUnitTest methodsFor: 'test converting' stamp: 'HAW 11/5/2021 19:39:38'!
+testConvertToBaseUnitFromDerivedUnitFactors
+
+	| measure km min |
+	
+	km := ProportionalDerivedUnit baseUnit: meter conversionFactor: 1000 named: 'kilometer'.
+	min := ProportionalDerivedUnit baseUnit: second conversionFactor: 60 named: 'minute'.
+	measure := SimpleMeasure amount: 10 unit: km * min.
+	
+	self assert: 10000 * 60 * meterBySecond equals: measure convertToBaseUnit 
 ! !
 
 !MultipliedUnitTest methodsFor: 'test arithmetic operations'!
@@ -6211,7 +6235,7 @@ testDivideByFloat
 	self assert: (meterBySecond / 5.5) numerator = (meterBySecond with: (1/5.5) numerator).
 	self assert: (meterBySecond / 5.5) denominator = (1/5.5) denominator! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/5/2021 19:42:37'!
 testDivideByInfinity
  
 	self assert: meterBySecond / infinity = (meterBySecond with: 0).
@@ -6221,7 +6245,7 @@ testDivideByInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Division operation is indeterminate between Infinity and meter.second'].
+					'The Division operation is indeterminate between Infinity and meter*second'].
 	self assert: (meterBySecond / infinity) numerator = (meterBySecond with: 0).
 	self assert: (meterBySecond / infinity) denominator = 1! !
 
@@ -6234,7 +6258,7 @@ testDivideByInteger
 	
 ! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:12'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/5/2021 19:42:47'!
 testDivideByMinusInfinity
 
 	self assert: meterBySecond / minusInfinity = (meterBySecond with: 0).
@@ -6244,7 +6268,7 @@ testDivideByMinusInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Division operation is indeterminate between Minus Infinity and meter.second'].
+					'The Division operation is indeterminate between Minus Infinity and meter*second'].
 	self assert: (meterBySecond / minusInfinity) numerator = (meterBySecond with: 0).
 	self assert: (meterBySecond / minusInfinity) denominator = 1! !
 
@@ -6756,11 +6780,11 @@ testSign
 
 	self assert: nullUnit sign = NullUnit defaultSign! !
 
-!NullUnitTest methodsFor: 'test converting'!
+!NullUnitTest methodsFor: 'test converting' stamp: 'HAW 11/5/2021 20:18:16'!
 testConvertAmountToBaseUnit
 
 	self assert: (nullUnit convertAmountToBaseUnit: 0) = 0.
-	self assert: (nullUnit convertAmountToBaseUnit: 10) = 0! !
+	self assert: (nullUnit convertAmountToBaseUnit: 10) = 10! !
 
 !NullUnitTest methodsFor: 'test converting'!
 testConvertToBaseUnit
@@ -7294,10 +7318,10 @@ testMin
 	self assert: (minusInfinity min: infinity) = minusInfinity.
 	self assert: (infinity min: infinity) = infinity! !
 
-!PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 11/5/2021 20:18:30'!
 testConvertAmountToBaseUnit
 
-	self assert: infinity convertAmountToBaseUnit = 0! !
+	self assert: infinity equals: infinity convertAmountToBaseUnit! !
 
 !PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
 testConvertTo
@@ -7783,7 +7807,7 @@ setUp
 	onePeso := peso with: 1.
 	tenDollars := dollar with: 10! !
 
-!ProportionalUnitConversionFunctionTest methodsFor: 'testing'!
+!ProportionalUnitConversionFunctionTest methodsFor: 'testing' stamp: 'HAW 11/5/2021 20:18:52'!
 testAccessing
 
 	| function |
@@ -7792,7 +7816,7 @@ testAccessing
 	self assert: function sourceMeasure = onePeso.
 	self assert: function equivalentMeasure = tenDollars.
 	self assert: function proportionalMeasure = (tenDollars/onePeso).
-	self assert: function printString = '10 dollars / 1 peso* valueToConvert'! !
+	self assert: function printString = '10 * dollars / 1 * peso* valueToConvert'! !
 
 !ProportionalUnitConversionFunctionTest methodsFor: 'testing'!
 testEqual
@@ -8361,7 +8385,7 @@ testAddInfinity
 	self assert: self oneMeter negated + infinity = infinity.
 	self assert: infinity + self oneMeter negated = infinity! !
 
-!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 3/26/2019 19:04:51'!
+!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/5/2021 20:19:57'!
 testDivideInfinity
  
 	self assert: self oneMeter / infinity = 0.
@@ -8371,7 +8395,7 @@ testDivideInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Division operation is indeterminate between Infinity and 1 meter'].
+					'The Division operation is indeterminate between Infinity and 1 * meter'].
 	self assert: self oneMeter negated / infinity = 0.
 	self
 		should: [infinity / self oneMeter negated]
@@ -8379,9 +8403,9 @@ testDivideInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Division operation is indeterminate between Infinity and -1 meter']! !
+					'The Division operation is indeterminate between Infinity and -1 * meter']! !
 
-!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 3/26/2019 19:04:51'!
+!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/5/2021 20:20:13'!
 testModuloInfinity
 
 	self assert: self oneMeter // infinity = 0.
@@ -8391,7 +8415,7 @@ testModuloInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Modulo operation is indeterminate between Infinity and 1 meter'].
+					'The Modulo operation is indeterminate between Infinity and 1 * meter'].
 	self assert: self oneMeter negated // infinity = 0.
 	self
 		should: [infinity // self oneMeter negated]
@@ -8399,7 +8423,7 @@ testModuloInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Modulo operation is indeterminate between Infinity and -1 meter']! !
+					'The Modulo operation is indeterminate between Infinity and -1 * meter']! !
 
 !SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 3/26/2019 19:04:51'!
 testMultiplyInfinity
@@ -8409,7 +8433,7 @@ testMultiplyInfinity
 	self assert: self oneMeter negated * infinity = infinity.
 	self assert: infinity * self oneMeter negated = infinity! !
 
-!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 3/26/2019 19:04:51'!
+!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/5/2021 20:20:46'!
 testRemainderInfinity
  
 	self
@@ -8425,7 +8449,7 @@ testRemainderInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Remainder operation is indeterminate between Infinity and 1 meter'].
+					'The Remainder operation is indeterminate between Infinity and 1 * meter'].
 	self
 		should: [self oneMeter negated \\ infinity]
 		raise: IndeterminateOperationException
@@ -8439,7 +8463,7 @@ testRemainderInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Remainder operation is indeterminate between Infinity and -1 meter']! !
+					'The Remainder operation is indeterminate between Infinity and -1 * meter']! !
 
 !SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 3/26/2019 19:04:51'!
 testSubtractInfinity
@@ -8457,7 +8481,7 @@ testAddMinusInfinity
 	self assert: self oneMeter negated + minusInfinity = minusInfinity.
 	self assert: minusInfinity + self oneMeter negated = minusInfinity! !
 
-!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 3/26/2019 19:03:12'!
+!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/5/2021 20:20:06'!
 testDivideMinusInfinity
 
 	self assert: self oneMeter / minusInfinity = 0.
@@ -8467,7 +8491,7 @@ testDivideMinusInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Division operation is indeterminate between Minus Infinity and 1 meter'].
+					'The Division operation is indeterminate between Minus Infinity and 1 * meter'].
 	self assert: self oneMeter negated / minusInfinity = 0.
 	self
 		should: [minusInfinity / self oneMeter negated]
@@ -8475,9 +8499,9 @@ testDivideMinusInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Division operation is indeterminate between Minus Infinity and -1 meter']! !
+					'The Division operation is indeterminate between Minus Infinity and -1 * meter']! !
 
-!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 3/26/2019 19:03:12'!
+!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/5/2021 20:20:19'!
 testModuloMinusInfinity
 
 	self assert: self oneMeter // minusInfinity = 0.
@@ -8487,7 +8511,7 @@ testModuloMinusInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and 1 meter'].
+					'The Modulo operation is indeterminate between Minus Infinity and 1 * meter'].
 	self assert: self oneMeter negated // minusInfinity = 0.
 	self
 		should: [minusInfinity // self oneMeter negated]
@@ -8495,7 +8519,7 @@ testModuloMinusInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and -1 meter']! !
+					'The Modulo operation is indeterminate between Minus Infinity and -1 * meter']! !
 
 !SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 3/26/2019 19:03:12'!
 testMultiplyMinusInfinity
@@ -8505,7 +8529,7 @@ testMultiplyMinusInfinity
 	self assert: self oneMeter negated * minusInfinity = minusInfinity.
 	self assert: minusInfinity * self oneMeter negated = minusInfinity! !
 
-!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 3/26/2019 19:03:12'!
+!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/5/2021 20:20:55'!
 testRemainderMinusInfinity
  
 	self
@@ -8521,7 +8545,7 @@ testRemainderMinusInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and 1 meter'].
+					'The Remainder operation is indeterminate between Minus Infinity and 1 * meter'].
 	self
 		should: [self oneMeter negated \\ minusInfinity]
 		raise: IndeterminateOperationException
@@ -8535,7 +8559,7 @@ testRemainderMinusInfinity
 		withExceptionDo: [:anException |
 			self assert:
 				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and -1 meter']! !
+					'The Remainder operation is indeterminate between Minus Infinity and -1 * meter']! !
 
 !SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 3/26/2019 19:04:51'!
 testSubtractMinusInfinity
@@ -9332,17 +9356,25 @@ testSubtractMultipliedMeasure
 	self assert: ((self tenMeters - (self tenMeters * self fivePesos)) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((self tenMeters - (self tenMeters * self fivePesos)) atSameBaseUnitAs: (self meter * self peso)) = (self tenMeters negated * self fivePesos)! !
 
-!SimpleMeasureTest methodsFor: 'test printing'!
+!SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:41:20'!
+testDoesNotPrintAsteriskWhenUnitNumeratorIsNullUnit
+
+	self assert: '1' equals: (SimpleMeasure amount: 1 unit: NullUnit new) printString.
+	self assert: '10/meters' equals: (10 / meter) printString.
+	
+	! !
+
+!SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:20:27'!
 testPrintingForMany
 
-	self assert: self tenPesos printString = '10 pesos' description: 'Printing for many with correct creation'.
-	self assert: self tenDollars printString = '10 dollars' description: 'Printing for many with invalid creation'	! !
+	self assert: self tenPesos printString = '10 * pesos' description: 'Printing for many with correct creation'.
+	self assert: self tenDollars printString = '10 * dollars' description: 'Printing for many with invalid creation'	! !
 
-!SimpleMeasureTest methodsFor: 'test printing'!
+!SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:20:32'!
 testPrintingForOne
 
-	self assert: self onePeso printString = '1 peso' description: 'Printing for one with correct creation'.
-	self assert: self oneDollar printString = '1 dollar' description: 'Printing for one with invalid creation'
+	self assert: self onePeso printString = '1 * peso' description: 'Printing for one with correct creation'.
+	self assert: self oneDollar printString = '1 * dollar' description: 'Printing for one with invalid creation'
 	
 	! !
 
@@ -10497,15 +10529,25 @@ multiplyByUnit: aNumberOrUnit
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'converting' stamp: 'SeanTAllen 11/28/2009 12:25'!
+!Unit methodsFor: 'converting - private' stamp: 'SeanTAllen 11/28/2009 12:25'!
 adaptToNumber: aNumber andSend: aSelector 
 	^ (NumberToArithmeticObjectAdapter number: aNumber) 
 		perform: aSelector
 		with: self! !
 
-!Unit methodsFor: 'converting'!
+!Unit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 21:02:53'!
+convertAmountFromBaseUnit: aNumber
+
+	self subclassResponsibility! !
+
+!Unit methodsFor: 'converting - private'!
 convertAmountToBaseUnit: aNumber
 
+	self subclassResponsibility! !
+
+!Unit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 21:05:20'!
+convertFromBaseUnit: aMeasure 
+	
 	self subclassResponsibility! !
 
 !Unit methodsFor: 'converting - private'!
@@ -10625,11 +10667,6 @@ nameForManyFrom: aString
 ! !
 
 !CompoundUnit methodsFor: 'accessing'!
-baseUnit
-
-	^self! !
-
-!CompoundUnit methodsFor: 'accessing'!
 hash
 
 	self subclassResponsibility! !
@@ -10639,25 +10676,28 @@ nothingAmount
 
 	^0! !
 
-!CompoundUnit methodsFor: 'converting'!
-convertAmountToBaseUnit: aNumber
-
-	^aNumber! !
-
-!CompoundUnit methodsFor: 'converting - private'!
-convertFromBaseUnit: aMeasure 
-
-	^aMeasure! !
-
-!CompoundUnit methodsFor: 'converting - private'!
-convertToBaseUnit: aMeasure 
-
-	^aMeasure! !
-
 !CompoundUnit methodsFor: 'measurement creation' stamp: 'HAW 3/25/2017 19:11:51'!
 with: aNumber
 
 	^SimpleMeasure amount: aNumber unit: self! !
+
+!CompoundUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 21:01:23'!
+convertFromBaseUnit: aMeasure 
+	
+	| convertedAmount |
+	
+	convertedAmount := self convertAmountFromBaseUnit: aMeasure amount.
+	
+	^ convertedAmount * self baseUnit! !
+
+!CompoundUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 21:00:43'!
+convertToBaseUnit: aMeasure
+ 
+	| convertedAmount |
+	
+	convertedAmount := self convertAmountToBaseUnit: aMeasure amount.
+	
+	^ convertedAmount * self baseUnit! !
 
 !DividedUnit methodsFor: 'comparing'!
 = anObject
@@ -10665,6 +10705,13 @@ with: aNumber
 	^self class = anObject class 
 		and: [ numerator = anObject numerator 
 		and: [ denominator = anObject denominator ]]! !
+
+!DividedUnit methodsFor: 'accessing' stamp: 'HAW 11/5/2021 20:12:52'!
+baseUnit
+
+	^(numerator = numerator baseUnit and: [ denominator = denominator baseUnit ])
+		ifTrue: [ self ]
+		ifFalse: [ numerator baseUnit  / denominator baseUnit ]! !
 
 !DividedUnit methodsFor: 'accessing'!
 denominator
@@ -10752,6 +10799,26 @@ initializeNumerator: aUnit denominator: anotherUnit
 
 	numerator := aUnit.
 	denominator := anotherUnit! !
+
+!DividedUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:59:25'!
+convertAmountFromBaseUnit: anAmount 
+	
+	| convertedAmount numeratorAmountInBaseUnit |
+	
+	numeratorAmountInBaseUnit := numerator convertAmountFromBaseUnit: anAmount.
+	convertedAmount := denominator convertAmountToBaseUnit: numeratorAmountInBaseUnit.
+	
+	^ convertedAmount ! !
+
+!DividedUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:57:44'!
+convertAmountToBaseUnit: anAmount 
+	
+	| convertedAmount numeratorAmountInBaseUnit |
+	
+	numeratorAmountInBaseUnit := numerator convertAmountToBaseUnit: anAmount.
+	convertedAmount := denominator convertAmountFromBaseUnit: numeratorAmountInBaseUnit.
+	
+	^ convertedAmount! !
 
 !DividedUnit class methodsFor: 'instance creation - private'!
 dividedUnit: aDividedUnit dividedUnit: anotherDividedUnit
@@ -10902,6 +10969,11 @@ multiplySimpleUnit: aUnit
 
 	^self class simpleUnit: aUnit multipliedUnit: self! !
 
+!MultipliedUnit methodsFor: 'accessing' stamp: 'HAW 11/5/2021 19:20:04'!
+baseUnit
+
+	^self class factors: (factors collect: [ :aUnit | aUnit baseUnit ])! !
+
 !MultipliedUnit methodsFor: 'accessing'!
 factors
 	
@@ -10932,16 +11004,16 @@ sign
 
 	^self factorsToStreamDoing: [ :aUnit | aUnit sign ]! !
 
-!MultipliedUnit methodsFor: 'accessing - private'!
+!MultipliedUnit methodsFor: 'accessing - private' stamp: 'HAW 11/5/2021 19:42:19'!
 factorsToStreamDoing: aBlock
 
 	| stream |
 
 	stream := WriteStream on: String new.
-	factors do: [:aUnit |
-		stream nextPutAll: (aBlock value: aUnit).
-		stream nextPut: $.].
-	stream skip: -1.
+	factors 
+		do: [:aUnit | stream nextPutAll: (aBlock value: aUnit) ]
+		separatedBy: [stream nextPut: $*].
+	
 	^stream contents! !
 
 !MultipliedUnit methodsFor: 'testing'!
@@ -10960,6 +11032,20 @@ hasSameFactorsAs: aMultipliedUnit
 initializeFactors: aCollection
 
 	factors := aCollection! !
+
+!MultipliedUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:57:15'!
+convertAmountFromBaseUnit: anAmount
+
+	^ factors 
+		inject: anAmount 
+		into: [ :convertingAmount :aUnit | aUnit convertAmountFromBaseUnit: convertingAmount ]! !
+
+!MultipliedUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:56:48'!
+convertAmountToBaseUnit: anAmount
+
+	^ factors 
+		inject: anAmount 
+		into: [ :convertingAmount :aUnit | aUnit convertAmountToBaseUnit: convertingAmount ]! !
 
 !MultipliedUnit class methodsFor: 'instance creation - private'!
 dividedUnit: aDividedUnit dividedUnit: anotherDividedUnit
@@ -11048,15 +11134,15 @@ sign
 
 	^self class defaultSign! !
 
-!NullUnit methodsFor: 'converting'!
+!NullUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:14:42'!
 convertAmountFromBaseUnit: aNumber
 
-	^0! !
+	^aNumber ! !
 
-!NullUnit methodsFor: 'converting'!
+!NullUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:13:51'!
 convertAmountToBaseUnit: aNumber
 
-	^0! !
+	^ aNumber! !
 
 !NullUnit methodsFor: 'converting - private'!
 convertFromBaseUnit: aMeasure 
@@ -11224,7 +11310,12 @@ sign
 
 	^sign! !
 
-!BaseUnit methodsFor: 'converting'!
+!BaseUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:01:43'!
+convertAmountFromBaseUnit: aNumber
+
+	^aNumber! !
+
+!BaseUnit methodsFor: 'converting - private'!
 convertAmountToBaseUnit: aNumber
 
 	^aNumber
@@ -11275,11 +11366,6 @@ named: aString sign: aSignString
 		sign: aSignString
 ! !
 
-!DerivedUnit methodsFor: 'converting - private'!
-convertAmountFromBaseUnit: aNumber
-
-	self subclassResponsibility! !
-
 !DerivedUnit methodsFor: 'converting - private' stamp: 'HAW 3/25/2017 19:11:51'!
 convertFromBaseUnit: aSimpleMeasure 
 
@@ -11322,7 +11408,7 @@ convertAmountFromBaseUnit: aNumber
 
 	^reciprocalConversionBlock value: aNumber! !
 
-!NotProportionalDerivedUnit methodsFor: 'converting'!
+!NotProportionalDerivedUnit methodsFor: 'converting - private'!
 convertAmountToBaseUnit: aNumber
 
 	^conversionBlock value: aNumber! !
@@ -11400,7 +11486,7 @@ convertAmountFromBaseUnit: aNumber
 
 	^aNumber / conversionFactor! !
 
-!ProportionalDerivedUnit methodsFor: 'converting'!
+!ProportionalDerivedUnit methodsFor: 'converting - private'!
 convertAmountToBaseUnit: aNumber
 
 	^aNumber * conversionFactor! !
