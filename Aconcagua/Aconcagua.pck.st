@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4913] on 10 November 2021 at 9:42:06 pm'!
-'Description Support for ^ and many improvements'!
-!provides: 'Aconcagua' 1 17!
+'From Cuis 5.0 [latest update: #4967] on 11 November 2021 at 4:17:59 pm'!
+'Description CompoundUnit aliases such as joule and pascal'!
+!provides: 'Aconcagua' 1 18!
 SystemOrganization addCategory: 'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModelTests'!
@@ -9636,10 +9636,10 @@ jouleName
 
 	^'joule'! !
 
-!UnitsTestResource methodsFor: 'energy units - naming' stamp: 'HAW 11/10/2021 20:13:44'!
+!UnitsTestResource methodsFor: 'energy units - naming' stamp: 'HAW 11/11/2021 16:16:51'!
 pascalName
 
-	^'name'! !
+	^'pascal'! !
 
 !UnitsTestResource methodsFor: 'initialization'!
 addUnit: aUnit
@@ -9647,21 +9647,32 @@ addUnit: aUnit
 	units at: aUnit name put: aUnit.
 ! !
 
-!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 11/10/2021 20:15:31'!
-installUnitsAsGlobals
+!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 11/11/2021 16:15:53'!
+installJoule
 
-	| joule pascal |
-	
-	units do: [:aUnit |
-		(aUnit ~= self second and: [ aUnit ~= self minute ]) ifTrue: [ Smalltalk at: aUnit name asSymbol put: aUnit ]].
+	| joule |
 	
 	joule := self createJoule.
 	CompoundUnit defineAliasFor: joule named: self jouleName.
 	Smalltalk at: self jouleName asSymbol put: joule.
+! !
+
+!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 11/11/2021 16:16:02'!
+installPascal
+
+	| pascal |
 	
 	pascal := self createPascal.
 	CompoundUnit defineAliasFor: pascal named: self pascalName.
 	Smalltalk at: self pascalName asSymbol put: pascal.! !
+
+!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 11/11/2021 16:16:23'!
+installUnitsAsGlobals
+
+	units do: [:aUnit |
+		(aUnit ~= self second and: [ aUnit ~= self minute ]) ifTrue: [ Smalltalk at: aUnit name asSymbol put: aUnit ]].
+	
+	self installJoule; installPascal ! !
 
 !UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 11/10/2021 20:13:53'!
 setUp
@@ -10750,6 +10761,26 @@ nameForManyFrom: aString
 
 ! !
 
+!CompoundUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:04:00'!
+nameForMany
+
+	^self class aliasForManyOf: self ifAbsent: [ self nameForManyWithoutAlias ]! !
+
+!CompoundUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:04:58'!
+nameForManyWithoutAlias
+
+	self subclassResponsibility ! !
+
+!CompoundUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:04:31'!
+nameForOne
+
+	^self class aliasForOneOf: self ifAbsent: [ self nameForOneWithoutAlias ]! !
+
+!CompoundUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:04:49'!
+nameForOneWithoutAlias
+
+	self subclassResponsibility ! !
+
 !CompoundUnit methodsFor: 'accessing'!
 nothingAmount
 
@@ -10777,26 +10808,6 @@ convertToBaseUnit: aMeasure
 	convertedAmount := self convertAmountToBaseUnit: aMeasure amount.
 	
 	^ convertedAmount * self baseUnit! !
-
-!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:00'!
-nameForMany
-
-	^self class aliasForManyOf: self ifAbsent: [ self nameForManyWithoutAlias ]! !
-
-!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:58'!
-nameForManyWithoutAlias
-
-	self subclassResponsibility ! !
-
-!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:31'!
-nameForOne
-
-	^self class aliasForOneOf: self ifAbsent: [ self nameForOneWithoutAlias ]! !
-
-!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:49'!
-nameForOneWithoutAlias
-
-	self subclassResponsibility ! !
 
 !CompoundUnit class methodsFor: 'aliasing' stamp: 'HAW 11/10/2021 20:08:27'!
 aliasForManyOf: anAliasedUnit ifAbsent: aBlock
