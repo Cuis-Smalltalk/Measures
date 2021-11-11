@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4913] on 5 November 2021 at 9:09:28 pm'!
-'Description Operations with MultipliedUnit and DividedUnit of DerivedUnit fixed'!
-!provides: 'Aconcagua' 1 16!
+'From Cuis 5.0 [latest update: #4913] on 10 November 2021 at 9:42:06 pm'!
+'Description Support for ^ and many improvements'!
+!provides: 'Aconcagua' 1 17!
 SystemOrganization addCategory: 'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModelTests'!
@@ -522,7 +522,7 @@ Unit class
 !classDefinition: #CompoundUnit category: 'Aconcagua-MeasureModel'!
 Unit subclass: #CompoundUnit
 	instanceVariableNames: ''
-	classVariableNames: ''
+	classVariableNames: 'Aliases'
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
 !classDefinition: 'CompoundUnit class' category: 'Aconcagua-MeasureModel'!
@@ -1329,17 +1329,13 @@ from: start to: stop by: step intervalStrategy: anIntervalStrategy
 	^self new initializeFrom: start to: stop by: step intervalStrategy: anIntervalStrategy
 ! !
 
-!IndeterminateOperationException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 12:06:53'!
-description
-
-	^'The {1} operation is indeterminate between {2} and {3}' format: { operation .leftOperand .rightOperand }! !
-
-!IndeterminateOperationException methodsFor: 'initialization'!
+!IndeterminateOperationException methodsFor: 'initialization' stamp: 'HAW 11/9/2021 18:59:39'!
 initializeOperation: anOperation leftOperand: aLeftOperand rightOperand: aRightOperand
 
 	operation := anOperation.
 	leftOperand := aLeftOperand.
-	rightOperand := aRightOperand! !
+	rightOperand := aRightOperand.
+	messageText := 'The {1} operation is indeterminate between {2} and {3}' format: { operation .leftOperand .rightOperand }! !
 
 !IndeterminateOperationException class methodsFor: 'instance creation'!
 operation: anOperation leftOperand: aLeftOperand rightOperand: aRightOperand
@@ -1351,11 +1347,6 @@ signalOperation: anOperation leftOperand: aLeftOperand rightOperand: aRightOpera
 
 	(self operation: anOperation leftOperand: aLeftOperand rightOperand: aRightOperand) signal! !
 
-!InvalidProportionalUnitConversionFunctionException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 13:01:43'!
-description
-
-	^'The proportional relation between {1} and {2} it is not valid because {1} represents nothing or they are not of the same domain' format: { sourceMeasure .equivalentMeasure }! !
-
 !InvalidProportionalUnitConversionFunctionException methodsFor: 'accessing'!
 equivalentMeasure
 
@@ -1366,11 +1357,12 @@ sourceMeasure
 
 	^sourceMeasure! !
 
-!InvalidProportionalUnitConversionFunctionException methodsFor: 'initialization'!
+!InvalidProportionalUnitConversionFunctionException methodsFor: 'initialization' stamp: 'HAW 11/9/2021 19:00:06'!
 initializeSourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure
 
 	sourceMeasure := aSourceMeasure.
-	equivalentMeasure := aEquivalentMeasure! !
+	equivalentMeasure := aEquivalentMeasure.
+	messageText := 'The proportional relation between {1} and {2} it is not valid because {1} represents nothing or they are not of the same domain' format: { sourceMeasure .equivalentMeasure }! !
 
 !InvalidProportionalUnitConversionFunctionException class methodsFor: 'signaling'!
 signalSourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure
@@ -1381,11 +1373,6 @@ signalSourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure
 sourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure
 
 	^self new initializeSourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure! !
-
-!NoUnitConversionRuleException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 12:06:20'!
-description
-
-	^'Does not exist a conversion rule from {1} to {2}' format: { sourceUnit .targetUnit }! !
 
 !NoUnitConversionRuleException methodsFor: 'accessing'!
 sourceUnit 
@@ -1398,11 +1385,12 @@ targetUnit
 
 	^targetUnit! !
 
-!NoUnitConversionRuleException methodsFor: 'initialization'!
+!NoUnitConversionRuleException methodsFor: 'initialization' stamp: 'HAW 11/9/2021 19:00:38'!
 initializeWith: aSourceUnit targetUnit: aTargetUnit
 
 	sourceUnit := aSourceUnit.
-	targetUnit := aTargetUnit! !
+	targetUnit := aTargetUnit.
+	messageText := 'Does not exist a conversion rule from {1} to {2}' format: { sourceUnit .targetUnit }! !
 
 !NoUnitConversionRuleException class methodsFor: 'signaling'!
 signalWithSourceUnit: aSourceUnit targetUnit: aTargetUnit
@@ -1491,11 +1479,6 @@ operationName
 
 	self subclassResponsibility! !
 
-!CanNotConvertMeasureException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 12:59:16'!
-description
-
-	^'It is not possible to convert {1} to {2}' format: { sourceMeasure .targetUnit }! !
-
 !CanNotConvertMeasureException methodsFor: 'accessing'!
 operationName
 
@@ -1511,11 +1494,13 @@ targetUnit
 
 	^targetUnit! !
 
-!CanNotConvertMeasureException methodsFor: 'initialization'!
+!CanNotConvertMeasureException methodsFor: 'initialization' stamp: 'HAW 11/9/2021 18:59:04'!
 initializeWith: aSourceMeasure targetUnit: aTargetUnit 
 
 	sourceMeasure := aSourceMeasure.
-	targetUnit := aTargetUnit! !
+	targetUnit := aTargetUnit.
+	
+	messageText := 'It is not possible to convert {1} to {2}' format: { sourceMeasure .targetUnit }! !
 
 !CanNotConvertMeasureException methodsFor: 'priv handling'!
 isResumable
@@ -3105,7 +3090,7 @@ testDivideByDivideUnitSameDomainDerivedUnitNumerator
 	self assert: (meter / (centimeter / hour)) numerator = (meter * hour).
 	self assert: (meter / (centimeter / hour)) denominator = centimeter! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:46:46'!
 testDivideByInfinity
 
 	| kelvin |
@@ -3117,12 +3102,9 @@ testDivideByInfinity
 	self
 		should: [infinity / kelvin]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and kelvin']! !
+		withMessageText: 'The Division operation is indeterminate between Infinity and kelvin'! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:46:54'!
 testDivideByMinusInfinity
 
 	| kelvin |
@@ -3134,10 +3116,7 @@ testDivideByMinusInfinity
 	self
 		should: [minusInfinity / kelvin]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and kelvin']! !
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and kelvin'! !
 
 !BaseUnitTest methodsFor: 'test arithmetic operations'!
 testDivideByMultipliedUnit
@@ -3386,6 +3365,46 @@ testMultiplyBySimpleUnit
 	self assert: (meter * second) factorsSize = 2.
 	self assert: ((meter * second) factors includes: meter).
 	self assert: ((meter * second) factors includes: second)! !
+
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:00:03'!
+testToThePowerOfOneReturnsSelf
+
+	| meter |
+	
+	meter := BaseUnit named: 'meter'.
+	
+	self assert: meter equals: meter ^ 1! !
+
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:00:21'!
+testToThePowerOfZeroReturnsOne
+
+	| meter |
+	
+	meter := BaseUnit named: 'meter'.
+	
+	self assert: 1 equals: meter ^ 0! !
+
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:12:42'!
+testToThePowerOf_MinusN_IsOneOverThePowerOfN
+
+	| meter |
+	
+	meter := BaseUnit named: 'meter'.
+	
+	self 
+		assert: (meter * meter * meter) reciprocal 
+		equals: meter ^ -3! !
+
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:00:52'!
+testToThePowerOf_N_MultipliesMeasureNTimes
+
+	| meter |
+	
+	meter := BaseUnit named: 'meter'.
+	
+	self 
+		assert: meter * meter * meter 
+		equals: meter ^ 3! !
 
 !BaseUnitTest methodsFor: 'test comparing'!
 testEqualDerivedSameBaseUnit
@@ -4648,6 +4667,38 @@ testPrintingForOne
 	
 	! !
 
+!CompoundMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:47:38'!
+testToThePowerOfOneReturnsSelf
+
+	self assert: (self tenPesos + self tenDollars) equals: (self tenPesos + self tenDollars) ^ 1! !
+
+!CompoundMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:47:01'!
+testToThePowerOfZeroReturnsOne
+
+	self assert: 1 equals: (self tenPesos + self tenDollars) ^0! !
+
+!CompoundMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:55:34'!
+testToThePowerOf_MinusN_IsOneOverThePowerOfN
+
+	self 
+		assert: 1/ ((self tenPesos + self tenDollars) * (self tenPesos + self tenDollars))
+		equals: (self tenPesos + self tenDollars) ^ -2.
+		
+	self 
+		assert: 1/ ((self tenPesos + self tenDollars) * (self tenPesos + self tenDollars) * (self tenPesos + self tenDollars))
+		equals: (self tenPesos + self tenDollars) ^ -3.! !
+
+!CompoundMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:54:27'!
+testToThePowerOf_N_MultipliesMeasureNTimes
+
+	self 
+		assert: (self tenPesos + self tenDollars) * (self tenPesos + self tenDollars)
+		equals: (self tenPesos + self tenDollars) ^ 2.
+		
+	self 
+		assert: (self tenPesos + self tenDollars) * (self tenPesos + self tenDollars) * (self tenPesos + self tenDollars)
+		equals: (self tenPesos + self tenDollars) ^ 3.! !
+
 !CompoundMeasureTest class methodsFor: 'resources'!
 resources
 
@@ -4968,10 +5019,26 @@ testNameForMany
 
 	self assert: meterOverSecond nameForMany = 'meters/seconds'! !
 
+!DividedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/10/2021 20:06:54'!
+testNameForManyWhenHavingAlias
+
+	DividedUnit 
+		defineAliasFor: meterOverSecond 
+		named: 'speed' 
+		during: [ self assert: '10 * speeds' equals: (10 * meterOverSecond) printString ]! !
+
 !DividedUnitTest methodsFor: 'test accessing'!
 testNameForOne
 
 	self assert: meterOverSecond name = 'meter/second'! !
+
+!DividedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/10/2021 20:07:03'!
+testNameForOneWhenHavingAlias
+
+	DividedUnit 
+		defineAliasFor: meterOverSecond 
+		named: 'speed' 
+		during: [ self assert: '1 * speed' equals: (1 * meterOverSecond) printString ]! !
 
 !DividedUnitTest methodsFor: 'test accessing'!
 testNothingAmount
@@ -5047,7 +5114,7 @@ testDivideByFloat
 	self assert: (meterOverSecond / 5.5) numerator = (meter with: (1/5.5) numerator).
 	self assert: (meterOverSecond / 5.5) denominator = (second with: (1/5.5) denominator)! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:47:01'!
 testDivideByInfinity
 
 	self assert: meterOverSecond / infinity = (meterOverSecond with: 0).
@@ -5056,10 +5123,7 @@ testDivideByInfinity
 	self
 		should: [infinity / meterOverSecond]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and meter/second']! !
+		withMessageText: 'The Division operation is indeterminate between Infinity and meter/second'! !
 
 !DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'SeanTAllen 11/26/2009 12:18'!
 testDivideByInteger
@@ -5069,7 +5133,7 @@ testDivideByInteger
 	self assert: (meterOverSecond / 5) denominator = (second with: 5).
 ! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:47:09'!
 testDivideByMinusInfinity
 
 	self assert: meterOverSecond / minusInfinity = (meterOverSecond with: 0).
@@ -5078,10 +5142,7 @@ testDivideByMinusInfinity
 	self
 		should: [minusInfinity / meterOverSecond]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and meter/second']! !
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and meter/second'! !
 
 !DividedUnitTest methodsFor: 'test arithmetic operations'!
 testDivideBySimpleUnit
@@ -5275,6 +5336,31 @@ testMultiplyBySimpleUnit
 
 	self assert: (meterOverSecond * kelvin) numerator = (meter * kelvin).
 	self assert: (meterOverSecond * kelvin) denominator = second! !
+
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:05:28'!
+testToThePowerOfOneReturnsSelf
+
+	self assert: meterOverSecond equals: meterOverSecond ^ 1! !
+
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:05:46'!
+testToThePowerOfZeroReturnsOne
+
+	self assert: 1 equals: meterOverSecond ^ 0! !
+
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:12:02'!
+testToThePowerOf_MinusN_IsOneOverThePowerOfN
+
+	self 
+		assert: (meterOverSecond * meterOverSecond * meterOverSecond) reciprocal 
+		equals: meterOverSecond ^ -3
+		! !
+
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:06:26'!
+testToThePowerOf_N_MultipliesMeasureNTimes
+
+	self 
+		assert: meterOverSecond * meterOverSecond * meterOverSecond 
+		equals: meterOverSecond ^ 3! !
 
 !DividedUnitTest methodsFor: 'test comparing'!
 testEqualDividedUnit
@@ -5520,6 +5606,16 @@ testNegated
 	self assert: formulaOfTenPesos negated value = formulaOfTenPesos value negated.
 	self assert: formulaOfTenPesos negated negated value = formulaOfTenPesos value! !
 
+!EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/9/2021 18:39:57'!
+testPowerOf
+
+	| formula value |
+	
+	value := peso with: 3.
+	formula := DummyEvaluation of: value.
+	
+	self assert: value ^ 3 equals: formula ^ 3! !
+
 !EvaluationTest methodsFor: 'testing' stamp: 'HAW 3/25/2017 20:25:58'!
 testRemainder
 
@@ -5688,7 +5784,7 @@ setUp
 	meter := BaseUnit named: 'meter'.
 	second := BaseUnit named: 'second'! !
 
-!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:47:28'!
 testAdd
 
 	self assert: minusInfinity + minusInfinity = minusInfinity.
@@ -5697,50 +5793,32 @@ testAdd
 	self
 		should: [minusInfinity + infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Sum operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Sum operation is indeterminate between Minus Infinity and Infinity'.
 	self
 		should: [infinity + minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Sum operation is indeterminate between Infinity and Minus Infinity']! !
+		withMessageText: 'The Sum operation is indeterminate between Infinity and Minus Infinity'! !
 
-!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:47:58'!
 testDivide
 
 	self
 		should: [minusInfinity / minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and Minus Infinity'].
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity / infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and Infinity'.
 	self
 		should: [infinity / minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Division operation is indeterminate between Infinity and Minus Infinity'.
 	self assert: 9 / minusInfinity = 0.
 	self
 		should: [minusInfinity / 9]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and 9']! !
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and 9'! !
 
 !MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testDivideByUnit
@@ -5752,45 +5830,33 @@ testDivideMeasure
 
 	self assert: (minusInfinity divideSimpleMeasure: meter * 5) = 0! !
 
-!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:48:43'!
 testModulo
 
 	self
 		should: [minusInfinity // minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and Minus Infinity'].
+		withMessageText: 'The Modulo operation is indeterminate between Minus Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity // infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Modulo operation is indeterminate between Minus Infinity and Infinity'.
 	self
 		should: [infinity // minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Modulo operation is indeterminate between Infinity and Minus Infinity'.
 	self assert: 9 // minusInfinity = 0.
 	self
 		should: [minusInfinity // 9]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and 9']! !
+		withMessageText: 'The Modulo operation is indeterminate between Minus Infinity and 9'! !
 
 !MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:12'!
 testModuloMeasure
 
 	self assert: (minusInfinity moduloSimpleMeasure: 5 * meter) = 0! !
 
-!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:51:46'!
 testMultiplication
 
 	self assert: minusInfinity * minusInfinity = infinity.
@@ -5804,18 +5870,12 @@ testMultiplication
 	self
 		should: [0 * minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Minus Infinity'].
-
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Minus Infinity'.
+		
 	self
 		should: [minusInfinity * 0]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Minus Infinity']! !
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Minus Infinity'! !
 
 !MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testMultiplyByUnit
@@ -5832,85 +5892,73 @@ testNegated
 
 	self assert: minusInfinity negated = infinity! !
 
-!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:42:32'!
+testPowerOf
+
+	self assert: 1 equals: minusInfinity ^ 0.
+	
+	self
+		should: [minusInfinity ^ 1]
+		raise: IndeterminateOperationException
+		withMessageText: 'The Power operation is indeterminate between 1 and Minus Infinity'.
+
+	self
+		should: [minusInfinity ^ -1]
+		raise: IndeterminateOperationException
+		withMessageText: 'The Power operation is indeterminate between -1 and Minus Infinity'! !
+
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:52:27'!
 testRemainder
 
 	self
 		should: [minusInfinity \\ minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and Minus Infinity'].
+		withMessageText:'The Remainder operation is indeterminate between Minus Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity \\ infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Remainder operation is indeterminate between Minus Infinity and Infinity'.
 	self
 		should: [infinity \\ minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Remainder operation is indeterminate between Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity \\ 9]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and 9'].
+		withMessageText: 'The Remainder operation is indeterminate between Minus Infinity and 9'.
 	self
 		should: [9 \\ minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Minus Infinity']! !
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Minus Infinity'! !
 
-!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:52:39'!
 testRemainderMeasure
 
 	self
 		should: [minusInfinity remainderSimpleMeasure: 5 * meter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Minus Infinity']! !
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Minus Infinity'! !
 
 !MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:03:11'!
 testRoundTo
 
 	self assert: (minusInfinity roundTo: 2) = minusInfinity! !
 
-!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:51'!
+!MinusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:52:59'!
 testSubtract
 
 	self
 		should: [minusInfinity - minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Minus Infinity and Minus Infinity'].
+		withMessageText: 'The Subtract operation is indeterminate between Minus Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity - infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Subtract operation is indeterminate between Minus Infinity and Infinity'.
 	self
 		should: [infinity - minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Subtract operation is indeterminate between Infinity and Minus Infinity'.
 	self assert: 9 - minusInfinity = infinity.
 	self assert: minusInfinity - 9 = minusInfinity! !
 
@@ -6010,7 +6058,7 @@ testConvertAmountToBaseUnit
 
 	self assert: minusInfinity equals: minusInfinity convertAmountToBaseUnit ! !
 
-!MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
+!MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 11/9/2021 18:45:44'!
 testConvertTo
 
 	| unit |
@@ -6019,9 +6067,7 @@ testConvertTo
 	self
 		should: [minusInfinity convertTo: unit]
 		raise: CanNotConvertMeasureException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description = 'It is not possible to convert Minus Infinity to peso']! !
+		withMessageText: 'It is not possible to convert Minus Infinity to peso'! !
 
 !MinusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:03:11'!
 testConvertToBaseUnit
@@ -6153,10 +6199,28 @@ testNameForMany
 
 	self assert: meterBySecond nameForMany = 'meters*seconds'! !
 
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/10/2021 20:06:35'!
+testNameForManyWhenHavingAlias
+
+	MultipliedUnit 
+		defineAliasFor: meterBySecond 
+		named: 'something' 
+		during: [ self assert: '10 * somethings' equals: (10*meterBySecond) printString ].
+		! !
+
 !MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/5/2021 19:43:01'!
 testNameForOne
 
 	self assert: meterBySecond name = 'meter*second'! !
+
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/10/2021 19:57:48'!
+testNameForOneWhenHavingAlias
+
+	MultipliedUnit 
+		defineAliasFor: meterBySecond 
+		named: 'something' 
+		during: [ self assert: '1 * something' equals: (1*meterBySecond) printString ].
+		! !
 
 !MultipliedUnitTest methodsFor: 'test accessing'!
 testNothingAmount
@@ -6235,17 +6299,14 @@ testDivideByFloat
 	self assert: (meterBySecond / 5.5) numerator = (meterBySecond with: (1/5.5) numerator).
 	self assert: (meterBySecond / 5.5) denominator = (1/5.5) denominator! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/5/2021 19:42:37'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:53:08'!
 testDivideByInfinity
  
 	self assert: meterBySecond / infinity = (meterBySecond with: 0).
 	self
 		should: [infinity / meterBySecond]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and meter*second'].
+		withMessageText: 'The Division operation is indeterminate between Infinity and meter*second'.
 	self assert: (meterBySecond / infinity) numerator = (meterBySecond with: 0).
 	self assert: (meterBySecond / infinity) denominator = 1! !
 
@@ -6258,17 +6319,14 @@ testDivideByInteger
 	
 ! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/5/2021 19:42:47'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:53:17'!
 testDivideByMinusInfinity
 
 	self assert: meterBySecond / minusInfinity = (meterBySecond with: 0).
 	self
 		should: [minusInfinity / meterBySecond]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and meter*second'].
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and meter*second'.
 	self assert: (meterBySecond / minusInfinity) numerator = (meterBySecond with: 0).
 	self assert: (meterBySecond / minusInfinity) denominator = 1! !
 
@@ -6444,6 +6502,30 @@ testMultiplyBySimpleUnit
 	self assert: ((meterBySecond * second) factors at: 2) = second.
 	self assert: ((meterBySecond * second) factors at: 3) = second! !
 
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:18:28'!
+testToThePowerOfOneReturnsSelf
+
+	self assert: meterBySecond equals: meterBySecond ^ 1! !
+
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:18:50'!
+testToThePowerOfZeroReturnsOne
+
+	self assert: 1 equals: meterBySecond ^ 0! !
+
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:27:39'!
+testToThePowerOf_MinusN_IsOneOverThePowerOfN
+
+	self 
+		assert: (meterBySecond * meterBySecond * meterBySecond) reciprocal 
+		equals: meterBySecond ^ -3! !
+
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:19:32'!
+testToThePowerOf_N_MultipliesMeasureNTimes
+
+	self 
+		assert: meterBySecond * meterBySecond * meterBySecond 
+		equals: meterBySecond ^ 3! !
+
 !MultipliedUnitTest methodsFor: 'test comparing'!
 testEqualDividedUnit
 
@@ -6525,7 +6607,7 @@ setUp
 
 	kelvin := BaseUnit named: 'kelvin'! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 12:58:28'!
 testBaseUnit
 
 	| unit |
@@ -6535,11 +6617,11 @@ testBaseUnit
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	self assert: unit baseUnit = kelvin! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 12:58:49'!
 testDenominator
 
 	| unit |
@@ -6549,7 +6631,7 @@ testDenominator
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	self assert: unit denominator = NullUnit new! !
 
@@ -6562,7 +6644,7 @@ testName
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celcius') name = 'celcius'! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 12:59:05'!
 testNameForMany
 
 	self assert: (NotProportionalDerivedUnit 
@@ -6575,14 +6657,14 @@ testNameForMany
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celcius' 
-		sign: '¦Ç¬¨¦Ç¬ù') nameForMany = 'celciuss'.
+		sign: '�') nameForMany = 'celciuss'.
 	self assert: (NotProportionalDerivedUnit 
 		baseUnit: kelvin 
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		nameForOne: 'celcius'
 		nameForMany: 'celcius'
-		sign: '¦Ç¬¨¦Ç¬ù') nameForMany = 'celcius'! !
+		sign: '�') nameForMany = 'celcius'! !
 
 !NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
 testNameForOne
@@ -6593,7 +6675,7 @@ testNameForOne
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celcius') nameForOne = 'celcius'! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 12:59:11'!
 testNothingAmount
 
 	| unit |
@@ -6603,12 +6685,12 @@ testNothingAmount
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	self assert: unit nothingAmount = (-5463/20)
 ! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 12:59:16'!
 testNullMeasure
 
 	| unit |
@@ -6618,13 +6700,13 @@ testNullMeasure
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	self assert: unit nullMeasure amount = 0.
 	self assert: unit nullMeasure unit = kelvin.
 ! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 12:59:22'!
 testNumerator
 
 	| unit |
@@ -6634,11 +6716,11 @@ testNumerator
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	self assert: unit numerator = unit! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 12:59:28'!
 testReciprocal
 
 	| unit |
@@ -6648,12 +6730,12 @@ testReciprocal
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	self assert: unit reciprocal = (NullUnit new / unit)
 ! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/9/2021 13:00:01'!
 testSign
 
 	self assert: (NotProportionalDerivedUnit 
@@ -6666,16 +6748,16 @@ testSign
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celcius' 
-		sign: '¦Ç¬¨¦Ç¬ù') sign = '¦Ç¬¨¦Ç¬ù'.
+		sign: '�') sign = '�'.
 	self assert: (NotProportionalDerivedUnit 
 		baseUnit: kelvin 
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		nameForOne: 'celcius'
 		nameForMany: 'celcius'
-		sign: '¦Ç¬¨¦Ç¬ù') sign = '¦Ç¬¨¦Ç¬ù'! !
+		sign: '�') sign = '�'! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test converting'!
+!NotProportionalDerivedUnitTest methodsFor: 'test converting' stamp: 'HAW 11/9/2021 12:58:39'!
 testConvertAmountToBaseUnit
 
 	| unit |
@@ -6685,12 +6767,12 @@ testConvertAmountToBaseUnit
 		conversionBlock:  [:celsius | celsius + (5463/20)] 
 		reciprocalConversionBlock: [ :kelvins | kelvins - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	self assert: (unit convertAmountToBaseUnit: 0) = (5463/20).
 	self assert: (unit convertAmountToBaseUnit: 100) = (7463/20)! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test converting' stamp: 'HAW 3/25/2017 19:11:51'!
+!NotProportionalDerivedUnitTest methodsFor: 'test converting' stamp: 'HAW 11/9/2021 12:58:43'!
 testConvertToBaseUnit
 
 	| unit measure |
@@ -6700,7 +6782,7 @@ testConvertToBaseUnit
 		conversionBlock:  [:celsius | celsius + (5463/20)] 
 		reciprocalConversionBlock: [ :kelvins | kelvins - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 		
 	measure := SimpleMeasure amount: 0 unit: unit.
 	self assert: (unit convertToBaseUnit: measure) amount = (5463/20).
@@ -6709,7 +6791,7 @@ testConvertToBaseUnit
 	
 ! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test querying'!
+!NotProportionalDerivedUnitTest methodsFor: 'test querying' stamp: 'HAW 11/9/2021 12:59:37'!
 testSameDomainAs
 
 	| unit metro |
@@ -6719,7 +6801,7 @@ testSameDomainAs
 		conversionBlock:  [:celsius | celsius + (5463/20)] 
 		reciprocalConversionBlock: [ :kelvins | kelvins - (5463/20) ]
 		named: 'celsius' 
-		sign: '¦Ç¬¨¦Ç¬ù'.
+		sign: '�'.
 	self assert: (unit sameDomainAs: kelvin).
 
 	metro := BaseUnit named: 'metro'.
@@ -6731,7 +6813,7 @@ testSameDomainAs
 			conversionBlock:  [:celsius | ] 
 			reciprocalConversionBlock: [ :kelvins | ]
 			named: 'xxx' 
-			sign: '¦Ç¬¨¦Ç¬ù'))! !
+			sign: '�'))! !
 
 !NullUnitTest methodsFor: 'initialization' stamp: 'HernanWilkinson 3/23/2017 16:03'!
 setUp
@@ -6860,6 +6942,30 @@ testMultiplyBySimpleUnit
 	meter := BaseUnit named: 'meter'.
 	
 	self assert: (nullUnit * meter) = meter! !
+
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:33:37'!
+testToThePowerOfOneReturnsSelf
+
+	self assert: nullUnit equals: nullUnit ^ 1! !
+
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:33:52'!
+testToThePowerOfZeroReturnsOne
+
+	self assert: 1 equals: nullUnit ^ 0! !
+
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:34:35'!
+testToThePowerOf_MinusN_IsOneOverThePowerOfN
+
+	self 
+		assert: (nullUnit * nullUnit * nullUnit) reciprocal 
+		equals: nullUnit ^ -3! !
+
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:34:17'!
+testToThePowerOf_N_MultipliesMeasureNTimes
+
+	self 
+		assert: nullUnit * nullUnit * nullUnit 
+		equals: nullUnit ^ 3! !
 
 !NullUnitTest methodsFor: 'test comparing'!
 testEqualBaseUnit
@@ -7001,7 +7107,7 @@ setUp
 	meter := BaseUnit named: 'meter'.
 	second := BaseUnit named: 'second'! !
 
-!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:53:30'!
 testAdd
 
 	self assert: infinity + infinity = infinity.
@@ -7010,50 +7116,32 @@ testAdd
 	self
 		should: [infinity + minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Sum operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Sum operation is indeterminate between Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity + infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Sum operation is indeterminate between Minus Infinity and Infinity']! !
+		withMessageText: 'The Sum operation is indeterminate between Minus Infinity and Infinity'! !
 
-!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:54:02'!
 testDivide
 
 	self
 		should: [infinity / infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and Infinity'].
+		withMessageText: 'The Division operation is indeterminate between Infinity and Infinity'.
 	self
 		should: [infinity / minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Division operation is indeterminate between Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity / infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and Infinity'.
 	self assert: 9 / infinity = 0.
 	self
 		should: [infinity / 9]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and 9']! !
+		withMessageText: 'The Division operation is indeterminate between Infinity and 9'! !
 
 !PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
 testDivideByUnit
@@ -7065,47 +7153,35 @@ testDivideMeasure
 
 	self assert: (infinity divideSimpleMeasure: meter * 5) = 0! !
 
-!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:54:35'!
 testModulo
 
 	self
 		should: [infinity // infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and Infinity'].
+		withMessageText: 'The Modulo operation is indeterminate between Infinity and Infinity'.
 	self
 		should: [infinity // minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Modulo operation is indeterminate between Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity // infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Modulo operation is indeterminate between Minus Infinity and Infinity'.
 
 	self assert: 9 // infinity = 0.
 
 	self
 		should: [infinity // 9]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and 9']! !
+		withMessageText: 'The Modulo operation is indeterminate between Infinity and 9'! !
 
 !PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
 testModuloMeasure
 
 	self assert: (infinity moduloSimpleMeasure: 5 * meter) = 0! !
 
-!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:54:54'!
 testMultiplication
 
 	self assert: infinity * infinity = infinity.
@@ -7119,18 +7195,12 @@ testMultiplication
 	self
 		should: [0 * infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity'].
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Infinity'.
 
 	self
 		should: [infinity * 0]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity']! !
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Infinity'! !
 
 !PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
 testMultiplyByUnit
@@ -7147,85 +7217,58 @@ testNegated
 
 	self assert: infinity negated = minusInfinity! !
 
-!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:55:30'!
 testRemainder
 
 	self
 		should: [infinity \\ infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and Infinity'].
+		withMessageText: 'The Remainder operation is indeterminate between Infinity and Infinity'.
 	self
 		should: [infinity \\ minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Remainder operation is indeterminate between Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity \\ infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Remainder operation is indeterminate between Minus Infinity and Infinity'.
 	self
 		should: [infinity \\ 9]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and 9'].
+		withMessageText: 'The Remainder operation is indeterminate between Infinity and 9'.
 	self
 		should: [9 \\ infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity']! !
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Infinity'! !
 
-!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:55:38'!
 testRemainderMeasure
 
 	self
 		should: [infinity remainderSimpleMeasure: 5 * meter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity']! !
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Infinity'! !
 
 !PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
 testRoundTo
 
 	self assert: (infinity roundTo: 2) = infinity! !
 
-!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:56:00'!
 testSubtract
 
 	self
 		should: [infinity - infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Infinity and Infinity'].
+		withMessageText: 'The Subtract operation is indeterminate between Infinity and Infinity'.
 	self
 		should: [infinity - minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Infinity and Minus Infinity'].
+		withMessageText: 'The Subtract operation is indeterminate between Infinity and Minus Infinity'.
 	self
 		should: [minusInfinity - infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Subtract operation is indeterminate between Minus Infinity and Infinity'].
+		withMessageText: 'The Subtract operation is indeterminate between Minus Infinity and Infinity'.
 	self assert: 9 - infinity = minusInfinity.
 	self assert: infinity - 9 = infinity! !
 
@@ -7323,7 +7366,7 @@ testConvertAmountToBaseUnit
 
 	self assert: infinity equals: infinity convertAmountToBaseUnit! !
 
-!PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
+!PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 11/9/2021 18:45:57'!
 testConvertTo
 
 	| unit |
@@ -7332,8 +7375,7 @@ testConvertTo
 	self
 		should: [infinity convertTo: unit]
 		raise: CanNotConvertMeasureException
-		withExceptionDo: [:anException |
-			self assert: anException description = 'It is not possible to convert Infinity to peso']! !
+		withMessageText: 'It is not possible to convert Infinity to peso'! !
 
 !PlusInfinityTest methodsFor: 'test converting' stamp: 'HAW 3/26/2019 19:04:50'!
 testConvertToBaseUnit
@@ -7674,6 +7716,30 @@ testMultiplyBySimpleUnit
 	self assert: (centavo * second) factorsSize = 2.
 	self assert: ((centavo * second) factors includes: centavo).
 	self assert: ((centavo * second) factors includes: second)! !
+
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:02:14'!
+testToThePowerOfOneReturnsSelf
+
+	self assert: centavo equals: centavo ^ 1! !
+
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:02:29'!
+testToThePowerOfZeroReturnsOne
+
+	self assert: 1 equals: centavo ^ 0! !
+
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:14:43'!
+testToThePowerOf_MinusN_IsOneOverThePowerOfN
+
+	self 
+		assert: (centavo * centavo * centavo) reciprocal
+		equals: centavo ^ -3! !
+
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: 'HAW 11/9/2021 18:02:53'!
+testToThePowerOf_N_MultipliesMeasureNTimes
+
+	self 
+		assert: centavo * centavo * centavo
+		equals: centavo ^ 3! !
 
 !ProportionalDerivedUnitTest methodsFor: 'test comparing'!
 testEqualDerivedSameBaseUnit
@@ -8385,45 +8451,33 @@ testAddInfinity
 	self assert: self oneMeter negated + infinity = infinity.
 	self assert: infinity + self oneMeter negated = infinity! !
 
-!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/5/2021 20:19:57'!
+!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/9/2021 18:56:14'!
 testDivideInfinity
  
 	self assert: self oneMeter / infinity = 0.
 	self
 		should: [infinity / self oneMeter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and 1 * meter'].
+		withMessageText: 'The Division operation is indeterminate between Infinity and 1 * meter'.
 	self assert: self oneMeter negated / infinity = 0.
 	self
 		should: [infinity / self oneMeter negated]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Infinity and -1 * meter']! !
+		withMessageText: 'The Division operation is indeterminate between Infinity and -1 * meter'! !
 
-!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/5/2021 20:20:13'!
+!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/9/2021 18:56:45'!
 testModuloInfinity
 
 	self assert: self oneMeter // infinity = 0.
 	self
 		should: [infinity // self oneMeter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and 1 * meter'].
+		withMessageText: 'The Modulo operation is indeterminate between Infinity and 1 * meter'.
 	self assert: self oneMeter negated // infinity = 0.
 	self
 		should: [infinity // self oneMeter negated]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Infinity and -1 * meter']! !
+		withMessageText: 'The Modulo operation is indeterminate between Infinity and -1 * meter'! !
 
 !SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 3/26/2019 19:04:51'!
 testMultiplyInfinity
@@ -8433,37 +8487,25 @@ testMultiplyInfinity
 	self assert: self oneMeter negated * infinity = infinity.
 	self assert: infinity * self oneMeter negated = infinity! !
 
-!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/5/2021 20:20:46'!
+!SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 11/9/2021 18:57:25'!
 testRemainderInfinity
  
 	self
 		should: [self oneMeter \\ infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity'].
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Infinity'.
 	self
 		should: [infinity \\ self oneMeter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and 1 * meter'].
+		withMessageText: 'The Remainder operation is indeterminate between Infinity and 1 * meter'.
 	self
 		should: [self oneMeter negated \\ infinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Infinity'].
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Infinity'.
 	self
 		should: [infinity \\ self oneMeter negated]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Infinity and -1 * meter']! !
+		withMessageText: 'The Remainder operation is indeterminate between Infinity and -1 * meter'! !
 
 !SimpleMeasureTest methodsFor: 'test infinity' stamp: 'HAW 3/26/2019 19:04:51'!
 testSubtractInfinity
@@ -8481,45 +8523,33 @@ testAddMinusInfinity
 	self assert: self oneMeter negated + minusInfinity = minusInfinity.
 	self assert: minusInfinity + self oneMeter negated = minusInfinity! !
 
-!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/5/2021 20:20:06'!
+!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/9/2021 18:56:30'!
 testDivideMinusInfinity
 
 	self assert: self oneMeter / minusInfinity = 0.
 	self
 		should: [minusInfinity / self oneMeter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and 1 * meter'].
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and 1 * meter'.
 	self assert: self oneMeter negated / minusInfinity = 0.
 	self
 		should: [minusInfinity / self oneMeter negated]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Division operation is indeterminate between Minus Infinity and -1 * meter']! !
+		withMessageText: 'The Division operation is indeterminate between Minus Infinity and -1 * meter'! !
 
-!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/5/2021 20:20:19'!
+!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/9/2021 18:57:00'!
 testModuloMinusInfinity
 
 	self assert: self oneMeter // minusInfinity = 0.
 	self
 		should: [minusInfinity // self oneMeter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and 1 * meter'].
+		withMessageText: 'The Modulo operation is indeterminate between Minus Infinity and 1 * meter'.
 	self assert: self oneMeter negated // minusInfinity = 0.
 	self
 		should: [minusInfinity // self oneMeter negated]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Modulo operation is indeterminate between Minus Infinity and -1 * meter']! !
+		withMessageText: 'The Modulo operation is indeterminate between Minus Infinity and -1 * meter'! !
 
 !SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 3/26/2019 19:03:12'!
 testMultiplyMinusInfinity
@@ -8529,37 +8559,25 @@ testMultiplyMinusInfinity
 	self assert: self oneMeter negated * minusInfinity = minusInfinity.
 	self assert: minusInfinity * self oneMeter negated = minusInfinity! !
 
-!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/5/2021 20:20:55'!
+!SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 11/9/2021 18:57:57'!
 testRemainderMinusInfinity
  
 	self
 		should: [self oneMeter \\ minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Minus Infinity'].
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Minus Infinity'.
 	self
 		should: [minusInfinity \\ self oneMeter]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and 1 * meter'].
+		withMessageText: 'The Remainder operation is indeterminate between Minus Infinity and 1 * meter'.
 	self
 		should: [self oneMeter negated \\ minusInfinity]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Multiplication operation is indeterminate between 0 and Minus Infinity'].
+		withMessageText: 'The Multiplication operation is indeterminate between 0 and Minus Infinity'.
 	self
 		should: [minusInfinity \\ self oneMeter negated]
 		raise: IndeterminateOperationException
-		withExceptionDo: [:anException |
-			self assert:
-				anException description =
-					'The Remainder operation is indeterminate between Minus Infinity and -1 * meter']! !
+		withMessageText: 'The Remainder operation is indeterminate between Minus Infinity and -1 * meter'! !
 
 !SimpleMeasureTest methodsFor: 'test minus infinity' stamp: 'HAW 3/26/2019 19:04:51'!
 testSubtractMinusInfinity
@@ -9216,6 +9234,38 @@ testModuloOfDerivedUnit
 	self assert: (self tenKilometers // 3 ) amount = 3.
 ! !
 
+!SimpleMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:56:53'!
+testToThePowerOfOneReturnsSelf
+
+	self assert: self tenPesos equals: self tenPesos ^ 1! !
+
+!SimpleMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:57:12'!
+testToThePowerOfZeroReturnsOne
+
+	self assert: 1 equals: self tenPesos ^ 0! !
+
+!SimpleMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:58:32'!
+testToThePowerOf_MinusN_IsOneOverThePowerOfN
+
+	self 
+		assert: 1 / (self tenPesos * self tenPesos)
+		equals: self tenPesos ^ -2.
+		
+	self 
+		assert: 1 / (self tenPesos * self tenPesos * self tenPesos)
+		equals: self tenPesos ^ -3.! !
+
+!SimpleMeasureTest methodsFor: 'test power of' stamp: 'HAW 11/9/2021 17:57:56'!
+testToThePowerOf_N_MultipliesMeasureNTimes
+
+	self 
+		assert: self tenPesos * self tenPesos
+		equals: self tenPesos ^ 2.
+		
+	self 
+		assert: self tenPesos * self tenPesos * self tenPesos
+		equals: self tenPesos ^ 3.! !
+
 !SimpleMeasureTest methodsFor: 'test multiplication'!
 testMultiplicationOfBaseUnit
 
@@ -9571,20 +9621,25 @@ testHash
 
 	self assert: (UnitConversionRuleToEdgeAdapter for: rule) hash = (UnitConversionRuleToEdgeAdapter for: rule) hash! !
 
-!UnitsTestResource methodsFor: 'energy units - accessing' stamp: 'RNG 8/26/2018 17:46:42'!
-joule
-
-	^units at: self jouleName! !
-
-!UnitsTestResource methodsFor: 'energy units - creating' stamp: 'RNG 8/26/2018 17:46:21'!
+!UnitsTestResource methodsFor: 'energy units - creating' stamp: 'HAW 11/10/2021 20:13:12'!
 createJoule
 
-	^BaseUnit named: self jouleName sign: 'j'! !
+	^self meter ^ 2 * self kilogram * (self second ^ -2)! !
+
+!UnitsTestResource methodsFor: 'energy units - creating' stamp: 'HAW 11/10/2021 20:13:06'!
+createPascal
+
+	^self meter ^ -1 * self kilogram * (self second ^ -2)! !
 
 !UnitsTestResource methodsFor: 'energy units - naming' stamp: 'RNG 8/26/2018 17:46:34'!
 jouleName
 
 	^'joule'! !
+
+!UnitsTestResource methodsFor: 'energy units - naming' stamp: 'HAW 11/10/2021 20:13:44'!
+pascalName
+
+	^'name'! !
 
 !UnitsTestResource methodsFor: 'initialization'!
 addUnit: aUnit
@@ -9592,13 +9647,23 @@ addUnit: aUnit
 	units at: aUnit name put: aUnit.
 ! !
 
-!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 8/22/2017 11:55:45'!
+!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 11/10/2021 20:15:31'!
 installUnitsAsGlobals
 
+	| joule pascal |
+	
 	units do: [:aUnit |
-		(aUnit ~= self second and: [ aUnit ~= self minute ]) ifTrue: [ Smalltalk at: aUnit name asSymbol put: aUnit ]].! !
+		(aUnit ~= self second and: [ aUnit ~= self minute ]) ifTrue: [ Smalltalk at: aUnit name asSymbol put: aUnit ]].
+	
+	joule := self createJoule.
+	CompoundUnit defineAliasFor: joule named: self jouleName.
+	Smalltalk at: self jouleName asSymbol put: joule.
+	
+	pascal := self createPascal.
+	CompoundUnit defineAliasFor: pascal named: self pascalName.
+	Smalltalk at: self pascalName asSymbol put: pascal.! !
 
-!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 5/2/2021 15:29:20'!
+!UnitsTestResource methodsFor: 'initialization' stamp: 'HAW 11/10/2021 20:13:53'!
 setUp
 
 	units := Dictionary new.
@@ -9623,8 +9688,7 @@ setUp
 		addUnit: self createMinute;
 		addUnit: self createGram;
 		addUnit: self createMilligram;
-		addUnit: self createKilogram;
-		addUnit: self createJoule
+		addUnit: self createKilogram
 ! !
 
 !UnitsTestResource methodsFor: 'meter units - accessing'!
@@ -9975,6 +10039,11 @@ milligramName
 gram
 
 	^units at: self gramName! !
+
+!UnitsTestResource methodsFor: 'weight units - accessing' stamp: 'HAW 11/10/2021 20:12:26'!
+kilogram
+
+	^units at: self kilogramName! !
 
 !UnitsTestResource methodsFor: 'weight units - accessing' stamp: 'RNG 8/26/2018 17:45:05'!
 milligram
@@ -10519,15 +10588,20 @@ sign
 
 	^aNumberOrUnit divideByUnit: self! !
 
-!Unit methodsFor: 'mathematic operations'!
-divideByUnit: aNumberOrUnit
+!Unit methodsFor: 'mathematic operations' stamp: 'HAW 11/9/2021 18:29:50'!
+^ aPower
 
-	self subclassResponsibility! !
-
-!Unit methodsFor: 'mathematic operations'!
-multiplyByUnit: aNumberOrUnit
-
-	self subclassResponsibility! !
+	| powered |
+	
+	aPower = 0 ifTrue: [ ^1 ].
+	
+	powered := self.
+	aPower abs - 1 timesRepeat: [ powered := powered * self ].
+	
+	^aPower > 0
+		ifTrue: [ powered ]
+		ifFalse: [ powered reciprocal ]
+	 ! !
 
 !Unit methodsFor: 'converting - private' stamp: 'SeanTAllen 11/28/2009 12:25'!
 adaptToNumber: aNumber andSend: aSelector 
@@ -10553,6 +10627,11 @@ convertFromBaseUnit: aMeasure
 !Unit methodsFor: 'converting - private'!
 convertToBaseUnit: aMeasure 
 	
+	self subclassResponsibility! !
+
+!Unit methodsFor: 'mathematic operations - private'!
+divideByUnit: aNumberOrUnit
+
 	self subclassResponsibility! !
 
 !Unit methodsFor: 'mathematic operations - private'!
@@ -10587,6 +10666,11 @@ divideSimpleMeasure: aMeasure
 
 !Unit methodsFor: 'mathematic operations - private'!
 divideSimpleUnit: aUnit
+
+	self subclassResponsibility! !
+
+!Unit methodsFor: 'mathematic operations - private'!
+multiplyByUnit: aNumberOrUnit
 
 	self subclassResponsibility! !
 
@@ -10667,11 +10751,6 @@ nameForManyFrom: aString
 ! !
 
 !CompoundUnit methodsFor: 'accessing'!
-hash
-
-	self subclassResponsibility! !
-
-!CompoundUnit methodsFor: 'accessing'!
 nothingAmount
 
 	^0! !
@@ -10681,14 +10760,14 @@ with: aNumber
 
 	^SimpleMeasure amount: aNumber unit: self! !
 
-!CompoundUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 21:01:23'!
+!CompoundUnit methodsFor: 'converting - private' stamp: 'HAW 11/9/2021 16:32:31'!
 convertFromBaseUnit: aMeasure 
 	
 	| convertedAmount |
 	
 	convertedAmount := self convertAmountFromBaseUnit: aMeasure amount.
 	
-	^ convertedAmount * self baseUnit! !
+	^ convertedAmount * self ! !
 
 !CompoundUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 21:00:43'!
 convertToBaseUnit: aMeasure
@@ -10699,12 +10778,77 @@ convertToBaseUnit: aMeasure
 	
 	^ convertedAmount * self baseUnit! !
 
+!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:00'!
+nameForMany
+
+	^self class aliasForManyOf: self ifAbsent: [ self nameForManyWithoutAlias ]! !
+
+!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:58'!
+nameForManyWithoutAlias
+
+	self subclassResponsibility ! !
+
+!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:31'!
+nameForOne
+
+	^self class aliasForOneOf: self ifAbsent: [ self nameForOneWithoutAlias ]! !
+
+!CompoundUnit methodsFor: 'as yet unclassified' stamp: 'HAW 11/10/2021 20:04:49'!
+nameForOneWithoutAlias
+
+	self subclassResponsibility ! !
+
+!CompoundUnit class methodsFor: 'aliasing' stamp: 'HAW 11/10/2021 20:08:27'!
+aliasForManyOf: anAliasedUnit ifAbsent: aBlock
+	
+	^Aliases 
+		at: anAliasedUnit 
+		ifPresent: [ :aNameForOne | aNameForOne asPlural ]
+		ifAbsent: aBlock! !
+
+!CompoundUnit class methodsFor: 'aliasing' stamp: 'HAW 11/10/2021 20:08:31'!
+aliasForOneOf: aUnit ifAbsent: aBlock
+	
+	^Aliases at: aUnit ifAbsent: aBlock ! !
+
+!CompoundUnit class methodsFor: 'aliasing' stamp: 'HAW 11/10/2021 20:08:35'!
+defineAliasFor: aUnitToAlias named: aName
+
+	Aliases at: aUnitToAlias put: aName! !
+
+!CompoundUnit class methodsFor: 'aliasing' stamp: 'HAW 11/10/2021 19:48:01'!
+defineAliasFor: aCompoundUnit named: aName during: aBlock
+	
+	self defineAliasFor: aCompoundUnit named: aName.
+	^aBlock ensure: [ self removeAliasFor: aCompoundUnit ]! !
+
+!CompoundUnit class methodsFor: 'aliasing' stamp: 'HAW 11/10/2021 20:08:41'!
+removeAliasFor: anAliasedUnit
+
+	Aliases removeKey: anAliasedUnit ! !
+
+!CompoundUnit class methodsFor: 'initialization' stamp: 'HAW 11/10/2021 20:07:55'!
+initialize
+
+	super initialize.
+	self initializeAliases.! !
+
+!CompoundUnit class methodsFor: 'initialization' stamp: 'HAW 11/10/2021 20:08:20'!
+initializeAliases
+
+	Aliases := Dictionary new.! !
+
 !DividedUnit methodsFor: 'comparing'!
 = anObject
 
 	^self class = anObject class 
 		and: [ numerator = anObject numerator 
 		and: [ denominator = anObject denominator ]]! !
+
+!DividedUnit methodsFor: 'comparing'!
+hash
+
+	^numerator hash bitXor: denominator hash! !
 
 !DividedUnit methodsFor: 'accessing' stamp: 'HAW 11/5/2021 20:12:52'!
 baseUnit
@@ -10718,19 +10862,13 @@ denominator
 
 	^denominator! !
 
-!DividedUnit methodsFor: 'accessing'!
-hash
+!DividedUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:05:13'!
+nameForManyWithoutAlias
 
-	^numerator hash bitXor: denominator hash! !
+	^numerator nameForMany asString, '/', denominator nameForMany asString! !
 
-!DividedUnit methodsFor: 'accessing'!
-nameForMany
-
-	^numerator nameForMany asString , '/' 
-		, denominator nameForMany asString! !
-
-!DividedUnit methodsFor: 'accessing'!
-nameForOne
+!DividedUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:05:23'!
+nameForOneWithoutAlias
 
 	^numerator name asString , '/' , denominator name asString! !
 
@@ -10744,20 +10882,15 @@ sign
 
 	^numerator sign, '/', denominator sign! !
 
-!DividedUnit methodsFor: 'mathematic operations'!
+!DividedUnit methodsFor: 'mathematic operations - private'!
 divFrom: aNumber
 
 	^aNumber * self reciprocal! !
 
-!DividedUnit methodsFor: 'mathematic operations'!
+!DividedUnit methodsFor: 'mathematic operations - private'!
 divideByUnit: aUnit
 
 	^aUnit divideDividedUnit: self! !
-
-!DividedUnit methodsFor: 'mathematic operations'!
-multiplyByUnit: aUnit
-
-	^aUnit multiplyDividedUnit: self! !
 
 !DividedUnit methodsFor: 'mathematic operations - private'!
 divideDividedUnit: aDividedUnit
@@ -10780,6 +10913,11 @@ divideSimpleUnit: aUnit
 	^self class dividedUnit: self simpleUnit: aUnit! !
 
 !DividedUnit methodsFor: 'mathematic operations - private'!
+multiplyByUnit: aUnit
+
+	^aUnit multiplyDividedUnit: self! !
+
+!DividedUnit methodsFor: 'mathematic operations - private'!
 multiplyDividedUnit: aDividedUnit
 
 	^MultipliedUnit dividedUnit: aDividedUnit dividedUnit: self! !
@@ -10800,7 +10938,7 @@ initializeNumerator: aUnit denominator: anotherUnit
 	numerator := aUnit.
 	denominator := anotherUnit! !
 
-!DividedUnit methodsFor: 'converting - private' stamp: 'HAW 11/5/2021 20:59:25'!
+!DividedUnit methodsFor: 'converting - private' stamp: 'HAW 11/9/2021 16:31:47'!
 convertAmountFromBaseUnit: anAmount 
 	
 	| convertedAmount numeratorAmountInBaseUnit |
@@ -10919,20 +11057,20 @@ simpleUnit: aUnit simpleUnit: anotherUnit
 
 	^self class = anObject class and: [ self hasSameFactorsAs: anObject ]! !
 
-!MultipliedUnit methodsFor: 'mathematic operations'!
+!MultipliedUnit methodsFor: 'comparing'!
+hash
+
+	^factors inject: 0 into: [ :aHash :aUnit | aHash bitXor: aUnit hash ]! !
+
+!MultipliedUnit methodsFor: 'mathematic operations - private'!
 divFrom: aNumber
 
 	^(DividedUnit nullUnit: aNumber unit multipliedUnit: self) with: aNumber! !
 
-!MultipliedUnit methodsFor: 'mathematic operations'!
+!MultipliedUnit methodsFor: 'mathematic operations - private'!
 divideByUnit: aUnit
 
 	^aUnit divideMultipliedUnit: self! !
-
-!MultipliedUnit methodsFor: 'mathematic operations'!
-multiplyByUnit: aUnit
-
-	^aUnit multiplyMultipliedUnit: self! !
 
 !MultipliedUnit methodsFor: 'mathematic operations - private'!
 divideDividedUnit: aDividedUnit
@@ -10953,6 +11091,11 @@ divideNullUnit: aNullUnit
 divideSimpleUnit: aUnit
 
 	^DividedUnit multipliedUnit: self simpleUnit: aUnit! !
+
+!MultipliedUnit methodsFor: 'mathematic operations - private'!
+multiplyByUnit: aUnit
+
+	^aUnit multiplyMultipliedUnit: self! !
 
 !MultipliedUnit methodsFor: 'mathematic operations - private'!
 multiplyDividedUnit: aDividedUnit
@@ -10984,18 +11127,13 @@ factorsSize
 
 	^factors size! !
 
-!MultipliedUnit methodsFor: 'accessing'!
-hash
-
-	^factors inject: 0 into: [ :aHash :aUnit | aHash bitXor: aUnit hash ]! !
-
-!MultipliedUnit methodsFor: 'accessing'!
-nameForMany
+!MultipliedUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:05:56'!
+nameForManyWithoutAlias
 
 	^self factorsToStreamDoing: [:aUnit | aUnit nameForMany asString]! !
 
-!MultipliedUnit methodsFor: 'accessing'!
-nameForOne
+!MultipliedUnit methodsFor: 'accessing' stamp: 'HAW 11/10/2021 20:06:03'!
+nameForOneWithoutAlias
 
 	^self factorsToStreamDoing: [:aUnit | aUnit nameForOne asString]! !
 
@@ -11062,12 +11200,12 @@ dividedUnit: aDividedUnit simpleUnit: aUnit
 
 	^self simpleUnit: aUnit dividedUnit: aDividedUnit! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: 'HAW 11/9/2021 16:15:19'!
 factors: aCollection
 
 	aCollection isEmpty ifTrue: [ ^NullUnit new ].
 	aCollection size=1 ifTrue: [ ^aCollection first ].
-	^self new initializeFactors: aCollection! !
+	^self new initializeFactors: aCollection asOrderedCollection ! !
 
 !MultipliedUnit class methodsFor: 'instance creation - private'!
 multipliedUnit: aMultipliedUnit dividedUnit: aDividedUnit
@@ -11154,13 +11292,8 @@ convertToBaseUnit: aMeasure
 	
 	^aMeasure! !
 
-!NullUnit methodsFor: 'mathematic operations'!
+!NullUnit methodsFor: 'mathematic operations - private'!
 divideByUnit: aUnit
-
-	^aUnit! !
-
-!NullUnit methodsFor: 'mathematic operations'!
-multiplyByUnit: aUnit
 
 	^aUnit! !
 
@@ -11183,6 +11316,11 @@ divideNullUnit: aNullUnit
 divideSimpleUnit: aUnit
 
 	^DividedUnit nullUnit: self simpleUnit: aUnit! !
+
+!NullUnit methodsFor: 'mathematic operations - private'!
+multiplyByUnit: aUnit
+
+	^aUnit! !
 
 !NullUnit methodsFor: 'mathematic operations - private'!
 multiplyDividedUnit: aDividedUnit
@@ -11830,6 +11968,11 @@ sameUnitAs: aMeasure
 
 	self subclassResponsibility! !
 
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: 'HAW 11/9/2021 16:54:32'!
+^ aPower
+
+	self subclassResponsibility ! !
+
 !ArithmeticObject methodsFor: 'arithmetic operations'!
 negated
 
@@ -12225,6 +12368,11 @@ sameUnitAs: aMeasure
 \\ anAritmethicObject
 
 	^self value \\ anAritmethicObject value! !
+
+!Evaluation methodsFor: 'mathematic operations' stamp: 'HAW 11/9/2021 16:55:04'!
+^ aPower
+
+	^self value ^ aPower! !
 
 !Evaluation methodsFor: 'mathematic operations'!
 negated
@@ -12665,6 +12813,21 @@ printShowingDecimalPlaces: aNumberOfDecimals
 	^aMeasure remainderCompoundMeasure: self 
 ! !
 
+!CompoundMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 11/9/2021 17:53:47'!
+^ aPower
+
+	| powered |
+	
+	aPower = 0 ifTrue: [ ^1 ].
+	
+	powered := self.
+	aPower abs - 1 timesRepeat: [ powered := powered * self ].
+	
+	^aPower > 0
+		ifTrue: [ powered ]
+		ifFalse: [ 1 / powered ]
+	 ! !
+
 !CompoundMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 3/25/2017 20:07:56'!
 negated
 	
@@ -12906,13 +13069,13 @@ initializeMeasures: aCollection
 
 	measures := aCollection! !
 
-!CompoundMeasure class methodsFor: 'instance creation - private'!
+!CompoundMeasure class methodsFor: 'instance creation - private' stamp: 'HAW 11/9/2021 17:17:31'!
 measures: aCollection 
 	"NOTE: THIS METHOD IS PRIVATE. IT ASSUMES THE COLLECTION HAS NO ZERO MEASURES AND
 	MEASURES WITH DIFFERENT UNITS. DO NOT USE IT TO CREATE A MEASUREBAG, USE +, -, ETC"
 
-	^self new initializeMeasures: (aCollection 
-				collect: [:measure | measure convertToBaseUnit])! !
+	^self new 
+		initializeMeasures: (aCollection collect: [:measure | measure convertToBaseUnit]) asOrderedCollection ! !
 
 !CompoundMeasure class methodsFor: 'instance creation - private' stamp: 'HAW 3/25/2017 20:00:40'!
 with: aMeasure with: anotherMeasure
@@ -12992,6 +13155,11 @@ printShowingDecimalPlaces: aNumberOfDecimals
 \\ aMeasure
 
 	^aMeasure remainderSimpleMeasure: self! !
+
+!SimpleMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 11/9/2021 16:06:46'!
+^ aPower
+
+	^(amount ^ aPower) * (unit ^ aPower)! !
 
 !SimpleMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 3/25/2017 18:31:03'!
 abs
@@ -13403,11 +13571,11 @@ convertInSameDomainTo: aTargetUnit
 
 	^aTargetUnit convertFromBaseUnit: (unit convertToBaseUnit: self)! !
 
-!SimpleMeasure methodsFor: 'converting - private'!
+!SimpleMeasure methodsFor: 'converting - private' stamp: 'HAW 11/9/2021 15:45:17'!
 convertTo: aTargetUnit using: aMeasureConverter
 	"NOT TO USE. Use the message convert:to:  of MeasureConverter.
 	This message is here by a question of double-dispatch.
-	If this message is used, the exceptions will not be correctly handleds."
+	If this message is used, the exceptions will not be correctly handled."
 	
 	^aMeasureConverter convertMeasure: self to: aTargetUnit! !
 
@@ -13493,6 +13661,13 @@ sameUnitAs: aMeasure
 \\ aMeasure
 
 	self signalIndeterminateOperation: 'Remainder' rightOperand: aMeasure! !
+
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 11/9/2021 17:26:25'!
+^ aPower
+
+	aPower = 0 ifTrue: [ ^1 ].
+
+	self signalIndeterminateOperation: 'Power' leftOperand: aPower! !
 
 !MinusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:36:58'!
 negated
@@ -13884,6 +14059,13 @@ sameUnitAs: aMeasure
 
 	self signalIndeterminateOperation: 'Remainder' rightOperand: aMeasure! !
 
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 11/9/2021 17:27:31'!
+^ aPower
+
+	aPower = 0 ifTrue: [ ^1 ].
+
+	self signalIndeterminateOperation: 'Power' leftOperand: aPower! !
+
 !PlusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:04:12'!
 negated
 
@@ -14178,6 +14360,12 @@ to: stop by: step
 		to: stop
 		by: step
 		intervalStrategy: InfinityIntervalStrategy new! !
+
+!PlusInfinity methodsFor: 'as yet unclassified' stamp: 'HAW 11/9/2021 19:23:25'!
+timesRepeat: aBlock
+	
+	[ aBlock value.
+	true ] whileTrue! !
 
 !PlusInfinity class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 21:00:09'!
 afterLoadInitialization
@@ -15143,6 +15331,7 @@ unitNameOf: aUnit
 
 	^self abs = 1 ifTrue: [aUnit nameForOne] ifFalse: [aUnit nameForMany]! !
 Aconcagua initialize!
+CompoundUnit initialize!
 NullUnit initialize!
 MinusInfinity initialize!
 PlusInfinity initialize!
