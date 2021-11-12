@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4967] on 11 November 2021 at 4:17:59 pm'!
-'Description CompoundUnit aliases such as joule and pascal'!
-!provides: 'Aconcagua' 1 18!
+'From Cuis 5.0 [latest update: #4972] on 12 November 2021 at 12:21:24 pm'!
+'Description Fixed some tests'!
+!provides: 'Aconcagua' 1 19!
 SystemOrganization addCategory: 'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModelTests'!
@@ -9406,11 +9406,11 @@ testSubtractMultipliedMeasure
 	self assert: ((self tenMeters - (self tenMeters * self fivePesos)) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((self tenMeters - (self tenMeters * self fivePesos)) atSameBaseUnitAs: (self meter * self peso)) = (self tenMeters negated * self fivePesos)! !
 
-!SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:41:20'!
+!SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/12/2021 12:14:13'!
 testDoesNotPrintAsteriskWhenUnitNumeratorIsNullUnit
 
 	self assert: '1' equals: (SimpleMeasure amount: 1 unit: NullUnit new) printString.
-	self assert: '10/meters' equals: (10 / meter) printString.
+	self assert: '10/meters' equals: (10 / self meter) printString.
 	
 	! !
 
