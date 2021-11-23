@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4972] on 12 November 2021 at 12:21:24 pm'!
-'Description Fixed some tests'!
-!provides: 'Aconcagua' 1 19!
+'From Cuis 5.0 [latest update: #4972] on 23 November 2021 at 7:35:25 pm'!
+'Description Implementation of ceiling, odd, even, etc.'!
+!provides: 'Aconcagua' 1 20!
 SystemOrganization addCategory: 'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: 'Aconcagua-ArithmeticModelTests'!
@@ -187,6 +187,16 @@ Error subclass: #NodeNotFoundException
 	category: 'Aconcagua-GraphModel'!
 !classDefinition: 'NodeNotFoundException class' category: 'Aconcagua-GraphModel'!
 NodeNotFoundException class
+	instanceVariableNames: ''!
+
+!classDefinition: #AconcaguaExtentionsToNumberTest category: 'Aconcagua-ArithmeticModelTests'!
+TestCase subclass: #AconcaguaExtentionsToNumberTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'AconcaguaExtentionsToNumberTest class' category: 'Aconcagua-ArithmeticModelTests'!
+AconcaguaExtentionsToNumberTest class
 	instanceVariableNames: ''!
 
 !classDefinition: #ArithmeticObjectIntervalStrategyTest category: 'Aconcagua-ArithmeticModelTests'!
@@ -1733,6 +1743,20 @@ node: aNode graph: aGraph
 signalNode: aNode graph: aGraph
 
 	(self node: aNode graph: aGraph) signal! !
+
+!AconcaguaExtentionsToNumberTest methodsFor: 'test testing' stamp: 'HAW 11/23/2021 19:30:33'!
+testEvenInBaseUnit
+
+	self assert: 2 evenInBaseUnit.
+	self deny: 1 evenInBaseUnit.
+	! !
+
+!AconcaguaExtentionsToNumberTest methodsFor: 'test testing' stamp: 'HAW 11/23/2021 19:29:58'!
+testOddInBaseUnit
+
+	self assert: 1 oddInBaseUnit.
+	self deny: 2 oddInBaseUnit.
+	! !
 
 !ArithmeticObjectIntervalStrategyTest methodsFor: 'test'!
 testSingleton
@@ -4203,6 +4227,11 @@ testWithWithDerivedUnits
 	self assert: (measureBag atSameBaseUnitAs: self quarter) amount = (1/4).
 	self assert: (measureBag atSameBaseUnitAs: self dollar) amount = (1/4)! !
 
+!CompoundMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 19:17:01'!
+testCeiling
+
+	self assert:  (2 * self meter) + (3 * self peso) equals: ((1.1 * self meter) + (2.6 * self peso)) ceiling ! !
+
 !CompoundMeasureTest methodsFor: 'test'!
 testConvertAmountToBaseUnit
 
@@ -4233,6 +4262,11 @@ testCreationWithMeasuresCopiesCollection
 
 
 ! !
+
+!CompoundMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 19:16:41'!
+testFloor
+
+	self assert:  (1 * self meter) + (2 * self peso) equals: ((1.1 * self meter) + (2.6 * self peso)) floor ! !
 
 !CompoundMeasureTest methodsFor: 'test' stamp: 'GabrielOmarCotelli 9/18/2009 20:56'!
 testIsFraction
@@ -4416,6 +4450,20 @@ testTruncated
 
 	self assert: ((self peso with: 10.01) + (self dollar with: 20.5)) truncated = (self tenPesos + self twentyDollars)! !
 
+!CompoundMeasureTest methodsFor: 'test testing' stamp: 'HAW 11/23/2021 19:08:18'!
+testEven
+
+	self deny: ((self peso with: 1) + (self dollar with: 2)) even.
+	self assert: ((self peso with: 2) + (self dollar with: 2)) even.
+	! !
+
+!CompoundMeasureTest methodsFor: 'test testing' stamp: 'HAW 11/23/2021 19:09:53'!
+testEvenInBaseUnit
+
+	self deny: ((self centimeter with: 100) + (self centavo with: 200)) evenInBaseUnit.
+	self assert: ((self centimeter with: 200) + (self centavo with: 200)) evenInBaseUnit.
+	! !
+
 !CompoundMeasureTest methodsFor: 'test testing' stamp: 'HAW 3/25/2017 20:21:11'!
 testIsCompoundMeasurement
 
@@ -4426,6 +4474,20 @@ testIsNothing
 
 	self assert: (self zeroPesos + self zeroDollars) isNothing.
 	self assert: ((self tenPesos + self tenDollars) - (self tenPesos + self tenDollars)) isNothing! !
+
+!CompoundMeasureTest methodsFor: 'test testing' stamp: 'HAW 11/23/2021 19:07:15'!
+testOdd
+
+	self assert: ((self peso with: 1) + (self dollar with: 1)) odd.
+	self deny: ((self peso with: 2) + (self dollar with: 1)) odd.
+	! !
+
+!CompoundMeasureTest methodsFor: 'test testing' stamp: 'HAW 11/23/2021 19:11:58'!
+testOddInBaseUnit
+
+	self assert: ((self centimeter with: 100) + (self centavo with: 100)) oddInBaseUnit.
+	self deny: ((self centimeter with: 200) + (self centavo with: 100)) oddInBaseUnit.
+	! !
 
 !CompoundMeasureTest methodsFor: 'test magnitude protocol'!
 testLessThan
@@ -5576,10 +5638,42 @@ testAdd
 
 	self assertAllTestShouldPassFor: #+! !
 
+!EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:02:06'!
+testCeiling
+
+	self assert: (DummyEvaluation of: (peso with: 2)) ceiling = (peso with: 2).
+	self assert: (DummyEvaluation of: (peso with: 2.1)) ceiling = (peso with: 3).
+	self assert: (DummyEvaluation of: (peso with: 2.6)) ceiling = (peso with: 3).
+	! !
+
 !EvaluationTest methodsFor: 'testing'!
 testDivide
 
 	self assertAllTestShouldPassFor: #/! !
+
+!EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:00:32'!
+testEven
+
+	self assert: (DummyEvaluation of: (peso with: 2)) even.
+	self deny: (DummyEvaluation of: (peso with: 1)) even! !
+
+!EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:06:01'!
+testEvenInBaseUnit
+
+	| cent |
+	
+	cent := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'cent'.
+
+	self deny: (DummyEvaluation of: (cent with: 100)) evenInBaseUnit.
+	self assert: (DummyEvaluation of: (peso with: 200)) evenInBaseUnit ! !
+
+!EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:01:32'!
+testFloor
+
+	self assert: (DummyEvaluation of: (peso with: 2)) floor = (peso with: 2).
+	self assert: (DummyEvaluation of: (peso with: 2.1)) floor = (peso with: 2).
+	self assert: (DummyEvaluation of: (peso with: 2.6)) floor = (peso with: 2).
+	! !
 
 !EvaluationTest methodsFor: 'testing' stamp: 'HAW 3/25/2017 20:29:40'!
 testIsCompoundMeasure
@@ -5605,6 +5699,22 @@ testNegated
 
 	self assert: formulaOfTenPesos negated value = formulaOfTenPesos value negated.
 	self assert: formulaOfTenPesos negated negated value = formulaOfTenPesos value! !
+
+!EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/23/2021 18:59:59'!
+testOdd
+
+	self assert: (DummyEvaluation of: (peso with: 1)) odd.
+	self deny: (DummyEvaluation of: (peso with: 2)) odd! !
+
+!EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:05:28'!
+testOddInBaseUnit
+
+	| cent |
+	
+	cent := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'cent'.
+
+	self assert: (DummyEvaluation of: (cent with: 100)) oddInBaseUnit.
+	self deny: (DummyEvaluation of: (peso with: 200)) oddInBaseUnit ! !
 
 !EvaluationTest methodsFor: 'testing' stamp: 'HAW 11/9/2021 18:39:57'!
 testPowerOf
@@ -8252,6 +8362,14 @@ testAtBaseUnitIfNone
 	self assert: (self oneSecond atBaseUnit: self second ifNone: []) = self oneSecond.
 	self assert: (self oneSecond atBaseUnit: self minute ifNone: ['error']) = 'error'! !
 
+!SimpleMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 18:47:57'!
+testCeiling
+
+	self assert: ((SimpleMeasure amount: 1 unit: self celsius) ceiling) = (self celsius with: 1).
+	self assert: ((SimpleMeasure amount: 1.1 unit: self celsius) ceiling) = (self celsius with: 2).
+	self assert: ((SimpleMeasure amount: 1.6 unit: self celsius) ceiling) = (self celsius with: 2).
+	! !
+
 !SimpleMeasureTest methodsFor: 'test'!
 testCompareGreaterThan
 
@@ -8259,6 +8377,28 @@ testCompareGreaterThan
 	self deny: (self zeroCelsius compareGreaterThan: 0).
 	self should: [self oneCelsius compareGreaterThan: 1] raise: CanNotConvertMeasureException.
 	self should: [self oneCelsius compareGreaterThan: -1] raise: CanNotConvertMeasureException! !
+
+!SimpleMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 18:50:34'!
+testEven
+
+	self assert: (SimpleMeasure amount: 2 unit: self celsius) even.
+	self deny: (SimpleMeasure amount: 1 unit: self celsius) even.
+	! !
+
+!SimpleMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 18:55:34'!
+testEvenInBaseUnit
+
+	self deny: (SimpleMeasure amount: 100 unit: self centimeter) evenInBaseUnit.
+	self assert: (SimpleMeasure amount: 200 unit: self centimeter) evenInBaseUnit.
+		! !
+
+!SimpleMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 18:47:35'!
+testFloor
+
+	self assert: ((SimpleMeasure amount: 1 unit: self celsius) floor) = (self celsius with: 1).
+	self assert: ((SimpleMeasure amount: 1.1 unit: self celsius) floor) = (self celsius with: 1).
+	self assert: ((SimpleMeasure amount: 1.6 unit: self celsius) floor) = (self celsius with: 1).
+	! !
 
 !SimpleMeasureTest methodsFor: 'test' stamp: 'HAW 3/25/2017 20:20:37'!
 testIntegerDivideCompoundMeasure
@@ -8296,6 +8436,20 @@ testNegative
 
 	self assert: (self onePeso - self tenPesos) negative.
 	self deny: (self onePeso - self tenPesos) negated negative! !
+
+!SimpleMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 18:48:25'!
+testOdd
+
+	self assert: (SimpleMeasure amount: 1 unit: self celsius) odd.
+	self deny: (SimpleMeasure amount: 2 unit: self celsius) odd.
+	! !
+
+!SimpleMeasureTest methodsFor: 'test' stamp: 'HAW 11/23/2021 18:55:00'!
+testOddInBaseUnit
+
+	self assert: (SimpleMeasure amount: 100 unit: self centimeter) oddInBaseUnit.
+	self deny: (SimpleMeasure amount: 200 unit: self centimeter) oddInBaseUnit.
+		! !
 
 !SimpleMeasureTest methodsFor: 'test'!
 testPositive
@@ -11899,6 +12053,16 @@ for: aConvertionRule
 
 	^self new initializeWith: aConvertionRule! !
 
+!ArithmeticObject methodsFor: 'testing' stamp: 'HAW 11/23/2021 18:45:09'!
+even
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:03:21'!
+evenInBaseUnit
+
+	self subclassResponsibility! !
+
 !ArithmeticObject methodsFor: 'testing' stamp: 'HernanWilkinson 4/8/2014 12:13'!
 isAmountInteger
 	
@@ -11931,6 +12095,16 @@ isZero
 
 !ArithmeticObject methodsFor: 'testing'!
 negative
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'HAW 11/23/2021 18:44:59'!
+odd
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:03:18'!
+oddInBaseUnit
 
 	self subclassResponsibility! !
 
@@ -11983,6 +12157,16 @@ sameUnitAs: aMeasure
 ^ aPower
 
 	self subclassResponsibility ! !
+
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: 'HAW 11/23/2021 18:44:40'!
+ceiling
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: 'HAW 11/23/2021 18:44:30'!
+floor
+
+	self subclassResponsibility! !
 
 !ArithmeticObject methodsFor: 'arithmetic operations'!
 negated
@@ -12320,6 +12504,16 @@ toYourself
 
 	^self to: self! !
 
+!Evaluation methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:00:43'!
+even
+	
+	^self value even! !
+
+!Evaluation methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:06:14'!
+evenInBaseUnit
+	
+	^self value evenInBaseUnit ! !
+
 !Evaluation methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:46'!
 isCompoundMeasure
 
@@ -12334,6 +12528,16 @@ isNothing
 negative
 
 	^self value negative! !
+
+!Evaluation methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:00:15'!
+odd
+	
+	^self value odd! !
+
+!Evaluation methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:05:41'!
+oddInBaseUnit
+	
+	^self value oddInBaseUnit ! !
 
 !Evaluation methodsFor: 'testing'!
 positive
@@ -12701,6 +12905,17 @@ respondsTo: aSymbol
 
 	^(super respondsTo: aSymbol) or:[self value respondsTo: aSymbol]! !
 
+!Evaluation methodsFor: 'arithmetic operations' stamp: 'HAW 11/23/2021 19:02:18'!
+ceiling
+	
+	^self value ceiling ! !
+
+!Evaluation methodsFor: 'arithmetic operations' stamp: 'HAW 11/23/2021 19:01:46'!
+floor
+	
+	^self value floor
+	! !
+
 !Evaluation methodsFor: 'arithmetic operations'!
 roundTo: aNumber
 	
@@ -12773,6 +12988,16 @@ isZero
 
 	^self isNothing! !
 
+!CompoundMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:08:32'!
+even
+
+	^measures allSatisfy: [:measure | measure even ]! !
+
+!CompoundMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:10:07'!
+evenInBaseUnit
+	
+	^measures allSatisfy: [:measure | measure evenInBaseUnit ]! !
+
 !CompoundMeasure methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:03'!
 isCompoundMeasure
 
@@ -12784,6 +13009,16 @@ isNothing
 	^measures allSatisfy: [ :aMeasure | aMeasure isNothing].
 	
 	! !
+
+!CompoundMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:07:51'!
+odd
+	
+	^measures allSatisfy: [:measure | measure odd ]! !
+
+!CompoundMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 19:12:12'!
+oddInBaseUnit
+	
+	^measures allSatisfy: [:measure | measure oddInBaseUnit ]! !
 
 !CompoundMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/21/2011 17:16'!
 printShowingDecimalPlaces: aNumberOfDecimals
@@ -12838,6 +13073,16 @@ printShowingDecimalPlaces: aNumberOfDecimals
 		ifTrue: [ powered ]
 		ifFalse: [ 1 / powered ]
 	 ! !
+
+!CompoundMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 11/23/2021 19:17:21'!
+ceiling
+	
+	^self composeDoingOnEachMeasure: [:aMeasure | aMeasure ceiling ]! !
+
+!CompoundMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 11/23/2021 19:14:32'!
+floor
+
+	^self composeDoingOnEachMeasure: [:aMeasure | aMeasure floor ]! !
 
 !CompoundMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 3/25/2017 20:07:56'!
 negated
@@ -13101,6 +13346,18 @@ with: aMeasure with: anotherMeasure
 		ifTrue: [aMeasure addSameDomainMeasure: anotherMeasure]
 		ifFalse: [aMeasure composeWith: anotherMeasure]! !
 
+!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 18:50:54'!
+even
+	
+	"See odd comment - Hernan"
+	^amount even! !
+
+!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 18:56:04'!
+evenInBaseUnit
+	
+	"see odd coment - Hernan"
+	^self convertAmountToBaseUnit even! !
+
 !SimpleMeasure methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:56:26'!
 isCompoundMeasure
 
@@ -13115,6 +13372,19 @@ isNothing
 negative
 
 	^amount negative! !
+
+!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 18:50:15'!
+odd
+	"This is controversy becuase it could be odd in a unit but even in another unit... so I'm leaving the
+	convertion to the proper unit to the programmer. 
+	To be sure it is odd no matter the unit use #oddInBaseUnit - Hernan"
+	^amount odd! !
+
+!SimpleMeasure methodsFor: 'testing' stamp: 'HAW 11/23/2021 18:52:58'!
+oddInBaseUnit
+	
+	"See odd comment - Hernan"
+	^self convertAmountToBaseUnit odd! !
 
 !SimpleMeasure methodsFor: 'testing'!
 positive
@@ -13176,6 +13446,11 @@ printShowingDecimalPlaces: aNumberOfDecimals
 abs
 
 	^self unit with: amount abs! !
+
+!SimpleMeasure methodsFor: 'arithmetic operations'!
+floor
+	
+	^unit with: amount floor! !
 
 !SimpleMeasure methodsFor: 'arithmetic operations'!
 negated
@@ -13465,11 +13740,6 @@ baseUnit
 	^self unit baseUnit! !
 
 !SimpleMeasure methodsFor: 'accessing'!
-floor
-	
-	^unit with: amount floor! !
-
-!SimpleMeasure methodsFor: 'accessing'!
 hash
 
 	^self convertAmountToBaseUnit hash! !
@@ -13605,6 +13875,11 @@ to: stop
 to: stop by: step
 
 	 ^ArithmeticObjectInterval from: self to: stop by: step! !
+
+!SimpleMeasure methodsFor: 'as yet unclassified' stamp: 'HAW 11/20/2021 12:48:21'!
+ceiling
+	
+	^unit with: amount ceiling ! !
 
 !SimpleMeasure class methodsFor: 'instance creation'!
 amount: aNumber unit: aUnit
@@ -15177,6 +15452,11 @@ equalsSimpleMeasure: aMeasure
 
 	^self isNothing and: [aMeasure isNothing]! !
 
+!Number methodsFor: '*Aconcagua-Extensions' stamp: 'HAW 11/23/2021 19:30:45'!
+evenInBaseUnit
+	
+	^self even! !
+
 !Number methodsFor: '*Aconcagua-Extensions' stamp: 'HAW 3/26/2019 19:04:50'!
 fromInfinity
 
@@ -15273,6 +15553,11 @@ multiplySimpleMeasure: aMeasure
 numerator
 
 	^self asFraction numerator! !
+
+!Number methodsFor: '*Aconcagua-Extensions' stamp: 'HAW 11/23/2021 19:30:12'!
+oddInBaseUnit
+	
+	^self odd! !
 
 !Number methodsFor: '*Aconcagua-Extensions' stamp: 'HAW 3/25/2017 20:12:06'!
 remainderCompoundMeasure: aMeasureBag
