@@ -1,1011 +1,864 @@
-'From Cuis 5.0 [latest update: #4972] on 23 November 2021 at 7:35:25 pm'!
-'Description Implementation of ceiling, odd, even, etc.'!
-!provides: 'Aconcagua' 1 20!
-SystemOrganization addCategory: 'Aconcagua-MeasureModel'!
-SystemOrganization addCategory: 'Aconcagua-ArithmeticModel'!
-SystemOrganization addCategory: 'Aconcagua-ArithmeticModelTests'!
-SystemOrganization addCategory: 'Aconcagua-GraphModel'!
-SystemOrganization addCategory: 'Aconcagua-GraphModelTests'!
-SystemOrganization addCategory: 'Aconcagua-MeasureModelTests'!
+'From Cuis6.3 [latest update: #6311] on 16 April 2024 at 12:48:12 pm'!
+'Description Fix signal ZeroDivide'!
+!provides: 'Aconcagua' 1 22!
+SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
+SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
+SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
+SystemOrganization addCategory: #'Aconcagua-GraphModel'!
+SystemOrganization addCategory: #'Aconcagua-GraphModelTests'!
+SystemOrganization addCategory: #'Aconcagua-MeasureModelTests'!
 
 
-!classDefinition: #CompoundMeasureFraction category: 'Aconcagua-MeasureModel'!
+!classDefinition: #CompoundMeasureFraction category: #'Aconcagua-MeasureModel'!
 Fraction subclass: #CompoundMeasureFraction
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'CompoundMeasureFraction class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'CompoundMeasureFraction class' category: #'Aconcagua-MeasureModel'!
 CompoundMeasureFraction class
 	instanceVariableNames: ''!
 
-!classDefinition: #IntervalAwareMagnitude category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #IntervalAwareMagnitude category: #'Aconcagua-ArithmeticModel'!
 Magnitude subclass: #IntervalAwareMagnitude
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'IntervalAwareMagnitude class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'IntervalAwareMagnitude class' category: #'Aconcagua-ArithmeticModel'!
 IntervalAwareMagnitude class
 	instanceVariableNames: ''!
 
-!classDefinition: #TestIntervalAwareMagnitude category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #TestIntervalAwareMagnitude category: #'Aconcagua-ArithmeticModelTests'!
 IntervalAwareMagnitude subclass: #TestIntervalAwareMagnitude
 	instanceVariableNames: 'number'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'TestIntervalAwareMagnitude class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'TestIntervalAwareMagnitude class' category: #'Aconcagua-ArithmeticModelTests'!
 TestIntervalAwareMagnitude class
 	instanceVariableNames: ''!
 
-!classDefinition: #ArithmeticObjectInterval category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #ArithmeticObjectInterval category: #'Aconcagua-ArithmeticModel'!
 SequenceableCollection variableSubclass: #ArithmeticObjectInterval
 	instanceVariableNames: 'from to by size intervalStrategy'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'ArithmeticObjectInterval class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'ArithmeticObjectInterval class' category: #'Aconcagua-ArithmeticModel'!
 ArithmeticObjectInterval class
 	instanceVariableNames: ''!
 
-!classDefinition: #IndeterminateOperationException category: 'Aconcagua-MeasureModel'!
+!classDefinition: #IndeterminateOperationException category: #'Aconcagua-MeasureModel'!
 Error subclass: #IndeterminateOperationException
 	instanceVariableNames: 'operation leftOperand rightOperand'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'IndeterminateOperationException class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'IndeterminateOperationException class' category: #'Aconcagua-MeasureModel'!
 IndeterminateOperationException class
 	instanceVariableNames: ''!
 
-!classDefinition: #InvalidProportionalUnitConversionFunctionException category: 'Aconcagua-MeasureModel'!
+!classDefinition: #InvalidProportionalUnitConversionFunctionException category: #'Aconcagua-MeasureModel'!
 Error subclass: #InvalidProportionalUnitConversionFunctionException
 	instanceVariableNames: 'sourceMeasure equivalentMeasure'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'InvalidProportionalUnitConversionFunctionException class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'InvalidProportionalUnitConversionFunctionException class' category: #'Aconcagua-MeasureModel'!
 InvalidProportionalUnitConversionFunctionException class
 	instanceVariableNames: ''!
 
-!classDefinition: #NoUnitConversionRuleException category: 'Aconcagua-MeasureModel'!
+!classDefinition: #NoUnitConversionRuleException category: #'Aconcagua-MeasureModel'!
 Error subclass: #NoUnitConversionRuleException
 	instanceVariableNames: 'targetUnit sourceUnit'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'NoUnitConversionRuleException class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'NoUnitConversionRuleException class' category: #'Aconcagua-MeasureModel'!
 NoUnitConversionRuleException class
 	instanceVariableNames: ''!
 
-!classDefinition: #IndexOutOfRangeException category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #IndexOutOfRangeException category: #'Aconcagua-ArithmeticModel'!
 Error subclass: #IndexOutOfRangeException
 	instanceVariableNames: 'index collection'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'IndexOutOfRangeException class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'IndexOutOfRangeException class' category: #'Aconcagua-ArithmeticModel'!
 IndexOutOfRangeException class
 	instanceVariableNames: ''!
 
-!classDefinition: #InvalidIntervalException category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #InvalidIntervalException category: #'Aconcagua-ArithmeticModel'!
 Error subclass: #InvalidIntervalException
 	instanceVariableNames: 'from to by'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'InvalidIntervalException class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'InvalidIntervalException class' category: #'Aconcagua-ArithmeticModel'!
 InvalidIntervalException class
 	instanceVariableNames: ''!
 
-!classDefinition: #InvalidOperationException category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #InvalidOperationException category: #'Aconcagua-ArithmeticModel'!
 Error subclass: #InvalidOperationException
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'InvalidOperationException class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'InvalidOperationException class' category: #'Aconcagua-ArithmeticModel'!
 InvalidOperationException class
 	instanceVariableNames: ''!
 
-!classDefinition: #CanNotConvertMeasureException category: 'Aconcagua-MeasureModel'!
+!classDefinition: #CanNotConvertMeasureException category: #'Aconcagua-MeasureModel'!
 InvalidOperationException subclass: #CanNotConvertMeasureException
 	instanceVariableNames: 'targetUnit sourceMeasure'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'CanNotConvertMeasureException class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'CanNotConvertMeasureException class' category: #'Aconcagua-MeasureModel'!
 CanNotConvertMeasureException class
 	instanceVariableNames: ''!
 
-!classDefinition: #InvalidBinaryOperationException category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #InvalidBinaryOperationException category: #'Aconcagua-ArithmeticModel'!
 InvalidOperationException subclass: #InvalidBinaryOperationException
 	instanceVariableNames: 'operationName leftOperand rightOperand'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'InvalidBinaryOperationException class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'InvalidBinaryOperationException class' category: #'Aconcagua-ArithmeticModel'!
 InvalidBinaryOperationException class
 	instanceVariableNames: ''!
 
-!classDefinition: #InvalidUnaryOperationException category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #InvalidUnaryOperationException category: #'Aconcagua-ArithmeticModel'!
 InvalidOperationException subclass: #InvalidUnaryOperationException
 	instanceVariableNames: 'operationName operand'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'InvalidUnaryOperationException class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'InvalidUnaryOperationException class' category: #'Aconcagua-ArithmeticModel'!
 InvalidUnaryOperationException class
 	instanceVariableNames: ''!
 
-!classDefinition: #UndefinedArithmeticObjectValueException category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #UndefinedArithmeticObjectValueException category: #'Aconcagua-ArithmeticModel'!
 Error subclass: #UndefinedArithmeticObjectValueException
 	instanceVariableNames: 'arithmeticObject'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'UndefinedArithmeticObjectValueException class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'UndefinedArithmeticObjectValueException class' category: #'Aconcagua-ArithmeticModel'!
 UndefinedArithmeticObjectValueException class
 	instanceVariableNames: ''!
 
-!classDefinition: #CannotApplyTopologicalSortToACyclicGraphException category: 'Aconcagua-GraphModel'!
+!classDefinition: #CannotApplyTopologicalSortToACyclicGraphException category: #'Aconcagua-GraphModel'!
 Error subclass: #CannotApplyTopologicalSortToACyclicGraphException
 	instanceVariableNames: 'graph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'CannotApplyTopologicalSortToACyclicGraphException class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'CannotApplyTopologicalSortToACyclicGraphException class' category: #'Aconcagua-GraphModel'!
 CannotApplyTopologicalSortToACyclicGraphException class
 	instanceVariableNames: ''!
 
-!classDefinition: #EdgeEndpointNotIncludedInNodesException category: 'Aconcagua-GraphModel'!
+!classDefinition: #EdgeEndpointNotIncludedInNodesException category: #'Aconcagua-GraphModel'!
 Error subclass: #EdgeEndpointNotIncludedInNodesException
 	instanceVariableNames: 'invalidEdge edges nodes'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'EdgeEndpointNotIncludedInNodesException class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'EdgeEndpointNotIncludedInNodesException class' category: #'Aconcagua-GraphModel'!
 EdgeEndpointNotIncludedInNodesException class
 	instanceVariableNames: ''!
 
-!classDefinition: #GraphPathNotFoundException category: 'Aconcagua-GraphModel'!
+!classDefinition: #GraphPathNotFoundException category: #'Aconcagua-GraphModel'!
 Error subclass: #GraphPathNotFoundException
 	instanceVariableNames: 'source target'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'GraphPathNotFoundException class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'GraphPathNotFoundException class' category: #'Aconcagua-GraphModel'!
 GraphPathNotFoundException class
 	instanceVariableNames: ''!
 
-!classDefinition: #NodeNotFoundException category: 'Aconcagua-GraphModel'!
+!classDefinition: #NodeNotFoundException category: #'Aconcagua-GraphModel'!
 Error subclass: #NodeNotFoundException
 	instanceVariableNames: 'node graph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'NodeNotFoundException class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'NodeNotFoundException class' category: #'Aconcagua-GraphModel'!
 NodeNotFoundException class
 	instanceVariableNames: ''!
 
-!classDefinition: #AconcaguaExtentionsToNumberTest category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #AconcaguaExtentionsToNumberTest category: #'Aconcagua-ArithmeticModelTests'!
 TestCase subclass: #AconcaguaExtentionsToNumberTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'AconcaguaExtentionsToNumberTest class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'AconcaguaExtentionsToNumberTest class' category: #'Aconcagua-ArithmeticModelTests'!
 AconcaguaExtentionsToNumberTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #ArithmeticObjectIntervalStrategyTest category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #ArithmeticObjectIntervalStrategyTest category: #'Aconcagua-ArithmeticModelTests'!
 TestCase subclass: #ArithmeticObjectIntervalStrategyTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'ArithmeticObjectIntervalStrategyTest class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'ArithmeticObjectIntervalStrategyTest class' category: #'Aconcagua-ArithmeticModelTests'!
 ArithmeticObjectIntervalStrategyTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #ArithmeticObjectIntervalTest category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #ArithmeticObjectIntervalTest category: #'Aconcagua-ArithmeticModelTests'!
 TestCase subclass: #ArithmeticObjectIntervalTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'ArithmeticObjectIntervalTest class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'ArithmeticObjectIntervalTest class' category: #'Aconcagua-ArithmeticModelTests'!
 ArithmeticObjectIntervalTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #IntervalAwareMagnitudeTest category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #IntervalAwareMagnitudeTest category: #'Aconcagua-ArithmeticModelTests'!
 TestCase subclass: #IntervalAwareMagnitudeTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'IntervalAwareMagnitudeTest class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'IntervalAwareMagnitudeTest class' category: #'Aconcagua-ArithmeticModelTests'!
 IntervalAwareMagnitudeTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #NumberToArithmeticObjectAdapterTest category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #NumberToArithmeticObjectAdapterTest category: #'Aconcagua-ArithmeticModelTests'!
 TestCase subclass: #NumberToArithmeticObjectAdapterTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'NumberToArithmeticObjectAdapterTest class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'NumberToArithmeticObjectAdapterTest class' category: #'Aconcagua-ArithmeticModelTests'!
 NumberToArithmeticObjectAdapterTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #UndefinedArithmeticObjectValueExceptionTest category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #UndefinedArithmeticObjectValueExceptionTest category: #'Aconcagua-ArithmeticModelTests'!
 TestCase subclass: #UndefinedArithmeticObjectValueExceptionTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'UndefinedArithmeticObjectValueExceptionTest class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'UndefinedArithmeticObjectValueExceptionTest class' category: #'Aconcagua-ArithmeticModelTests'!
 UndefinedArithmeticObjectValueExceptionTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #EdgeTest category: 'Aconcagua-GraphModelTests'!
+!classDefinition: #EdgeTest category: #'Aconcagua-GraphModelTests'!
 TestCase subclass: #EdgeTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModelTests'!
-!classDefinition: 'EdgeTest class' category: 'Aconcagua-GraphModelTests'!
+!classDefinition: 'EdgeTest class' category: #'Aconcagua-GraphModelTests'!
 EdgeTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #GraphPathFinderTest category: 'Aconcagua-GraphModelTests'!
+!classDefinition: #GraphPathFinderTest category: #'Aconcagua-GraphModelTests'!
 TestCase subclass: #GraphPathFinderTest
 	instanceVariableNames: 'finder graph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModelTests'!
-!classDefinition: 'GraphPathFinderTest class' category: 'Aconcagua-GraphModelTests'!
+!classDefinition: 'GraphPathFinderTest class' category: #'Aconcagua-GraphModelTests'!
 GraphPathFinderTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #GraphTest category: 'Aconcagua-GraphModelTests'!
+!classDefinition: #GraphTest category: #'Aconcagua-GraphModelTests'!
 TestCase subclass: #GraphTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModelTests'!
-!classDefinition: 'GraphTest class' category: 'Aconcagua-GraphModelTests'!
+!classDefinition: 'GraphTest class' category: #'Aconcagua-GraphModelTests'!
 GraphTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TopologicalSortTest category: 'Aconcagua-GraphModelTests'!
+!classDefinition: #TopologicalSortTest category: #'Aconcagua-GraphModelTests'!
 TestCase subclass: #TopologicalSortTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModelTests'!
-!classDefinition: 'TopologicalSortTest class' category: 'Aconcagua-GraphModelTests'!
+!classDefinition: 'TopologicalSortTest class' category: #'Aconcagua-GraphModelTests'!
 TopologicalSortTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #BaseUnitTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #BaseUnitTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #BaseUnitTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'BaseUnitTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'BaseUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 BaseUnitTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #CircularReadStreamTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #CircularReadStreamTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #CircularReadStreamTest
-	instanceVariableNames: 'stream streamStaringInThirdElement'
+	instanceVariableNames: 'stream streamStartingInThirdElement'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'CircularReadStreamTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'CircularReadStreamTest class' category: #'Aconcagua-MeasureModelTests'!
 CircularReadStreamTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #CompoundMeasureTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #CompoundMeasureTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #CompoundMeasureTest
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'CompoundMeasureTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'CompoundMeasureTest class' category: #'Aconcagua-MeasureModelTests'!
 CompoundMeasureTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #ConversionTableTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #ConversionTableTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #ConversionTableTest
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'ConversionTableTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'ConversionTableTest class' category: #'Aconcagua-MeasureModelTests'!
 ConversionTableTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #DividedUnitTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #DividedUnitTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #DividedUnitTest
 	instanceVariableNames: 'meter second meterOverSecond'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'DividedUnitTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'DividedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 DividedUnitTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #EvaluationTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #EvaluationTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #EvaluationTest
 	instanceVariableNames: 'formulaOfTenPesos formulaOfTwentyPesos messageName peso dollar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'EvaluationTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'EvaluationTest class' category: #'Aconcagua-MeasureModelTests'!
 EvaluationTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #MeasureConverterTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #MeasureConverterTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #MeasureConverterTest
 	instanceVariableNames: 'units moneyConverter'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'MeasureConverterTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'MeasureConverterTest class' category: #'Aconcagua-MeasureModelTests'!
 MeasureConverterTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #MinusInfinityTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #MinusInfinityTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #MinusInfinityTest
 	instanceVariableNames: 'meter second'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'MinusInfinityTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'MinusInfinityTest class' category: #'Aconcagua-MeasureModelTests'!
 MinusInfinityTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #MultipliedUnitTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #MultipliedUnitTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #MultipliedUnitTest
 	instanceVariableNames: 'meter second meterBySecond'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'MultipliedUnitTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'MultipliedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 MultipliedUnitTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #NotProportionalDerivedUnitTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #NotProportionalDerivedUnitTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #NotProportionalDerivedUnitTest
 	instanceVariableNames: 'kelvin'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'NotProportionalDerivedUnitTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'NotProportionalDerivedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 NotProportionalDerivedUnitTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #NullUnitTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #NullUnitTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #NullUnitTest
 	instanceVariableNames: 'nullUnit'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'NullUnitTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'NullUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 NullUnitTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #NumberMeasureProtocolTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #NumberMeasureProtocolTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #NumberMeasureProtocolTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'NumberMeasureProtocolTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'NumberMeasureProtocolTest class' category: #'Aconcagua-MeasureModelTests'!
 NumberMeasureProtocolTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #PlusInfinityTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #PlusInfinityTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #PlusInfinityTest
 	instanceVariableNames: 'meter second'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'PlusInfinityTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'PlusInfinityTest class' category: #'Aconcagua-MeasureModelTests'!
 PlusInfinityTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #ProportionalDerivedUnitTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #ProportionalDerivedUnitTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #ProportionalDerivedUnitTest
 	instanceVariableNames: 'peso centavo'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'ProportionalDerivedUnitTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'ProportionalDerivedUnitTest class' category: #'Aconcagua-MeasureModelTests'!
 ProportionalDerivedUnitTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #ProportionalUnitConversionFunctionTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #ProportionalUnitConversionFunctionTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #ProportionalUnitConversionFunctionTest
 	instanceVariableNames: 'peso dollar onePeso tenDollars'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'ProportionalUnitConversionFunctionTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'ProportionalUnitConversionFunctionTest class' category: #'Aconcagua-MeasureModelTests'!
 ProportionalUnitConversionFunctionTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #SimpleMeasureTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #SimpleMeasureTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #SimpleMeasureTest
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'SimpleMeasureTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'SimpleMeasureTest class' category: #'Aconcagua-MeasureModelTests'!
 SimpleMeasureTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnitConversionRuleTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #UnitConversionRuleTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #UnitConversionRuleTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'UnitConversionRuleTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'UnitConversionRuleTest class' category: #'Aconcagua-MeasureModelTests'!
 UnitConversionRuleTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnitConversionRuleToEdgeAdapterTest category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #UnitConversionRuleToEdgeAdapterTest category: #'Aconcagua-MeasureModelTests'!
 TestCase subclass: #UnitConversionRuleToEdgeAdapterTest
 	instanceVariableNames: 'peso dollar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'UnitConversionRuleToEdgeAdapterTest class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'UnitConversionRuleToEdgeAdapterTest class' category: #'Aconcagua-MeasureModelTests'!
 UnitConversionRuleToEdgeAdapterTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnitsTestResource category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #UnitsTestResource category: #'Aconcagua-MeasureModelTests'!
 TestResource subclass: #UnitsTestResource
 	instanceVariableNames: 'units'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'UnitsTestResource class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'UnitsTestResource class' category: #'Aconcagua-MeasureModelTests'!
 UnitsTestResource class
 	instanceVariableNames: ''!
 
-!classDefinition: #Aconcagua category: 'Aconcagua-MeasureModel'!
+!classDefinition: #Aconcagua category: #'Aconcagua-MeasureModel'!
 Object subclass: #Aconcagua
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'Aconcagua class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'Aconcagua class' category: #'Aconcagua-MeasureModel'!
 Aconcagua class
 	instanceVariableNames: ''!
 
-!classDefinition: #CircularReadStream category: 'Aconcagua-MeasureModel'!
+!classDefinition: #CircularReadStream category: #'Aconcagua-MeasureModel'!
 Object subclass: #CircularReadStream
 	instanceVariableNames: 'collection position unit firstIndex lastIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'CircularReadStream class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'CircularReadStream class' category: #'Aconcagua-MeasureModel'!
 CircularReadStream class
 	instanceVariableNames: ''!
 
-!classDefinition: #ConversionTable category: 'Aconcagua-MeasureModel'!
+!classDefinition: #ConversionTable category: #'Aconcagua-MeasureModel'!
 Object subclass: #ConversionTable
 	instanceVariableNames: 'graph unitConversionRules'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'ConversionTable class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'ConversionTable class' category: #'Aconcagua-MeasureModel'!
 ConversionTable class
 	instanceVariableNames: ''!
 
-!classDefinition: #MeasureConverter category: 'Aconcagua-MeasureModel'!
+!classDefinition: #MeasureConverter category: #'Aconcagua-MeasureModel'!
 Object subclass: #MeasureConverter
 	instanceVariableNames: 'graphPathFinder'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'MeasureConverter class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'MeasureConverter class' category: #'Aconcagua-MeasureModel'!
 MeasureConverter class
 	instanceVariableNames: ''!
 
-!classDefinition: #Unit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #Unit category: #'Aconcagua-MeasureModel'!
 Object subclass: #Unit
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'Unit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'Unit class' category: #'Aconcagua-MeasureModel'!
 Unit class
 	instanceVariableNames: ''!
 
-!classDefinition: #CompoundUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #CompoundUnit category: #'Aconcagua-MeasureModel'!
 Unit subclass: #CompoundUnit
 	instanceVariableNames: ''
 	classVariableNames: 'Aliases'
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'CompoundUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'CompoundUnit class' category: #'Aconcagua-MeasureModel'!
 CompoundUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #DividedUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #DividedUnit category: #'Aconcagua-MeasureModel'!
 CompoundUnit subclass: #DividedUnit
 	instanceVariableNames: 'numerator denominator'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'DividedUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'DividedUnit class' category: #'Aconcagua-MeasureModel'!
 DividedUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #MultipliedUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #MultipliedUnit category: #'Aconcagua-MeasureModel'!
 CompoundUnit subclass: #MultipliedUnit
 	instanceVariableNames: 'factors'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'MultipliedUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'MultipliedUnit class' category: #'Aconcagua-MeasureModel'!
 MultipliedUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #NullUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #NullUnit category: #'Aconcagua-MeasureModel'!
 Unit subclass: #NullUnit
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'NullUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'NullUnit class' category: #'Aconcagua-MeasureModel'!
 NullUnit class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #SimpleUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #SimpleUnit category: #'Aconcagua-MeasureModel'!
 Unit subclass: #SimpleUnit
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'SimpleUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'SimpleUnit class' category: #'Aconcagua-MeasureModel'!
 SimpleUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #BaseUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #BaseUnit category: #'Aconcagua-MeasureModel'!
 SimpleUnit subclass: #BaseUnit
 	instanceVariableNames: 'nameForOne nameForMany sign'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'BaseUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'BaseUnit class' category: #'Aconcagua-MeasureModel'!
 BaseUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #DerivedUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #DerivedUnit category: #'Aconcagua-MeasureModel'!
 SimpleUnit subclass: #DerivedUnit
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'DerivedUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'DerivedUnit class' category: #'Aconcagua-MeasureModel'!
 DerivedUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #NotProportionalDerivedUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #NotProportionalDerivedUnit category: #'Aconcagua-MeasureModel'!
 DerivedUnit subclass: #NotProportionalDerivedUnit
 	instanceVariableNames: 'nameForOne nameForMany sign baseUnit conversionBlock reciprocalConversionBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'NotProportionalDerivedUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'NotProportionalDerivedUnit class' category: #'Aconcagua-MeasureModel'!
 NotProportionalDerivedUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #ProportionalDerivedUnit category: 'Aconcagua-MeasureModel'!
+!classDefinition: #ProportionalDerivedUnit category: #'Aconcagua-MeasureModel'!
 DerivedUnit subclass: #ProportionalDerivedUnit
 	instanceVariableNames: 'nameForOne nameForMany sign baseUnit conversionFactor'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'ProportionalDerivedUnit class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'ProportionalDerivedUnit class' category: #'Aconcagua-MeasureModel'!
 ProportionalDerivedUnit class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnitConversionFunctionInterface category: 'Aconcagua-MeasureModel'!
+!classDefinition: #UnitConversionFunctionInterface category: #'Aconcagua-MeasureModel'!
 Object subclass: #UnitConversionFunctionInterface
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'UnitConversionFunctionInterface class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'UnitConversionFunctionInterface class' category: #'Aconcagua-MeasureModel'!
 UnitConversionFunctionInterface class
 	instanceVariableNames: ''!
 
-!classDefinition: #ProportionalUnitConversionFunction category: 'Aconcagua-MeasureModel'!
+!classDefinition: #ProportionalUnitConversionFunction category: #'Aconcagua-MeasureModel'!
 UnitConversionFunctionInterface subclass: #ProportionalUnitConversionFunction
 	instanceVariableNames: 'sourceMeasure equivalentMeasure proportionalMeasure'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'ProportionalUnitConversionFunction class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'ProportionalUnitConversionFunction class' category: #'Aconcagua-MeasureModel'!
 ProportionalUnitConversionFunction class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnitConversionRuleInterface category: 'Aconcagua-MeasureModel'!
+!classDefinition: #UnitConversionRuleInterface category: #'Aconcagua-MeasureModel'!
 Object subclass: #UnitConversionRuleInterface
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'UnitConversionRuleInterface class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'UnitConversionRuleInterface class' category: #'Aconcagua-MeasureModel'!
 UnitConversionRuleInterface class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnitConversionRule category: 'Aconcagua-MeasureModel'!
+!classDefinition: #UnitConversionRule category: #'Aconcagua-MeasureModel'!
 UnitConversionRuleInterface subclass: #UnitConversionRule
 	instanceVariableNames: 'sourceUnit targetUnit function'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'UnitConversionRule class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'UnitConversionRule class' category: #'Aconcagua-MeasureModel'!
 UnitConversionRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnitConversionRuleToEdgeAdapter category: 'Aconcagua-MeasureModel'!
+!classDefinition: #UnitConversionRuleToEdgeAdapter category: #'Aconcagua-MeasureModel'!
 UnitConversionRuleInterface subclass: #UnitConversionRuleToEdgeAdapter
 	instanceVariableNames: 'unitConversionRule'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'UnitConversionRuleToEdgeAdapter class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'UnitConversionRuleToEdgeAdapter class' category: #'Aconcagua-MeasureModel'!
 UnitConversionRuleToEdgeAdapter class
 	instanceVariableNames: ''!
 
-!classDefinition: #ArithmeticObject category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #ArithmeticObject category: #'Aconcagua-ArithmeticModel'!
 Object subclass: #ArithmeticObject
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'ArithmeticObject class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'ArithmeticObject class' category: #'Aconcagua-ArithmeticModel'!
 ArithmeticObject class
 	instanceVariableNames: ''!
 
-!classDefinition: #Evaluation category: 'Aconcagua-MeasureModel'!
+!classDefinition: #Evaluation category: #'Aconcagua-MeasureModel'!
 ArithmeticObject subclass: #Evaluation
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'Evaluation class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'Evaluation class' category: #'Aconcagua-MeasureModel'!
 Evaluation class
 	instanceVariableNames: ''!
 
-!classDefinition: #CachedEvaluation category: 'Aconcagua-MeasureModel'!
+!classDefinition: #CachedEvaluation category: #'Aconcagua-MeasureModel'!
 Evaluation subclass: #CachedEvaluation
 	instanceVariableNames: 'cachedValue evaluation'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'CachedEvaluation class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'CachedEvaluation class' category: #'Aconcagua-MeasureModel'!
 CachedEvaluation class
 	instanceVariableNames: ''!
 
-!classDefinition: #DummyEvaluation category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: #DummyEvaluation category: #'Aconcagua-MeasureModelTests'!
 Evaluation subclass: #DummyEvaluation
 	instanceVariableNames: 'measure'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModelTests'!
-!classDefinition: 'DummyEvaluation class' category: 'Aconcagua-MeasureModelTests'!
+!classDefinition: 'DummyEvaluation class' category: #'Aconcagua-MeasureModelTests'!
 DummyEvaluation class
 	instanceVariableNames: ''!
 
-!classDefinition: #Measure category: 'Aconcagua-MeasureModel'!
+!classDefinition: #Measure category: #'Aconcagua-MeasureModel'!
 ArithmeticObject subclass: #Measure
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'Measure class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'Measure class' category: #'Aconcagua-MeasureModel'!
 Measure class
 	instanceVariableNames: ''!
 
-!classDefinition: #CompoundMeasure category: 'Aconcagua-MeasureModel'!
+!classDefinition: #CompoundMeasure category: #'Aconcagua-MeasureModel'!
 Measure subclass: #CompoundMeasure
 	instanceVariableNames: 'measures'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'CompoundMeasure class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'CompoundMeasure class' category: #'Aconcagua-MeasureModel'!
 CompoundMeasure class
 	instanceVariableNames: ''!
 
-!classDefinition: #SimpleMeasure category: 'Aconcagua-MeasureModel'!
+!classDefinition: #SimpleMeasure category: #'Aconcagua-MeasureModel'!
 Measure subclass: #SimpleMeasure
 	instanceVariableNames: 'amount unit'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'SimpleMeasure class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'SimpleMeasure class' category: #'Aconcagua-MeasureModel'!
 SimpleMeasure class
 	instanceVariableNames: ''!
 
-!classDefinition: #MinusInfinity category: 'Aconcagua-MeasureModel'!
+!classDefinition: #MinusInfinity category: #'Aconcagua-MeasureModel'!
 ArithmeticObject subclass: #MinusInfinity
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'MinusInfinity class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'MinusInfinity class' category: #'Aconcagua-MeasureModel'!
 MinusInfinity class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #PlusInfinity category: 'Aconcagua-MeasureModel'!
+!classDefinition: #PlusInfinity category: #'Aconcagua-MeasureModel'!
 ArithmeticObject subclass: #PlusInfinity
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'PlusInfinity class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'PlusInfinity class' category: #'Aconcagua-MeasureModel'!
 PlusInfinity class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #IntervalStrategy category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #IntervalStrategy category: #'Aconcagua-ArithmeticModel'!
 Object subclass: #IntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'IntervalStrategy class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'IntervalStrategy class' category: #'Aconcagua-ArithmeticModel'!
 IntervalStrategy class
 	instanceVariableNames: ''!
 
-!classDefinition: #InfinityIntervalStrategy category: 'Aconcagua-MeasureModel'!
+!classDefinition: #InfinityIntervalStrategy category: #'Aconcagua-MeasureModel'!
 IntervalStrategy subclass: #InfinityIntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-MeasureModel'!
-!classDefinition: 'InfinityIntervalStrategy class' category: 'Aconcagua-MeasureModel'!
+!classDefinition: 'InfinityIntervalStrategy class' category: #'Aconcagua-MeasureModel'!
 InfinityIntervalStrategy class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #ArithmeticObjectIntervalStrategy category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #ArithmeticObjectIntervalStrategy category: #'Aconcagua-ArithmeticModel'!
 IntervalStrategy subclass: #ArithmeticObjectIntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'ArithmeticObjectIntervalStrategy class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'ArithmeticObjectIntervalStrategy class' category: #'Aconcagua-ArithmeticModel'!
 ArithmeticObjectIntervalStrategy class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #TestIntervalStrategy category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: #TestIntervalStrategy category: #'Aconcagua-ArithmeticModelTests'!
 IntervalStrategy subclass: #TestIntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModelTests'!
-!classDefinition: 'TestIntervalStrategy class' category: 'Aconcagua-ArithmeticModelTests'!
+!classDefinition: 'TestIntervalStrategy class' category: #'Aconcagua-ArithmeticModelTests'!
 TestIntervalStrategy class
 	instanceVariableNames: ''!
 
-!classDefinition: #NumberToArithmeticObjectAdapter category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: #NumberToArithmeticObjectAdapter category: #'Aconcagua-ArithmeticModel'!
 Object subclass: #NumberToArithmeticObjectAdapter
 	instanceVariableNames: 'number'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-ArithmeticModel'!
-!classDefinition: 'NumberToArithmeticObjectAdapter class' category: 'Aconcagua-ArithmeticModel'!
+!classDefinition: 'NumberToArithmeticObjectAdapter class' category: #'Aconcagua-ArithmeticModel'!
 NumberToArithmeticObjectAdapter class
 	instanceVariableNames: ''!
 
-!classDefinition: #EdgeInterface category: 'Aconcagua-GraphModel'!
+!classDefinition: #EdgeInterface category: #'Aconcagua-GraphModel'!
 Object subclass: #EdgeInterface
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'EdgeInterface class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'EdgeInterface class' category: #'Aconcagua-GraphModel'!
 EdgeInterface class
 	instanceVariableNames: ''!
 
-!classDefinition: #Edge category: 'Aconcagua-GraphModel'!
+!classDefinition: #Edge category: #'Aconcagua-GraphModel'!
 EdgeInterface subclass: #Edge
 	instanceVariableNames: 'source target'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'Edge class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'Edge class' category: #'Aconcagua-GraphModel'!
 Edge class
 	instanceVariableNames: ''!
 
-!classDefinition: #Graph category: 'Aconcagua-GraphModel'!
+!classDefinition: #Graph category: #'Aconcagua-GraphModel'!
 Object subclass: #Graph
 	instanceVariableNames: 'edges acyclic nodes'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'Graph class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'Graph class' category: #'Aconcagua-GraphModel'!
 Graph class
 	instanceVariableNames: ''!
 
-!classDefinition: #GraphPathFinder category: 'Aconcagua-GraphModel'!
+!classDefinition: #GraphPathFinder category: #'Aconcagua-GraphModel'!
 Object subclass: #GraphPathFinder
 	instanceVariableNames: 'graph passedByEdges'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'GraphPathFinder class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'GraphPathFinder class' category: #'Aconcagua-GraphModel'!
 GraphPathFinder class
 	instanceVariableNames: ''!
 
-!classDefinition: #TopologicalSort category: 'Aconcagua-GraphModel'!
+!classDefinition: #TopologicalSort category: #'Aconcagua-GraphModel'!
 Object subclass: #TopologicalSort
 	instanceVariableNames: 'graph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Aconcagua-GraphModel'!
-!classDefinition: 'TopologicalSort class' category: 'Aconcagua-GraphModel'!
+!classDefinition: 'TopologicalSort class' category: #'Aconcagua-GraphModel'!
 TopologicalSort class
 	instanceVariableNames: ''!
 
-
-!ArithmeticObjectInterval methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: 'Interval from: '.
-	self from printOn: aStream.
-	aStream nextPutAll: ' to: '.
-	self to printOn: aStream.
-	aStream nextPutAll: ' by: '.
-	self by printOn: aStream! !
-
-!ArithmeticObjectInterval methodsFor: 'storing'!
-storeOn: aStream
-
-	"Append to the argument aStream a sequence of characters that is a
-	 Smalltalk expression whose evaluation creates an object similar to
-	 the receiver.
-
-	 Fail if aStream is not a kind of Stream."
-
-	aStream
-		nextPut: $( ;
-		nextPutAll: self class name;
-		nextPutAll: ' from: ' .
-	from storeOn: aStream.
-	aStream nextPutAll: ' to: ' .
-	to storeOn: aStream.
-	aStream nextPutAll: ' by: ' .
-	by storeOn: aStream.
-	aStream nextPut: $)! !
-
-!Unit methodsFor: 'accessing'!
-name
-
-	^self nameForOne! !
-
-!Unit methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: self name asString! !
-
-!NullUnit methodsFor: 'accessing'!
-name
-
-	^''! !
-
-!ProportionalUnitConversionFunction methodsFor: 'printing'!
-printOn: aStream
-
-	equivalentMeasure printOn: aStream.
-	aStream nextPutAll: ' / '.
-	sourceMeasure printOn: aStream.
-	aStream nextPutAll: '* valueToConvert'! !
-
-!UnitConversionRule methodsFor: 'printing'!
-printOn: aStream
-
-	sourceUnit printOn: aStream.
-	aStream nextPutAll: ' -> '.
-	targetUnit printOn: aStream.
-	aStream nextPutAll: ': '.
-	function printOn: aStream! !
-
-!UnitConversionRuleToEdgeAdapter methodsFor: 'printing'!
-printOn: aStream
-
-	unitConversionRule printOn: aStream! !
-
-!ArithmeticObject methodsFor: 'testing' stamp: 'mx 4/1/2007 18:09'!
-isFixed
-
-	self subclassResponsibility! !
-
-!Evaluation methodsFor: 'testing' stamp: 'mx 4/1/2007 18:09'!
-isFixed
-
-	^self value isFixed! !
-
-!Evaluation methodsFor: 'printing'!
-printOn: aStream
-
-	self value printOn: aStream! !
-
-!CachedEvaluation methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: 'Cache for: '.
-	evaluation printOn: aStream! !
-
-!CompoundMeasure methodsFor: 'testing' stamp: 'mx 4/1/2007 18:10'!
-isFixed
-
-	^measures allSatisfy: [ :aMeasure | aMeasure isFixed]
-	
-	! !
-
-!CompoundMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/21/2011 17:15'!
-printOn: aStream
-
-	measures 
-		do: [:aMeasure | aMeasure printOn: aStream]
-		separatedBy: [aStream nextPut: $+]! !
-
-!SimpleMeasure methodsFor: 'testing' stamp: 'mx 3/28/2007 21:53'!
-isFixed
-
-	^amount isFixed! !
-
-!SimpleMeasure methodsFor: 'printing' stamp: 'HAW 11/5/2021 20:37:16'!
-printOn: aStream
-
-	amount printOn: aStream.
-	self unit numerator = NullUnit new ifFalse: [ aStream nextPutAll: ' * ' ].
-	aStream nextPutAll: (self unit nameFor: self amount) asString! !
-
-!MinusInfinity methodsFor: 'testing' stamp: 'mx 4/1/2007 18:10'!
-isFixed
-
-	^false! !
-
-!MinusInfinity methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: 'Minus Infinity'! !
-
-!PlusInfinity methodsFor: 'testing' stamp: 'mx 3/28/2007 21:53'!
-isFixed
-
-	^false! !
-
-!PlusInfinity methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: 'Infinity'! !
-
-!NumberToArithmeticObjectAdapter methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: 'NumberMeasureAdapter for: '.
-	number printOn: aStream! !
-
-!Edge methodsFor: 'printing'!
-printOn: aStream
-
-	source printOn: aStream.
-	aStream nextPutAll: ' -> '.
-	target printOn: aStream! !
 
 !CompoundMeasureFraction methodsFor: 'arithmetic operations' stamp: 'GabrielOmarCotelli 9/18/2009 20:53'!
 = anObject
@@ -1028,11 +881,11 @@ numerator: aNumerator denominator: aDenominator
 
 	self setNumerator: aNumerator denominator: aDenominator! !
 
-!CompoundMeasureFraction methodsFor: 'private'!
+!CompoundMeasureFraction methodsFor: 'private' stamp: 'HAW 4/16/2024 12:37:43'!
 setNumerator: aNumerator denominator: aDenominator
 
 	aDenominator = 0
-		ifTrue: [^(ZeroDivide dividend: aNumerator) signal]
+		ifTrue: [^ZeroDivide new signalReceiver: self selector: #setNumerator:denominator: arguments: {aNumerator. aDenominator}]
 		ifFalse: 
 			[numerator := aNumerator.
 			denominator := aDenominator]! !
@@ -1135,6 +988,36 @@ number
 with: aNumber
 
 	^self new initializeWith: aNumber! !
+
+!ArithmeticObjectInterval methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: 'Interval from: '.
+	self from printOn: aStream.
+	aStream nextPutAll: ' to: '.
+	self to printOn: aStream.
+	aStream nextPutAll: ' by: '.
+	self by printOn: aStream! !
+
+!ArithmeticObjectInterval methodsFor: 'storing'!
+storeOn: aStream
+
+	"Append to the argument aStream a sequence of characters that is a
+	 Smalltalk expression whose evaluation creates an object similar to
+	 the receiver.
+
+	 Fail if aStream is not a kind of Stream."
+
+	aStream
+		nextPut: $( ;
+		nextPutAll: self class name;
+		nextPutAll: ' from: ' .
+	from storeOn: aStream.
+	aStream nextPutAll: ' to: ' .
+	to storeOn: aStream.
+	aStream nextPutAll: ' by: ' .
+	by storeOn: aStream.
+	aStream nextPut: $)! !
 
 !ArithmeticObjectInterval methodsFor: 'comparing'!
 = aCollection
@@ -3575,13 +3458,13 @@ testSameDomainAsSameBaseUnit
 	
 ! !
 
-!CircularReadStreamTest methodsFor: 'initialization' stamp: 'mx 11/21/2007 10:40'!
+!CircularReadStreamTest methodsFor: 'initialization' stamp: 'HAW 7/1/2022 15:58:10'!
 setUp
 
 	stream := CircularReadStream on: #(1 2 3 4 5) moving: NullUnit new.
-	streamStaringInThirdElement := CircularReadStream on: #(1 2 3 4 5) moving: NullUnit new startingCircleAt: 3! !
+	streamStartingInThirdElement := CircularReadStream on: #(1 2 3 4 5) moving: NullUnit new startingCircleAt: 3! !
 
-!CircularReadStreamTest methodsFor: 'test testing' stamp: 'mx 11/21/2007 09:06'!
+!CircularReadStreamTest methodsFor: 'test testing' stamp: 'HAW 7/1/2022 15:58:10'!
 testAtBegin
 
 	self assert: stream atBegin.
@@ -3590,16 +3473,16 @@ testAtBegin
 	stream upToBegin.
 	self assert: stream atBegin.
 	
-	self assert: streamStaringInThirdElement atBegin.
-	self assert: streamStaringInThirdElement current = 3.
-	streamStaringInThirdElement upToEnd.
-	self deny: streamStaringInThirdElement atBegin.
-	self assert: streamStaringInThirdElement current = 2.
-	streamStaringInThirdElement upToBegin.
-	self assert: streamStaringInThirdElement atBegin.
-	self assert: streamStaringInThirdElement current = 3! !
+	self assert: streamStartingInThirdElement atBegin.
+	self assert: streamStartingInThirdElement current = 3.
+	streamStartingInThirdElement upToEnd.
+	self deny: streamStartingInThirdElement atBegin.
+	self assert: streamStartingInThirdElement current = 2.
+	streamStartingInThirdElement upToBegin.
+	self assert: streamStartingInThirdElement atBegin.
+	self assert: streamStartingInThirdElement current = 3! !
 
-!CircularReadStreamTest methodsFor: 'test testing' stamp: 'mx 11/21/2007 09:06'!
+!CircularReadStreamTest methodsFor: 'test testing' stamp: 'HAW 7/1/2022 15:58:10'!
 testAtEnd
 
 	self deny: stream atEnd.
@@ -3608,16 +3491,16 @@ testAtEnd
 	stream upToBegin.
 	self deny: stream atEnd.
 	
-	self deny: streamStaringInThirdElement atEnd.
-	self deny: streamStaringInThirdElement current = 2.
-	streamStaringInThirdElement  upToEnd.
-	self assert: streamStaringInThirdElement atEnd.
-	self assert: streamStaringInThirdElement current = 2.
-	streamStaringInThirdElement upToBegin.
-	self deny: streamStaringInThirdElement atEnd.
-	self deny: streamStaringInThirdElement current = 2! !
+	self deny: streamStartingInThirdElement atEnd.
+	self deny: streamStartingInThirdElement current = 2.
+	streamStartingInThirdElement  upToEnd.
+	self assert: streamStartingInThirdElement atEnd.
+	self assert: streamStartingInThirdElement current = 2.
+	streamStartingInThirdElement upToBegin.
+	self deny: streamStartingInThirdElement atEnd.
+	self deny: streamStartingInThirdElement current = 2! !
 
-!CircularReadStreamTest methodsFor: 'test accessing' stamp: 'mx 11/21/2007 09:12'!
+!CircularReadStreamTest methodsFor: 'test accessing' stamp: 'HAW 7/1/2022 15:58:10'!
 testCurrent
 
 	self assert: stream current = 1.
@@ -3626,11 +3509,11 @@ testCurrent
 	stream previous: 3.
 	self assert: stream current = 5.
 	
-	self assert: streamStaringInThirdElement current = 3.
-	streamStaringInThirdElement next: 2.
-	self assert: streamStaringInThirdElement current = 5.
-	streamStaringInThirdElement previous: 3.
-	self assert: streamStaringInThirdElement current = 2! !
+	self assert: streamStartingInThirdElement current = 3.
+	streamStartingInThirdElement next: 2.
+	self assert: streamStartingInThirdElement current = 5.
+	streamStartingInThirdElement previous: 3.
+	self assert: streamStartingInThirdElement current = 2! !
 
 !CircularReadStreamTest methodsFor: 'test querying' stamp: 'mx 10/6/2007 15:24'!
 testDistanceFrom
@@ -6727,7 +6610,7 @@ testBaseUnit
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	self assert: unit baseUnit = kelvin! !
 
@@ -6741,7 +6624,7 @@ testDenominator
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	self assert: unit denominator = NullUnit new! !
 
@@ -6767,14 +6650,14 @@ testNameForMany
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celcius' 
-		sign: 'บ') nameForMany = 'celciuss'.
+		sign: 'ยบ') nameForMany = 'celciuss'.
 	self assert: (NotProportionalDerivedUnit 
 		baseUnit: kelvin 
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		nameForOne: 'celcius'
 		nameForMany: 'celcius'
-		sign: 'บ') nameForMany = 'celcius'! !
+		sign: 'ยบ') nameForMany = 'celcius'! !
 
 !NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
 testNameForOne
@@ -6795,7 +6678,7 @@ testNothingAmount
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	self assert: unit nothingAmount = (-5463/20)
 ! !
@@ -6810,7 +6693,7 @@ testNullMeasure
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	self assert: unit nullMeasure amount = 0.
 	self assert: unit nullMeasure unit = kelvin.
@@ -6826,7 +6709,7 @@ testNumerator
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	self assert: unit numerator = unit! !
 
@@ -6840,7 +6723,7 @@ testReciprocal
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	self assert: unit reciprocal = (NullUnit new / unit)
 ! !
@@ -6858,14 +6741,14 @@ testSign
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: 'celcius' 
-		sign: 'บ') sign = 'บ'.
+		sign: 'ยบ') sign = 'ยบ'.
 	self assert: (NotProportionalDerivedUnit 
 		baseUnit: kelvin 
 		conversionBlock:  [:kelvins | kelvins + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		nameForOne: 'celcius'
 		nameForMany: 'celcius'
-		sign: 'บ') sign = 'บ'! !
+		sign: 'ยบ') sign = 'ยบ'! !
 
 !NotProportionalDerivedUnitTest methodsFor: 'test converting' stamp: 'HAW 11/9/2021 12:58:39'!
 testConvertAmountToBaseUnit
@@ -6877,7 +6760,7 @@ testConvertAmountToBaseUnit
 		conversionBlock:  [:celsius | celsius + (5463/20)] 
 		reciprocalConversionBlock: [ :kelvins | kelvins - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	self assert: (unit convertAmountToBaseUnit: 0) = (5463/20).
 	self assert: (unit convertAmountToBaseUnit: 100) = (7463/20)! !
@@ -6892,7 +6775,7 @@ testConvertToBaseUnit
 		conversionBlock:  [:celsius | celsius + (5463/20)] 
 		reciprocalConversionBlock: [ :kelvins | kelvins - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 		
 	measure := SimpleMeasure amount: 0 unit: unit.
 	self assert: (unit convertToBaseUnit: measure) amount = (5463/20).
@@ -6911,7 +6794,7 @@ testSameDomainAs
 		conversionBlock:  [:celsius | celsius + (5463/20)] 
 		reciprocalConversionBlock: [ :kelvins | kelvins - (5463/20) ]
 		named: 'celsius' 
-		sign: 'บ'.
+		sign: 'ยบ'.
 	self assert: (unit sameDomainAs: kelvin).
 
 	metro := BaseUnit named: 'metro'.
@@ -6923,7 +6806,7 @@ testSameDomainAs
 			conversionBlock:  [:celsius | ] 
 			reciprocalConversionBlock: [ :kelvins | ]
 			named: 'xxx' 
-			sign: 'บ'))! !
+			sign: 'ยบ'))! !
 
 !NullUnitTest methodsFor: 'initialization' stamp: 'HernanWilkinson 3/23/2017 16:03'!
 setUp
@@ -10099,7 +9982,7 @@ createCelsius
 		conversionBlock:  [:kelvin | kelvin + (5463/20)] 
 		reciprocalConversionBlock: [ :celsius | celsius - (5463/20) ]
 		named: self celsiusName 
-		sign: 'บ'! !
+		sign: 'ยบ'! !
 
 !UnitsTestResource methodsFor: 'temperature units - creating'!
 createFahrenheit 
@@ -10693,6 +10576,11 @@ doNotImplementHash
 	See representSameEntityAs:"! !
 
 !Unit methodsFor: 'accessing'!
+name
+
+	^self nameForOne! !
+
+!Unit methodsFor: 'accessing'!
 nameFor: aNumber
 	"It returns the name that must be used to identify an amount <aNumber> of receiver"
 
@@ -10742,6 +10630,11 @@ reciprocal
 sign
 
 	self subclassResponsibility! !
+
+!Unit methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: self name asString! !
 
 !Unit methodsFor: 'mathematic operations'!
 * aNumberOrUnit
@@ -11418,6 +11311,11 @@ baseUnit
 	^self! !
 
 !NullUnit methodsFor: 'accessing'!
+name
+
+	^''! !
+
+!NullUnit methodsFor: 'accessing'!
 nameForMany
 
 	^self name! !
@@ -11838,6 +11736,14 @@ value: anObject
 
 	^self subclassResponsibility! !
 
+!ProportionalUnitConversionFunction methodsFor: 'printing'!
+printOn: aStream
+
+	equivalentMeasure printOn: aStream.
+	aStream nextPutAll: ' / '.
+	sourceMeasure printOn: aStream.
+	aStream nextPutAll: '* valueToConvert'! !
+
 !ProportionalUnitConversionFunction methodsFor: 'comparing'!
 = anotherProportionalUnitConvertionFunction
 
@@ -11928,6 +11834,15 @@ targetUnit
 
 	self subclassResponsibility! !
 
+!UnitConversionRule methodsFor: 'printing'!
+printOn: aStream
+
+	sourceUnit printOn: aStream.
+	aStream nextPutAll: ' -> '.
+	targetUnit printOn: aStream.
+	aStream nextPutAll: ': '.
+	function printOn: aStream! !
+
 !UnitConversionRule methodsFor: 'comparing'!
 = anotherConvertionRule
 
@@ -11971,6 +11886,11 @@ value: aMeasure
 from: aSourceUnit to: aTargetUnit use: aFunction
 
 	^self new initializeFrom: aSourceUnit to: aTargetUnit using: aFunction! !
+
+!UnitConversionRuleToEdgeAdapter methodsFor: 'printing'!
+printOn: aStream
+
+	unitConversionRule printOn: aStream! !
 
 !UnitConversionRuleToEdgeAdapter methodsFor: 'comparing'!
 = anotherConvertionRuleToEdgeAdapter
@@ -12070,6 +11990,11 @@ isAmountInteger
 
 !ArithmeticObject methodsFor: 'testing' stamp: 'HAW 3/25/2017 19:55:58'!
 isCompoundMeasure
+
+	self subclassResponsibility! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'mx 4/1/2007 18:09'!
+isFixed
 
 	self subclassResponsibility! !
 
@@ -12519,6 +12444,11 @@ isCompoundMeasure
 
 	^self value isCompoundMeasure! !
 
+!Evaluation methodsFor: 'testing' stamp: 'mx 4/1/2007 18:09'!
+isFixed
+
+	^self value isFixed! !
+
 !Evaluation methodsFor: 'testing'!
 isNothing
 
@@ -12553,6 +12483,11 @@ sameDomainAs: aMeasure
 sameUnitAs: aMeasure
 
 	^self value sameUnitAs: aMeasure! !
+
+!Evaluation methodsFor: 'printing'!
+printOn: aStream
+
+	self value printOn: aStream! !
 
 !Evaluation methodsFor: 'mathematic operations'!
 * anAritmethicObject
@@ -12937,6 +12872,12 @@ value
 
 	self subclassResponsibility! !
 
+!CachedEvaluation methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: 'Cache for: '.
+	evaluation printOn: aStream! !
+
 !CachedEvaluation methodsFor: 'evaluating'!
 computeValue
 
@@ -13003,6 +12944,13 @@ isCompoundMeasure
 
 	^true! !
 
+!CompoundMeasure methodsFor: 'testing' stamp: 'mx 4/1/2007 18:10'!
+isFixed
+
+	^measures allSatisfy: [ :aMeasure | aMeasure isFixed]
+	
+	! !
+
 !CompoundMeasure methodsFor: 'testing'!
 isNothing
 
@@ -13019,6 +12967,13 @@ odd
 oddInBaseUnit
 	
 	^measures allSatisfy: [:measure | measure oddInBaseUnit ]! !
+
+!CompoundMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/21/2011 17:15'!
+printOn: aStream
+
+	measures 
+		do: [:aMeasure | aMeasure printOn: aStream]
+		separatedBy: [aStream nextPut: $+]! !
 
 !CompoundMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/21/2011 17:16'!
 printShowingDecimalPlaces: aNumberOfDecimals
@@ -13363,6 +13318,11 @@ isCompoundMeasure
 
 	^false! !
 
+!SimpleMeasure methodsFor: 'testing' stamp: 'mx 3/28/2007 21:53'!
+isFixed
+
+	^amount isFixed! !
+
 !SimpleMeasure methodsFor: 'testing'!
 isNothing
 
@@ -13405,6 +13365,13 @@ sameUnitAs: aMeasure
 strictlyPositive
 	
 	^amount strictlyPositive! !
+
+!SimpleMeasure methodsFor: 'printing' stamp: 'HAW 11/5/2021 20:37:16'!
+printOn: aStream
+
+	amount printOn: aStream.
+	self unit numerator = NullUnit new ifFalse: [ aStream nextPutAll: ' * ' ].
+	aStream nextPutAll: (self unit nameFor: self amount) asString! !
 
 !SimpleMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/20/2011 17:42'!
 printShowingDecimalPlaces: aNumberOfDecimals
@@ -13891,6 +13858,11 @@ isCompoundMeasure
 
 	^false! !
 
+!MinusInfinity methodsFor: 'testing' stamp: 'mx 4/1/2007 18:10'!
+isFixed
+
+	^false! !
+
 !MinusInfinity methodsFor: 'testing'!
 isNothing
 
@@ -13915,6 +13887,11 @@ sameDomainAs: aMeasure
 sameUnitAs: aMeasure
 
 	^self unit = aMeasure unit! !
+
+!MinusInfinity methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: 'Minus Infinity'! !
 
 !MinusInfinity methodsFor: 'arithmetic operations'!
 * aMeasure
@@ -14288,6 +14265,11 @@ isCompoundMeasure
 
 	^false! !
 
+!PlusInfinity methodsFor: 'testing' stamp: 'mx 3/28/2007 21:53'!
+isFixed
+
+	^false! !
+
 !PlusInfinity methodsFor: 'testing'!
 isNothing
 
@@ -14312,6 +14294,11 @@ sameDomainAs: aMeasure
 sameUnitAs: aMeasure
 
 	^self unit = aMeasure unit! !
+
+!PlusInfinity methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: 'Infinity'! !
 
 !PlusInfinity methodsFor: 'arithmetic operations'!
 * aMeasure
@@ -14800,6 +14787,12 @@ stepsFrom: from to: to by: by
 
 	^to number - from number / by number! !
 
+!NumberToArithmeticObjectAdapter methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: 'NumberMeasureAdapter for: '.
+	number printOn: aStream! !
+
 !NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
 * anArithmeticObject
 
@@ -14888,6 +14881,13 @@ source
 target
 
 	self subclassResponsibility! !
+
+!Edge methodsFor: 'printing'!
+printOn: aStream
+
+	source printOn: aStream.
+	aStream nextPutAll: ' -> '.
+	target printOn: aStream! !
 
 !Edge methodsFor: 'comparing'!
 = anotherEdge
