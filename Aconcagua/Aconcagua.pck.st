@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7258] on 18 June 2025 at 11:06:20 am'!
-'Description NaN support - work in progress'!
-!provides: 'Aconcagua' 1 23!
+'From Cuis7.5 [latest update: #7428] on 20 August 2025 at 11:31:53 am'!
+'Description Print unit as singular - Better infinite support'!
+!provides: 'Aconcagua' 1 24!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -889,6 +889,11 @@ isFixed
 isFraction
 
 	^false! !
+
+!ArithmeticObject methodsFor: 'testing' stamp: 'FJG 5/26/2025 20:55:00'!
+isInfinite
+
+	^ false! !
 
 !ArithmeticObject methodsFor: 'testing'!
 isNothing
@@ -1862,18 +1867,6 @@ printOn: aStream
 		do: [:aMeasure | aMeasure printOn: aStream]
 		separatedBy: [aStream nextPut: $+]! !
 
-!CompoundMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/21/2011 17:16'!
-printShowingDecimalPlaces: aNumberOfDecimals
-
-	| stream |
-	
-	stream := WriteStream on: String new.
-	measures 
-		do: [:aMeasure | stream nextPutAll: (aMeasure printShowingDecimalPlaces: aNumberOfDecimals)  ]
-		separatedBy: [stream nextPut: $+].
-		
-	^stream contents! !
-
 !CompoundMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 3/25/2017 19:45:21'!
 * aMeasure
 
@@ -2253,17 +2246,12 @@ strictlyPositive
 	
 	^amount strictlyPositive! !
 
-!SimpleMeasure methodsFor: 'printing' stamp: 'HAW 11/5/2021 20:37:16'!
+!SimpleMeasure methodsFor: 'printing' stamp: 'FJG 3/15/2025 19:24:51'!
 printOn: aStream
 
 	amount printOn: aStream.
 	self unit numerator = NullUnit new ifFalse: [ aStream nextPutAll: ' * ' ].
-	aStream nextPutAll: (self unit nameFor: self amount) asString! !
-
-!SimpleMeasure methodsFor: 'printing' stamp: 'HernanWilkinson 4/20/2011 17:42'!
-printShowingDecimalPlaces: aNumberOfDecimals
-
-	^(amount printShowingDecimalPlaces: aNumberOfDecimals),  ' ', (self unit nameFor: self amount) asString! !
+	aStream nextPutAll: self unit name! !
 
 !SimpleMeasure methodsFor: 'arithmetic operations' stamp: 'HAW 3/25/2017 19:43:51'!
 * aMeasure
@@ -2750,6 +2738,11 @@ isFixed
 
 	^false! !
 
+!MinusInfinity methodsFor: 'testing' stamp: 'FJG 5/26/2025 20:55:09'!
+isInfinite
+
+	^ true! !
+
 !MinusInfinity methodsFor: 'testing'!
 isNothing
 
@@ -2818,6 +2811,10 @@ printOn: aStream
 	aPower = 0 ifTrue: [ ^1 ].
 
 	self signalIndeterminateOperation: 'Power' leftOperand: aPower! !
+
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: 'FJG 5/28/2025 19:48:34'!
+abs
+	^ infinity! !
 
 !MinusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:36:58'!
 negated
@@ -3157,6 +3154,11 @@ isFixed
 
 	^false! !
 
+!PlusInfinity methodsFor: 'testing' stamp: 'FJG 5/26/2025 20:55:14'!
+isInfinite
+
+	^ true! !
+
 !PlusInfinity methodsFor: 'testing'!
 isNothing
 
@@ -3225,6 +3227,10 @@ printOn: aStream
 	aPower = 0 ifTrue: [ ^1 ].
 
 	self signalIndeterminateOperation: 'Power' leftOperand: aPower! !
+
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: 'FJG 5/28/2025 19:48:15'!
+abs
+	^ self! !
 
 !PlusInfinity methodsFor: 'arithmetic operations' stamp: 'HAW 3/26/2019 19:04:12'!
 negated
@@ -3705,8 +3711,13 @@ printOn: aStream
 
 	^anArithmeticObject quoFrom: number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: 'mx 3/26/2007 21:45'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: 'FJG 5/26/2025 20:29:47'!
 < anArithmeticObject
+
+	^anArithmeticObject > number! !
+
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: 'FJG 5/26/2025 20:55:52'!
+<= anArithmeticObject
 
 	^anArithmeticObject >= number! !
 
@@ -3715,8 +3726,13 @@ printOn: aStream
 
 	^anArithmeticObject = number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: 'mx 3/26/2007 21:44'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: 'FJG 5/26/2025 20:29:53'!
 > anArithmeticObject
+
+	^anArithmeticObject < number! !
+
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: 'FJG 5/26/2025 20:55:58'!
+>= anArithmeticObject
 
 	^anArithmeticObject <= number! !
 
@@ -9802,11 +9818,11 @@ testSubtractNothing
 	self assert: (self zeroPesos - self zeroDollars) = self zeroDollars.
 	! !
 
-!CompoundMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:15:09'!
+!CompoundMeasureTest methodsFor: 'test printing' stamp: 'FJG 5/26/2025 20:58:06'!
 testPrintingForMany
 
-	self assert: self tenPesos printString = '10 * pesos' description: 'Printing for many with correct creation'.
-	self assert: self tenDollars printString = '10 * dollars' description: 'Printing for many with invalid creation'.
+	self assert: self tenPesos printString = '10 * peso' description: 'Printing for many with correct creation'.
+	self assert: self tenDollars printString = '10 * dollar' description: 'Printing for many with invalid creation'.
 	
 	! !
 
@@ -10170,13 +10186,13 @@ testNameForMany
 
 	self assert: meterOverSecond nameForMany = 'meters/seconds'! !
 
-!DividedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/10/2021 20:06:54'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: 'FJG 5/26/2025 20:58:18'!
 testNameForManyWhenHavingAlias
 
 	DividedUnit 
 		defineAliasFor: meterOverSecond 
 		named: 'speed' 
-		during: [ self assert: '10 * speeds' equals: (10 * meterOverSecond) printString ]! !
+		during: [ self assert: '10 * speed' equals: (10 * meterOverSecond) printString ]! !
 
 !DividedUnitTest methodsFor: 'test accessing'!
 testNameForOne
@@ -11401,13 +11417,13 @@ testNameForMany
 
 	self assert: meterBySecond nameForMany = 'meters*seconds'! !
 
-!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/10/2021 20:06:35'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: 'FJG 5/26/2025 20:58:26'!
 testNameForManyWhenHavingAlias
 
 	MultipliedUnit 
 		defineAliasFor: meterBySecond 
 		named: 'something' 
-		during: [ self assert: '10 * somethings' equals: (10*meterBySecond) printString ].
+		during: [ self assert: '10 * something' equals: (10*meterBySecond) printString ].
 		! !
 
 !MultipliedUnitTest methodsFor: 'test accessing' stamp: 'HAW 11/5/2021 19:43:01'!
@@ -13075,7 +13091,7 @@ setUp
 	onePeso := peso with: 1.
 	tenDollars := dollar with: 10! !
 
-!ProportionalUnitConversionFunctionTest methodsFor: 'testing' stamp: 'HAW 11/5/2021 20:18:52'!
+!ProportionalUnitConversionFunctionTest methodsFor: 'testing' stamp: 'FJG 5/26/2025 20:58:57'!
 testAccessing
 
 	| function |
@@ -13084,7 +13100,7 @@ testAccessing
 	self assert: function sourceMeasure = onePeso.
 	self assert: function equivalentMeasure = tenDollars.
 	self assert: function proportionalMeasure = (tenDollars/onePeso).
-	self assert: function printString = '10 * dollars / 1 * peso* valueToConvert'! !
+	self assert: function printString = '10 * dollar / 1 * peso* valueToConvert'! !
 
 !ProportionalUnitConversionFunctionTest methodsFor: 'testing'!
 testEqual
@@ -14652,19 +14668,19 @@ testSubtractMultipliedMeasure
 	self assert: ((self tenMeters - (self tenMeters * self fivePesos)) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((self tenMeters - (self tenMeters * self fivePesos)) atSameBaseUnitAs: (self meter * self peso)) = (self tenMeters negated * self fivePesos)! !
 
-!SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/12/2021 12:14:13'!
+!SimpleMeasureTest methodsFor: 'test printing' stamp: 'FJG 5/26/2025 20:59:04'!
 testDoesNotPrintAsteriskWhenUnitNumeratorIsNullUnit
 
 	self assert: '1' equals: (SimpleMeasure amount: 1 unit: NullUnit new) printString.
-	self assert: '10/meters' equals: (10 / self meter) printString.
+	self assert: '10/meter' equals: (10 / self meter) printString.
 	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:20:27'!
+!SimpleMeasureTest methodsFor: 'test printing' stamp: 'FJG 5/26/2025 20:59:13'!
 testPrintingForMany
 
-	self assert: self tenPesos printString = '10 * pesos' description: 'Printing for many with correct creation'.
-	self assert: self tenDollars printString = '10 * dollars' description: 'Printing for many with invalid creation'	! !
+	self assert: self tenPesos printString = '10 * peso' description: 'Printing for many with correct creation'.
+	self assert: self tenDollars printString = '10 * dollar' description: 'Printing for many with invalid creation'	! !
 
 !SimpleMeasureTest methodsFor: 'test printing' stamp: 'HAW 11/5/2021 20:20:32'!
 testPrintingForOne
