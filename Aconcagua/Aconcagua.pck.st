@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7428] on 20 August 2025 at 11:31:53 am'!
-'Description Print unit as singular - Better infinite support'!
-!provides: 'Aconcagua' 1 24!
+'From Cuis7.5 [latest update: #7594] on 20 September 2025 at 6:48:03 pm'!
+'Description Removes addtional dot'!
+!provides: 'Aconcagua' 1 25!
 SystemOrganization addCategory: #'Aconcagua-MeasureModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModel'!
 SystemOrganization addCategory: #'Aconcagua-ArithmeticModelTests'!
@@ -895,7 +895,7 @@ isInfinite
 
 	^ false! !
 
-!ArithmeticObject methodsFor: 'testing'!
+!ArithmeticObject methodsFor: 'testing' stamp: ''!
 isNothing
 
 	self subclassResponsibility! !
@@ -910,7 +910,7 @@ isZero
 
 	^self isNothing! !
 
-!ArithmeticObject methodsFor: 'testing'!
+!ArithmeticObject methodsFor: 'testing' stamp: ''!
 negative
 
 	self subclassResponsibility! !
@@ -925,47 +925,47 @@ oddInBaseUnit
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'testing'!
+!ArithmeticObject methodsFor: 'testing' stamp: ''!
 positive
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'testing'!
+!ArithmeticObject methodsFor: 'testing' stamp: ''!
 sameDomainAs: aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'testing'!
+!ArithmeticObject methodsFor: 'testing' stamp: ''!
 sameUnitAs: aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 * aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 + aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 - aMeasure
 
 	^self + aMeasure negated! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 / aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 // aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 \\ aMeasure
 
 	self subclassResponsibility! !
@@ -985,52 +985,52 @@ floor
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 negated
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 roundTo: aNumber
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations'!
+!ArithmeticObject methodsFor: 'arithmetic operations' stamp: ''!
 truncated
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol'!
+!ArithmeticObject methodsFor: 'magnitude protocol' stamp: ''!
 < aMagnitude
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol'!
+!ArithmeticObject methodsFor: 'magnitude protocol' stamp: ''!
 <= aMagnitude
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol'!
+!ArithmeticObject methodsFor: 'magnitude protocol' stamp: ''!
 > aMagnitude
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol'!
+!ArithmeticObject methodsFor: 'magnitude protocol' stamp: ''!
 >= aMagnitude
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol'!
+!ArithmeticObject methodsFor: 'magnitude protocol' stamp: ''!
 between: min and: max
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol'!
+!ArithmeticObject methodsFor: 'magnitude protocol' stamp: ''!
 max: aMagnitude
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol'!
+!ArithmeticObject methodsFor: 'magnitude protocol' stamp: ''!
 min: aMagnitude
 
 	self subclassResponsibility! !
@@ -1046,12 +1046,12 @@ addCompoundMeasure: aMeasureBag
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 addInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 addMinusInfinity: anInfinity
 
 	self subclassResponsibility! !
@@ -1065,7 +1065,7 @@ addSimpleMeasure: aMeasure
 coerce: aNumber 
 	^ NumberToArithmeticObjectAdapter number: aNumber! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 divFrom: aNumber
 
 	self subclassResponsibility! !
@@ -1075,12 +1075,12 @@ divideCompoundMeasure: aMeasureBag
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 divideInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 divideMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
@@ -1090,7 +1090,7 @@ divideSimpleMeasure: aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 generality
 
 	^100! !
@@ -1100,12 +1100,12 @@ moduloCompoundMeasure: aMeasureBag
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
@@ -1120,12 +1120,12 @@ multiplyCompoundMeasure: aMeasureBag
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyMinusInfinity: anInfinity
 
 	self subclassResponsibility! !
@@ -1135,7 +1135,7 @@ multiplySimpleMeasure: aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 quoFrom: aNumber
 
 	self subclassResponsibility! !
@@ -1145,7 +1145,7 @@ quotientFrom: aNumber
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 remFrom: aNumber
 
 	self subclassResponsibility! !
@@ -1160,12 +1160,12 @@ remainderFrom: aNumber
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
@@ -1175,62 +1175,62 @@ remainderSimpleMeasure: aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractFrom: aNumber
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'arithmetic operations - private'!
+!ArithmeticObject methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 amount
 	
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 atBaseUnit: aBaseUnit ifNone: aBlock
 	
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 baseUnit
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 denominator
 
 	^self unit denominatorOf: self amount! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 measures
 	
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 numerator
 
 	^self unit numeratorOf: self amount! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 unit
 	
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'accessing'!
+!ArithmeticObject methodsFor: 'accessing' stamp: ''!
 unitNameOf: aUnit
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'magnitude protocol - private'!
+!ArithmeticObject methodsFor: 'magnitude protocol - private' stamp: ''!
 compareGreaterThan: aNumber
 
 	self subclassResponsibility! !
@@ -1260,12 +1260,12 @@ composeWithSimpleMeasure: aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'converting'!
+!ArithmeticObject methodsFor: 'converting' stamp: ''!
 convertAmountToBaseUnit
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'converting'!
+!ArithmeticObject methodsFor: 'converting' stamp: ''!
 convertTo: aUnit 
 
 	self subclassResponsibility! !
@@ -1281,12 +1281,12 @@ convertTo: aUnit ifSuccessful: aSuccessfulBlock ifFails: aFailureBlock
 		
 	^aSuccessfulBlock value: convertedMeasure ! !
 
-!ArithmeticObject methodsFor: 'converting'!
+!ArithmeticObject methodsFor: 'converting' stamp: ''!
 convertToBaseUnit
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'converting - private'!
+!ArithmeticObject methodsFor: 'converting - private' stamp: ''!
 convertTo: aTargetUnit using: aMeasureConverter
 
 	self subclassResponsibility.! !
@@ -1301,17 +1301,17 @@ equalsSimpleMeasure: aMeasure
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'formatting'!
+!ArithmeticObject methodsFor: 'formatting' stamp: ''!
 formatOn: aStream using: aFormatter
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'interval protocol'!
+!ArithmeticObject methodsFor: 'interval protocol' stamp: ''!
 to: stop
 
 	self subclassResponsibility! !
 
-!ArithmeticObject methodsFor: 'interval protocol'!
+!ArithmeticObject methodsFor: 'interval protocol' stamp: ''!
 to: stop by: step
 
  	self subclassResponsibility! !
@@ -1341,12 +1341,12 @@ isFixed
 
 	^self value isFixed! !
 
-!Evaluation methodsFor: 'testing'!
+!Evaluation methodsFor: 'testing' stamp: ''!
 isNothing
 
 	^self value isNothing! !
 
-!Evaluation methodsFor: 'testing'!
+!Evaluation methodsFor: 'testing' stamp: ''!
 negative
 
 	^self value negative! !
@@ -1361,52 +1361,52 @@ oddInBaseUnit
 	
 	^self value oddInBaseUnit ! !
 
-!Evaluation methodsFor: 'testing'!
+!Evaluation methodsFor: 'testing' stamp: ''!
 positive
 
 	^self value positive! !
 
-!Evaluation methodsFor: 'testing'!
+!Evaluation methodsFor: 'testing' stamp: ''!
 sameDomainAs: aMeasure
 
 	^self value sameDomainAs: aMeasure! !
 
-!Evaluation methodsFor: 'testing'!
+!Evaluation methodsFor: 'testing' stamp: ''!
 sameUnitAs: aMeasure
 
 	^self value sameUnitAs: aMeasure! !
 
-!Evaluation methodsFor: 'printing'!
+!Evaluation methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	self value printOn: aStream! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 * anAritmethicObject
 
 	^self value * anAritmethicObject value! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 + anAritmethicObject
 
 	^self value + anAritmethicObject value! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 - anAritmethicObject
 
 	^self value - anAritmethicObject value! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 / anAritmethicObject
 
 	^self value / anAritmethicObject value! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 // anAritmethicObject
 
 	^self value // anAritmethicObject value! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 \\ anAritmethicObject
 
 	^self value \\ anAritmethicObject value! !
@@ -1416,47 +1416,47 @@ printOn: aStream
 
 	^self value ^ aPower! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 negated
 	
 	^self value negated! !
 
-!Evaluation methodsFor: 'mathematic operations'!
+!Evaluation methodsFor: 'mathematic operations' stamp: ''!
 truncated
 	
 	^self value truncated
 ! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 < aMagnitude
 
 	^self value < aMagnitude! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 <= aMagnitude
 	"Send value to self so that it is faster and does not pass through #doesNotUnderstand"
 
 	^(aMagnitude < self value) not! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 > aMagnitude
 	"Send value to self so that it is faster and does not pass through #doesNotUnderstand"
 
 	^aMagnitude < self value! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 >= aMagnitude
 	"Send value to self so that it is faster and does not pass through #doesNotUnderstand"
 
 	^(self value < aMagnitude) not! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 between: min and: max
 	"Send value to self so that it is faster and does not pass through #doesNotUnderstand"
 
 	^(min <= self value) and: [self value <= max]! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 max: aMagnitude
 	"Send value to self so that it is faster and does not pass through #doesNotUnderstand.
 	Self is given back and not self value to continue maintaining the evaluation"
@@ -1464,7 +1464,7 @@ max: aMagnitude
 	self value < aMagnitude ifTrue: [^aMagnitude].
 	^self! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 min: aMagnitude
 	"Send value to self so that it is faster and does not pass through #doesNotUnderstand.
 	Self is given back and not self value to continue maintaining the evaluation"
@@ -1472,7 +1472,7 @@ min: aMagnitude
 	self value < aMagnitude ifTrue: [^self].
 	^aMagnitude! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 notInclusiveBetween: min and: max
 	"Create local variable #val for best performance"
 
@@ -1481,7 +1481,7 @@ notInclusiveBetween: min and: max
 	val := self value.
 	^val > min and: [val <= max]! !
 
-!Evaluation methodsFor: 'magnitude protocol'!
+!Evaluation methodsFor: 'magnitude protocol' stamp: ''!
 notInclusiveBetween: min andNotInclusive: max
 	"Create local variable #val for best performance"
 
@@ -1490,7 +1490,7 @@ notInclusiveBetween: min andNotInclusive: max
 	val := self value.
 	^val > min and: [val < max]! !
 
-!Evaluation methodsFor: 'comparing'!
+!Evaluation methodsFor: 'comparing' stamp: ''!
 = anObject
 
 	^self value = anObject value! !
@@ -1505,7 +1505,7 @@ equalsSimpleMeasure: aMeasure
 
 	^self value = aMeasure! !
 
-!Evaluation methodsFor: 'comparing'!
+!Evaluation methodsFor: 'comparing' stamp: ''!
 hash
 
 	^self value hash! !
@@ -1520,7 +1520,7 @@ addSimpleMeasure: aMeasure
 
 	^self value addSimpleMeasure: aMeasure! !
 
-!Evaluation methodsFor: 'mathematic operations - private'!
+!Evaluation methodsFor: 'mathematic operations - private' stamp: ''!
 divFrom: aNumber 
 	
 	^self value divFrom: aNumber! !
@@ -1555,13 +1555,13 @@ multiplySimpleMeasure: aMeasure
 
 	^self value multiplySimpleMeasure: aMeasure! !
 
-!Evaluation methodsFor: 'mathematic operations - private'!
+!Evaluation methodsFor: 'mathematic operations - private' stamp: ''!
 quoFrom: aNumber
 
 	^self value quoFrom: aNumber
 ! !
 
-!Evaluation methodsFor: 'mathematic operations - private'!
+!Evaluation methodsFor: 'mathematic operations - private' stamp: ''!
 remFrom: aNumber
 
 	^self value remFrom: aNumber
@@ -1577,102 +1577,102 @@ remainderSimpleMeasure: aMeasure
 
 	^self value remainderSimpleMeasure: aMeasure! !
 
-!Evaluation methodsFor: 'mathematic operations - private'!
+!Evaluation methodsFor: 'mathematic operations - private' stamp: ''!
 subtractFrom: aNumber
 
 	^self value subtractFrom: aNumber! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 addInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 addMinusInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 divideInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 divideMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyMinusInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractInfinity: anInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'arithmetic operations - private'!
+!Evaluation methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractMinusInfinity: aMinusInfinity
 
 	self subclassResponsibility! !
 
-!Evaluation methodsFor: 'accessing'!
+!Evaluation methodsFor: 'accessing' stamp: ''!
 amount
 	
 	^self value amount! !
 
-!Evaluation methodsFor: 'accessing'!
+!Evaluation methodsFor: 'accessing' stamp: ''!
 atBaseUnit: aBaseUnit ifNone: aBlock
 
 	^self value atBaseUnit: aBaseUnit ifNone: aBlock! !
 
-!Evaluation methodsFor: 'accessing'!
+!Evaluation methodsFor: 'accessing' stamp: ''!
 baseUnit
 
 	^self unit baseUnit! !
 
-!Evaluation methodsFor: 'accessing'!
+!Evaluation methodsFor: 'accessing' stamp: ''!
 measures
 
 	^self value measures! !
 
-!Evaluation methodsFor: 'accessing'!
+!Evaluation methodsFor: 'accessing' stamp: ''!
 unit
 	
 	^self value unit! !
 
-!Evaluation methodsFor: 'accessing'!
+!Evaluation methodsFor: 'accessing' stamp: ''!
 unitNameFor: aNumber
 
 	^self value unitNameFor: aNumber! !
 
-!Evaluation methodsFor: 'magnitude protocol - private'!
+!Evaluation methodsFor: 'magnitude protocol - private' stamp: ''!
 compareGreaterThan: aNumber
 
 	^self value compareGreaterThan: aNumber! !
@@ -1702,32 +1702,32 @@ composeWithSimpleMeasure: aMeasure
 
 	^self value composeWithSimpleMeasure: aMeasure! !
 
-!Evaluation methodsFor: 'converting'!
+!Evaluation methodsFor: 'converting' stamp: ''!
 convertAmountToBaseUnit
 
 	^self value convertAmountToBaseUnit! !
 
-!Evaluation methodsFor: 'converting'!
+!Evaluation methodsFor: 'converting' stamp: ''!
 convertTo: aUnit
 
 	^self value convertTo: aUnit! !
 
-!Evaluation methodsFor: 'converting'!
+!Evaluation methodsFor: 'converting' stamp: ''!
 convertToBaseUnit
 
 	^self value convertToBaseUnit! !
 
-!Evaluation methodsFor: 'converting - private'!
+!Evaluation methodsFor: 'converting - private' stamp: ''!
 convertTo: aTargetUnit using: aMeasureConverter
 
 	^self value convertTo: aTargetUnit using: aMeasureConverter! !
 
-!Evaluation methodsFor: 'message forwarding'!
+!Evaluation methodsFor: 'message forwarding' stamp: ''!
 doesNotUnderstand: aMessage
 
 	^aMessage sendTo: self value! !
 
-!Evaluation methodsFor: 'proxy implementation'!
+!Evaluation methodsFor: 'proxy implementation' stamp: ''!
 respondsTo: aSymbol
 
 	^(super respondsTo: aSymbol) or:[self value respondsTo: aSymbol]! !
@@ -1743,80 +1743,80 @@ floor
 	^self value floor
 	! !
 
-!Evaluation methodsFor: 'arithmetic operations'!
+!Evaluation methodsFor: 'arithmetic operations' stamp: ''!
 roundTo: aNumber
 	
 	^self value roundTo: aNumber
 ! !
 
-!Evaluation methodsFor: 'interval protocol'!
+!Evaluation methodsFor: 'interval protocol' stamp: ''!
 to: stop
 
 	^self value to: stop! !
 
-!Evaluation methodsFor: 'interval protocol'!
+!Evaluation methodsFor: 'interval protocol' stamp: ''!
 to: stop by: step
 
 	^self to: stop by: step! !
 
-!Evaluation methodsFor: 'evaluating'!
+!Evaluation methodsFor: 'evaluating' stamp: ''!
 value
 
 	self subclassResponsibility! !
 
-!CachedEvaluation methodsFor: 'printing'!
+!CachedEvaluation methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	aStream nextPutAll: 'Cache for: '.
 	evaluation printOn: aStream! !
 
-!CachedEvaluation methodsFor: 'evaluating'!
+!CachedEvaluation methodsFor: 'evaluating' stamp: ''!
 computeValue
 
 	^evaluation value! !
 
-!CachedEvaluation methodsFor: 'evaluating'!
+!CachedEvaluation methodsFor: 'evaluating' stamp: ''!
 value
 
 	cachedValue isNil ifTrue: [self initializeCachedValue].
 	^cachedValue! !
 
-!CachedEvaluation methodsFor: 'initialization'!
+!CachedEvaluation methodsFor: 'initialization' stamp: ''!
 initializeCachedValue
 
 	cachedValue := self computeValue! !
 
-!CachedEvaluation methodsFor: 'initialization'!
+!CachedEvaluation methodsFor: 'initialization' stamp: ''!
 initializeFor: anEvaluation
 
 	evaluation := anEvaluation! !
 
-!CachedEvaluation class methodsFor: 'instance creation'!
+!CachedEvaluation class methodsFor: 'instance creation' stamp: ''!
 for: anEvaluation
 
 	^self new initializeFor: anEvaluation! !
 
-!DummyEvaluation methodsFor: 'initialization'!
+!DummyEvaluation methodsFor: 'initialization' stamp: ''!
 initializeMeasure: aMeasure
 
 	measure := aMeasure! !
 
-!DummyEvaluation methodsFor: 'evaluating'!
+!DummyEvaluation methodsFor: 'evaluating' stamp: ''!
 value
 
 	^measure! !
 
-!DummyEvaluation class methodsFor: 'instance creation'!
+!DummyEvaluation class methodsFor: 'instance creation' stamp: ''!
 of: aMeasure
 
 	^self new initializeMeasure: aMeasure! !
 
-!Measure methodsFor: 'accessing'!
+!Measure methodsFor: 'accessing' stamp: ''!
 hash 
 	
 	self subclassResponsibility! !
 
-!Measure methodsFor: 'testing'!
+!Measure methodsFor: 'testing' stamp: ''!
 isZero
 
 	^self isNothing! !
@@ -1843,7 +1843,7 @@ isFixed
 	
 	! !
 
-!CompoundMeasure methodsFor: 'testing'!
+!CompoundMeasure methodsFor: 'testing' stamp: ''!
 isNothing
 
 	^measures allSatisfy: [ :aMeasure | aMeasure isNothing].
@@ -2049,12 +2049,12 @@ multiplySimpleMeasure: aMeasure
 	aMeasure isNothing ifTrue: [^aMeasure].
 	^self composeDoingOnEachMeasure: [:aMeasureInBag | aMeasureInBag * aMeasure]! !
 
-!CompoundMeasure methodsFor: 'arithmetic operations - private'!
+!CompoundMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 quoFrom: aNumber
 
 	InvalidBinaryOperationException signalOperationName: 'quotient' leftOperand: aNumber rightOperand: self! !
 
-!CompoundMeasure methodsFor: 'arithmetic operations - private'!
+!CompoundMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 remFrom: aNumber
 
 	InvalidBinaryOperationException signalOperationName: 'rest' leftOperand: aNumber rightOperand: self! !
@@ -2080,33 +2080,33 @@ remainderSimpleMeasure: aMeasure
 		leftOperand: aMeasure
 		rightOperand: self! !
 
-!CompoundMeasure methodsFor: 'arithmetic operations - private'!
+!CompoundMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractFrom: aNumber
 
 	^self negated + aNumber! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 amount
 	
 	Error signal: 'Amount of a MeasureBag is not defined'! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 atBaseUnit: aBaseUnit ifNone: aBlock
 
 	^measures detect: [ :aMeasure | aMeasure baseUnit=aBaseUnit ] ifNone: aBlock
 	! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 atSameBaseUnitAs: aUnit
 
 	^self atBaseUnit: aUnit baseUnit ifNone: [0]! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 denominator
 
 	^1! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 hash
 
 	^measures inject: 0 into: [ :hash :measure | hash bitXor: measure hash ].
@@ -2114,33 +2114,33 @@ hash
 		
 		! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 measures
 	"Return a copy because aMeasureBag inmutable"
 	
 	^measures copy! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 numberOfMeasures
 	
 	^measures size! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 numerator
 
 	^self! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 unit
 	
 	Error signal: 'Unit of a MeasureBag is not defined'! !
 
-!CompoundMeasure methodsFor: 'accessing'!
+!CompoundMeasure methodsFor: 'accessing' stamp: ''!
 unitNameOf: aUnit
 
 	Error signal: 'Unit of a MeasureBag is not defined'! !
 
-!CompoundMeasure methodsFor: 'converting'!
+!CompoundMeasure methodsFor: 'converting' stamp: ''!
 convertAmountToBaseUnit
 	"In fact, always one is going away to raise an exception since amount is not defined for a MeasureBag,
 	but it was implemented thus so that the semantics is clear and not to repeat the code that generates the exception"
@@ -2155,7 +2155,7 @@ convertTo: aTargetUnit using: aMeasureConverter
 	
 	^aMeasureConverter convertCompoundMeasure: self to: aTargetUnit! !
 
-!CompoundMeasure methodsFor: 'initialization'!
+!CompoundMeasure methodsFor: 'initialization' stamp: ''!
 initializeMeasures: aCollection
 
 	measures := aCollection! !
@@ -2203,12 +2203,12 @@ isFixed
 
 	^amount isFixed! !
 
-!SimpleMeasure methodsFor: 'testing'!
+!SimpleMeasure methodsFor: 'testing' stamp: ''!
 isNothing
 
 	^self convertToBaseUnit amount = self baseUnit nothingAmount! !
 
-!SimpleMeasure methodsFor: 'testing'!
+!SimpleMeasure methodsFor: 'testing' stamp: ''!
 negative
 
 	^amount negative! !
@@ -2226,17 +2226,17 @@ oddInBaseUnit
 	"See odd comment - Hernan"
 	^self convertAmountToBaseUnit odd! !
 
-!SimpleMeasure methodsFor: 'testing'!
+!SimpleMeasure methodsFor: 'testing' stamp: ''!
 positive
 
 	^amount positive! !
 
-!SimpleMeasure methodsFor: 'testing'!
+!SimpleMeasure methodsFor: 'testing' stamp: ''!
 sameDomainAs: aMeasure 
 	
 	^self unit sameDomainAs: aMeasure unit! !
 
-!SimpleMeasure methodsFor: 'testing'!
+!SimpleMeasure methodsFor: 'testing' stamp: ''!
 sameUnitAs: aMeasure 
 	
 	^unit = aMeasure unit! !
@@ -2289,22 +2289,22 @@ abs
 
 	^self unit with: amount abs! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations'!
+!SimpleMeasure methodsFor: 'arithmetic operations' stamp: ''!
 floor
 	
 	^unit with: amount floor! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations'!
+!SimpleMeasure methodsFor: 'arithmetic operations' stamp: ''!
 negated
 
 	^self class amount: amount negated unit: unit! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations'!
+!SimpleMeasure methodsFor: 'arithmetic operations' stamp: ''!
 roundTo: aNumber
 	
 	^self class amount: (amount roundTo: aNumber) unit: unit! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations'!
+!SimpleMeasure methodsFor: 'arithmetic operations' stamp: ''!
 truncated
 	
 	^self class amount: amount truncated unit: unit! !
@@ -2314,7 +2314,7 @@ truncated
 
 	^aMeasure greaterThanSimpleMeasure: self! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: ''!
 <= aMeasure
 	"This implemented thus so that the CanNotConvertMeasureException exception rises correctly"
 
@@ -2325,7 +2325,7 @@ truncated
 
 	^aMeasure lessThanSimpleMeasure: self! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: ''!
 >= aMeasure
 	"This implemented thus so that the CanNotConvertMeasureException exception rises correctly"
 
@@ -2339,33 +2339,33 @@ between: min and: max
 
 	 ^self >= min and: [self <= max]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: ''!
 between: min andNotInclusive: max
 	"The comparison this done thus so that if there is error of conversion is generated the exception correctly"
 
 	 ^self >= min and: [self < max]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: ''!
 max: aMeasure
 
 	 ^self < aMeasure
 		ifTrue: [aMeasure]
 		ifFalse: [ self ]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: ''!
 min: aMeasure
 
 	 ^self < aMeasure
 		ifTrue: [ self ]
 		ifFalse: [ aMeasure ]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: ''!
 notInclusiveBetween: min and: max
 	"The comparison this done thus so that if there is error of conversion is generated the exception correctly"
 
 	 ^self > min and: [self <= max]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol'!
+!SimpleMeasure methodsFor: 'magnitude protocol' stamp: ''!
 notInclusiveBetween: min andNotInclusive: max
 	"The comparison this done thus so that if there is error of conversion is generated the exception correctly"
 
@@ -2400,17 +2400,17 @@ addCompoundMeasure: aMeasureBag
 
 	^aMeasureBag addSimpleMeasure: self! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 addInfinity: anInfinity
 
 	^anInfinity! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 addMinusInfinity: aMinusInfinity
 
 	^aMinusInfinity! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 addSameDomainMeasure: aMeasure
 
 	^(self sameUnitAs: aMeasure) 
@@ -2438,12 +2438,12 @@ divideCompoundMeasure: aMeasureBag
 
 	^aMeasureBag divideByMeasure: self! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 divideInfinity: anInfinity
 
 	^0! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 divideMinusInfinity: aMinusInfinity
 
 	^0! !
@@ -2464,12 +2464,12 @@ moduloCompoundMeasure: aMeasureBag
 
 	^aMeasureBag moduloByMeasure: self! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloInfinity: anInfinity
 
 	^0! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloMinusInfinity: aMinusInfinity
 
 	^0! !
@@ -2490,12 +2490,12 @@ multiplyCompoundMeasure: aMeasureBag
 
 	^aMeasureBag multiplySimpleMeasure: self! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyInfinity: anInfinity
 
 	^anInfinity! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyMinusInfinity: aMinusInfinity
 
 	^aMinusInfinity! !
@@ -2511,12 +2511,12 @@ multiplySimpleMeasure: aMeasure
 	^leftFactor unit * rightFactor unit 
 		with: leftFactor amount * rightFactor amount! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 quoFrom: aNumber
 
 	^NullUnit new / unit with: (aNumber quo: amount)! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 remFrom: aNumber
 
 	^aNumber isNothing
@@ -2531,12 +2531,12 @@ remainderCompoundMeasure: aMeasureBag
 		leftOperand: aMeasureBag
 		rightOperand: self! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderInfinity: anInfinity
 
 	^0! !
 
-!SimpleMeasure methodsFor: 'arithmetic operations - private'!
+!SimpleMeasure methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderMinusInfinity: aMinusInfinity
 
 	^0! !
@@ -2566,44 +2566,44 @@ subtractMinusInfinity: aMinusInfinity
 
 	^aMinusInfinity! !
 
-!SimpleMeasure methodsFor: 'accessing'!
+!SimpleMeasure methodsFor: 'accessing' stamp: ''!
 amount
 	
 	^amount! !
 
-!SimpleMeasure methodsFor: 'accessing'!
+!SimpleMeasure methodsFor: 'accessing' stamp: ''!
 atBaseUnit: aBaseUnit ifNone: aBlock
 
 	^self baseUnit = aBaseUnit ifTrue: [self] ifFalse: aBlock! !
 
-!SimpleMeasure methodsFor: 'accessing'!
+!SimpleMeasure methodsFor: 'accessing' stamp: ''!
 baseUnit
 	
 	^self unit baseUnit! !
 
-!SimpleMeasure methodsFor: 'accessing'!
+!SimpleMeasure methodsFor: 'accessing' stamp: ''!
 hash
 
 	^self convertAmountToBaseUnit hash! !
 
-!SimpleMeasure methodsFor: 'accessing'!
+!SimpleMeasure methodsFor: 'accessing' stamp: ''!
 measures
 
 	^self isNothing
 		ifTrue: [#()]
 		ifFalse: [Array with: self]! !
 
-!SimpleMeasure methodsFor: 'accessing'!
+!SimpleMeasure methodsFor: 'accessing' stamp: ''!
 unit
 
 	^unit! !
 
-!SimpleMeasure methodsFor: 'accessing'!
+!SimpleMeasure methodsFor: 'accessing' stamp: ''!
 unitNameOf: aUnit
 
 	^self amount abs = 1 ifTrue: [aUnit nameForOne] ifFalse: [aUnit nameForMany]! !
 
-!SimpleMeasure methodsFor: 'magnitude protocol - private'!
+!SimpleMeasure methodsFor: 'magnitude protocol - private' stamp: ''!
 compareGreaterThan: aNumber
 
 	^aNumber = 0 
@@ -2672,24 +2672,24 @@ asIntegerAmount
 	
 	^self class amount: amount asInteger unit: unit! !
 
-!SimpleMeasure methodsFor: 'converting'!
+!SimpleMeasure methodsFor: 'converting' stamp: ''!
 convertAmountToBaseUnit
 	
 	^self unit convertAmountToBaseUnit: self amount! !
 
-!SimpleMeasure methodsFor: 'converting'!
+!SimpleMeasure methodsFor: 'converting' stamp: ''!
 convertTo: aTargetUnit
 
 	^(unit sameDomainAs: aTargetUnit) 
 		ifTrue: [self convertInSameDomainTo: aTargetUnit]
 		ifFalse: [CanNotConvertMeasureException signalSourceMeasure: self targetUnit: aTargetUnit]! !
 
-!SimpleMeasure methodsFor: 'converting'!
+!SimpleMeasure methodsFor: 'converting' stamp: ''!
 convertToBaseUnit
 
 	^self convertTo: self baseUnit! !
 
-!SimpleMeasure methodsFor: 'converting - private'!
+!SimpleMeasure methodsFor: 'converting - private' stamp: ''!
 convertInSameDomainTo: aTargetUnit
 
 	^aTargetUnit convertFromBaseUnit: (unit convertToBaseUnit: self)! !
@@ -2702,18 +2702,18 @@ convertTo: aTargetUnit using: aMeasureConverter
 	
 	^aMeasureConverter convertMeasure: self to: aTargetUnit! !
 
-!SimpleMeasure methodsFor: 'initialization'!
+!SimpleMeasure methodsFor: 'initialization' stamp: ''!
 initializeAmount: aNumber unit: aUnit 
 
 	amount := aNumber.
 	unit := aUnit! !
 
-!SimpleMeasure methodsFor: 'interval protocol'!
+!SimpleMeasure methodsFor: 'interval protocol' stamp: ''!
 to: stop
 
 	 ^self to: stop by: (unit with: 1)! !
 
-!SimpleMeasure methodsFor: 'interval protocol'!
+!SimpleMeasure methodsFor: 'interval protocol' stamp: ''!
 to: stop by: step
 
 	 ^ArithmeticObjectInterval from: self to: stop by: step! !
@@ -2723,7 +2723,7 @@ ceiling
 	
 	^unit with: amount ceiling ! !
 
-!SimpleMeasure class methodsFor: 'instance creation'!
+!SimpleMeasure class methodsFor: 'instance creation' stamp: ''!
 amount: aNumber unit: aUnit
 
 	^self new initializeAmount: aNumber unit: aUnit! !
@@ -2743,64 +2743,64 @@ isInfinite
 
 	^ true! !
 
-!MinusInfinity methodsFor: 'testing'!
+!MinusInfinity methodsFor: 'testing' stamp: ''!
 isNothing
 
 	^false! !
 
-!MinusInfinity methodsFor: 'testing'!
+!MinusInfinity methodsFor: 'testing' stamp: ''!
 negative
 
 	^false! !
 
-!MinusInfinity methodsFor: 'testing'!
+!MinusInfinity methodsFor: 'testing' stamp: ''!
 positive
 
 	^true! !
 
-!MinusInfinity methodsFor: 'testing'!
+!MinusInfinity methodsFor: 'testing' stamp: ''!
 sameDomainAs: aMeasure 
 	
 	^self unit sameDomainAs: aMeasure unit! !
 
-!MinusInfinity methodsFor: 'testing'!
+!MinusInfinity methodsFor: 'testing' stamp: ''!
 sameUnitAs: aMeasure
 
 	^self unit = aMeasure unit! !
 
-!MinusInfinity methodsFor: 'printing'!
+!MinusInfinity methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	aStream nextPutAll: 'Minus Infinity'! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 * aMeasure
 
 	aMeasure isNothing
 		ifTrue: [self signalIndeterminateOperation: 'Multiplication' leftOperand: aMeasure].
 	^aMeasure multiplyMinusInfinity: self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 + aMeasure
 
 	^aMeasure addMinusInfinity: self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 - aMeasure
 
 	^aMeasure subtractMinusInfinity: self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 / aMeasure
 
 	self signalIndeterminateOperation: 'Division' rightOperand: aMeasure! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 // aMeasure
 
 	self signalIndeterminateOperation: 'Modulo' rightOperand: aMeasure! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 \\ aMeasure
 
 	self signalIndeterminateOperation: 'Remainder' rightOperand: aMeasure! !
@@ -2821,57 +2821,57 @@ negated
   
 	^PlusInfinity new! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 roundTo: aNumber
 
 	^self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations'!
+!MinusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 truncated
 
 	^self! !
 
-!MinusInfinity methodsFor: 'magnitude protocol'!
+!MinusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 < aMagnitude
 
 	^true! !
 
-!MinusInfinity methodsFor: 'magnitude protocol'!
+!MinusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 <= aMagnitude
 
 	^true! !
 
-!MinusInfinity methodsFor: 'magnitude protocol'!
+!MinusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 > aMagnitude
 
 	^false! !
 
-!MinusInfinity methodsFor: 'magnitude protocol'!
+!MinusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 >= aMagnitude
 
 	^self = aMagnitude! !
 
-!MinusInfinity methodsFor: 'magnitude protocol'!
+!MinusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 between: min and: max
 
 	^(self >= min) and: [self <= max]! !
 
-!MinusInfinity methodsFor: 'magnitude protocol'!
+!MinusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 max: aMagnitude
 
 	^aMagnitude! !
 
-!MinusInfinity methodsFor: 'magnitude protocol'!
+!MinusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 min: aMagnitude
 
 	^self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 addInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Sum' leftOperand: anInfinity! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 addMinusInfinity: anInfinity
 
 	^self! !
@@ -2881,22 +2881,22 @@ addSimpleMeasure: aMeasure
 
 	^self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divFrom: aNumber
 
 	^0! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divideByUnit: aUnit
 
 	^aUnit with: 1 / self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divideInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Division' leftOperand: anInfinity! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divideMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Division' leftOperand: aMinusInfinity! !
@@ -2906,12 +2906,12 @@ divideSimpleMeasure: aMeasure
 
 	^0! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Modulo' leftOperand: anInfinity! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Modulo' leftOperand: aMinusInfinity! !
@@ -2921,17 +2921,17 @@ moduloSimpleMeasure: aMeasure
 
 	^0! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyByUnit: aUnit
 
 	^aUnit with: self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyInfinity: anInfinity
 
 	^self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyMinusInfinity: aMinusInfinity
 
 	^aMinusInfinity negated! !
@@ -2941,22 +2941,22 @@ multiplySimpleMeasure: aMeasure
 
 	^self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 quoFrom: aNumber
 
 	^aNumber / self! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 remFrom: aNumber
 
 	^aNumber - (self * (self quoFrom: aNumber))! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Remainder' leftOperand: anInfinity! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Remainder' leftOperand: aMinusInfinity! !
@@ -2966,52 +2966,52 @@ remainderSimpleMeasure: aMeasure
 
 	^aMeasure - (self * (self quoFrom: aMeasure))! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractFrom: aNumber
 
 	^self negated! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Subtract' leftOperand: anInfinity! !
 
-!MinusInfinity methodsFor: 'arithmetic operations - private'!
+!MinusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Subtract' leftOperand: aMinusInfinity! !
 
-!MinusInfinity methodsFor: 'accessing'!
+!MinusInfinity methodsFor: 'accessing' stamp: ''!
 amount
 
 	^self! !
 
-!MinusInfinity methodsFor: 'accessing'!
+!MinusInfinity methodsFor: 'accessing' stamp: ''!
 baseUnit
 
 	^NullUnit new! !
 
-!MinusInfinity methodsFor: 'accessing'!
+!MinusInfinity methodsFor: 'accessing' stamp: ''!
 denominator
 
 	^1! !
 
-!MinusInfinity methodsFor: 'accessing'!
+!MinusInfinity methodsFor: 'accessing' stamp: ''!
 numerator
 
 	 ^self! !
 
-!MinusInfinity methodsFor: 'accessing'!
+!MinusInfinity methodsFor: 'accessing' stamp: ''!
 unit
 
 	^self baseUnit! !
 
-!MinusInfinity methodsFor: 'accessing'!
+!MinusInfinity methodsFor: 'accessing' stamp: ''!
 unitNameOf: aUnit
 
 	^aUnit nameForMany! !
 
-!MinusInfinity methodsFor: 'magnitude protocol - private'!
+!MinusInfinity methodsFor: 'magnitude protocol - private' stamp: ''!
 compareGreaterThan: aNumber
 
 	^false! !
@@ -3041,29 +3041,29 @@ composeWithSimpleMeasure: aMeasure
 
 	^CompoundMeasure measures: (OrderedCollection with: self with: aMeasure)! !
 
-!MinusInfinity methodsFor: 'converting'!
+!MinusInfinity methodsFor: 'converting' stamp: ''!
 convertAmountToBaseUnit
 
 	^self unit convertAmountToBaseUnit: self! !
 
-!MinusInfinity methodsFor: 'converting'!
+!MinusInfinity methodsFor: 'converting' stamp: ''!
 convertTo: aTargetUnit
 
 	^(self unit sameDomainAs: aTargetUnit)
 		ifTrue: [self convertInSameDomainTo: aTargetUnit]
 		ifFalse: [CanNotConvertMeasureException signalSourceMeasure: self targetUnit: aTargetUnit]! !
 
-!MinusInfinity methodsFor: 'converting'!
+!MinusInfinity methodsFor: 'converting' stamp: ''!
 convertToBaseUnit
 
 	^self convertTo: self baseUnit! !
 
-!MinusInfinity methodsFor: 'converting - private'!
+!MinusInfinity methodsFor: 'converting - private' stamp: ''!
 convertInSameDomainTo: aTargetUnit
 
 	^aTargetUnit convertFromBaseUnit: (self unit convertToBaseUnit: self)! !
 
-!MinusInfinity methodsFor: 'converting - private'!
+!MinusInfinity methodsFor: 'converting - private' stamp: ''!
 convertTo: aTargetUnit using: aMeasureConverter
 	"NOT TO USE. Use the message convert:to:  of MeasureConverter.
 	This message is here by a question of double-dispatch.
@@ -3081,7 +3081,7 @@ equalsSimpleMeasure: aMeasure
 
 	^self = aMeasure! !
 
-!MinusInfinity methodsFor: 'exceptions'!
+!MinusInfinity methodsFor: 'exceptions' stamp: ''!
 signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
 
 	IndeterminateOperationException
@@ -3089,7 +3089,7 @@ signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
 		leftOperand: aLeftOperand
 		rightOperand: self! !
 
-!MinusInfinity methodsFor: 'exceptions'!
+!MinusInfinity methodsFor: 'exceptions' stamp: ''!
 signalIndeterminateOperation: anOperationString rightOperand: aRightOperand
 
 	IndeterminateOperationException
@@ -3097,12 +3097,12 @@ signalIndeterminateOperation: anOperationString rightOperand: aRightOperand
 		leftOperand: self
 		rightOperand: aRightOperand! !
 
-!MinusInfinity methodsFor: 'interval protocol'!
+!MinusInfinity methodsFor: 'interval protocol' stamp: ''!
 to: stop
 
 	^self to: stop by: (self unit with: 1)! !
 
-!MinusInfinity methodsFor: 'interval protocol'!
+!MinusInfinity methodsFor: 'interval protocol' stamp: ''!
 to: stop by: step
 
 	^ArithmeticObjectInterval
@@ -3129,7 +3129,7 @@ initializeGlobalVariable
 	Smalltalk at: self globalName put: uniqueInstance 
 ! !
 
-!MinusInfinity class methodsFor: 'initialization'!
+!MinusInfinity class methodsFor: 'initialization' stamp: ''!
 initializeUniqueInstance
 
 	uniqueInstance := super new! !
@@ -3139,7 +3139,7 @@ globalName
 
 	^ #minusInfinity! !
 
-!MinusInfinity class methodsFor: 'instance creation'!
+!MinusInfinity class methodsFor: 'instance creation' stamp: ''!
 new
 
 	^uniqueInstance! !
@@ -3159,64 +3159,64 @@ isInfinite
 
 	^ true! !
 
-!PlusInfinity methodsFor: 'testing'!
+!PlusInfinity methodsFor: 'testing' stamp: ''!
 isNothing
 
 	^false! !
 
-!PlusInfinity methodsFor: 'testing'!
+!PlusInfinity methodsFor: 'testing' stamp: ''!
 negative
 
 	^false! !
 
-!PlusInfinity methodsFor: 'testing'!
+!PlusInfinity methodsFor: 'testing' stamp: ''!
 positive
 
 	^true! !
 
-!PlusInfinity methodsFor: 'testing'!
+!PlusInfinity methodsFor: 'testing' stamp: ''!
 sameDomainAs: aMeasure 
 	
 	^self unit sameDomainAs: aMeasure unit! !
 
-!PlusInfinity methodsFor: 'testing'!
+!PlusInfinity methodsFor: 'testing' stamp: ''!
 sameUnitAs: aMeasure
 
 	^self unit = aMeasure unit! !
 
-!PlusInfinity methodsFor: 'printing'!
+!PlusInfinity methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	aStream nextPutAll: 'Infinity'! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 * aMeasure
 
 	aMeasure isNothing
 		ifTrue: [self signalIndeterminateOperation: 'Multiplication' leftOperand: aMeasure].
 	^aMeasure multiplyInfinity: self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 + aMeasure
 
 	^aMeasure addInfinity: self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 - aMeasure
 
 	^aMeasure subtractInfinity: self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 / aMeasure
 
 	self signalIndeterminateOperation: 'Division' rightOperand: aMeasure! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 // aMeasure
 
 	self signalIndeterminateOperation: 'Modulo' rightOperand: aMeasure! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 \\ aMeasure
 
 	self signalIndeterminateOperation: 'Remainder' rightOperand: aMeasure! !
@@ -3237,22 +3237,22 @@ negated
 
 	^MinusInfinity new! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 roundTo: aNumber
 
 	^self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations'!
+!PlusInfinity methodsFor: 'arithmetic operations' stamp: ''!
 truncated
 
 	^self! !
 
-!PlusInfinity methodsFor: 'magnitude protocol'!
+!PlusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 < aMagnitude
 
 	^false! !
 
-!PlusInfinity methodsFor: 'magnitude protocol'!
+!PlusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 <= aMagnitude
 
 	^self = aMagnitude! !
@@ -3262,32 +3262,32 @@ truncated
 
 	^(self = aMagnitude) not! !
 
-!PlusInfinity methodsFor: 'magnitude protocol'!
+!PlusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 >= aMagnitude
 
 	^true! !
 
-!PlusInfinity methodsFor: 'magnitude protocol'!
+!PlusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 between: min and: max
 
 	^(self >= min) and: [self <= max]! !
 
-!PlusInfinity methodsFor: 'magnitude protocol'!
+!PlusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 max: aMagnitude
 
 	^self! !
 
-!PlusInfinity methodsFor: 'magnitude protocol'!
+!PlusInfinity methodsFor: 'magnitude protocol' stamp: ''!
 min: aMagnitude
 
 	^aMagnitude! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 addInfinity: anInfinity
 
 	^self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 addMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Sum' leftOperand: aMinusInfinity! !
@@ -3297,22 +3297,22 @@ addSimpleMeasure: aMeasure
 
 	^self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divFrom: aNumber
 
 	^0! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divideByUnit: aUnit
 
 	^aUnit with: 1 / self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divideInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Division' leftOperand: anInfinity! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 divideMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Division' leftOperand: aMinusInfinity! !
@@ -3322,12 +3322,12 @@ divideSimpleMeasure: aMeasure
 
 	^0! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Modulo' leftOperand: anInfinity! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 moduloMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Modulo' leftOperand: aMinusInfinity! !
@@ -3337,17 +3337,17 @@ moduloSimpleMeasure: aMeasure
 
 	^0! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyByUnit: aUnit
 
 	^aUnit with: self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyInfinity: anInfinity
 
 	^self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 multiplyMinusInfinity: aMinusInfinity
 
 	^aMinusInfinity! !
@@ -3357,22 +3357,22 @@ multiplySimpleMeasure: aMeasure
 
 	^self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 quoFrom: aNumber
 
 	^aNumber / self! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 remFrom: aNumber
 
 	^aNumber - (self * (self quoFrom: aNumber))! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Remainder' leftOperand: anInfinity! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 remainderMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Remainder' leftOperand: aMinusInfinity! !
@@ -3382,52 +3382,52 @@ remainderSimpleMeasure: aMeasure
 
 	^aMeasure - (self * (self quoFrom: aMeasure))! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractFrom: aNumber
 
 	^self negated! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractInfinity: anInfinity
 
 	self signalIndeterminateOperation: 'Subtract' leftOperand: anInfinity! !
 
-!PlusInfinity methodsFor: 'arithmetic operations - private'!
+!PlusInfinity methodsFor: 'arithmetic operations - private' stamp: ''!
 subtractMinusInfinity: aMinusInfinity
 
 	self signalIndeterminateOperation: 'Subtract' leftOperand: aMinusInfinity! !
 
-!PlusInfinity methodsFor: 'accessing'!
+!PlusInfinity methodsFor: 'accessing' stamp: ''!
 amount
 
 	^self! !
 
-!PlusInfinity methodsFor: 'accessing'!
+!PlusInfinity methodsFor: 'accessing' stamp: ''!
 baseUnit
 
 	^NullUnit new! !
 
-!PlusInfinity methodsFor: 'accessing'!
+!PlusInfinity methodsFor: 'accessing' stamp: ''!
 denominator
 
 	^1! !
 
-!PlusInfinity methodsFor: 'accessing'!
+!PlusInfinity methodsFor: 'accessing' stamp: ''!
 numerator
 
 	 ^self! !
 
-!PlusInfinity methodsFor: 'accessing'!
+!PlusInfinity methodsFor: 'accessing' stamp: ''!
 unit
 
 	^self baseUnit! !
 
-!PlusInfinity methodsFor: 'accessing'!
+!PlusInfinity methodsFor: 'accessing' stamp: ''!
 unitNameOf: aUnit
 
 	^aUnit nameForMany! !
 
-!PlusInfinity methodsFor: 'magnitude protocol - private'!
+!PlusInfinity methodsFor: 'magnitude protocol - private' stamp: ''!
 compareGreaterThan: aNumber
 
 	^true! !
@@ -3457,29 +3457,29 @@ composeWithSimpleMeasure: aMeasure
 
 	^CompoundMeasure measures: (OrderedCollection with: self with: aMeasure)! !
 
-!PlusInfinity methodsFor: 'converting'!
+!PlusInfinity methodsFor: 'converting' stamp: ''!
 convertAmountToBaseUnit
 
 	^self unit convertAmountToBaseUnit: self! !
 
-!PlusInfinity methodsFor: 'converting'!
+!PlusInfinity methodsFor: 'converting' stamp: ''!
 convertTo: aTargetUnit
 
 	^(self unit sameDomainAs: aTargetUnit)
 		ifTrue: [self convertInSameDomainTo: aTargetUnit]
 		ifFalse: [CanNotConvertMeasureException signalSourceMeasure: self targetUnit: aTargetUnit]! !
 
-!PlusInfinity methodsFor: 'converting'!
+!PlusInfinity methodsFor: 'converting' stamp: ''!
 convertToBaseUnit
 
 	^self convertTo: self baseUnit! !
 
-!PlusInfinity methodsFor: 'converting - private'!
+!PlusInfinity methodsFor: 'converting - private' stamp: ''!
 convertInSameDomainTo: aTargetUnit
 
 	^aTargetUnit convertFromBaseUnit: (self unit convertToBaseUnit: self)! !
 
-!PlusInfinity methodsFor: 'converting - private'!
+!PlusInfinity methodsFor: 'converting - private' stamp: ''!
 convertTo: aTargetUnit using: aMeasureConverter
 	"NOT TO USE. Use the message convert:to:  of MeasureConverter.
 	This message is here by a question of double-dispatch.
@@ -3497,7 +3497,7 @@ equalsSimpleMeasure: aMeasure
 
 	^self = aMeasure! !
 
-!PlusInfinity methodsFor: 'exceptions'!
+!PlusInfinity methodsFor: 'exceptions' stamp: ''!
 signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
 
 	IndeterminateOperationException
@@ -3505,7 +3505,7 @@ signalIndeterminateOperation: anOperationString leftOperand: aLeftOperand
 		leftOperand: aLeftOperand
 		rightOperand: self! !
 
-!PlusInfinity methodsFor: 'exceptions'!
+!PlusInfinity methodsFor: 'exceptions' stamp: ''!
 signalIndeterminateOperation: anOperationString rightOperand: aRightOperand
 
 	IndeterminateOperationException
@@ -3513,12 +3513,12 @@ signalIndeterminateOperation: anOperationString rightOperand: aRightOperand
 		leftOperand: self
 		rightOperand: aRightOperand! !
 
-!PlusInfinity methodsFor: 'interval protocol'!
+!PlusInfinity methodsFor: 'interval protocol' stamp: ''!
 to: stop
 
 	^self to: stop by: (self unit with: 1)! !
 
-!PlusInfinity methodsFor: 'interval protocol'!
+!PlusInfinity methodsFor: 'interval protocol' stamp: ''!
 to: stop by: step
 
 	^ArithmeticObjectInterval
@@ -3552,7 +3552,7 @@ initializeGlobalVariable
 
 ! !
 
-!PlusInfinity class methodsFor: 'initialization'!
+!PlusInfinity class methodsFor: 'initialization' stamp: ''!
 initializeUniqueInstance
 
 	uniqueInstance := super new! !
@@ -3562,43 +3562,43 @@ globalName
 
 	^ #infinity ! !
 
-!PlusInfinity class methodsFor: 'instance creation'!
+!PlusInfinity class methodsFor: 'instance creation' stamp: ''!
 new
 
 	^uniqueInstance! !
 
-!IntervalStrategy methodsFor: 'enumerating'!
+!IntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from by: by
 	"The reason of this method over #advanceFrom:steps:by: is only to improve performance"
 
 	self subclassResponsibility! !
 
-!IntervalStrategy methodsFor: 'enumerating'!
+!IntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from steps: steps by: by
 
 	self subclassResponsibility! !
 
-!IntervalStrategy methodsFor: 'enumerating'!
+!IntervalStrategy methodsFor: 'enumerating' stamp: ''!
 stepsFrom: from to: to by: by
 
 	self subclassResponsibility! !
 
-!IntervalStrategy methodsFor: 'querying'!
+!IntervalStrategy methodsFor: 'querying' stamp: ''!
 isValidIntervalFrom: aStart to: aStop by: aStep
 
 	^(self stepsFrom: aStart to: aStop by: aStep) >= 0! !
 
-!ArithmeticObjectIntervalStrategy methodsFor: 'enumerating'!
+!ArithmeticObjectIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from by: by
 
 	^from + by! !
 
-!ArithmeticObjectIntervalStrategy methodsFor: 'enumerating'!
+!ArithmeticObjectIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from steps: steps by: by
 
 	^from + (steps * by)! !
 
-!ArithmeticObjectIntervalStrategy methodsFor: 'enumerating'!
+!ArithmeticObjectIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 stepsFrom: from to: to by: by
 
 	^to - from / by! !
@@ -3625,32 +3625,32 @@ initializeUniqueInstance
 
 	uniqueInstance := super new.! !
 
-!ArithmeticObjectIntervalStrategy class methodsFor: 'instance creation'!
+!ArithmeticObjectIntervalStrategy class methodsFor: 'instance creation' stamp: ''!
 new
 
 	^uniqueInstance! !
 
-!TestIntervalStrategy methodsFor: 'enumerating'!
+!TestIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from by: by
 
 	^TestIntervalAwareMagnitude with: from number + by number! !
 
-!TestIntervalStrategy methodsFor: 'enumerating'!
+!TestIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from steps: steps by: by
 
 	^TestIntervalAwareMagnitude with: from number + (steps * by number)! !
 
-!TestIntervalStrategy methodsFor: 'enumerating'!
+!TestIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 stepsFrom: from to: to by: by
 
 	^to number - from number / by number! !
 
-!InfinityIntervalStrategy methodsFor: 'enumerating'!
+!InfinityIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from by: by
 
 	^from + by! !
 
-!InfinityIntervalStrategy methodsFor: 'enumerating'!
+!InfinityIntervalStrategy methodsFor: 'enumerating' stamp: ''!
 advanceFrom: from steps: steps by: by
 
 	^from + (steps * by)! !
@@ -3675,38 +3675,38 @@ initializeUniqueInstance
 
 	uniqueInstance := super new.! !
 
-!InfinityIntervalStrategy class methodsFor: 'instance creation'!
+!InfinityIntervalStrategy class methodsFor: 'instance creation' stamp: ''!
 new
 
 	^uniqueInstance! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'printing'!
+!NumberToArithmeticObjectAdapter methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	aStream nextPutAll: 'NumberMeasureAdapter for: '.
 	number printOn: aStream! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 * anArithmeticObject
 
 	^anArithmeticObject * number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 + anArithmeticObject
 
 	^anArithmeticObject + number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 - anArithmeticObject
 
 	^anArithmeticObject subtractFrom: number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 / anArithmeticObject
 
 	^anArithmeticObject divFrom: number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 // anArithmeticObject
 
 	^anArithmeticObject quoFrom: number! !
@@ -3721,7 +3721,7 @@ printOn: aStream
 
 	^anArithmeticObject >= number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 = anArithmeticObject 
 
 	^anArithmeticObject = number! !
@@ -3736,17 +3736,17 @@ printOn: aStream
 
 	^anArithmeticObject <= number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 \\ anArithmeticObject
 
 	^anArithmeticObject remFrom: number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations'!
+!NumberToArithmeticObjectAdapter methodsFor: 'arithmetic operations' stamp: ''!
 quo: anArithmeticObject
 
 	^anArithmeticObject quoFrom: number! !
 
-!NumberToArithmeticObjectAdapter methodsFor: 'initialization'!
+!NumberToArithmeticObjectAdapter methodsFor: 'initialization' stamp: ''!
 initializeNumber: aNumber
 
 	number := aNumber! !
@@ -3755,104 +3755,104 @@ initializeNumber: aNumber
 number: aNumber
 	^ self new initializeNumber: aNumber! !
 
-!EdgeInterface methodsFor: 'testing'!
+!EdgeInterface methodsFor: 'testing' stamp: ''!
 convergesTo: anObject
 
 	self subclassResponsibility! !
 
-!EdgeInterface methodsFor: 'testing'!
+!EdgeInterface methodsFor: 'testing' stamp: ''!
 convergesToSelf
 
 	self subclassResponsibility! !
 
-!EdgeInterface methodsFor: 'testing'!
+!EdgeInterface methodsFor: 'testing' stamp: ''!
 goesFrom: aSource to: aTarget
 
 	self subclassResponsibility! !
 
-!EdgeInterface methodsFor: 'testing'!
+!EdgeInterface methodsFor: 'testing' stamp: ''!
 startsOn: anObject
 
 	self subclassResponsibility! !
 
-!EdgeInterface methodsFor: 'accessing'!
+!EdgeInterface methodsFor: 'accessing' stamp: ''!
 source
 
 	self subclassResponsibility! !
 
-!EdgeInterface methodsFor: 'accessing'!
+!EdgeInterface methodsFor: 'accessing' stamp: ''!
 target
 
 	self subclassResponsibility! !
 
-!Edge methodsFor: 'printing'!
+!Edge methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	source printOn: aStream.
 	aStream nextPutAll: ' -> '.
 	target printOn: aStream! !
 
-!Edge methodsFor: 'comparing'!
+!Edge methodsFor: 'comparing' stamp: ''!
 = anotherEdge
 
 	^self class = anotherEdge class 
 		ifTrue: [ source = anotherEdge source and: [ target = anotherEdge target ]]
 		ifFalse: [ false ]! !
 
-!Edge methodsFor: 'testing'!
+!Edge methodsFor: 'testing' stamp: ''!
 convergesTo: anObject
 
 	^target = anObject! !
 
-!Edge methodsFor: 'testing'!
+!Edge methodsFor: 'testing' stamp: ''!
 convergesToSelf
 	
 	^source = target! !
 
-!Edge methodsFor: 'testing'!
+!Edge methodsFor: 'testing' stamp: ''!
 goesFrom: aSource to: aTarget
 
 	^source = aSource and: [ target = aTarget ]! !
 
-!Edge methodsFor: 'testing'!
+!Edge methodsFor: 'testing' stamp: ''!
 isIncidentTo: anObject
 
 	^source = anObject or: [target = anObject]
 
 ! !
 
-!Edge methodsFor: 'testing'!
+!Edge methodsFor: 'testing' stamp: ''!
 startsOn: anObject
 
 	^source = anObject! !
 
-!Edge methodsFor: 'accessing'!
+!Edge methodsFor: 'accessing' stamp: ''!
 hash
 
 	^source hash bitXor: target hash! !
 
-!Edge methodsFor: 'accessing'!
+!Edge methodsFor: 'accessing' stamp: ''!
 source
 
 	^source! !
 
-!Edge methodsFor: 'accessing'!
+!Edge methodsFor: 'accessing' stamp: ''!
 target
 
 	^target! !
 
-!Edge methodsFor: 'initialization'!
+!Edge methodsFor: 'initialization' stamp: ''!
 initializeWithFrom: from to: to 
 
 	source := from.
 	target := to! !
 
-!Edge class methodsFor: 'instance creation'!
+!Edge class methodsFor: 'instance creation' stamp: ''!
 from: from to: to 
 	
 	^self new initializeWithFrom: from to: to! !
 
-!Graph methodsFor: 'comparing'!
+!Graph methodsFor: 'comparing' stamp: ''!
 = anotherGraph
 
 	^self class = anotherGraph class
@@ -3864,27 +3864,27 @@ apply: applyBlock usingDepthFirstSearchFrom: aNode
 	self apply: applyBlock usingDepthFirstSearchFrom: aNode ignoring: Set new
 	! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 edges
 	
 	^edges copy! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 edgesConvergingTo: aNode
 
 	^edges select: [ :anEdge | anEdge convergesTo: aNode ].! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 edgesConvergingToSelf
 
 	^edges select: [:anEdge | anEdge convergesToSelf]! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 edgesStartingOn: aNode
 
 	^edges select: [ :anEdge | anEdge startsOn: aNode ].! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 hash
 
 	| edgesHash nodesHash |
@@ -3894,7 +3894,7 @@ hash
 
 	^edgesHash bitXor: nodesHash! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 nodes
 
 	^nodes copy! !
@@ -3904,12 +3904,12 @@ nodesAdjacentTo: aNode
 
 	^(self edgesStartingOn: aNode) collect: [:edge | edge target]! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 nodesWithoutConvergingEdges
 
 	^nodes select: [:node | (self edgesConvergingTo: node) isEmpty]! !
 
-!Graph methodsFor: 'accessing'!
+!Graph methodsFor: 'accessing' stamp: ''!
 nodesWithoutStartingEdges
 
 	^nodes select: [:node | (self edgesStartingOn: node) isEmpty]! !
@@ -3944,7 +3944,7 @@ apply: applyBlock usingDepthFirstSearchFrom: aNode ignoring: aSet ifCycleEncount
 			ignoring: aSet
 			ifCycleEncounteredDo: cycleBlock]! !
 
-!Graph methodsFor: 'preconditions'!
+!Graph methodsFor: 'preconditions' stamp: ''!
 assertIncludesAllNodesOf: aCollectionOfNodes
 
 	aCollectionOfNodes do: [:node |
@@ -3952,29 +3952,29 @@ assertIncludesAllNodesOf: aCollectionOfNodes
 
 ! !
 
-!Graph methodsFor: 'testing'!
+!Graph methodsFor: 'testing' stamp: ''!
 includesNode: aNode
 
 	^nodes includes: aNode! !
 
-!Graph methodsFor: 'testing'!
+!Graph methodsFor: 'testing' stamp: ''!
 isAcyclic
 
 	acyclic isNil ifTrue: [self initializeAcyclicValue].
 
 	^acyclic! !
 
-!Graph methodsFor: 'testing'!
+!Graph methodsFor: 'testing' stamp: ''!
 isEmpty
 
 	^nodes isEmpty! !
 
-!Graph methodsFor: 'testing'!
+!Graph methodsFor: 'testing' stamp: ''!
 notEmpty
 
 	^self isEmpty not! !
 
-!Graph methodsFor: 'testing'!
+!Graph methodsFor: 'testing' stamp: ''!
 sameEdgesAs: anotherGraph
 
 	| anotherEdges |
@@ -3982,7 +3982,7 @@ sameEdgesAs: anotherGraph
 	anotherEdges := anotherGraph edges.
 	^edges size = anotherEdges size and: [edges allSatisfy: [:edge | anotherEdges includes: edge]]! !
 
-!Graph methodsFor: 'testing'!
+!Graph methodsFor: 'testing' stamp: ''!
 sameNodesAs: anotherGraph
 
 	| anotherNodes |
@@ -3990,7 +3990,7 @@ sameNodesAs: anotherGraph
 	anotherNodes := anotherGraph nodes.
 	^nodes size = anotherNodes size and: [nodes allSatisfy: [:node | anotherNodes includes: node]]! !
 
-!Graph methodsFor: 'initialization'!
+!Graph methodsFor: 'initialization' stamp: ''!
 initializeAcyclicValue
 
 	| startingNodes visitedNodes |
@@ -4022,7 +4022,7 @@ removeNode: anObject
 
 	^self removeNode: anObject ifAbsent: [NodeNotFoundException signalNode: anObject graph: self]! !
 
-!Graph methodsFor: 'removing nodes'!
+!Graph methodsFor: 'removing nodes' stamp: ''!
 removeNode: anObject ifAbsent: aBlock
 
 	| nodesWithoutNode edgesWithoutNode |
@@ -4034,7 +4034,7 @@ removeNode: anObject ifAbsent: aBlock
 
 	^self class edges: edgesWithoutNode nodes: nodesWithoutNode! !
 
-!Graph methodsFor: 'removing nodes'!
+!Graph methodsFor: 'removing nodes' stamp: ''!
 removeNodes: aCollectionOfNodes
 
 	| nodesWithoutNodes edgesWithoutNode |
@@ -4047,7 +4047,7 @@ removeNodes: aCollectionOfNodes
 
 	^self class edges: edgesWithoutNode nodes: nodesWithoutNodes! !
 
-!Graph class methodsFor: 'preconditions'!
+!Graph class methodsFor: 'preconditions' stamp: ''!
 assert: aCollectionOfEdges endpointsIncludedIn: aCollectionOfNodes
 
 	aCollectionOfEdges do: [:edge |
@@ -4061,7 +4061,7 @@ assert: aCollectionOfEdges endpointsIncludedIn: aCollectionOfNodes
 
 ! !
 
-!Graph class methodsFor: 'instance creation'!
+!Graph class methodsFor: 'instance creation' stamp: ''!
 edges: aCollectionOfEdges
 
 	| nodes |
@@ -4077,30 +4077,30 @@ edges: aCollectionOfEdges
 
 	^self edges: aCollectionOfEdges nodes: nodes! !
 
-!Graph class methodsFor: 'instance creation'!
+!Graph class methodsFor: 'instance creation' stamp: ''!
 edges: aCollectionOfEdges nodes: aCollectionOfNodes
 
 	self assert: aCollectionOfEdges endpointsIncludedIn: aCollectionOfNodes.
 	^self new initializeEdges: aCollectionOfEdges nodes: aCollectionOfNodes! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 createEdgeFrom: source to: target
 
 	^Edge from: source to: target! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 createGraphWith: edges
 
 	^Graph edges: edges.
 ! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 emptyCollection
 	
 	^#()
 ! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 findEdgesCheckingCyclesFrom: source to: target 
 
 	| edges edgeToFind |
@@ -4115,7 +4115,7 @@ findEdgesCheckingCyclesFrom: source to: target
 	^edges.
 ! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 findEdgesFrom: source to: target
 
 	| convergingEdges matchingEdge |
@@ -4130,7 +4130,7 @@ findEdgesFrom: source to: target
 
 ! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 findEdgesFrom: source toAnyEdgeOf: convergingEdges
 	
 	| path |
@@ -4141,30 +4141,30 @@ findEdgesFrom: source toAnyEdgeOf: convergingEdges
 		
 	^self emptyCollection! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 hasBeenPassedBy: anEdge
 
 	^passedByEdges includes: anEdge
 ! !
 
-!GraphPathFinder methodsFor: 'path finding - private'!
+!GraphPathFinder methodsFor: 'path finding - private' stamp: ''!
 passedBy: anEdge
 
 	passedByEdges add: anEdge! !
 
-!GraphPathFinder methodsFor: 'initialization'!
+!GraphPathFinder methodsFor: 'initialization' stamp: ''!
 initializePassedByEdges
 
 	passedByEdges := Set new.
 
 ! !
 
-!GraphPathFinder methodsFor: 'initialization'!
+!GraphPathFinder methodsFor: 'initialization' stamp: ''!
 initializeWith: aGraph
 
 	graph := aGraph.! !
 
-!GraphPathFinder methodsFor: 'path finding'!
+!GraphPathFinder methodsFor: 'path finding' stamp: ''!
 pathFrom: source to: target 
 
 	| edges |
@@ -4175,18 +4175,18 @@ pathFrom: source to: target
 
 	^self createGraphWith: edges! !
 
-!GraphPathFinder class methodsFor: 'instance creation'!
+!GraphPathFinder class methodsFor: 'instance creation' stamp: ''!
 on: aGraph
 
 	^self new initializeWith: aGraph.! !
 
-!TopologicalSort methodsFor: 'initialization'!
+!TopologicalSort methodsFor: 'initialization' stamp: ''!
 initializeFor: aGraph 
 
 	graph := aGraph
 ! !
 
-!TopologicalSort methodsFor: 'evaluating'!
+!TopologicalSort methodsFor: 'evaluating' stamp: ''!
 value
 
 	| tempGraph result |
@@ -4201,14 +4201,14 @@ value
 
 	^result! !
 
-!TopologicalSort class methodsFor: 'preconditions'!
+!TopologicalSort class methodsFor: 'preconditions' stamp: ''!
 assertAcyclic: aGraph
 
 	aGraph isAcyclic ifTrue: [^self].
 
 	CannotApplyTopologicalSortToACyclicGraphException signalGraph: aGraph! !
 
-!TopologicalSort class methodsFor: 'instance creation'!
+!TopologicalSort class methodsFor: 'instance creation' stamp: ''!
 for: aGraph
 
 	self assertAcyclic: aGraph.
@@ -4228,8 +4228,8 @@ compile: aNewSourceCode in: aClass ifOriginalSourceCodeIs: anOriginalSourceCode
 	
 	aClass compile: aNewSourceCode ! !
 
-!Aconcagua class methodsFor: 'initialization-private' stamp: 'HAW 5/2/2020 00:33:29'!
-compileAfterInstallMethods.
+!Aconcagua class methodsFor: 'initialization-private' stamp: 'HAW 9/20/2025 18:10:46'!
+compileAfterInstallMethods
 
 	self 
 		compile: self integerEqualSourceCode 
@@ -4427,7 +4427,7 @@ on: aCollection moving: aUnit startingCircleAtIndex: anIndex
 
 	^self new initializeOn: aCollection moving: aUnit startingCircleAtIndex: anIndex! !
 
-!ConversionTable methodsFor: 'table setup'!
+!ConversionTable methodsFor: 'table setup' stamp: ''!
 addUnitConversionRule: aUnitConvertionRule
 
 	self 
@@ -4437,7 +4437,7 @@ addUnitConversionRule: aUnitConvertionRule
 	unitConversionRules add: aUnitConvertionRule.
 	self invalidateGraph! !
 
-!ConversionTable methodsFor: 'table setup'!
+!ConversionTable methodsFor: 'table setup' stamp: ''!
 from: aSourceUnit to: aTargetUnit use: aUnitConvertionFunction
 
 	| unitConvertionRule |
@@ -4445,7 +4445,7 @@ from: aSourceUnit to: aTargetUnit use: aUnitConvertionFunction
 	self addUnitConversionRule: unitConvertionRule.
 ! !
 
-!ConversionTable methodsFor: 'table setup'!
+!ConversionTable methodsFor: 'table setup' stamp: ''!
 measure: aSourceMeasure convertsTo: aTargetMeasure
 
 	| unitConvertionFunction |
@@ -4457,13 +4457,13 @@ measure: aSourceMeasure convertsTo: aTargetMeasure
 		to: aTargetMeasure unit
 		use: unitConvertionFunction! !
 
-!ConversionTable methodsFor: 'table setup'!
+!ConversionTable methodsFor: 'table setup' stamp: ''!
 measure: aSourceMeasure isEquivalentTo: aTargetMeasure
 
 	self measure: aSourceMeasure convertsTo: aTargetMeasure.
 	self measure: aTargetMeasure convertsTo: aSourceMeasure! !
 
-!ConversionTable methodsFor: 'table setup'!
+!ConversionTable methodsFor: 'table setup' stamp: ''!
 removeUnitConversionRuleFrom: aSourceUnit to: aTargetUnit
 
 	^self 
@@ -4471,7 +4471,7 @@ removeUnitConversionRuleFrom: aSourceUnit to: aTargetUnit
 		to: aTargetUnit
 		ifAbsent: [self signalNoUnitConversionRuleFrom: aSourceUnit to: aTargetUnit]! !
 
-!ConversionTable methodsFor: 'table setup'!
+!ConversionTable methodsFor: 'table setup' stamp: ''!
 removeUnitConversionRuleFrom: aSourceUnit to: aTargetUnit ifAbsent: aBlock
 
 	| currentConvertionRule |
@@ -4482,14 +4482,14 @@ removeUnitConversionRuleFrom: aSourceUnit to: aTargetUnit ifAbsent: aBlock
 	unitConversionRules remove: currentConvertionRule.
 	self invalidateGraph! !
 
-!ConversionTable methodsFor: 'graph management'!
+!ConversionTable methodsFor: 'graph management' stamp: ''!
 createGraph 
 
 	graph := Graph edges: self createGraphEdges
 	
 		! !
 
-!ConversionTable methodsFor: 'graph management'!
+!ConversionTable methodsFor: 'graph management' stamp: ''!
 createGraphEdges
 
 	| edges |
@@ -4499,28 +4499,28 @@ createGraphEdges
 	
 		! !
 
-!ConversionTable methodsFor: 'graph management'!
+!ConversionTable methodsFor: 'graph management' stamp: ''!
 createUnitConversionRuleToEdgeAdapterFor: aUnitConvertionRule
 
 	^UnitConversionRuleToEdgeAdapter for: aUnitConvertionRule! !
 
-!ConversionTable methodsFor: 'graph management'!
+!ConversionTable methodsFor: 'graph management' stamp: ''!
 graph
 
 	graph isNil ifTrue: [ self createGraph ].
 	^graph! !
 
-!ConversionTable methodsFor: 'graph management'!
+!ConversionTable methodsFor: 'graph management' stamp: ''!
 invalidateGraph
 
 	graph := nil! !
 
-!ConversionTable methodsFor: 'table setup - private'!
+!ConversionTable methodsFor: 'table setup - private' stamp: ''!
 createProportionalUnitConversionFunctionWithSource: sourceMeasure andTarget: targetMeasure
 
 	^ProportionalUnitConversionFunction measure: sourceMeasure isProportionalTo: targetMeasure! !
 
-!ConversionTable methodsFor: 'table setup - private'!
+!ConversionTable methodsFor: 'table setup - private' stamp: ''!
 createUnitConversionRuleFrom: aSourceUnit to: aTargetUnit using: anEvaluation
 
 	^UnitConversionRule 
@@ -4528,18 +4528,18 @@ createUnitConversionRuleFrom: aSourceUnit to: aTargetUnit using: anEvaluation
 		to: aTargetUnit baseUnit
 		use: anEvaluation! !
 
-!ConversionTable methodsFor: 'initialization'!
+!ConversionTable methodsFor: 'initialization' stamp: ''!
 initialize
 
 	unitConversionRules := OrderedCollection new.
 	self invalidateGraph! !
 
-!ConversionTable methodsFor: 'exceptions'!
+!ConversionTable methodsFor: 'exceptions' stamp: ''!
 signalNoUnitConversionRuleFrom: aSourceUnit to: aTargetUnit
 
 	NoUnitConversionRuleException signalWithSourceUnit: aSourceUnit targetUnit: aTargetUnit! !
 
-!ConversionTable methodsFor: 'accessing'!
+!ConversionTable methodsFor: 'accessing' stamp: ''!
 unitConversionRuleFrom: aSourceUnit to: aTargetUnit
 
 	^self 
@@ -4547,24 +4547,24 @@ unitConversionRuleFrom: aSourceUnit to: aTargetUnit
 		to: aTargetUnit
 		ifNone: [self signalNoUnitConversionRuleFrom: aSourceUnit to: aTargetUnit]! !
 
-!ConversionTable methodsFor: 'accessing'!
+!ConversionTable methodsFor: 'accessing' stamp: ''!
 unitConversionRuleFrom: aSourceUnit to: aTargetUnit ifNone: aBlock
 
 	^unitConversionRules 
 		detect: [:aUnitConvertionRule | aUnitConvertionRule convertsFrom: aSourceUnit to: aTargetUnit]
 		ifNone: aBlock! !
 
-!ConversionTable methodsFor: 'accessing'!
+!ConversionTable methodsFor: 'accessing' stamp: ''!
 unitConversionRules
 
 	^unitConversionRules copy! !
 
-!ConversionTable class methodsFor: 'instance creation'!
+!ConversionTable class methodsFor: 'instance creation' stamp: ''!
 new
 
 	^super new initialize! !
 
-!MeasureConverter methodsFor: 'testing'!
+!MeasureConverter methodsFor: 'testing' stamp: ''!
 canConvert: aSourceMeasure to: aTargetUnit
 
 	[self findPathAndConvert: aSourceMeasure to: aTargetUnit]
@@ -4572,7 +4572,7 @@ canConvert: aSourceMeasure to: aTargetUnit
 		do: [:ex | ^ex return: false].
 	^true! !
 
-!MeasureConverter methodsFor: 'converting'!
+!MeasureConverter methodsFor: 'converting' stamp: ''!
 convert: aSourceMeasure to: aTargetUnit
 
 	^[aSourceMeasure convertTo: aTargetUnit using: self]
@@ -4582,7 +4582,7 @@ convert: aSourceMeasure to: aTargetUnit
 				signalSourceMeasure: aSourceMeasure
 				targetUnit: aTargetUnit]! !
 
-!MeasureConverter methodsFor: 'converting - private'!
+!MeasureConverter methodsFor: 'converting - private' stamp: ''!
 convert: aSourceMeasure to: aTargetUnit using: aPath 
 
 	| convertedMeasure |
@@ -4605,7 +4605,7 @@ convertCompoundMeasure: aSourceCompoundMeasure to: aTargetUnit
 						+ (self convert: measureToConvert to: aTargetUnit)].
 	^targetMeasure! !
 
-!MeasureConverter methodsFor: 'converting - private'!
+!MeasureConverter methodsFor: 'converting - private' stamp: ''!
 convertMeasure: aSourceMeasure to: aTargetUnit
 
 	| targetMeasure |
@@ -4614,7 +4614,7 @@ convertMeasure: aSourceMeasure to: aTargetUnit
 		ifFalse: [self findPathAndConvert: aSourceMeasure to: aTargetUnit].
 	^targetMeasure! !
 
-!MeasureConverter methodsFor: 'converting - private'!
+!MeasureConverter methodsFor: 'converting - private' stamp: ''!
 findPathAndConvert: aSourceMeasure to: aTargetUnit 
 
 	| convertionPath |
@@ -4625,7 +4625,7 @@ findPathAndConvert: aSourceMeasure to: aTargetUnit
 		to: aTargetUnit
 		using: convertionPath! !
 
-!MeasureConverter methodsFor: 'converting - private'!
+!MeasureConverter methodsFor: 'converting - private' stamp: ''!
 pathFrom: aSourceUnit to: aTargetUnit
 
 	| path |
@@ -4636,81 +4636,81 @@ pathFrom: aSourceUnit to: aTargetUnit
 	
 	! !
 
-!MeasureConverter methodsFor: 'accessing'!
+!MeasureConverter methodsFor: 'accessing' stamp: ''!
 graphPathFinder
 	
 	^graphPathFinder! !
 
-!MeasureConverter methodsFor: 'initialization'!
+!MeasureConverter methodsFor: 'initialization' stamp: ''!
 initializeWith: aGraphPathFinder 
 
 	graphPathFinder := aGraphPathFinder! !
 
-!MeasureConverter class methodsFor: 'instance creation'!
+!MeasureConverter class methodsFor: 'instance creation' stamp: ''!
 defaultGraphPathFinder
 
 	^GraphPathFinder! !
 
-!MeasureConverter class methodsFor: 'instance creation'!
+!MeasureConverter class methodsFor: 'instance creation' stamp: ''!
 on: aConvertionTable 
 
 	^self with: (self defaultGraphPathFinder on: (aConvertionTable graph))! !
 
-!MeasureConverter class methodsFor: 'instance creation'!
+!MeasureConverter class methodsFor: 'instance creation' stamp: ''!
 with: aGraphPathFinder
 
 	^self new initializeWith: aGraphPathFinder! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 baseUnit
 
 	^self subclassResponsibility! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 denominator
 
 	^NullUnit new! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 denominatorOf: aNumber
 
 	^self denominator with: aNumber denominator
 	
 ! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 doNotImplementHash 
 	
 	"Do not implement hash because its behavior is the same as object
 	See representSameEntityAs:"! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 name
 
 	^self nameForOne! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 nameFor: aNumber
 	"It returns the name that must be used to identify an amount <aNumber> of receiver"
 
 	^aNumber unitNameOf: self! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 nameForMany
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 nameForOne
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 nameForUndefinedAmount
 
 	^self nameForMany! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 nothingAmount
 
 	self subclassResponsibility! !
@@ -4720,37 +4720,37 @@ nullMeasure
 
 	^SimpleMeasure amount: self baseUnit nothingAmount unit: self baseUnit! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 numerator
 
 	^self! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 numeratorOf: aNumber
 
 	^self numerator with: aNumber numerator! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 reciprocal
 
 	^self denominator / self numerator! !
 
-!Unit methodsFor: 'accessing'!
+!Unit methodsFor: 'accessing' stamp: ''!
 sign
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'printing'!
+!Unit methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	aStream nextPutAll: self name asString! !
 
-!Unit methodsFor: 'mathematic operations'!
+!Unit methodsFor: 'mathematic operations' stamp: ''!
 * aNumberOrUnit
 
 	^aNumberOrUnit multiplyByUnit: self! !
 
-!Unit methodsFor: 'mathematic operations'!
+!Unit methodsFor: 'mathematic operations' stamp: ''!
 / aNumberOrUnit
 
 	^aNumberOrUnit divideByUnit: self! !
@@ -4781,7 +4781,7 @@ convertAmountFromBaseUnit: aNumber
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'converting - private'!
+!Unit methodsFor: 'converting - private' stamp: ''!
 convertAmountToBaseUnit: aNumber
 
 	self subclassResponsibility! !
@@ -4791,37 +4791,37 @@ convertFromBaseUnit: aMeasure
 	
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'converting - private'!
+!Unit methodsFor: 'converting - private' stamp: ''!
 convertToBaseUnit: aMeasure 
 	
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 divideByUnit: aNumberOrUnit
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 divideDividedUnit: aDividedUnit
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 divideInfinity: anInfinity
 
 	^((NullUnit new / self) * anInfinity unit) with: anInfinity amount! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 divideMinusInfinity: aMinusInfinity
 
 	^((NullUnit new / self) * aMinusInfinity unit) with: aMinusInfinity amount! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 divideMultipliedUnit: aMultipliedUnit
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 divideNullUnit: aNullUnit 
 
 	self subclassResponsibility! !
@@ -4831,32 +4831,32 @@ divideSimpleMeasure: aMeasure
 
 	^((NullUnit new / self) * aMeasure unit) with: aMeasure amount! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 divideSimpleUnit: aUnit
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyByUnit: aNumberOrUnit
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyDividedUnit: aDividedUnit
 
 	self subclassResponsibility! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyInfinity: anInfinity
 
 	^(anInfinity unit * self) with: anInfinity amount! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyMinusInfinity: aMinusInfinity
 
 	^(aMinusInfinity unit * self) with: aMinusInfinity amount! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyMultipliedUnit: aMultipliedUnit
 
 	self subclassResponsibility! !
@@ -4866,7 +4866,7 @@ multiplySimpleMeasure: aMeasure
 
 	^(aMeasure unit * self) with: aMeasure amount! !
 
-!Unit methodsFor: 'mathematic operations - private'!
+!Unit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplySimpleUnit: aUnit
 
 	self subclassResponsibility! !
@@ -4881,36 +4881,36 @@ isNamedAs: aUnit
 
 	^ aUnit isNamed: self name! !
 
-!Unit methodsFor: 'testing'!
+!Unit methodsFor: 'testing' stamp: ''!
 isZero
 
 	^self isNothing! !
 
-!Unit methodsFor: 'testing'!
+!Unit methodsFor: 'testing' stamp: ''!
 sameDomainAs: aUnit
 
 	^self baseUnit=aUnit baseUnit
 ! !
 
-!Unit methodsFor: 'measurement creation'!
+!Unit methodsFor: 'measurement creation' stamp: ''!
 with: aNumber
 
 	self subclassResponsibility! !
 
-!Unit class methodsFor: 'accessing'!
+!Unit class methodsFor: 'accessing' stamp: ''!
 defaultSign
 
 	^'NO SIGN'
 ! !
 
-!Unit class methodsFor: 'accessing'!
+!Unit class methodsFor: 'accessing' stamp: ''!
 nameForManyEndString
 
 	^'s'
 
 ! !
 
-!Unit class methodsFor: 'accessing'!
+!Unit class methodsFor: 'accessing' stamp: ''!
 nameForManyFrom: aString
 
 	^aString , self nameForManyEndString.
@@ -4937,7 +4937,7 @@ nameForOneWithoutAlias
 
 	self subclassResponsibility ! !
 
-!CompoundUnit methodsFor: 'accessing'!
+!CompoundUnit methodsFor: 'accessing' stamp: ''!
 nothingAmount
 
 	^0! !
@@ -5005,14 +5005,14 @@ initializeAliases
 
 	Aliases := Dictionary new.! !
 
-!DividedUnit methodsFor: 'comparing'!
+!DividedUnit methodsFor: 'comparing' stamp: ''!
 = anObject
 
 	^self class = anObject class 
 		and: [ numerator = anObject numerator 
 		and: [ denominator = anObject denominator ]]! !
 
-!DividedUnit methodsFor: 'comparing'!
+!DividedUnit methodsFor: 'comparing' stamp: ''!
 hash
 
 	^numerator hash bitXor: denominator hash! !
@@ -5024,7 +5024,7 @@ baseUnit
 		ifTrue: [ self ]
 		ifFalse: [ numerator baseUnit  / denominator baseUnit ]! !
 
-!DividedUnit methodsFor: 'accessing'!
+!DividedUnit methodsFor: 'accessing' stamp: ''!
 denominator
 
 	^denominator! !
@@ -5039,67 +5039,67 @@ nameForOneWithoutAlias
 
 	^numerator name asString , '/' , denominator name asString! !
 
-!DividedUnit methodsFor: 'accessing'!
+!DividedUnit methodsFor: 'accessing' stamp: ''!
 numerator
 
 	^numerator! !
 
-!DividedUnit methodsFor: 'accessing'!
+!DividedUnit methodsFor: 'accessing' stamp: ''!
 sign
 
 	^numerator sign, '/', denominator sign! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divFrom: aNumber
 
 	^aNumber * self reciprocal! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideByUnit: aUnit
 
 	^aUnit divideDividedUnit: self! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideDividedUnit: aDividedUnit
 
 	^self class dividedUnit: self dividedUnit: aDividedUnit! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideMultipliedUnit: aMultipliedUnit
 
 	^self class dividedUnit: self multipliedUnit: aMultipliedUnit! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideNullUnit: aNullUnit 
 	
 	^self class nullUnit: aNullUnit dividedUnit: self! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideSimpleUnit: aUnit
 
 	^self class dividedUnit: self simpleUnit: aUnit! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyByUnit: aUnit
 
 	^aUnit multiplyDividedUnit: self! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyDividedUnit: aDividedUnit
 
 	^MultipliedUnit dividedUnit: aDividedUnit dividedUnit: self! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyMultipliedUnit: aMultipliedUnit
 
 	^MultipliedUnit multipliedUnit: aMultipliedUnit dividedUnit: self! !
 
-!DividedUnit methodsFor: 'mathematic operations - private'!
+!DividedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplySimpleUnit: aUnit
 
 	^MultipliedUnit simpleUnit: aUnit dividedUnit: self! !
 
-!DividedUnit methodsFor: 'initialization'!
+!DividedUnit methodsFor: 'initialization' stamp: ''!
 initializeNumerator: aUnit denominator: anotherUnit
 
 	numerator := aUnit.
@@ -5125,31 +5125,31 @@ convertAmountToBaseUnit: anAmount
 	
 	^ convertedAmount! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 dividedUnit: aDividedUnit dividedUnit: anotherDividedUnit
 
 	^(aDividedUnit numerator * anotherDividedUnit denominator) / (aDividedUnit denominator * anotherDividedUnit numerator)
 ! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 dividedUnit: aDividedUnit multipliedUnit: aMultipliedUnit
 
 	^(aDividedUnit numerator) / (aDividedUnit denominator * aMultipliedUnit)
 ! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 dividedUnit: aDividedUnit simpleUnit: aUnit
 
 	^(aDividedUnit numerator) / (aDividedUnit denominator * aUnit)
 ! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 multipliedUnit: aMultipliedUnit dividedUnit: aDividedUnit
 
 	^(aMultipliedUnit * aDividedUnit denominator) / (aDividedUnit numerator)
 ! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 multipliedUnit: aMultipliedUnit multipliedUnit: anotherMultipliedUnit
 
 	| numeratorFactors denominatorFactors numerator denominator |
@@ -5167,7 +5167,7 @@ multipliedUnit: aMultipliedUnit multipliedUnit: anotherMultipliedUnit
 		ifTrue: [numerator]
 		ifFalse: [self new initializeNumerator: numerator denominator: denominator]! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 multipliedUnit: aMultipliedUnit simpleUnit: aUnit
 
 	| numeratorFactors |
@@ -5179,29 +5179,29 @@ multipliedUnit: aMultipliedUnit simpleUnit: aUnit
 
 ! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 nullUnit: aNullUnit dividedUnit: aDividedUnit 
 	
 	^self new initializeNumerator: aDividedUnit denominator denominator: aDividedUnit numerator.! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 nullUnit: aNullUnit multipliedUnit: aMultipliedUnit 
 	
 	^self new initializeNumerator: aNullUnit denominator: aMultipliedUnit! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 nullUnit: aNullUnit simpleUnit: aSimpleUnit 
 
 	^self new initializeNumerator: aNullUnit denominator: aSimpleUnit
 	! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 simpleUnit: aUnit dividedUnit: aDividedUnit
 
 	^(aUnit * aDividedUnit denominator) / (aDividedUnit numerator)
 ! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 simpleUnit: aUnit multipliedUnit: aMultipliedUnit
 
 	| denominatorFactors |
@@ -5212,69 +5212,69 @@ simpleUnit: aUnit multipliedUnit: aMultipliedUnit
 	"It never can be left NullUnit on NullUnit because aMultipliedUnit has like minimum 2 units"
 	^self new initializeNumerator: NullUnit new denominator: (MultipliedUnit factors: denominatorFactors)! !
 
-!DividedUnit class methodsFor: 'instance creation - private'!
+!DividedUnit class methodsFor: 'instance creation - private' stamp: ''!
 simpleUnit: aUnit simpleUnit: anotherUnit
 
 	^aUnit=anotherUnit
 		ifTrue: [ NullUnit new ]
 		ifFalse: [ self new initializeNumerator: aUnit denominator: anotherUnit ]! !
 
-!MultipliedUnit methodsFor: 'comparing'!
+!MultipliedUnit methodsFor: 'comparing' stamp: ''!
 = anObject
 
 	^self class = anObject class and: [ self hasSameFactorsAs: anObject ]! !
 
-!MultipliedUnit methodsFor: 'comparing'!
+!MultipliedUnit methodsFor: 'comparing' stamp: ''!
 hash
 
 	^factors inject: 0 into: [ :aHash :aUnit | aHash bitXor: aUnit hash ]! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divFrom: aNumber
 
 	^(DividedUnit nullUnit: aNumber unit multipliedUnit: self) with: aNumber! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideByUnit: aUnit
 
 	^aUnit divideMultipliedUnit: self! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideDividedUnit: aDividedUnit
 
 	^DividedUnit multipliedUnit: self dividedUnit: aDividedUnit! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideMultipliedUnit: aMultipliedUnit
 
 	^DividedUnit multipliedUnit: self multipliedUnit: aMultipliedUnit! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideNullUnit: aNullUnit 
 	
 	^DividedUnit nullUnit: aNullUnit multipliedUnit: self! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideSimpleUnit: aUnit
 
 	^DividedUnit multipliedUnit: self simpleUnit: aUnit! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyByUnit: aUnit
 
 	^aUnit multiplyMultipliedUnit: self! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyDividedUnit: aDividedUnit
 
 	^self class dividedUnit: aDividedUnit multipliedUnit: self! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyMultipliedUnit: aMultipliedUnit
 
 	^self class multipliedUnit: aMultipliedUnit multipliedUnit: self! !
 
-!MultipliedUnit methodsFor: 'mathematic operations - private'!
+!MultipliedUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplySimpleUnit: aUnit
 
 	^self class simpleUnit: aUnit multipliedUnit: self! !
@@ -5284,12 +5284,12 @@ baseUnit
 
 	^self class factors: (factors collect: [ :aUnit | aUnit baseUnit ])! !
 
-!MultipliedUnit methodsFor: 'accessing'!
+!MultipliedUnit methodsFor: 'accessing' stamp: ''!
 factors
 	
 	^factors copy! !
 
-!MultipliedUnit methodsFor: 'accessing'!
+!MultipliedUnit methodsFor: 'accessing' stamp: ''!
 factorsSize
 
 	^factors size! !
@@ -5304,7 +5304,7 @@ nameForOneWithoutAlias
 
 	^self factorsToStreamDoing: [:aUnit | aUnit nameForOne asString]! !
 
-!MultipliedUnit methodsFor: 'accessing'!
+!MultipliedUnit methodsFor: 'accessing' stamp: ''!
 sign
 
 	^self factorsToStreamDoing: [ :aUnit | aUnit sign ]! !
@@ -5321,7 +5321,7 @@ factorsToStreamDoing: aBlock
 	
 	^stream contents! !
 
-!MultipliedUnit methodsFor: 'testing'!
+!MultipliedUnit methodsFor: 'testing' stamp: ''!
 hasSameFactorsAs: aMultipliedUnit
 	
 	| factorsIntersection |
@@ -5333,7 +5333,7 @@ hasSameFactorsAs: aMultipliedUnit
 
 		! !
 
-!MultipliedUnit methodsFor: 'initialization'!
+!MultipliedUnit methodsFor: 'initialization' stamp: ''!
 initializeFactors: aCollection
 
 	factors := aCollection! !
@@ -5352,17 +5352,17 @@ convertAmountToBaseUnit: anAmount
 		inject: anAmount 
 		into: [ :convertingAmount :aUnit | aUnit convertAmountToBaseUnit: convertingAmount ]! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 dividedUnit: aDividedUnit dividedUnit: anotherDividedUnit
 
 	^(aDividedUnit numerator * anotherDividedUnit numerator) / (aDividedUnit denominator * anotherDividedUnit denominator)! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 dividedUnit: aDividedUnit multipliedUnit: aMultipliedUnit
 
 	^self multipliedUnit: aMultipliedUnit dividedUnit: aDividedUnit! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 dividedUnit: aDividedUnit simpleUnit: aUnit
 
 	^self simpleUnit: aUnit dividedUnit: aDividedUnit! !
@@ -5374,12 +5374,12 @@ factors: aCollection
 	aCollection size=1 ifTrue: [ ^aCollection first ].
 	^self new initializeFactors: aCollection asOrderedCollection ! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 multipliedUnit: aMultipliedUnit dividedUnit: aDividedUnit
 
 	^(aMultipliedUnit * aDividedUnit numerator) / (aDividedUnit denominator)! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 multipliedUnit: aMultipliedUnit multipliedUnit: anotherMultipliedUnit
 
 	| factors |
@@ -5389,17 +5389,17 @@ multipliedUnit: aMultipliedUnit multipliedUnit: anotherMultipliedUnit
 	
 	^self new initializeFactors: factors.! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 multipliedUnit: aMultipliedUnit simpleUnit: aUnit
 
 	^self simpleUnit: aUnit multipliedUnit: aMultipliedUnit! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 simpleUnit: aUnit dividedUnit: aDividedUnit
 
 	^(aUnit * aDividedUnit numerator) / (aDividedUnit denominator)! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 simpleUnit: aUnit multipliedUnit: aMultipliedUnit
 
 	| factors |
@@ -5409,37 +5409,37 @@ simpleUnit: aUnit multipliedUnit: aMultipliedUnit
 	
 	^self new initializeFactors: factors! !
 
-!MultipliedUnit class methodsFor: 'instance creation - private'!
+!MultipliedUnit class methodsFor: 'instance creation - private' stamp: ''!
 simpleUnit: aUnit simpleUnit: anotherUnit
 
 	^self new initializeFactors: (OrderedCollection with: aUnit with: anotherUnit)! !
 
-!NullUnit methodsFor: 'accessing'!
+!NullUnit methodsFor: 'accessing' stamp: ''!
 baseUnit
 	
 	^self! !
 
-!NullUnit methodsFor: 'accessing'!
+!NullUnit methodsFor: 'accessing' stamp: ''!
 name
 
 	^''! !
 
-!NullUnit methodsFor: 'accessing'!
+!NullUnit methodsFor: 'accessing' stamp: ''!
 nameForMany
 
 	^self name! !
 
-!NullUnit methodsFor: 'accessing'!
+!NullUnit methodsFor: 'accessing' stamp: ''!
 nameForOne
 
 	^self name! !
 
-!NullUnit methodsFor: 'accessing'!
+!NullUnit methodsFor: 'accessing' stamp: ''!
 nothingAmount
 	
 	^0! !
 
-!NullUnit methodsFor: 'accessing'!
+!NullUnit methodsFor: 'accessing' stamp: ''!
 sign
 
 	^self class defaultSign! !
@@ -5454,62 +5454,62 @@ convertAmountToBaseUnit: aNumber
 
 	^ aNumber! !
 
-!NullUnit methodsFor: 'converting - private'!
+!NullUnit methodsFor: 'converting - private' stamp: ''!
 convertFromBaseUnit: aMeasure 
 	
 	^aMeasure! !
 
-!NullUnit methodsFor: 'converting - private'!
+!NullUnit methodsFor: 'converting - private' stamp: ''!
 convertToBaseUnit: aMeasure 
 	
 	^aMeasure! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideByUnit: aUnit
 
 	^aUnit! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideDividedUnit: aDividedUnit
 
 	^aDividedUnit reciprocal! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideMultipliedUnit: aMultipliedUnit
 
 	^DividedUnit nullUnit: self multipliedUnit: aMultipliedUnit! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideNullUnit: aNullUnit 
 	
 	^self! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideSimpleUnit: aUnit
 
 	^DividedUnit nullUnit: self simpleUnit: aUnit! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyByUnit: aUnit
 
 	^aUnit! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyDividedUnit: aDividedUnit
 
 	^aDividedUnit! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyMultipliedUnit: aMultipliedUnit
 
 	^aMultipliedUnit! !
 
-!NullUnit methodsFor: 'mathematic operations - private'!
+!NullUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplySimpleUnit: aUnit
 
 	^aUnit! !
 
-!NullUnit methodsFor: 'measurement creation'!
+!NullUnit methodsFor: 'measurement creation' stamp: ''!
 with: aNumber
 
 	^aNumber! !
@@ -5539,48 +5539,48 @@ divFrom: aNumber
 
 	^SimpleMeasure amount: aNumber unit: NullUnit new / self! !
 
-!SimpleUnit methodsFor: 'mathematic operations'!
+!SimpleUnit methodsFor: 'mathematic operations' stamp: ''!
 divideByUnit: aUnit
 
 	^aUnit divideSimpleUnit: self! !
 
-!SimpleUnit methodsFor: 'mathematic operations'!
+!SimpleUnit methodsFor: 'mathematic operations' stamp: ''!
 multiplyByUnit: aUnit
 
 	^aUnit multiplySimpleUnit: self! !
 
-!SimpleUnit methodsFor: 'mathematic operations - private'!
+!SimpleUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideDividedUnit: aDividedUnit
 
 	^DividedUnit simpleUnit: self dividedUnit: aDividedUnit! !
 
-!SimpleUnit methodsFor: 'mathematic operations - private'!
+!SimpleUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideMultipliedUnit: aMultipliedUnit
 
 	^DividedUnit simpleUnit: self multipliedUnit: aMultipliedUnit! !
 
-!SimpleUnit methodsFor: 'mathematic operations - private'!
+!SimpleUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideNullUnit: aNullUnit 
 
 	^DividedUnit nullUnit: aNullUnit simpleUnit: self! !
 
-!SimpleUnit methodsFor: 'mathematic operations - private'!
+!SimpleUnit methodsFor: 'mathematic operations - private' stamp: ''!
 divideSimpleUnit: aUnit
 
 	^DividedUnit simpleUnit: self simpleUnit: aUnit
 ! !
 
-!SimpleUnit methodsFor: 'mathematic operations - private'!
+!SimpleUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyDividedUnit: aDividedUnit
 
 	^MultipliedUnit dividedUnit: aDividedUnit simpleUnit: self! !
 
-!SimpleUnit methodsFor: 'mathematic operations - private'!
+!SimpleUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplyMultipliedUnit: aMultipliedUnit
 
 	^MultipliedUnit multipliedUnit: aMultipliedUnit simpleUnit: self! !
 
-!SimpleUnit methodsFor: 'mathematic operations - private'!
+!SimpleUnit methodsFor: 'mathematic operations - private' stamp: ''!
 multiplySimpleUnit: aUnit
 
 	^MultipliedUnit simpleUnit: self simpleUnit: aUnit! !
@@ -5595,27 +5595,27 @@ with: aNumber
 
 	^ (anObject isKindOf: self class) and: [ self name = anObject name ]! !
 
-!BaseUnit methodsFor: 'accessing'!
+!BaseUnit methodsFor: 'accessing' stamp: ''!
 baseUnit
 	
 	^self! !
 
-!BaseUnit methodsFor: 'accessing'!
+!BaseUnit methodsFor: 'accessing' stamp: ''!
 nameForMany
 
 	^nameForMany! !
 
-!BaseUnit methodsFor: 'accessing'!
+!BaseUnit methodsFor: 'accessing' stamp: ''!
 nameForOne
 
 	^nameForOne! !
 
-!BaseUnit methodsFor: 'accessing'!
+!BaseUnit methodsFor: 'accessing' stamp: ''!
 nothingAmount
 
 	^0! !
 
-!BaseUnit methodsFor: 'accessing'!
+!BaseUnit methodsFor: 'accessing' stamp: ''!
 sign
 
 	^sign! !
@@ -5625,18 +5625,18 @@ convertAmountFromBaseUnit: aNumber
 
 	^aNumber! !
 
-!BaseUnit methodsFor: 'converting - private'!
+!BaseUnit methodsFor: 'converting - private' stamp: ''!
 convertAmountToBaseUnit: aNumber
 
 	^aNumber
 ! !
 
-!BaseUnit methodsFor: 'converting - private'!
+!BaseUnit methodsFor: 'converting - private' stamp: ''!
 convertFromBaseUnit: aMeasure 
 	
 	^aMeasure! !
 
-!BaseUnit methodsFor: 'converting - private'!
+!BaseUnit methodsFor: 'converting - private' stamp: ''!
 convertToBaseUnit: aMeasure 
 	
 	^aMeasure! !
@@ -5658,7 +5658,7 @@ nameForOne: aString nameForMany: anotherString sign: aSignString
 
 	^self new initializeNameForOne: aString nameForMany: anotherString sign: aSignString! !
 
-!BaseUnit class methodsFor: 'instance creation'!
+!BaseUnit class methodsFor: 'instance creation' stamp: ''!
 named: aString 
 
 	^self 
@@ -5667,7 +5667,7 @@ named: aString
 		sign: self defaultSign.
 ! !
 
-!BaseUnit class methodsFor: 'instance creation'!
+!BaseUnit class methodsFor: 'instance creation' stamp: ''!
 named: aString sign: aSignString
 
 	^self 
@@ -5688,42 +5688,42 @@ convertToBaseUnit: aSimpleMeasure
 		amount: (self convertAmountToBaseUnit: aSimpleMeasure amount)
 		unit: self baseUnit! !
 
-!DerivedUnit methodsFor: 'accessing'!
+!DerivedUnit methodsFor: 'accessing' stamp: ''!
 nothingAmount
 
 	^self convertAmountFromBaseUnit: self baseUnit nothingAmount! !
 
-!NotProportionalDerivedUnit methodsFor: 'accessing'!
+!NotProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 baseUnit
 
 	^baseUnit! !
 
-!NotProportionalDerivedUnit methodsFor: 'accessing'!
+!NotProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 nameForMany
 
 	^nameForMany! !
 
-!NotProportionalDerivedUnit methodsFor: 'accessing'!
+!NotProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 nameForOne
 
 	^nameForOne! !
 
-!NotProportionalDerivedUnit methodsFor: 'accessing'!
+!NotProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 sign
 
 	^sign! !
 
-!NotProportionalDerivedUnit methodsFor: 'converting - private'!
+!NotProportionalDerivedUnit methodsFor: 'converting - private' stamp: ''!
 convertAmountFromBaseUnit: aNumber
 
 	^reciprocalConversionBlock value: aNumber! !
 
-!NotProportionalDerivedUnit methodsFor: 'converting - private'!
+!NotProportionalDerivedUnit methodsFor: 'converting - private' stamp: ''!
 convertAmountToBaseUnit: aNumber
 
 	^conversionBlock value: aNumber! !
 
-!NotProportionalDerivedUnit methodsFor: 'initialization'!
+!NotProportionalDerivedUnit methodsFor: 'initialization' stamp: ''!
 initializeBaseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: anotherBlock nameForOne: aString nameForMany: anotherString sign: aSignString
 
 	baseUnit := aUnit.
@@ -5733,7 +5733,7 @@ initializeBaseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: ano
 	nameForMany := anotherString.
 	sign := aSignString! !
 
-!NotProportionalDerivedUnit class methodsFor: 'instance creation'!
+!NotProportionalDerivedUnit class methodsFor: 'instance creation' stamp: ''!
 baseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: anotherBlock nameForOne: aString nameForMany: anotherString sign: aSignString 
 
 	^self new 
@@ -5744,7 +5744,7 @@ baseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: anotherBlock 
 		nameForMany: anotherString
 		sign: aSignString! !
 
-!NotProportionalDerivedUnit class methodsFor: 'instance creation'!
+!NotProportionalDerivedUnit class methodsFor: 'instance creation' stamp: ''!
 baseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: anotherBlock named: aString
 
 	^self 
@@ -5755,7 +5755,7 @@ baseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: anotherBlock 
 		nameForMany: (self nameForManyFrom: aString)
 		sign: self defaultSign! !
 
-!NotProportionalDerivedUnit class methodsFor: 'instance creation'!
+!NotProportionalDerivedUnit class methodsFor: 'instance creation' stamp: ''!
 baseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: anotherBlock named: aString sign: aSignString
 
 	^self 
@@ -5766,42 +5766,42 @@ baseUnit: aUnit conversionBlock: aBlock reciprocalConversionBlock: anotherBlock 
 		nameForMany: (self nameForManyFrom: aString)
 		sign: aSignString! !
 
-!ProportionalDerivedUnit methodsFor: 'accessing'!
+!ProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 baseUnit
 
 	^baseUnit! !
 
-!ProportionalDerivedUnit methodsFor: 'accessing'!
+!ProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 conversionFactor
 	
 	^conversionFactor! !
 
-!ProportionalDerivedUnit methodsFor: 'accessing'!
+!ProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 nameForMany
 
 	^nameForMany! !
 
-!ProportionalDerivedUnit methodsFor: 'accessing'!
+!ProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 nameForOne
 
 	^nameForOne! !
 
-!ProportionalDerivedUnit methodsFor: 'accessing'!
+!ProportionalDerivedUnit methodsFor: 'accessing' stamp: ''!
 sign
 
 	^sign! !
 
-!ProportionalDerivedUnit methodsFor: 'converting - private'!
+!ProportionalDerivedUnit methodsFor: 'converting - private' stamp: ''!
 convertAmountFromBaseUnit: aNumber
 
 	^aNumber / conversionFactor! !
 
-!ProportionalDerivedUnit methodsFor: 'converting - private'!
+!ProportionalDerivedUnit methodsFor: 'converting - private' stamp: ''!
 convertAmountToBaseUnit: aNumber
 
 	^aNumber * conversionFactor! !
 
-!ProportionalDerivedUnit methodsFor: 'initialization'!
+!ProportionalDerivedUnit methodsFor: 'initialization' stamp: ''!
 initializeBaseUnit: aUnit conversionFactor: aNumber nameForOne: aString nameForMany: anotherString sign: aSignString
 
 	baseUnit := aUnit.
@@ -5810,7 +5810,7 @@ initializeBaseUnit: aUnit conversionFactor: aNumber nameForOne: aString nameForM
 	nameForMany := anotherString.
 	sign := aSignString! !
 
-!ProportionalDerivedUnit class methodsFor: 'instance creation'!
+!ProportionalDerivedUnit class methodsFor: 'instance creation' stamp: ''!
 baseUnit: aUnit conversionFactor: aNumber nameForOne: aString nameForMany: anotherString sign: aSignString
 
 	^self new 
@@ -5820,7 +5820,7 @@ baseUnit: aUnit conversionFactor: aNumber nameForOne: aString nameForMany: anoth
 		nameForMany: anotherString
 		sign: aSignString! !
 
-!ProportionalDerivedUnit class methodsFor: 'instance creation'!
+!ProportionalDerivedUnit class methodsFor: 'instance creation' stamp: ''!
 baseUnit: aUnit conversionFactor: aNumber named: aString
 
 	^self 
@@ -5830,7 +5830,7 @@ baseUnit: aUnit conversionFactor: aNumber named: aString
 		nameForMany: (self nameForManyFrom: aString)
 		sign: self defaultSign! !
 
-!ProportionalDerivedUnit class methodsFor: 'instance creation'!
+!ProportionalDerivedUnit class methodsFor: 'instance creation' stamp: ''!
 baseUnit: aUnit conversionFactor: aNumber named: aString sign: aSignString
 
 	^self 
@@ -5840,12 +5840,12 @@ baseUnit: aUnit conversionFactor: aNumber named: aString sign: aSignString
 		nameForMany: (self nameForManyFrom: aString)
 		sign: aSignString! !
 
-!UnitConversionFunctionInterface methodsFor: 'evaluating'!
+!UnitConversionFunctionInterface methodsFor: 'evaluating' stamp: ''!
 value: anObject
 
 	^self subclassResponsibility! !
 
-!ProportionalUnitConversionFunction methodsFor: 'printing'!
+!ProportionalUnitConversionFunction methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	equivalentMeasure printOn: aStream.
@@ -5853,49 +5853,49 @@ printOn: aStream
 	sourceMeasure printOn: aStream.
 	aStream nextPutAll: '* valueToConvert'! !
 
-!ProportionalUnitConversionFunction methodsFor: 'comparing'!
+!ProportionalUnitConversionFunction methodsFor: 'comparing' stamp: ''!
 = anotherProportionalUnitConvertionFunction
 
 	^self class=anotherProportionalUnitConvertionFunction class and: 
 		[ sourceMeasure=anotherProportionalUnitConvertionFunction sourceMeasure and: 
 		[ equivalentMeasure=anotherProportionalUnitConvertionFunction equivalentMeasure ] ]! !
 
-!ProportionalUnitConversionFunction methodsFor: 'accessing'!
+!ProportionalUnitConversionFunction methodsFor: 'accessing' stamp: ''!
 equivalentMeasure
 
 	^equivalentMeasure! !
 
-!ProportionalUnitConversionFunction methodsFor: 'accessing'!
+!ProportionalUnitConversionFunction methodsFor: 'accessing' stamp: ''!
 hash
 
 	^sourceMeasure hash bitXor: equivalentMeasure hash.
 ! !
 
-!ProportionalUnitConversionFunction methodsFor: 'accessing'!
+!ProportionalUnitConversionFunction methodsFor: 'accessing' stamp: ''!
 proportionalMeasure 
 
 	^proportionalMeasure
 ! !
 
-!ProportionalUnitConversionFunction methodsFor: 'accessing'!
+!ProportionalUnitConversionFunction methodsFor: 'accessing' stamp: ''!
 sourceMeasure 
 
 	^sourceMeasure
 ! !
 
-!ProportionalUnitConversionFunction methodsFor: 'initialization'!
+!ProportionalUnitConversionFunction methodsFor: 'initialization' stamp: ''!
 initializeMeasure: aSourceMeasure isEquivalentTo: aEquivalentMeasure
 
 	sourceMeasure := aSourceMeasure.
 	equivalentMeasure := aEquivalentMeasure.
 	proportionalMeasure := aEquivalentMeasure / aSourceMeasure! !
 
-!ProportionalUnitConversionFunction methodsFor: 'evaluating'!
+!ProportionalUnitConversionFunction methodsFor: 'evaluating' stamp: ''!
 value: aMeasure
 
 	^proportionalMeasure * aMeasure! !
 
-!ProportionalUnitConversionFunction class methodsFor: 'instance creation'!
+!ProportionalUnitConversionFunction class methodsFor: 'instance creation' stamp: ''!
 assertCreationPreconditions: aSourceMeasure equivalentMeasure: aEquivalentMeasure
 
 	(aSourceMeasure isNothing 
@@ -5905,7 +5905,7 @@ assertCreationPreconditions: aSourceMeasure equivalentMeasure: aEquivalentMeasur
 					signalSourceMeasure: aSourceMeasure
 					equivalentMeasure: aEquivalentMeasure]! !
 
-!ProportionalUnitConversionFunction class methodsFor: 'instance creation'!
+!ProportionalUnitConversionFunction class methodsFor: 'instance creation' stamp: ''!
 measure: aSourceMeasure isProportionalTo: aEquivalentMeasure
 
 	self assertCreationPreconditions: aSourceMeasure
@@ -5913,37 +5913,37 @@ measure: aSourceMeasure isProportionalTo: aEquivalentMeasure
 	^self new initializeMeasure: aSourceMeasure
 		isEquivalentTo: aEquivalentMeasure! !
 
-!UnitConversionRuleInterface methodsFor: 'converting'!
+!UnitConversionRuleInterface methodsFor: 'converting' stamp: ''!
 convertsFrom: aSourceUnit to: aTargetUnit
 
 	^(self sourceUnit sameDomainAs: aSourceUnit) and: [ self targetUnit sameDomainAs: aTargetUnit ]! !
 
-!UnitConversionRuleInterface methodsFor: 'converting'!
+!UnitConversionRuleInterface methodsFor: 'converting' stamp: ''!
 convertsSameDomainsAs: aUnitConvertionRule
 
 	^self convertsFrom: aUnitConvertionRule sourceUnit to: aUnitConvertionRule targetUnit! !
 
-!UnitConversionRuleInterface methodsFor: 'converting'!
+!UnitConversionRuleInterface methodsFor: 'converting' stamp: ''!
 value: aMeasure
 
 	self subclassResponsibility! !
 
-!UnitConversionRuleInterface methodsFor: 'accessing'!
+!UnitConversionRuleInterface methodsFor: 'accessing' stamp: ''!
 function
 
 	self subclassResponsibility! !
 
-!UnitConversionRuleInterface methodsFor: 'accessing'!
+!UnitConversionRuleInterface methodsFor: 'accessing' stamp: ''!
 sourceUnit
 
 	self subclassResponsibility! !
 
-!UnitConversionRuleInterface methodsFor: 'accessing'!
+!UnitConversionRuleInterface methodsFor: 'accessing' stamp: ''!
 targetUnit
 
 	self subclassResponsibility! !
 
-!UnitConversionRule methodsFor: 'printing'!
+!UnitConversionRule methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	sourceUnit printOn: aStream.
@@ -5952,137 +5952,137 @@ printOn: aStream
 	aStream nextPutAll: ': '.
 	function printOn: aStream! !
 
-!UnitConversionRule methodsFor: 'comparing'!
+!UnitConversionRule methodsFor: 'comparing' stamp: ''!
 = anotherConvertionRule
 
 	^self class=anotherConvertionRule class and: 
 		[ (self convertsSameDomainsAs: anotherConvertionRule) and:
 		[ function=anotherConvertionRule function ] ].! !
 
-!UnitConversionRule methodsFor: 'accessing'!
+!UnitConversionRule methodsFor: 'accessing' stamp: ''!
 function
 
 	^function! !
 
-!UnitConversionRule methodsFor: 'accessing'!
+!UnitConversionRule methodsFor: 'accessing' stamp: ''!
 hash
 
 	^sourceUnit hash bitXor: targetUnit hash.! !
 
-!UnitConversionRule methodsFor: 'accessing'!
+!UnitConversionRule methodsFor: 'accessing' stamp: ''!
 sourceUnit
 
 	^sourceUnit! !
 
-!UnitConversionRule methodsFor: 'accessing'!
+!UnitConversionRule methodsFor: 'accessing' stamp: ''!
 targetUnit
 
 	^targetUnit! !
 
-!UnitConversionRule methodsFor: 'initialization'!
+!UnitConversionRule methodsFor: 'initialization' stamp: ''!
 initializeFrom: aSourceUnit to: aTargetUnit using: aFunction
 
 	sourceUnit := aSourceUnit.
 	targetUnit := aTargetUnit.
 	function := aFunction! !
 
-!UnitConversionRule methodsFor: 'converting'!
+!UnitConversionRule methodsFor: 'converting' stamp: ''!
 value: aMeasure
 
 	^function value: aMeasure! !
 
-!UnitConversionRule class methodsFor: 'instance creation'!
+!UnitConversionRule class methodsFor: 'instance creation' stamp: ''!
 from: aSourceUnit to: aTargetUnit use: aFunction
 
 	^self new initializeFrom: aSourceUnit to: aTargetUnit using: aFunction! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'printing'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	unitConversionRule printOn: aStream! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'comparing'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'comparing' stamp: ''!
 = anotherConvertionRuleToEdgeAdapter
 
 	^self class=anotherConvertionRuleToEdgeAdapter class and: 
 		[ unitConversionRule=anotherConvertionRuleToEdgeAdapter unitConversionRule ]
 	! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol' stamp: ''!
 convergesTo: aUnit
 
 	^unitConversionRule targetUnit sameDomainAs: aUnit
 	! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol' stamp: ''!
 convergesToSelf
 
 	^unitConversionRule sourceUnit sameDomainAs: unitConversionRule targetUnit
 	! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol' stamp: ''!
 goesFrom: aSourceUnit to: aTargetUnit
 
 	^unitConversionRule convertsFrom: aSourceUnit to: aTargetUnit
 	! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol' stamp: ''!
 hash
 
 	^unitConversionRule hash
 	! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol' stamp: ''!
 source
 
 	^unitConversionRule sourceUnit! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol' stamp: ''!
 startsOn: aUnit
 
 	^unitConversionRule sourceUnit sameDomainAs: aUnit! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'edge protocol' stamp: ''!
 target
 
 	^unitConversionRule targetUnit! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing' stamp: ''!
 function
 
 	^unitConversionRule function! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing' stamp: ''!
 sourceUnit
 
 	^unitConversionRule sourceUnit! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing' stamp: ''!
 targetUnit
 
 	^unitConversionRule targetUnit! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'accessing' stamp: ''!
 unitConversionRule
 
 	^unitConversionRule! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'initialization'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'initialization' stamp: ''!
 initializeWith: aConvertionRule
 
 	unitConversionRule := aConvertionRule! !
 
-!UnitConversionRuleToEdgeAdapter methodsFor: 'converting'!
+!UnitConversionRuleToEdgeAdapter methodsFor: 'converting' stamp: ''!
 value: aMeasure
 
 	^unitConversionRule value: aMeasure! !
 
-!UnitConversionRuleToEdgeAdapter class methodsFor: 'instance creation'!
+!UnitConversionRuleToEdgeAdapter class methodsFor: 'instance creation' stamp: ''!
 for: aConvertionRule
 
 	^self new initializeWith: aConvertionRule! !
 
-!ArithmeticObjectInterval methodsFor: 'printing'!
+!ArithmeticObjectInterval methodsFor: 'printing' stamp: ''!
 printOn: aStream
 
 	aStream nextPutAll: 'Interval from: '.
@@ -6092,7 +6092,7 @@ printOn: aStream
 	aStream nextPutAll: ' by: '.
 	self by printOn: aStream! !
 
-!ArithmeticObjectInterval methodsFor: 'storing'!
+!ArithmeticObjectInterval methodsFor: 'storing' stamp: ''!
 storeOn: aStream
 
 	"Append to the argument aStream a sequence of characters that is a
@@ -6112,7 +6112,7 @@ storeOn: aStream
 	by storeOn: aStream.
 	aStream nextPut: $)! !
 
-!ArithmeticObjectInterval methodsFor: 'comparing'!
+!ArithmeticObjectInterval methodsFor: 'comparing' stamp: ''!
 = aCollection
 
 	^self == aCollection 
@@ -6121,27 +6121,27 @@ storeOn: aStream
 				and: [by = aCollection by
 				and: [to = aCollection to]]]]! !
 
-!ArithmeticObjectInterval methodsFor: 'comparing'!
+!ArithmeticObjectInterval methodsFor: 'comparing' stamp: ''!
 hash
 
 	^from hash bitXor: (to hash bitXor: by hash)! !
 
-!ArithmeticObjectInterval methodsFor: 'adding/removing'!
+!ArithmeticObjectInterval methodsFor: 'adding/removing' stamp: ''!
 add: newObject
 
 	self shouldNotImplement! !
 
-!ArithmeticObjectInterval methodsFor: 'adding/removing'!
+!ArithmeticObjectInterval methodsFor: 'adding/removing' stamp: ''!
 at: anInteger put: anObject
 
 	self shouldNotImplement! !
 
-!ArithmeticObjectInterval methodsFor: 'adding/removing'!
+!ArithmeticObjectInterval methodsFor: 'adding/removing' stamp: ''!
 remove: oldObject ifAbsent: anExceptionBlock
 
 	self shouldNotImplement! !
 
-!ArithmeticObjectInterval methodsFor: 'accessing'!
+!ArithmeticObjectInterval methodsFor: 'accessing' stamp: ''!
 at: anIndex
 
 	(anIndex < 1 or: [ anIndex > self size ]) ifTrue: [ IndexOutOfRangeException signalIndex: anIndex collection: self ].
@@ -6150,27 +6150,27 @@ at: anIndex
 
 ! !
 
-!ArithmeticObjectInterval methodsFor: 'accessing'!
+!ArithmeticObjectInterval methodsFor: 'accessing' stamp: ''!
 by
 
 	^by! !
 
-!ArithmeticObjectInterval methodsFor: 'accessing'!
+!ArithmeticObjectInterval methodsFor: 'accessing' stamp: ''!
 from
 
 	^from! !
 
-!ArithmeticObjectInterval methodsFor: 'accessing'!
+!ArithmeticObjectInterval methodsFor: 'accessing' stamp: ''!
 size
 
 	^size	! !
 
-!ArithmeticObjectInterval methodsFor: 'accessing'!
+!ArithmeticObjectInterval methodsFor: 'accessing' stamp: ''!
 species
 
 	^Array! !
 
-!ArithmeticObjectInterval methodsFor: 'accessing'!
+!ArithmeticObjectInterval methodsFor: 'accessing' stamp: ''!
 to
 
 	^to! !
@@ -6184,17 +6184,17 @@ copyAndGrowBy: anInteger
 	self withIndexDo: [ :anObject :anIndex | newSequenceableCollection at: anIndex put: anObject ].
 	^newSequenceableCollection! !
 
-!ArithmeticObjectInterval methodsFor: 'copying'!
+!ArithmeticObjectInterval methodsFor: 'copying' stamp: ''!
 deepCopy
 
 	^self shallowCopy! !
 
-!ArithmeticObjectInterval methodsFor: 'copying'!
+!ArithmeticObjectInterval methodsFor: 'copying' stamp: ''!
 shallowCopy
 
 	^self class from: from to: to by: by! !
 
-!ArithmeticObjectInterval methodsFor: 'enumerating'!
+!ArithmeticObjectInterval methodsFor: 'enumerating' stamp: ''!
 do: aBlock
 
 	| element |
@@ -6208,7 +6208,7 @@ do: aBlock
 		element := intervalStrategy advanceFrom: element by: by.
 		aBlock value: element ].! !
 
-!ArithmeticObjectInterval methodsFor: 'enumerating'!
+!ArithmeticObjectInterval methodsFor: 'enumerating' stamp: ''!
 reject: aBlock
 
 	| index answer |
@@ -6222,7 +6222,7 @@ reject: aBlock
 		
 	^answer copyFrom: 1 to: index! !
 
-!ArithmeticObjectInterval methodsFor: 'enumerating'!
+!ArithmeticObjectInterval methodsFor: 'enumerating' stamp: ''!
 reverse
 
 	| answer index |
@@ -6236,7 +6236,7 @@ reverse
 
 	^answer! !
 
-!ArithmeticObjectInterval methodsFor: 'enumerating'!
+!ArithmeticObjectInterval methodsFor: 'enumerating' stamp: ''!
 reverseDo: aBlock
 
 	| steps |
@@ -6245,7 +6245,7 @@ reverseDo: aBlock
 		aBlock value: (intervalStrategy advanceFrom: from steps: steps by: by).
 		steps := steps - 1. ].! !
 
-!ArithmeticObjectInterval methodsFor: 'enumerating'!
+!ArithmeticObjectInterval methodsFor: 'enumerating' stamp: ''!
 select: aBlock
 
 	| index answer |
@@ -6278,7 +6278,7 @@ includes: anObject
 	incrementsToObject := intervalStrategy stepsFrom: from to: anObject by: by.
 	^0 <= incrementsToObject and: [incrementsToObject < size and: [incrementsToObject isInteger]]! !
 
-!ArithmeticObjectInterval methodsFor: 'initialization'!
+!ArithmeticObjectInterval methodsFor: 'initialization' stamp: ''!
 initializeFrom: aStart to: aStop by: aStep intervalStrategy: anIntervalStrategy
 
 	from := aStart.
@@ -6288,25 +6288,25 @@ initializeFrom: aStart to: aStop by: aStep intervalStrategy: anIntervalStrategy
 	
 	self initializeSize.! !
 
-!ArithmeticObjectInterval methodsFor: 'initialization'!
+!ArithmeticObjectInterval methodsFor: 'initialization' stamp: ''!
 initializeSize
 
 	size := (intervalStrategy stepsFrom: from to: to by: by) truncated + 1
 ! !
 
-!ArithmeticObjectInterval class methodsFor: 'instance creation'!
+!ArithmeticObjectInterval class methodsFor: 'instance creation' stamp: ''!
 defaultIntervalStrategy
 
 	^ArithmeticObjectIntervalStrategy new
 ! !
 
-!ArithmeticObjectInterval class methodsFor: 'instance creation'!
+!ArithmeticObjectInterval class methodsFor: 'instance creation' stamp: ''!
 from: start to: stop by: step
 
 	^self from: start to: stop by: step intervalStrategy: self defaultIntervalStrategy
 ! !
 
-!ArithmeticObjectInterval class methodsFor: 'instance creation'!
+!ArithmeticObjectInterval class methodsFor: 'instance creation' stamp: ''!
 from: start to: stop by: step intervalStrategy: anIntervalStrategy
 
 	(anIntervalStrategy isValidIntervalFrom: start to: stop by: step) 
@@ -6315,7 +6315,7 @@ from: start to: stop by: step intervalStrategy: anIntervalStrategy
 	^self new initializeFrom: start to: stop by: step intervalStrategy: anIntervalStrategy
 ! !
 
-!IndexOutOfRangeException methodsFor: 'accessing'!
+!IndexOutOfRangeException methodsFor: 'accessing' stamp: ''!
 collection
 
 	^collection! !
@@ -6327,30 +6327,30 @@ description
 		ifTrue: [ 'Index out of range for {1}' format: { collection } ]
 		ifFalse: [ 'Index {1} out of range for {2}' format: { index .collection }]! !
 
-!IndexOutOfRangeException methodsFor: 'accessing'!
+!IndexOutOfRangeException methodsFor: 'accessing' stamp: ''!
 index
 
 	^index! !
 
-!IndexOutOfRangeException methodsFor: 'initialization'!
+!IndexOutOfRangeException methodsFor: 'initialization' stamp: ''!
 initializeIndex: anIndex collection: aCollection
 
 	index := anIndex.	
 	collection := aCollection! !
 
-!IndexOutOfRangeException class methodsFor: 'instance creating'!
+!IndexOutOfRangeException class methodsFor: 'instance creating' stamp: ''!
 index: anIndex collection: aCollection
 	
 	^self new initializeIndex: anIndex collection: aCollection
 	
 	! !
 
-!IndexOutOfRangeException class methodsFor: 'signaling'!
+!IndexOutOfRangeException class methodsFor: 'signaling' stamp: ''!
 signalIndex: anIndex collection: aCollection
 	
 	(self index: anIndex collection: aCollection) signal! !
 
-!InvalidIntervalException methodsFor: 'accessing'!
+!InvalidIntervalException methodsFor: 'accessing' stamp: ''!
 by
 
 	^by! !
@@ -6360,34 +6360,34 @@ description
 
 	^'An interval cannot be created from {1} to {2} with an increase of {3}' format: {from .to .by}! !
 
-!InvalidIntervalException methodsFor: 'accessing'!
+!InvalidIntervalException methodsFor: 'accessing' stamp: ''!
 from
 
 	^from! !
 
-!InvalidIntervalException methodsFor: 'accessing'!
+!InvalidIntervalException methodsFor: 'accessing' stamp: ''!
 to
 
 	^to! !
 
-!InvalidIntervalException methodsFor: 'initialization'!
+!InvalidIntervalException methodsFor: 'initialization' stamp: ''!
 initializeFrom: aFrom to: aTo by: aBy
 
 	from := aFrom.
 	to := aTo.
 	by := aBy.! !
 
-!InvalidIntervalException class methodsFor: 'instance creation'!
+!InvalidIntervalException class methodsFor: 'instance creation' stamp: ''!
 from: aFrom to: aTo by: aBy
 
 	^self new initializeFrom: aFrom to: aTo by: aBy! !
 
-!InvalidIntervalException class methodsFor: 'signaling'!
+!InvalidIntervalException class methodsFor: 'signaling' stamp: ''!
 signalFrom: aFrom to: aTo by: aBy
 
 	(self from: aFrom to: aTo by: aBy) signal! !
 
-!InvalidOperationException methodsFor: 'accessing'!
+!InvalidOperationException methodsFor: 'accessing' stamp: ''!
 operationName
 
 	self subclassResponsibility! !
@@ -6397,34 +6397,34 @@ description
 
 	^'Attempt to make the operation {1} between {2} and {3} which is invalid' format: { operationName .leftOperand .rightOperand }! !
 
-!InvalidBinaryOperationException methodsFor: 'accessing'!
+!InvalidBinaryOperationException methodsFor: 'accessing' stamp: ''!
 leftOperand
 
 	^leftOperand! !
 
-!InvalidBinaryOperationException methodsFor: 'accessing'!
+!InvalidBinaryOperationException methodsFor: 'accessing' stamp: ''!
 operationName
 
 	^operationName! !
 
-!InvalidBinaryOperationException methodsFor: 'accessing'!
+!InvalidBinaryOperationException methodsFor: 'accessing' stamp: ''!
 rightOperand
 
 	^rightOperand! !
 
-!InvalidBinaryOperationException methodsFor: 'initialization'!
+!InvalidBinaryOperationException methodsFor: 'initialization' stamp: ''!
 initializeOperationName: anOperationName leftOperand: aLeftOperand rightOperand: aRightOperand
 
 	operationName := anOperationName.
 	leftOperand := aLeftOperand.
 	rightOperand := aRightOperand.! !
 
-!InvalidBinaryOperationException class methodsFor: 'instance creation'!
+!InvalidBinaryOperationException class methodsFor: 'instance creation' stamp: ''!
 operationName: anOperationName leftOperand: aLeftOperand rightOperand: aRightOperand
 
 	^self new initializeOperationName: anOperationName leftOperand: aLeftOperand rightOperand: aRightOperand! !
 
-!InvalidBinaryOperationException class methodsFor: 'signaling'!
+!InvalidBinaryOperationException class methodsFor: 'signaling' stamp: ''!
 signalOperationName: anOperationName leftOperand: aLeftOperand rightOperand: aRightOperand
 
 	(self operationName: anOperationName leftOperand: aLeftOperand rightOperand: aRightOperand) signal! !
@@ -6434,43 +6434,43 @@ description
 
 	^'Attempt to make the operation  {1} with {2} which is invalid' format: { operationName .operand }! !
 
-!InvalidUnaryOperationException methodsFor: 'accessing'!
+!InvalidUnaryOperationException methodsFor: 'accessing' stamp: ''!
 operand
 
 	^operand! !
 
-!InvalidUnaryOperationException methodsFor: 'accessing'!
+!InvalidUnaryOperationException methodsFor: 'accessing' stamp: ''!
 operationName
 
 	^operationName! !
 
-!InvalidUnaryOperationException methodsFor: 'initialization'!
+!InvalidUnaryOperationException methodsFor: 'initialization' stamp: ''!
 initializeOperationName: anOperationName operand: anOperand
 
 	operationName := anOperationName.
 	operand := anOperand.! !
 
-!InvalidUnaryOperationException class methodsFor: 'instance creation'!
+!InvalidUnaryOperationException class methodsFor: 'instance creation' stamp: ''!
 operationName: anOperationName operand: anOperand
 
 	^self new initializeOperationName: anOperationName operand: anOperand! !
 
-!InvalidUnaryOperationException class methodsFor: 'signaling'!
+!InvalidUnaryOperationException class methodsFor: 'signaling' stamp: ''!
 signalOperationName: anOperationName operand: anOperand
 
 	(self operationName: anOperationName operand: anOperand) signal! !
 
-!CanNotConvertMeasureException methodsFor: 'accessing'!
+!CanNotConvertMeasureException methodsFor: 'accessing' stamp: ''!
 operationName
 
 	^'convertTo:'! !
 
-!CanNotConvertMeasureException methodsFor: 'accessing'!
+!CanNotConvertMeasureException methodsFor: 'accessing' stamp: ''!
 sourceMeasure
 
 	^sourceMeasure! !
 
-!CanNotConvertMeasureException methodsFor: 'accessing'!
+!CanNotConvertMeasureException methodsFor: 'accessing' stamp: ''!
 targetUnit
 
 	^targetUnit! !
@@ -6483,22 +6483,22 @@ initializeWith: aSourceMeasure targetUnit: aTargetUnit
 	
 	messageText := 'It is not possible to convert {1} to {2}' format: { sourceMeasure .targetUnit }! !
 
-!CanNotConvertMeasureException methodsFor: 'priv handling'!
+!CanNotConvertMeasureException methodsFor: 'priv handling' stamp: ''!
 isResumable
 
 	^true! !
 
-!CanNotConvertMeasureException class methodsFor: 'signaling'!
+!CanNotConvertMeasureException class methodsFor: 'signaling' stamp: ''!
 signalSourceMeasure: aSourceMeasure targetUnit: aTargetUnit
 
 	^(self sourceMeasure: aSourceMeasure targetUnit: aTargetUnit) signal! !
 
-!CanNotConvertMeasureException class methodsFor: 'instance creation'!
+!CanNotConvertMeasureException class methodsFor: 'instance creation' stamp: ''!
 sourceMeasure: aSourceMeasure targetUnit: aTargetUnit
 
 	^self new initializeWith: aSourceMeasure targetUnit: aTargetUnit! !
 
-!UndefinedArithmeticObjectValueException methodsFor: 'accessing'!
+!UndefinedArithmeticObjectValueException methodsFor: 'accessing' stamp: ''!
 arithmeticObject
 
 	^arithmeticObject! !
@@ -6508,42 +6508,42 @@ description
 
 	^'Undefined value of arithmetical operation: "{1}"' format:  {arithmeticObject}! !
 
-!UndefinedArithmeticObjectValueException methodsFor: 'initialization'!
+!UndefinedArithmeticObjectValueException methodsFor: 'initialization' stamp: ''!
 initializeArithmeticObject: anArithmeticObject
 
 	arithmeticObject := anArithmeticObject.! !
 
-!UndefinedArithmeticObjectValueException class methodsFor: 'instance creation'!
+!UndefinedArithmeticObjectValueException class methodsFor: 'instance creation' stamp: ''!
 arithmeticObject: anArithmeticObject
 
 	^self new initializeArithmeticObject: anArithmeticObject! !
 
-!UndefinedArithmeticObjectValueException class methodsFor: 'signaling'!
+!UndefinedArithmeticObjectValueException class methodsFor: 'signaling' stamp: ''!
 signalArithmeticObject: anArithmeticObject
 
 	(self arithmeticObject: anArithmeticObject) signal! !
 
-!CannotApplyTopologicalSortToACyclicGraphException methodsFor: 'accessing'!
+!CannotApplyTopologicalSortToACyclicGraphException methodsFor: 'accessing' stamp: ''!
 description
 
 	^'The algorithm of topological sort cannot be applied to a graph with cycles'! !
 
-!CannotApplyTopologicalSortToACyclicGraphException methodsFor: 'accessing'!
+!CannotApplyTopologicalSortToACyclicGraphException methodsFor: 'accessing' stamp: ''!
 graph
 
 	^graph! !
 
-!CannotApplyTopologicalSortToACyclicGraphException methodsFor: 'initialization'!
+!CannotApplyTopologicalSortToACyclicGraphException methodsFor: 'initialization' stamp: ''!
 initializeGraph: aGraph
 
 	graph := aGraph.! !
 
-!CannotApplyTopologicalSortToACyclicGraphException class methodsFor: 'instance creation'!
+!CannotApplyTopologicalSortToACyclicGraphException class methodsFor: 'instance creation' stamp: ''!
 graph: aGraph
 
 	^self new initializeGraph: aGraph! !
 
-!CannotApplyTopologicalSortToACyclicGraphException class methodsFor: 'signaling'!
+!CannotApplyTopologicalSortToACyclicGraphException class methodsFor: 'signaling' stamp: ''!
 signalGraph: aGraph
 
 	(self graph: aGraph) signal! !
@@ -6553,34 +6553,34 @@ description
 
 	^'Some of the ends of the axis {1} is not including in the set of nodes ' format: { invalidEdge }! !
 
-!EdgeEndpointNotIncludedInNodesException methodsFor: 'accessing'!
+!EdgeEndpointNotIncludedInNodesException methodsFor: 'accessing' stamp: ''!
 edges
 
 	^edges! !
 
-!EdgeEndpointNotIncludedInNodesException methodsFor: 'accessing'!
+!EdgeEndpointNotIncludedInNodesException methodsFor: 'accessing' stamp: ''!
 invalidEdge
 
 	^invalidEdge! !
 
-!EdgeEndpointNotIncludedInNodesException methodsFor: 'accessing'!
+!EdgeEndpointNotIncludedInNodesException methodsFor: 'accessing' stamp: ''!
 nodes
 
 	^nodes! !
 
-!EdgeEndpointNotIncludedInNodesException methodsFor: 'initialization'!
+!EdgeEndpointNotIncludedInNodesException methodsFor: 'initialization' stamp: ''!
 initializeInvalidEdge: anInvalidEdge edges: anEdges nodes: aNodes
 
 	invalidEdge := anInvalidEdge.
 	edges := anEdges.
 	nodes := aNodes! !
 
-!EdgeEndpointNotIncludedInNodesException class methodsFor: 'instance creation'!
+!EdgeEndpointNotIncludedInNodesException class methodsFor: 'instance creation' stamp: ''!
 invalidEdge: anInvalidEdge edges: anEdges nodes: aNodes
 
 	^self new initializeInvalidEdge: anInvalidEdge edges: anEdges nodes: aNodes! !
 
-!EdgeEndpointNotIncludedInNodesException class methodsFor: 'signaling'!
+!EdgeEndpointNotIncludedInNodesException class methodsFor: 'signaling' stamp: ''!
 signalInvalidEdge: anInvalidEdge edges: anEdges nodes: aNodes
 
 	(self invalidEdge: anInvalidEdge edges: anEdges nodes: aNodes) signal! !
@@ -6590,28 +6590,28 @@ description
 
 	^'A way was not from {1} to {2}' format: { source .target }! !
 
-!GraphPathNotFoundException methodsFor: 'accessing'!
+!GraphPathNotFoundException methodsFor: 'accessing' stamp: ''!
 source 
 
 	^source! !
 
-!GraphPathNotFoundException methodsFor: 'accessing'!
+!GraphPathNotFoundException methodsFor: 'accessing' stamp: ''!
 target
 
 	^target! !
 
-!GraphPathNotFoundException methodsFor: 'initialization'!
+!GraphPathNotFoundException methodsFor: 'initialization' stamp: ''!
 initializeWithSource: aSourceNode target: aTargetNode
 
 	source := aSourceNode.
 	target := aTargetNode! !
 
-!GraphPathNotFoundException class methodsFor: 'signaling'!
+!GraphPathNotFoundException class methodsFor: 'signaling' stamp: ''!
 signalWithSource: aSourceNode target: aTargetNode
 
 	(self source: aSourceNode target: aTargetNode) signal! !
 
-!GraphPathNotFoundException class methodsFor: 'instance creation'!
+!GraphPathNotFoundException class methodsFor: 'instance creation' stamp: ''!
 source: aSourceNode target: aTargetNode
 
 	^self new initializeWithSource: aSourceNode target: aTargetNode! !
@@ -6621,28 +6621,28 @@ description
 
 	^'The graph does not contain the node {1}' format:  {node}! !
 
-!NodeNotFoundException methodsFor: 'accessing'!
+!NodeNotFoundException methodsFor: 'accessing' stamp: ''!
 graph
 
 	^graph! !
 
-!NodeNotFoundException methodsFor: 'accessing'!
+!NodeNotFoundException methodsFor: 'accessing' stamp: ''!
 node
 
 	^node! !
 
-!NodeNotFoundException methodsFor: 'initialization'!
+!NodeNotFoundException methodsFor: 'initialization' stamp: ''!
 initializeNode: aNode graph: aGraph
 
 	node := aNode.
 	graph := aGraph! !
 
-!NodeNotFoundException class methodsFor: 'instance creation'!
+!NodeNotFoundException class methodsFor: 'instance creation' stamp: ''!
 node: aNode graph: aGraph
 
 	^self new initializeNode: aNode graph: aGraph! !
 
-!NodeNotFoundException class methodsFor: 'signaling'!
+!NodeNotFoundException class methodsFor: 'signaling' stamp: ''!
 signalNode: aNode graph: aGraph
 
 	(self node: aNode graph: aGraph) signal! !
@@ -6655,22 +6655,22 @@ initializeOperation: anOperation leftOperand: aLeftOperand rightOperand: aRightO
 	rightOperand := aRightOperand.
 	messageText := 'The {1} operation is indeterminate between {2} and {3}' format: { operation .leftOperand .rightOperand }! !
 
-!IndeterminateOperationException class methodsFor: 'instance creation'!
+!IndeterminateOperationException class methodsFor: 'instance creation' stamp: ''!
 operation: anOperation leftOperand: aLeftOperand rightOperand: aRightOperand
 
 	^self new initializeOperation: anOperation leftOperand: aLeftOperand rightOperand: aRightOperand! !
 
-!IndeterminateOperationException class methodsFor: 'signaling'!
+!IndeterminateOperationException class methodsFor: 'signaling' stamp: ''!
 signalOperation: anOperation leftOperand: aLeftOperand rightOperand: aRightOperand
 
 	(self operation: anOperation leftOperand: aLeftOperand rightOperand: aRightOperand) signal! !
 
-!InvalidProportionalUnitConversionFunctionException methodsFor: 'accessing'!
+!InvalidProportionalUnitConversionFunctionException methodsFor: 'accessing' stamp: ''!
 equivalentMeasure
 
 	^equivalentMeasure! !
 
-!InvalidProportionalUnitConversionFunctionException methodsFor: 'accessing'!
+!InvalidProportionalUnitConversionFunctionException methodsFor: 'accessing' stamp: ''!
 sourceMeasure
 
 	^sourceMeasure! !
@@ -6682,23 +6682,23 @@ initializeSourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure
 	equivalentMeasure := aEquivalentMeasure.
 	messageText := 'The proportional relation between {1} and {2} it is not valid because {1} represents nothing or they are not of the same domain' format: { sourceMeasure .equivalentMeasure }! !
 
-!InvalidProportionalUnitConversionFunctionException class methodsFor: 'signaling'!
+!InvalidProportionalUnitConversionFunctionException class methodsFor: 'signaling' stamp: ''!
 signalSourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure
 
 	(self sourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure) signal! !
 
-!InvalidProportionalUnitConversionFunctionException class methodsFor: 'instance creation'!
+!InvalidProportionalUnitConversionFunctionException class methodsFor: 'instance creation' stamp: ''!
 sourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure
 
 	^self new initializeSourceMeasure: aSourceMeasure equivalentMeasure: aEquivalentMeasure! !
 
-!NoUnitConversionRuleException methodsFor: 'accessing'!
+!NoUnitConversionRuleException methodsFor: 'accessing' stamp: ''!
 sourceUnit 
 
 	^sourceUnit
 ! !
 
-!NoUnitConversionRuleException methodsFor: 'accessing'!
+!NoUnitConversionRuleException methodsFor: 'accessing' stamp: ''!
 targetUnit 
 
 	^targetUnit! !
@@ -6710,57 +6710,57 @@ initializeWith: aSourceUnit targetUnit: aTargetUnit
 	targetUnit := aTargetUnit.
 	messageText := 'Does not exist a conversion rule from {1} to {2}' format: { sourceUnit .targetUnit }! !
 
-!NoUnitConversionRuleException class methodsFor: 'signaling'!
+!NoUnitConversionRuleException class methodsFor: 'signaling' stamp: ''!
 signalWithSourceUnit: aSourceUnit targetUnit: aTargetUnit
 
 	(self sourceUnit: aSourceUnit targetUnit: aTargetUnit) signal! !
 
-!NoUnitConversionRuleException class methodsFor: 'instance creation'!
+!NoUnitConversionRuleException class methodsFor: 'instance creation' stamp: ''!
 sourceUnit: aSourceUnit targetUnit: aTargetUnit
 
 	^self new initializeWith: aSourceUnit targetUnit: aTargetUnit! !
 
-!IntervalAwareMagnitude methodsFor: 'comparing'!
+!IntervalAwareMagnitude methodsFor: 'comparing' stamp: ''!
 = anObject
 
 	^self == anObject! !
 
-!IntervalAwareMagnitude methodsFor: 'comparing'!
+!IntervalAwareMagnitude methodsFor: 'comparing' stamp: ''!
 hash
 
 	^self identityHash! !
 
-!IntervalAwareMagnitude methodsFor: 'magnitude protocol'!
+!IntervalAwareMagnitude methodsFor: 'magnitude protocol' stamp: ''!
 between: min andNotInclusive: max
 
 	 ^min <= self and: [self < max]! !
 
-!IntervalAwareMagnitude methodsFor: 'magnitude protocol'!
+!IntervalAwareMagnitude methodsFor: 'magnitude protocol' stamp: ''!
 notInclusiveBetween: min and: max
 
 	 ^min < self and: [self <= max]! !
 
-!IntervalAwareMagnitude methodsFor: 'magnitude protocol'!
+!IntervalAwareMagnitude methodsFor: 'magnitude protocol' stamp: ''!
 notInclusiveBetween: min andNotInclusive: max
 
 	 ^min < self and: [self < max]! !
 
-!IntervalAwareMagnitude methodsFor: 'interval protocol - private'!
+!IntervalAwareMagnitude methodsFor: 'interval protocol - private' stamp: ''!
 defaultIntervalIncrement
 
 	self subclassResponsibility! !
 
-!IntervalAwareMagnitude methodsFor: 'interval protocol - private'!
+!IntervalAwareMagnitude methodsFor: 'interval protocol - private' stamp: ''!
 intervalStrategy
 
 	self subclassResponsibility! !
 
-!IntervalAwareMagnitude methodsFor: 'interval protocol'!
+!IntervalAwareMagnitude methodsFor: 'interval protocol' stamp: ''!
 to: aMagnitude
 
 	^self to: aMagnitude by: self defaultIntervalIncrement! !
 
-!IntervalAwareMagnitude methodsFor: 'interval protocol'!
+!IntervalAwareMagnitude methodsFor: 'interval protocol' stamp: ''!
 to: aMagnitude by: anIncrement
 
 	^ArithmeticObjectInterval from: self to: aMagnitude by: anIncrement intervalStrategy: self intervalStrategy! !
@@ -6770,42 +6770,42 @@ toYourself
 
 	^self to: self! !
 
-!TestIntervalAwareMagnitude methodsFor: 'magnitude protocol'!
+!TestIntervalAwareMagnitude methodsFor: 'magnitude protocol' stamp: ''!
 < aTestIntervalAwareMagnitude
 
 	^number < aTestIntervalAwareMagnitude number! !
 
-!TestIntervalAwareMagnitude methodsFor: 'comparing'!
+!TestIntervalAwareMagnitude methodsFor: 'comparing' stamp: ''!
 = aTestIntervalAwareMagnitude
 
 	^self class = aTestIntervalAwareMagnitude class and: [ number = aTestIntervalAwareMagnitude number ]! !
 
-!TestIntervalAwareMagnitude methodsFor: 'comparing'!
+!TestIntervalAwareMagnitude methodsFor: 'comparing' stamp: ''!
 hash
 
 	^self class hash bitXor: number hash! !
 
-!TestIntervalAwareMagnitude methodsFor: 'interval protocol - private'!
+!TestIntervalAwareMagnitude methodsFor: 'interval protocol - private' stamp: ''!
 defaultIntervalIncrement
 
 	^self class with: 1! !
 
-!TestIntervalAwareMagnitude methodsFor: 'interval protocol - private'!
+!TestIntervalAwareMagnitude methodsFor: 'interval protocol - private' stamp: ''!
 intervalStrategy
 
 	^TestIntervalStrategy new! !
 
-!TestIntervalAwareMagnitude methodsFor: 'initialization'!
+!TestIntervalAwareMagnitude methodsFor: 'initialization' stamp: ''!
 initializeWith: aNumber
 
 	number := aNumber! !
 
-!TestIntervalAwareMagnitude methodsFor: 'accessing'!
+!TestIntervalAwareMagnitude methodsFor: 'accessing' stamp: ''!
 number
 
 	^number! !
 
-!TestIntervalAwareMagnitude class methodsFor: 'instance creation'!
+!TestIntervalAwareMagnitude class methodsFor: 'instance creation' stamp: ''!
 with: aNumber
 
 	^self new initializeWith: aNumber! !
@@ -6821,12 +6821,12 @@ isFraction
 
 	^false! !
 
-!CompoundMeasureFraction methodsFor: 'arithmetic operations'!
+!CompoundMeasureFraction methodsFor: 'arithmetic operations' stamp: ''!
 truncated
 
 	InvalidUnaryOperationException signalOperationName: 'truncated' operand: self! !
 
-!CompoundMeasureFraction methodsFor: 'private'!
+!CompoundMeasureFraction methodsFor: 'private' stamp: ''!
 numerator: aNumerator denominator: aDenominator
 
 	self setNumerator: aNumerator denominator: aDenominator! !
@@ -6840,7 +6840,7 @@ setNumerator: aNumerator denominator: aDenominator
 			[numerator := aNumerator.
 			denominator := aDenominator]! !
 
-!CompoundMeasureFraction methodsFor: 'printing'!
+!CompoundMeasureFraction methodsFor: 'printing' stamp: ''!
 printOn: aStream base: base
 
 	aStream nextPut: $(.
@@ -6863,12 +6863,12 @@ testOddInBaseUnit
 	self deny: 2 oddInBaseUnit.
 	! !
 
-!ArithmeticObjectIntervalStrategyTest methodsFor: 'test'!
+!ArithmeticObjectIntervalStrategyTest methodsFor: 'test' stamp: ''!
 testSingleton
 
 	self assert: ArithmeticObjectIntervalStrategy new == ArithmeticObjectIntervalStrategy new! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test accessing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test accessing' stamp: ''!
 testAccessing
 
 	| interval |
@@ -6880,7 +6880,7 @@ testAccessing
 	self assert: interval by=2.
 	! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test accessing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test accessing' stamp: ''!
 testAt
 
 	| interval |
@@ -6894,7 +6894,7 @@ testAt
 	self assert: (interval at: 5) = 9.
 	self should: [interval at: 11] raise: IndexOutOfRangeException! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test accessing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test accessing' stamp: ''!
 testFirst
 
 	| interval |
@@ -6904,13 +6904,13 @@ testFirst
 	self assert: interval first=1.
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test accessing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test accessing' stamp: ''!
 testHash
 
 	self assert: (ArithmeticObjectInterval from: 1 to: 5 by: 2) hash=(ArithmeticObjectInterval from: 1 to: 5 by: 2) hash
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test accessing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test accessing' stamp: ''!
 testInvalidAt
 
 	| interval |
@@ -6927,7 +6927,7 @@ testInvalidAt
 
 	self should: [ interval at: interval size + 1 ] raise: IndexOutOfRangeException! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test accessing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test accessing' stamp: ''!
 testLast
 
 	| interval |
@@ -6937,7 +6937,7 @@ testLast
 	self assert: interval last=9.
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test accessing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test accessing' stamp: ''!
 testSize
 
 	self assert: (ArithmeticObjectInterval from: 1 to: 10 by: 2) size=5.
@@ -6949,7 +6949,7 @@ testSize
 	self assert: (ArithmeticObjectInterval from: -10 to: -5 by: 1) size=6.
 	! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test'!
+!ArithmeticObjectIntervalTest methodsFor: 'test' stamp: ''!
 testAdd
 
 	self 
@@ -6965,7 +6965,7 @@ testAddToCollection
 	self assert: collection size = 11.
 	(10 to: 20) withIndexDo: [ :value :index | self assert: (collection at: index) = value ]! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test'!
+!ArithmeticObjectIntervalTest methodsFor: 'test' stamp: ''!
 testCopyAndGrowBy
 
 	| original copy |
@@ -6978,7 +6978,7 @@ testCopyAndGrowBy
 	11 to: 20 do: [ :aNumber | self assert: (copy at: aNumber) isNil ]
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test'!
+!ArithmeticObjectIntervalTest methodsFor: 'test' stamp: ''!
 testDeepCopy
 
 	| original copy |
@@ -6989,12 +6989,12 @@ testDeepCopy
 	self assert: original = copy.
 	self deny: original == copy.! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test'!
+!ArithmeticObjectIntervalTest methodsFor: 'test' stamp: ''!
 testPrintOn
 
 	self assert: (ArithmeticObjectInterval from: 1 to: 10 by: 1) printString = 'Interval from: 1 to: 10 by: 1'! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test'!
+!ArithmeticObjectIntervalTest methodsFor: 'test' stamp: ''!
 testRemoveIfAbsent
 
 	self 
@@ -7002,7 +7002,7 @@ testRemoveIfAbsent
 		raise: Exception
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test'!
+!ArithmeticObjectIntervalTest methodsFor: 'test' stamp: ''!
 testShallowCopy
 
 	| original copy |
@@ -7022,7 +7022,7 @@ testStoreOn
 		shouldnt: [ (ArithmeticObjectInterval from: 1 to: 10 by: 1) storeOn: stream ]
 		raise: Error! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test comparing'!
+!ArithmeticObjectIntervalTest methodsFor: 'test comparing' stamp: ''!
 testComparing
 
 	| interval1 interval2 |
@@ -7035,7 +7035,7 @@ testComparing
 	self deny: interval1=interval2.
 	! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test enumerating'!
+!ArithmeticObjectIntervalTest methodsFor: 'test enumerating' stamp: ''!
 testDo
 
 	| interval number |
@@ -7049,7 +7049,7 @@ testDo
 	self assert: number=11.
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test enumerating'!
+!ArithmeticObjectIntervalTest methodsFor: 'test enumerating' stamp: ''!
 testReject
 
 	| interval |
@@ -7058,7 +7058,7 @@ testReject
 	self assert: (interval reject: [:a | a > 5])=(Array with: 1 with: 3 with: 5).
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test enumerating'!
+!ArithmeticObjectIntervalTest methodsFor: 'test enumerating' stamp: ''!
 testReverse
 
 	| interval |
@@ -7081,7 +7081,7 @@ testReverseDo
 	self assert: number = -1.
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test enumerating'!
+!ArithmeticObjectIntervalTest methodsFor: 'test enumerating' stamp: ''!
 testSelect
 
 	| interval |
@@ -7090,7 +7090,7 @@ testSelect
 	self assert: (interval select: [:a | a < 5])=(Array with: 1 with: 3).
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test querying'!
+!ArithmeticObjectIntervalTest methodsFor: 'test querying' stamp: ''!
 testIncludes
 
 	| interval |
@@ -7108,7 +7108,7 @@ testIncludes
 
 ! !
 
-!ArithmeticObjectIntervalTest methodsFor: 'test instance creation'!
+!ArithmeticObjectIntervalTest methodsFor: 'test instance creation' stamp: ''!
 testInvalidCreation
 
 	self 
@@ -7132,19 +7132,19 @@ testBetweenAndNotInclusive
 	self assert: ((TestIntervalAwareMagnitude with: 1) between: (TestIntervalAwareMagnitude with: 1) andNotInclusive: (TestIntervalAwareMagnitude with: 2)).
 	self deny: ((TestIntervalAwareMagnitude with: 1) between: (TestIntervalAwareMagnitude with: 0) andNotInclusive: (TestIntervalAwareMagnitude with: 1))! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testHash
 
 	self assert: (TestIntervalAwareMagnitude with: 10) hash = (TestIntervalAwareMagnitude with: 10) hash! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testMax
 
 	self assert: ((TestIntervalAwareMagnitude with: 10) max: (TestIntervalAwareMagnitude with: 11)) = (TestIntervalAwareMagnitude with: 11).
 	self assert: ((TestIntervalAwareMagnitude with: 10) max: (TestIntervalAwareMagnitude with: 9)) = (TestIntervalAwareMagnitude with: 10).
 	self assert: ((TestIntervalAwareMagnitude with: 10) max: (TestIntervalAwareMagnitude with: 10)) = (TestIntervalAwareMagnitude with: 10)! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testMin
 
 	self assert: ((TestIntervalAwareMagnitude with: 10) min: (TestIntervalAwareMagnitude with: 11)) = (TestIntervalAwareMagnitude with: 10).
@@ -7158,14 +7158,14 @@ testNotInclusiveBetweenAnd
 	self assert: ((TestIntervalAwareMagnitude with: 1) notInclusiveBetween: (TestIntervalAwareMagnitude with: 0) and: (TestIntervalAwareMagnitude with: 2)).
 	self deny: ((TestIntervalAwareMagnitude with: 1) notInclusiveBetween: (TestIntervalAwareMagnitude with: 1) and: (TestIntervalAwareMagnitude with: 1))! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testNotInclusiveBetweenAndNotInclusive
 
 	self assert: ((TestIntervalAwareMagnitude with: 1) notInclusiveBetween: (TestIntervalAwareMagnitude with: 0) andNotInclusive: (TestIntervalAwareMagnitude with: 2)).
 	self deny: ((TestIntervalAwareMagnitude with: 1) notInclusiveBetween: (TestIntervalAwareMagnitude with: 1) andNotInclusive: (TestIntervalAwareMagnitude with: 2)).
 	self deny: ((TestIntervalAwareMagnitude with: 1) notInclusiveBetween: (TestIntervalAwareMagnitude with: 0) andNotInclusive: (TestIntervalAwareMagnitude with: 1))! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testTo
 
 	| interval |
@@ -7176,7 +7176,7 @@ testTo
 	self assert: interval to = (TestIntervalAwareMagnitude with: 20).
 	self assert: interval by = (TestIntervalAwareMagnitude with: 1)! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testToBy
 
 	| interval |
@@ -7187,7 +7187,7 @@ testToBy
 	self assert: interval to = (TestIntervalAwareMagnitude with: 20).
 	self assert: interval by = (TestIntervalAwareMagnitude with: 5)! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testToByDo
 
 	| number |
@@ -7202,7 +7202,7 @@ testToByDo
 	
 	self assert: number = 22! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testToNegativeBy
 
 	| interval number |
@@ -7215,7 +7215,7 @@ testToNegativeBy
 	
 	self assert: number = 8! !
 
-!IntervalAwareMagnitudeTest methodsFor: 'test'!
+!IntervalAwareMagnitudeTest methodsFor: 'test' stamp: ''!
 testToReverse
 
 	| coll number |
@@ -7248,7 +7248,7 @@ testPrintString
 		assert: (NumberToArithmeticObjectAdapter number: 10) 
 				printString = 'NumberMeasureAdapter for: 10'! !
 
-!UndefinedArithmeticObjectValueExceptionTest methodsFor: 'test'!
+!UndefinedArithmeticObjectValueExceptionTest methodsFor: 'test' stamp: ''!
 testSignal
 
 	| arithmeticObject |
@@ -7263,7 +7263,7 @@ testSignal
 				assert: anException description notNil;
 				assert: anException arithmeticObject = arithmeticObject]! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testAccessing
 
 	| edge |
@@ -7272,7 +7272,7 @@ testAccessing
 	self assert: edge source = 1 description: 'source'.
 	self assert: edge target = 2 description: 'target'! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testConverging
 
 	| edge |
@@ -7283,14 +7283,14 @@ testConverging
 	self deny: (edge convergesTo: 3)
 ! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testEqual
 
 	self assert: (Edge from: 1 to: 2) = (Edge from:1 to:2).
 	self deny: (Edge from: 1 to: 2) = (Edge from:2 to:1)
 ! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testGoing
 
 	| edge |
@@ -7300,13 +7300,13 @@ testGoing
 	self deny: (edge goesFrom: 2 to: 1).
 	self deny: (edge goesFrom: 1 to: 3)! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testHash
 
 	self assert: (Edge from: 1 to: 2) = (Edge from:1 to:2).
 	self assert: (Edge from: 1 to: 2) hash =( Edge from:1 to:2) hash! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testIsIncidentTo
 
 	| edge |
@@ -7318,13 +7318,13 @@ testIsIncidentTo
 		assert: (edge isIncidentTo: 'b');
 		deny: (edge isIncidentTo: 'c')! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testPrintString
 
 	self assert: (Edge from: 1 to: 2) printString = '1 -> 2'
 ! !
 
-!EdgeTest methodsFor: 'test'!
+!EdgeTest methodsFor: 'test' stamp: ''!
 testStarting
 
 	| edge |
@@ -7334,12 +7334,12 @@ testStarting
 	self deny: (edge startsOn: 2).
 	self deny: (edge startsOn: 0)! !
 
-!GraphPathFinderTest methodsFor: 'initialization'!
+!GraphPathFinderTest methodsFor: 'initialization' stamp: ''!
 initializeFinder
 
 	finder := GraphPathFinder on: graph! !
 
-!GraphPathFinderTest methodsFor: 'initialization'!
+!GraphPathFinderTest methodsFor: 'initialization' stamp: ''!
 initializeGraph
 
 	| edges |
@@ -7355,13 +7355,13 @@ initializeGraph
 	graph := Graph edges: edges
 ! !
 
-!GraphPathFinderTest methodsFor: 'initialization'!
+!GraphPathFinderTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	self initializeGraph.
 	self initializeFinder! !
 
-!GraphPathFinderTest methodsFor: 'testing'!
+!GraphPathFinderTest methodsFor: 'testing' stamp: ''!
 testGraphPathNotFoundException
 
 	[ finder pathFrom: 1 to: 6.
@@ -7372,7 +7372,7 @@ testGraphPathNotFoundException
 			self assert: aSignal target = 6.
 			aSignal return: nil ]! !
 
-!GraphPathFinderTest methodsFor: 'testing'!
+!GraphPathFinderTest methodsFor: 'testing' stamp: ''!
 testInvalidPath
 
 	#(#(3 1) #(5 1) #(4 1) #(4 2) #(3 2)) do: [ :anArray |
@@ -7384,7 +7384,7 @@ testInvalidPath
 				self assert: anException source = anArray first.
 				self assert: anException target = anArray last ]]! !
 
-!GraphPathFinderTest methodsFor: 'testing'!
+!GraphPathFinderTest methodsFor: 'testing' stamp: ''!
 testPathToFarAwayPlaces
 
 	| path |
@@ -7405,7 +7405,7 @@ testPathToFarAwayPlaces
 		with: (Edge from: 2 to: 3)
 		with: (Edge from: 3 to: 4)))! !
 
-!GraphPathFinderTest methodsFor: 'testing'!
+!GraphPathFinderTest methodsFor: 'testing' stamp: ''!
 testPathToNeighborPlace
 
 	| path |
@@ -7426,7 +7426,7 @@ testPathToNeighborPlace
 	self assert: path = (Graph edges: (OrderedCollection 
 		with: (Edge from: 3 to: 4)))! !
 
-!GraphPathFinderTest methodsFor: 'testing'!
+!GraphPathFinderTest methodsFor: 'testing' stamp: ''!
 testSamePlace
 
 	| path |
@@ -7435,7 +7435,7 @@ testSamePlace
 	self assert: path = (Graph edges: (OrderedCollection 
 		with: (Edge from: 1 to: 1)))! !
 
-!GraphPathFinderTest methodsFor: 'testing'!
+!GraphPathFinderTest methodsFor: 'testing' stamp: ''!
 testWithLoops
 
 	| path newGraph newFinder edges |
@@ -7489,7 +7489,7 @@ testWithLoops
 	self assert: path = (Graph edges: (OrderedCollection 
 		with: (Edge from: 3 to: 4)))! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testAccessImmutability
 
 	| graph edges edgesPreviousAdd nodesPreviousAdd |
@@ -7518,7 +7518,7 @@ testAccessImmutability
 	self assert: (graph nodes removeAll:  nodesPreviousAdd; yourself) isEmpty
 ! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testApplyUsingDepthFistSearch
 
 	| collectedNodes expectedCollectedNodes graph |
@@ -7542,7 +7542,7 @@ testApplyUsingDepthFistSearch
 
 	self assert: collectedNodes asOrderedCollection = expectedCollectedNodes asOrderedCollection! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testConvergingEdges
 
 	| graph edges |
@@ -7572,7 +7572,7 @@ testConvergingEdges
 	
 	self assert: (graph edgesConvergingTo: 5) isEmpty! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testCreateGraphWithInvalidEdge
 
 	| nodes invalidEdge edges |
@@ -7591,7 +7591,7 @@ testCreateGraphWithInvalidEdge
 				assert: anException edges = edges;
 				assert: anException nodes = nodes]! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testCreateGraphWithUnconnectedNodes
 
 	| nodes graph edge |
@@ -7609,7 +7609,7 @@ testCreateGraphWithUnconnectedNodes
 		assert: (graph nodesWithoutConvergingEdges includes: 'c');
 		assert: (graph nodesWithoutStartingEdges includes: 'c')! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testCreateGraphWithoutEdges
 
 	| nodes graph |
@@ -7645,7 +7645,7 @@ testCreationImmutability
 	self assert: 5 equals: graph edges size.
 	self deny: (graph edges includes: (Edge from: 4 to: 5))! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testEdgesConvergingToSelf
 
 	| graph edges |
@@ -7662,7 +7662,7 @@ testEdgesConvergingToSelf
 	self assert: (graph edgesConvergingToSelf) size = 1.
 	self assert: ((graph edgesConvergingToSelf) copyWithout: (Edge from: 4 to:4)) isEmpty! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testEqual
 
 	| graph1 graph2 |
@@ -7677,7 +7677,7 @@ testEqual
 	
 	self assert: graph1 = graph2! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testEqualsDifferentGraphs
 
 	| graph1 graph2 |
@@ -7687,7 +7687,7 @@ testEqualsDifferentGraphs
 
 	self deny: graph1 = graph2! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testGraphCreation
 
 	| graph edges |
@@ -7709,7 +7709,7 @@ testGraphCreation
 	self assert: (graph nodes includes: 2).
 	self assert: (graph nodes includes: 3)! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testHash
 
 	| graph1 graph2 |
@@ -7724,7 +7724,7 @@ testHash
 	
 	self assert: graph1 hash = graph2 hash! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testIncludesNode
 
 	| graph edges |
@@ -7741,7 +7741,7 @@ testIncludesNode
 	self assert: (graph includesNode: 3).
 	self deny: (graph includesNode: 4)! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testIsAcyclicWhenGraphIsAcyclic
 
 	| acyclicGraph |
@@ -7752,7 +7752,7 @@ testIsAcyclicWhenGraphIsAcyclic
 
 	self assert: acyclicGraph isAcyclic! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testIsAcyclicWhenGraphIsCyclic
 
 	| cyclicGraph |
@@ -7775,7 +7775,7 @@ testIsAcyclicWhenGraphIsCyclic
 
 	self deny: cyclicGraph isAcyclic! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testIsEmpty
 
 	| graph |
@@ -7784,7 +7784,7 @@ testIsEmpty
 
 	self assert: graph isEmpty! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testNodesAdjacentTo
 
 	| graph adjacentNodes |
@@ -7803,7 +7803,7 @@ testNodesAdjacentTo
 
 	self assert: (graph nodesAdjacentTo: 1) asOrderedCollection = adjacentNodes asOrderedCollection! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testNodesWithoutEdges
 
 	| graph edges |
@@ -7821,7 +7821,7 @@ testNodesWithoutEdges
 	self assert: (graph nodesWithoutConvergingEdges size = 1).
 	self assert: (graph nodesWithoutConvergingEdges includes: 1)! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testNotEmpty
 
 	| graph |
@@ -7838,7 +7838,7 @@ testNotEmpty
 		assert: graph notEmpty;
 		deny: graph isEmpty! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testRemoveNode
 
 	| nodes nodeToRemove edge edgeToRemove edges graph modifiedGraph |
@@ -7863,7 +7863,7 @@ testRemoveNode
 		assert: (modifiedGraph nodes includes: 'a');
 		assert: (modifiedGraph nodes includes: 'b')! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testRemoveNodeWithInvalidNode
 
 	| graph |
@@ -7879,7 +7879,7 @@ testRemoveNodeWithInvalidNode
 				assert: anException node = 'd';
 				assert: anException graph = graph]! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testRemoveNodes
 
 	| nodes nodeToRemove edge edgeToRemove edges graph modifiedGraph anotherNodeToRemove
@@ -7909,7 +7909,7 @@ testRemoveNodes
 		assert: (modifiedGraph nodes includes: 'a');
 		assert: (modifiedGraph nodes includes: 'b')! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testSameNodesAs
 
 	| graph anotherGraph nodes |
@@ -7920,7 +7920,7 @@ testSameNodesAs
 
 	self assert: (graph sameNodesAs: anotherGraph)! !
 
-!GraphTest methodsFor: 'test'!
+!GraphTest methodsFor: 'test' stamp: ''!
 testStartingEdges
 
 	| graph edges |
@@ -7951,7 +7951,7 @@ testStartingEdges
 	
 	self assert: (graph edgesStartingOn: 5) isEmpty! !
 
-!TopologicalSortTest methodsFor: 'test'!
+!TopologicalSortTest methodsFor: 'test' stamp: ''!
 testCreateWithCyclicGraph
 
 	| cyclicGraph |
@@ -7999,7 +7999,7 @@ testValue
 	self assert: 8 equals: result size.
 	self assert: (result includesAllOf: #(3 5 7 11 8 2 9 10))! !
 
-!TopologicalSortTest methodsFor: 'test'!
+!TopologicalSortTest methodsFor: 'test' stamp: ''!
 testValueWithAnotherGraph
 
 	"Example from: http://www.cs.fsu.edu/~cop4531/slideshow/chapter23/23-4.html"
@@ -8045,7 +8045,7 @@ testValueWithAnotherGraph
 		assert: (result indexOf: 'shirt') < (result indexOf: 'jacket');
 		assert: (result indexOf: 'pants') < (result indexOf: 'shoes')! !
 
-!TopologicalSortTest methodsFor: 'test'!
+!TopologicalSortTest methodsFor: 'test' stamp: ''!
 testWithGraphWithoutEdges
 
 	| graph result |
@@ -8058,7 +8058,7 @@ testWithGraphWithoutEdges
 		assert: (result includes: 'a');
 		assert: (result includes: 'b')! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testBaseUnit
 
 	| unit |
@@ -8066,7 +8066,7 @@ testBaseUnit
 	unit := BaseUnit named: 'peso'.
 	self assert: (unit baseUnit) = unit! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testDenominator
 
 	| unit |
@@ -8075,12 +8075,12 @@ testDenominator
 
 	self assert: unit denominator = NullUnit new! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testName
 
 	self assert: (BaseUnit named: 'peso') name = 'peso'! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameFor
 
 	| unit |
@@ -8094,7 +8094,7 @@ testNameFor
 		assert: (unit nameFor: 1.87) = unit nameForMany;
 		assert: (unit nameFor: 0.11) = unit nameForMany! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForMany
 
 	self assert: (BaseUnit named: 'peso') nameForMany = 'pesos'.
@@ -8102,7 +8102,7 @@ testNameForMany
 	self assert: (BaseUnit nameForOne: 'peso' nameForMany: 'pepe') nameForMany = 'pepe'.	
 	self assert: (BaseUnit nameForOne: 'peso' nameForMany: 'pepe' sign: '$') nameForMany = 'pepe'.	! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForOne
 
 	| unit |
@@ -8110,7 +8110,7 @@ testNameForOne
 	unit := BaseUnit named: 'peso'.
 	self assert: unit name = unit nameForOne.! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForUndefinedAmount
 
 	| baseUnit |
@@ -8118,13 +8118,13 @@ testNameForUndefinedAmount
 	baseUnit := BaseUnit nameForOne: 'peso' nameForMany: 'pesos'.
 	self assert: baseUnit nameForUndefinedAmount = baseUnit nameForMany! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testNothingAmount
 
 	self assert: (BaseUnit named: 'peso') nothingAmount = 0.
 ! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testNullMeasure
 
 	| unit |
@@ -8134,7 +8134,7 @@ testNullMeasure
 	self assert: unit nullMeasure unit = unit.
 ! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testNumerator
 
 	| unit |
@@ -8143,21 +8143,21 @@ testNumerator
 
 	self assert: unit numerator = unit! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testReciprocal
 
 	| peso |
 	peso := BaseUnit named: 'peso'.
 	self assert: peso reciprocal = (NullUnit new / peso)! !
 
-!BaseUnitTest methodsFor: 'test accessing'!
+!BaseUnitTest methodsFor: 'test accessing' stamp: ''!
 testSign
 
 	self assert: (BaseUnit named: 'peso') sign=BaseUnit defaultSign.
 	self assert: (BaseUnit named: 'peso' sign: '$') sign = '$'.
 	self assert: (BaseUnit nameForOne: 'peso' nameForMany: 'pepe' sign: '$') sign = '$'! !
 
-!BaseUnitTest methodsFor: 'test converting'!
+!BaseUnitTest methodsFor: 'test converting' stamp: ''!
 testConvertAmountToBaseUnit
 
 	| unit |
@@ -8175,7 +8175,7 @@ testConvertToBaseUnit
 	measure := SimpleMeasure amount: 10 unit: unit.
 	self assert: (unit convertToBaseUnit: measure) == measure! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDifferentBaseUnit
 
 	| numerator denominator |
@@ -8185,7 +8185,7 @@ testDivideByDifferentBaseUnit
 	self assert: (numerator / denominator) numerator = numerator.
 	self assert: (numerator / denominator) denominator = denominator! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDifferentDomainDerivedUnit
 
 	| numerator denominator hour |
@@ -8197,7 +8197,7 @@ testDivideByDifferentDomainDerivedUnit
 	self assert: (numerator / denominator) numerator = numerator.
 	self assert: (numerator / denominator) denominator = denominator! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDivideUnitSameBaseUnitNumerator
 
 	| numerator denominator hour |
@@ -8207,7 +8207,7 @@ testDivideByDivideUnitSameBaseUnitNumerator
 	
 	self assert: (numerator / (numerator / denominator)) = denominator! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDivideUnitSameDomainDerivedUnitNumerator
 
 	| meter hour centimeter |
@@ -8247,7 +8247,7 @@ testDivideByMinusInfinity
 		raise: IndeterminateOperationException
 		withMessageText: 'The Division operation is indeterminate between Minus Infinity and kelvin'! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByMultipliedUnit
 
 	| numerator denominator hour |
@@ -8262,7 +8262,7 @@ testDivideByMultipliedUnit
 	self assert: (numerator / (denominator * denominator)) denominator = (denominator * denominator)
 ! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByNullUnit
 
 	| meter |
@@ -8270,7 +8270,7 @@ testDivideByNullUnit
 	meter := BaseUnit named: 'meter'.
 	self assert: meter / NullUnit new = meter! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByNumber
 
 	| kelvin |
@@ -8285,7 +8285,7 @@ testDivideByNumber
 	self assert: (kelvin / 5.5) numerator = (kelvin with: 1/5.5) numerator.
 	self assert: (kelvin / 5.5) denominator = (kelvin with: 1/5.5) denominator! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideBySameBaseUnit
 
 	| numerator |
@@ -8293,7 +8293,7 @@ testDivideBySameBaseUnit
 	numerator := BaseUnit named: 'peso'.
 	self assert: numerator / numerator = NullUnit new! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideBySameDomainDerivedUnit
 
 	| numerator denominator |
@@ -8409,7 +8409,7 @@ testIntegerMultipliedByUnitTwice
 	self assert: (5 * kelvin * meter) denominator = 1.
 ! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByDividedUnit
 
 	| meter second kelvin |
@@ -8443,7 +8443,7 @@ testMultiplyByMinusInfinity
 	self assert: (kelvin * minusInfinity) numerator = (kelvin with: minusInfinity).
 	self assert: (kelvin * minusInfinity) denominator = 1! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByMultipliedUnit
 
 	| meter second kelvin |
@@ -8457,7 +8457,7 @@ testMultiplyByMultipliedUnit
 	self assert: ((meter * (second * kelvin)) factors includes: second).
 	self assert: ((meter * (second * kelvin)) factors includes: kelvin)! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByNullUnit
 
 	| meter |
@@ -8467,7 +8467,7 @@ testMultiplyByNullUnit
 	self assert: (meter * NullUnit new) = meter.
 ! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByNumber
 
 	| kelvin |
@@ -8483,7 +8483,7 @@ testMultiplyByNumber
 	self assert: (kelvin * 5.5) numerator = (kelvin with: 5.5) numerator.
 	self assert: (kelvin * 5.5) denominator = (kelvin with: 5.5) denominator! !
 
-!BaseUnitTest methodsFor: 'test arithmetic operations'!
+!BaseUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyBySimpleUnit
 
 	| meter second|
@@ -8535,7 +8535,7 @@ testToThePowerOfZeroReturnsOne
 	
 	self assert: 1 equals: meter ^ 0! !
 
-!BaseUnitTest methodsFor: 'test comparing'!
+!BaseUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDerivedSameBaseUnit
 
 	| meter centimeter |
@@ -8545,7 +8545,7 @@ testEqualDerivedSameBaseUnit
 	
 	self deny: meter = centimeter! !
 
-!BaseUnitTest methodsFor: 'test comparing'!
+!BaseUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDifferentBaseUnit
 
 	| meter hour |
@@ -8554,7 +8554,7 @@ testEqualDifferentBaseUnit
 	hour := BaseUnit named: 'hour'.
 	self deny: meter = hour! !
 
-!BaseUnitTest methodsFor: 'test comparing'!
+!BaseUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDividedUnit
 
 	| meter hour |
@@ -8563,7 +8563,7 @@ testEqualDividedUnit
 	hour := BaseUnit named: 'hour'.
 	self deny: meter = (meter / hour)! !
 
-!BaseUnitTest methodsFor: 'test comparing'!
+!BaseUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualMultipliedUnit
 
 	| meter hour |
@@ -8572,7 +8572,7 @@ testEqualMultipliedUnit
 	hour := BaseUnit named: 'hour'.
 	self deny: meter = (meter * hour)! !
 
-!BaseUnitTest methodsFor: 'test comparing'!
+!BaseUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualNullUnit
 
 	| meter |
@@ -8580,7 +8580,7 @@ testEqualNullUnit
 	meter := BaseUnit named: 'meter'.
 	self deny: meter = NullUnit new! !
 
-!BaseUnitTest methodsFor: 'test comparing'!
+!BaseUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualSameBaseUnit
 
 	| meter |
@@ -8596,7 +8596,7 @@ testMeasureCreation
 	meter := BaseUnit named: 'meter'.
 	self assert: (meter with: 10) = (SimpleMeasure amount: 10 unit: meter)! !
 
-!BaseUnitTest methodsFor: 'test querying'!
+!BaseUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDerivedUnit
 
 	| meter centimeter |
@@ -8609,7 +8609,7 @@ testSameDomainAsDerivedUnit
 	
 ! !
 
-!BaseUnitTest methodsFor: 'test querying'!
+!BaseUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDerivedUnitOfOtherDomain
 
 	| meter hour minute|
@@ -8622,7 +8622,7 @@ testSameDomainAsDerivedUnitOfOtherDomain
 	
 	! !
 
-!BaseUnitTest methodsFor: 'test querying'!
+!BaseUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDifferentBaseUnit
 
 	| unit metro |
@@ -8634,7 +8634,7 @@ testSameDomainAsDifferentBaseUnit
 	
 ! !
 
-!BaseUnitTest methodsFor: 'test querying'!
+!BaseUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDividedUnit
 
 	| meter hour |
@@ -8646,7 +8646,7 @@ testSameDomainAsDividedUnit
 	
 	! !
 
-!BaseUnitTest methodsFor: 'test querying'!
+!BaseUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsMultipliedUnit
 
 	| meter hour |
@@ -8658,7 +8658,7 @@ testSameDomainAsMultipliedUnit
 	
 	! !
 
-!BaseUnitTest methodsFor: 'test querying'!
+!BaseUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsNullUnit
 
 	| meter |
@@ -8668,7 +8668,7 @@ testSameDomainAsNullUnit
 	
 	! !
 
-!BaseUnitTest methodsFor: 'test querying'!
+!BaseUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsSameBaseUnit
 
 	| unit |
@@ -8847,82 +8847,82 @@ composeWithSimpleMeasure: aMeasure
 
 	^CompoundMeasure with: self with: aMeasure! !
 
-!CompoundMeasureTest methodsFor: 'mock undefined arithmetic object'!
+!CompoundMeasureTest methodsFor: 'mock undefined arithmetic object' stamp: ''!
 convertToBaseUnit
 
 	^self! !
 
-!CompoundMeasureTest methodsFor: 'mock undefined arithmetic object'!
+!CompoundMeasureTest methodsFor: 'mock undefined arithmetic object' stamp: ''!
 sameDomainAs: aMeasure 
 	
 	^false! !
 
-!CompoundMeasureTest methodsFor: 'mock undefined arithmetic object'!
+!CompoundMeasureTest methodsFor: 'mock undefined arithmetic object' stamp: ''!
 unit
 	
 	^BaseUnit named: 'Mock Unit'! !
 
-!CompoundMeasureTest methodsFor: 'accessing temperature units'!
+!CompoundMeasureTest methodsFor: 'accessing temperature units' stamp: ''!
 celsius
 
 	^units celsius! !
 
-!CompoundMeasureTest methodsFor: 'accessing temperature units'!
+!CompoundMeasureTest methodsFor: 'accessing temperature units' stamp: ''!
 fahrenheit
 
 	^units fahrenheit! !
 
-!CompoundMeasureTest methodsFor: 'accessing monetary units'!
+!CompoundMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 centavo
 	
 	^units centavo! !
 
-!CompoundMeasureTest methodsFor: 'accessing monetary units'!
+!CompoundMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 dollar
 
 	^units dollar! !
 
-!CompoundMeasureTest methodsFor: 'accessing monetary units'!
+!CompoundMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 euro
 
 	^units euro! !
 
-!CompoundMeasureTest methodsFor: 'accessing monetary units'!
+!CompoundMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 euroCent
 	
 	^units euroCent! !
 
-!CompoundMeasureTest methodsFor: 'accessing monetary units'!
+!CompoundMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 peso
 
 	^units peso! !
 
-!CompoundMeasureTest methodsFor: 'accessing monetary units'!
+!CompoundMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 quarter
 	
 	^units quarter! !
 
-!CompoundMeasureTest methodsFor: 'accessing distance units'!
+!CompoundMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 centimeter
 	
 	^units centimeter! !
 
-!CompoundMeasureTest methodsFor: 'accessing distance units'!
+!CompoundMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 kilometer
 	
 	^units kilometer! !
 
-!CompoundMeasureTest methodsFor: 'accessing distance units'!
+!CompoundMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 meter
 
 	^units meter! !
 
-!CompoundMeasureTest methodsFor: 'accessing distance units'!
+!CompoundMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 metro
 
 	^units metro! !
 
-!CompoundMeasureTest methodsFor: 'accessing distance units'!
+!CompoundMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 millimeter
 	
 	^units millimeter! !
@@ -9077,12 +9077,12 @@ zeroMeters
 
 	^SimpleMeasure amount: 0 unit: self meter! !
 
-!CompoundMeasureTest methodsFor: 'initialization'!
+!CompoundMeasureTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	units := UnitsTestResource current! !
 
-!CompoundMeasureTest methodsFor: 'test integer remainder'!
+!CompoundMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 tesRemainderFractionByMeasure
 
 	self should: [ (1/3) \\  ( self tenPesos + self tenMeters )  ] raise: InvalidOperationException
@@ -9103,28 +9103,28 @@ testRemainderCompoundMeasure
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test integer remainder'!
+!CompoundMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderFloatByMeasure
 
 	self should: [ 1.01 \\ ( self tenPesos + self tenMeters )  ] raise: InvalidOperationException
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test integer remainder'!
+!CompoundMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderIntegerByMeasure
 
 	self should: [ 1 \\  ( self tenPesos + self tenMeters ) ] raise: InvalidOperationException
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test integer remainder'!
+!CompoundMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderMeasure
 
 	self should: [ self tenPesos \\ (self tenPesos + self tenDollars) ] raise: InvalidOperationException
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAdd
 
 	| measureBag |
@@ -9140,12 +9140,12 @@ testAdd
 	self assert: (measureBag atSameBaseUnitAs: self dollar) = self twentyDollars.
 	self assert: (measureBag atSameBaseUnitAs: self euro) = self tenEuros! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddAssociativity
 
 	self assert: ((self tenPesos + self twentyDollars) + self tenEuros) = (self tenPesos + (self twentyDollars + self tenEuros))! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddBags
 
 	| result |
@@ -9162,7 +9162,7 @@ testAddBags
 	self assert: (result atSameBaseUnitAs: self euro) = self tenEuros.
 	self assert: result numberOfMeasures = 3	! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddCommutativity
 
 	self assert: (self tenPesos + self twentyDollars) = (self twentyDollars + self tenPesos).
@@ -9171,13 +9171,13 @@ testAddCommutativity
 	self assert: (self tenPesos + self twentyDollars + self tenEuros) = (self twentyDollars + self tenPesos + self tenEuros ).
 ! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddEquality
 
 	self assert: (self tenPesos + self twentyDollars)  = (self tenPesos + self twentyDollars).
 	self assert: (self tenEuros + self tenPesos + self twentyDollars) = (self tenEuros + self tenPesos + self twentyDollars)! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddExistingUnit
 
 	| measureBag |
@@ -9189,21 +9189,21 @@ testAddExistingUnit
 	self assert: (measureBag atSameBaseUnitAs: self peso) = self twentyPesos.
 	self assert: (measureBag atSameBaseUnitAs: self dollar) = self twentyDollars! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddFloatWithMeasure
 
 	self assert: ((10.01 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((10.01 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self peso) = self tenPesos.
 	self assert: ((10.01 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: NullUnit new) = 10.01! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddFractionWithMeasure
 
 	self assert: ((1/3 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((1/3 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self peso) = self tenPesos.
 	self assert: ((1/3 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: NullUnit new) = (1/3)! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddImmutability
 
 	| a10pesosPlus20Dollars |
@@ -9214,14 +9214,14 @@ testAddImmutability
 	
 	! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddIntegerWithMeasure
 
 	self assert: ((10 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((10 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self peso) = self tenPesos.
 	self assert: ((10 + (self tenMeters + self tenPesos) ) atSameBaseUnitAs: NullUnit new) = 10.	! !
 
-!CompoundMeasureTest methodsFor: 'test add'!
+!CompoundMeasureTest methodsFor: 'test add' stamp: ''!
 testAddNothing
 
 	self assert: (self zeroPesos + self twentyDollars) = self twentyDollars.
@@ -9337,7 +9337,7 @@ testCeiling
 
 	self assert:  (2 * self meter) + (3 * self peso) equals: ((1.1 * self meter) + (2.6 * self peso)) ceiling ! !
 
-!CompoundMeasureTest methodsFor: 'test'!
+!CompoundMeasureTest methodsFor: 'test' stamp: ''!
 testConvertAmountToBaseUnit
 
 	self
@@ -9378,19 +9378,19 @@ testIsFraction
 
 	self deny: ((self peso with: 10.01) + (self dollar with: 20.5)) isFraction! !
 
-!CompoundMeasureTest methodsFor: 'test'!
+!CompoundMeasureTest methodsFor: 'test' stamp: ''!
 testRemFrom
 
 	self
 		should: [(self oneKilometer + self fivePesos) remFrom: self oneKilometer]
 		raise: InvalidBinaryOperationException! !
 
-!CompoundMeasureTest methodsFor: 'test'!
+!CompoundMeasureTest methodsFor: 'test' stamp: ''!
 testRoundTo
 
 	self assert: ((self oneKilometer + self fivePesos) roundTo: 1) = (self oneKilometer + self fivePesos)! !
 
-!CompoundMeasureTest methodsFor: 'test'!
+!CompoundMeasureTest methodsFor: 'test' stamp: ''!
 testUnitNameOf
 
 	self
@@ -9399,7 +9399,7 @@ testUnitNameOf
 		withExceptionDo: [ :anException |
 			self assert: ('*Unit of a MeasureBag is not defined' match: anException description)]! !
 
-!CompoundMeasureTest methodsFor: 'test division'!
+!CompoundMeasureTest methodsFor: 'test division' stamp: ''!
 testDivideByMeasure
 
 	self assert: ((self tenPesos + self twentyDollars) / self tenPesos ) =((self twentyDollars / self tenPesos) + 1)! !
@@ -9411,7 +9411,7 @@ testDivision
 	self assert: ((self tenPesos + self twentyDollars) / -10) = (self onePeso negated - self twoDollars).
 	self assert: ((self tenPesos + self twentyDollars) / 3) = 	((SimpleMeasure amount: (10/3) unit: self peso) + (SimpleMeasure amount: (20/3) unit: self dollar))! !
 
-!CompoundMeasureTest methodsFor: 'test division'!
+!CompoundMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionDistributivity
 
 	self assert: (self tenPesos + self tenDollars ) / ( self tenPesos + self tenDollars ) =
@@ -9445,7 +9445,7 @@ testDivisionMeasureByCompoundMeasure
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test division'!
+!CompoundMeasureTest methodsFor: 'test division' stamp: ''!
 testZeroDivision
 
 	self assert: ((self zeroPesos + self zeroDollars) / 1) = self zeroPesos.
@@ -9539,7 +9539,7 @@ testZeroEqualsTheZeroOfTheDomain
 
 	self assert: 0 = (self zeroMeters + self zeroPesos)! !
 
-!CompoundMeasureTest methodsFor: 'test truncated'!
+!CompoundMeasureTest methodsFor: 'test truncated' stamp: ''!
 testInvalidTruncated
 
 	self 
@@ -9550,7 +9550,7 @@ testInvalidTruncated
 			self assert: anException operand = (3 / (self tenPesos + self tenDollars)).
 			self assert: anException operationName = 'truncated' ]! !
 
-!CompoundMeasureTest methodsFor: 'test truncated'!
+!CompoundMeasureTest methodsFor: 'test truncated' stamp: ''!
 testTruncated
 
 	self assert: ((self peso with: 10.01) + (self dollar with: 20.5)) truncated = (self tenPesos + self twentyDollars)! !
@@ -9574,7 +9574,7 @@ testIsCompoundMeasurement
 
 	self assert: ((self peso with: 10.01) + (self dollar with: 20.5)) isCompoundMeasure! !
 
-!CompoundMeasureTest methodsFor: 'test testing'!
+!CompoundMeasureTest methodsFor: 'test testing' stamp: ''!
 testIsNothing
 
 	self assert: (self zeroPesos + self zeroDollars) isNothing.
@@ -9594,7 +9594,7 @@ testOddInBaseUnit
 	self deny: ((self centimeter with: 200) + (self centavo with: 100)) oddInBaseUnit.
 	! !
 
-!CompoundMeasureTest methodsFor: 'test magnitude protocol'!
+!CompoundMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testLessThan
 	"Not supported in bags..."
 
@@ -9618,35 +9618,35 @@ testModuloCompoundMeasure
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test integer division'!
+!CompoundMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloFloatByMeasure
 
 	self should: [ 1.01 // ( self tenPesos + self tenMeters ) ] raise: InvalidOperationException
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test integer division'!
+!CompoundMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloFractionByMeasure
 
 	self should: [ (1/3) // ( self tenPesos + self tenMeters ) ] raise: InvalidOperationException
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test integer division'!
+!CompoundMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloIntegerByMeasure
 
 	self should: [ 1 // ( self tenPesos + self tenMeters ) ] raise: InvalidOperationException
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test integer division'!
+!CompoundMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloMeasure
 
 	self should: [ self tenPesos // (self tenPesos + self tenDollars) ] raise: InvalidOperationException
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplication
 
 	self assert: ((self tenPesos + self twentyDollars) * 2) = (self twentyPesos + self fortyDollars).
@@ -9654,7 +9654,7 @@ testMultiplication
 	
 	! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplicationByMeasure
 
 	self assert: ((self tenPesos + self twentyDollars) * self tenPesos) = ((self tenPesos * self tenPesos) + (self tenPesos * self twentyDollars))
@@ -9662,7 +9662,7 @@ testMultiplicationByMeasure
 	
 	! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplicationByZero
 
 	self assert: ((self tenPesos + self twentyDollars) * 0) isNothing.
@@ -9670,14 +9670,14 @@ testMultiplicationByZero
 	self assert: (((self tenPesos + self twentyDollars) * 0) - self tenPesos) = self tenPesos negated 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplicationCommutativity
 
 	self assert: ((self tenPesos + self twentyDollars) * (25/10)) = ((25/10) * (self tenPesos + self twentyDollars)).
 	self assert: (self tenPesos * (self tenPesos + self tenDollars)) = ((self tenPesos + self tenDollars) * self tenPesos ).
 ! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplicationDistributivity
 
 	self assert: ((self tenPesos + self twentyDollars) * 2) = ((self tenPesos * 2) + (self twentyDollars * 2)).
@@ -9686,21 +9686,21 @@ testMultiplicationDistributivity
 	self assert: (self tenPesos + self tenDollars ) * ( self tenPesos + self tenDollars ) =
 		(((self tenPesos + self tenDollars )* self tenPesos) + ((self tenPesos + self tenDollars ) * self tenDollars ))! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyFloatByMeasure
 
 	self assert: (1.01 *  ( self tenPesos + self tenMeters ) ) = ((self tenPesos * 1.01) + (self tenMeters * 1.01))
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyFractionByMeasure
 
 	self assert: ((1/3) *  ( self tenPesos + self tenMeters ) ) = ((1/3* self tenPesos) + (1/3*self tenMeters)) 
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test multiplication'!
+!CompoundMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyIntegerByMeasure
 
 	self assert: (3 * (self tenPesos + self tenMeters )) =  ((3*self tenPesos) + (3*self tenMeters)) 
@@ -9719,12 +9719,12 @@ testSubtractMeasureByCompoundMeasure
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testNegated
 
 	self assert: (self minusTenPesos + self minusTenDollars) = (self tenPesos + self tenDollars) negated! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testNegatedDistribution
 
 	self assert: (self tenPesos negated + self tenDollars negated) = (self tenPesos + self tenDollars) negated.
@@ -9736,7 +9736,7 @@ testNegatedZeroBag
 	self assert: ((self tenPesos + self twentyDollars) - (self tenPesos + self twentyDollars) ) negated isNothing.
 ! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtract
 
 	| measureBag |
@@ -9769,7 +9769,7 @@ testSubtractBags
 	self assert: (result atSameBaseUnitAs: self euro) = self tenEuros negated.
 	self assert: result numberOfMeasures = 3! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractEquality
 
 	self assert: (self tenPesos - self twentyDollars)  = (self tenPesos - self twentyDollars).
@@ -9777,7 +9777,7 @@ testSubtractEquality
 	
 ! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractExistingUnit
 
 	| measureBag measure |
@@ -9789,28 +9789,28 @@ testSubtractExistingUnit
 
 ! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractFloatWithMeasure
 
 	self assert: ((10.01 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self meter) = self tenMeters negated.
 	self assert: ((10.01 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self peso) = self tenPesos negated.
 	self assert: ((10.01 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: NullUnit new) = 10.01.	! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractFractionWithMeasure
 
 	self assert: ((1/3 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self meter) = self tenMeters negated.
 	self assert: ((1/3 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self peso) = self tenPesos negated.
 	self assert: ((1/3 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: NullUnit new) = (1/3).	! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractIntegerWithMeasure
 
 	self assert: ((10 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self meter) = self tenMeters negated.
 	self assert: ((10 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: self peso) = self tenPesos negated.
 	self assert: ((10 - (self tenMeters + self tenPesos) ) atSameBaseUnitAs: NullUnit new) = 10.	! !
 
-!CompoundMeasureTest methodsFor: 'test subtract'!
+!CompoundMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractNothing
 
 	self assert: (self zeroPesos - self twentyDollars) = self twentyDollars negated.
@@ -9866,53 +9866,53 @@ testToThePowerOfZeroReturnsOne
 
 	self assert: 1 equals: (self tenPesos + self tenDollars) ^0! !
 
-!CompoundMeasureTest class methodsFor: 'resources'!
+!CompoundMeasureTest class methodsFor: 'resources' stamp: ''!
 resources
 
 	^Array with: UnitsTestResource! !
 
-!ConversionTableTest methodsFor: 'accessing monetary units'!
+!ConversionTableTest methodsFor: 'accessing monetary units' stamp: ''!
 cents
 
 	^units centavo! !
 
-!ConversionTableTest methodsFor: 'accessing monetary units'!
+!ConversionTableTest methodsFor: 'accessing monetary units' stamp: ''!
 dollar
 
 	^units dollar! !
 
-!ConversionTableTest methodsFor: 'accessing monetary units'!
+!ConversionTableTest methodsFor: 'accessing monetary units' stamp: ''!
 peso
 
 	^units peso! !
 
-!ConversionTableTest methodsFor: 'accessing monetary measurements'!
+!ConversionTableTest methodsFor: 'accessing monetary measurements' stamp: ''!
 oneDollar
 	
 	^self dollar with: 1! !
 
-!ConversionTableTest methodsFor: 'accessing monetary measurements'!
+!ConversionTableTest methodsFor: 'accessing monetary measurements' stamp: ''!
 oneHundredCents
 
 	^self cents with: 100! !
 
-!ConversionTableTest methodsFor: 'accessing monetary measurements'!
+!ConversionTableTest methodsFor: 'accessing monetary measurements' stamp: ''!
 onePeso
 
 	^self peso with: 1! !
 
-!ConversionTableTest methodsFor: 'accessing monetary measurements'!
+!ConversionTableTest methodsFor: 'accessing monetary measurements' stamp: ''!
 tenDollars
 	
 	^self dollar with: 10! !
 
-!ConversionTableTest methodsFor: 'initialization'!
+!ConversionTableTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	units := UnitsTestResource current
 ! !
 
-!ConversionTableTest methodsFor: 'testing accessing'!
+!ConversionTableTest methodsFor: 'testing accessing' stamp: ''!
 testAccessing
 
 	| table rule |
@@ -9930,7 +9930,7 @@ testAccessing
 		raise: NoUnitConversionRuleException.
 		! !
 
-!ConversionTableTest methodsFor: 'testing accessing'!
+!ConversionTableTest methodsFor: 'testing accessing' stamp: ''!
 testAccessingImmutability
 
 	| table rules |
@@ -9941,7 +9941,7 @@ testAccessingImmutability
 	rules add: 1.
 	self assert: table unitConversionRules size = 1! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testAddUnitConversionRule
 	"This test verifies that if two rules of conversion for the same measures are added, it is left the last one. 
 	That is the behavior defined for the table."	
@@ -9962,7 +9962,7 @@ testAddUnitConversionRule
 	self assert: table unitConversionRules size = 1.
 	self assert: ((table unitConversionRuleFrom: self peso to: self dollar) value: self onePeso) = self tenDollars! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testBreakEquivalence
 
 	| table |
@@ -9974,7 +9974,7 @@ testBreakEquivalence
 	self assert: ((table unitConversionRuleFrom: self peso to: self dollar) value: self onePeso) = self oneDollar.
 	self assert: ((table unitConversionRuleFrom: self dollar to: self peso) value: self oneDollar) = (self onePeso/10)! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testConvertsTo
 
 	| table |
@@ -9995,7 +9995,7 @@ testConvertsTo
 			to: self peso
 			use: (ProportionalUnitConversionFunction measure:  self tenDollars isProportionalTo: self onePeso)))! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testDerivedUnitIsEquivalentTo
 
 	| table quarter fortyQuarters |
@@ -10026,7 +10026,7 @@ testDerivedUnitIsEquivalentTo
 	self assert: ((table unitConversionRuleFrom: quarter to: self peso) value: fortyQuarters) = self onePeso.
 	self assert: ((table unitConversionRuleFrom: quarter to: self cents ) value: fortyQuarters) = self oneHundredCents! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testFromToUse
 
 	| table convertionBlock |
@@ -10042,7 +10042,7 @@ testFromToUse
 			to: self dollar
 			use: convertionBlock))! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testIsEquivalentTo
 
 	| table |
@@ -10063,7 +10063,7 @@ testIsEquivalentTo
 			to: self peso
 			use: (ProportionalUnitConversionFunction measure: self tenDollars isProportionalTo: self onePeso)))! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testRemove
 
 	| table |
@@ -10083,7 +10083,7 @@ testRemove
 			self assert: anException targetUnit = self peso.
 			self assert: anException description notNil ]! !
 
-!ConversionTableTest methodsFor: 'testing table setup'!
+!ConversionTableTest methodsFor: 'testing table setup' stamp: ''!
 testUnitConversionRuleUniqueness
 
 	| table |
@@ -10104,7 +10104,7 @@ testUnitConversionRuleUniqueness
 	self assert: ((table unitConversionRuleFrom: self peso to: self dollar) value: self onePeso) = self tenDollars.
 	self assert: ((table unitConversionRuleFrom: self dollar to: self peso) value: self oneDollar) = (self onePeso/10)! !
 
-!ConversionTableTest methodsFor: 'testing graph'!
+!ConversionTableTest methodsFor: 'testing graph' stamp: ''!
 testGraph
 
 	| table graph |
@@ -10123,7 +10123,7 @@ testGraph
 	self assert: (graph edgesStartingOn: self peso) size = 1.
 	self assert: (graph edgesStartingOn: self peso) first target = self dollar! !
 
-!ConversionTableTest methodsFor: 'testing graph'!
+!ConversionTableTest methodsFor: 'testing graph' stamp: ''!
 testGraphChange
 
 	| table graph |
@@ -10137,7 +10137,7 @@ testGraphChange
 	self assert: table graph edges size = 2.
 	self deny: table graph == graph! !
 
-!ConversionTableTest methodsFor: 'testing exceptions'!
+!ConversionTableTest methodsFor: 'testing exceptions' stamp: ''!
 testNoUnitConversionRule
 
 	| table |
@@ -10153,35 +10153,35 @@ testNoUnitConversionRule
 			self assert: anException targetUnit = self peso.
 			self assert: anException description notNil ]! !
 
-!ConversionTableTest class methodsFor: 'resources'!
+!ConversionTableTest class methodsFor: 'resources' stamp: ''!
 resources
 
 	^Array with: UnitsTestResource! !
 
-!DividedUnitTest methodsFor: 'initialization'!
+!DividedUnitTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	meter := BaseUnit named: 'meter' sign: 'm'.
 	second := BaseUnit named: 'second' sign: 's'.
 	meterOverSecond := meter / second! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testBaseUnit
 
 	self assert: (meterOverSecond baseUnit) = meterOverSecond
 ! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testDenominator
 
 	self assert: meterOverSecond denominator = second! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testName
 
 	self assert: meterOverSecond name = 'meter/second'! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForMany
 
 	self assert: meterOverSecond nameForMany = 'meters/seconds'! !
@@ -10194,7 +10194,7 @@ testNameForManyWhenHavingAlias
 		named: 'speed' 
 		during: [ self assert: '10 * speed' equals: (10 * meterOverSecond) printString ]! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForOne
 
 	self assert: meterOverSecond name = 'meter/second'! !
@@ -10207,36 +10207,36 @@ testNameForOneWhenHavingAlias
 		named: 'speed' 
 		during: [ self assert: '1 * speed' equals: (1 * meterOverSecond) printString ]! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNothingAmount
 
 	self assert: meterOverSecond nothingAmount = 0! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNullMeasure
 
 	self assert: meterOverSecond nullMeasure amount = 0.
 	self assert: meterOverSecond nullMeasure unit = meterOverSecond.
 ! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNumerator
 
 	self assert: meterOverSecond numerator = meter! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testReciprocal
 
 	| secondOverMeter |
 	secondOverMeter := second / meter.
 	self assert: meterOverSecond reciprocal = secondOverMeter! !
 
-!DividedUnitTest methodsFor: 'test accessing'!
+!DividedUnitTest methodsFor: 'test accessing' stamp: ''!
 testSign
 
 	self assert: meterOverSecond sign = 'm/s'! !
 
-!DividedUnitTest methodsFor: 'test converting'!
+!DividedUnitTest methodsFor: 'test converting' stamp: ''!
 testConvertAmountToBaseUnit
 
 	self assert: (meterOverSecond convertAmountToBaseUnit: 0) = 0.
@@ -10262,7 +10262,7 @@ testConvertToBaseUnitFromDerivedUnitFactors
 	self assert: 10 * 1000 / 60 * meterOverSecond equals: measure convertToBaseUnit 
 ! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDividedUnit
 
 	|  kelvin liter |
@@ -10311,7 +10311,7 @@ testDivideByMinusInfinity
 		raise: IndeterminateOperationException
 		withMessageText: 'The Division operation is indeterminate between Minus Infinity and meter/second'! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideBySimpleUnit
 
 	| kelvin |
@@ -10324,7 +10324,7 @@ testDivideBySimpleUnit
 	self assert: (meterOverSecond / kelvin) denominator = (second * kelvin).
 ! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDividedByMultipliedUnit
 
 	|  kelvin liter |
@@ -10338,7 +10338,7 @@ testDividedByMultipliedUnit
 	self assert: (meterOverSecond / (kelvin * liter)) denominator = (second * kelvin * liter)
 ! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDividedByNullUnit
 
 	self assert: (meterOverSecond / NullUnit new) = meterOverSecond.
@@ -10426,7 +10426,7 @@ testIntegerMultipliedByUnitTwice
 	
 ! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByDividedUnit
 
 	|  kelvin liter |
@@ -10472,7 +10472,7 @@ testMultiplyByMinusInfinity
 	self assert: (meterOverSecond * minusInfinity) numerator = (meter with: minusInfinity).
 	self assert: (meterOverSecond * minusInfinity) denominator = (second with: 1)! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByMultipliedUnit
 
 	| kelvin |
@@ -10484,13 +10484,13 @@ testMultiplyByMultipliedUnit
 	self assert: (meterOverSecond * (kelvin * kelvin)) denominator = second
 ! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByNullUnit
 
 	self assert: (meterOverSecond * NullUnit new) = meterOverSecond.
 ! !
 
-!DividedUnitTest methodsFor: 'test arithmetic operations'!
+!DividedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyBySimpleUnit
 
 	| kelvin |
@@ -10529,7 +10529,7 @@ testToThePowerOfZeroReturnsOne
 
 	self assert: 1 equals: meterOverSecond ^ 0! !
 
-!DividedUnitTest methodsFor: 'test comparing'!
+!DividedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDividedUnit
 
 	| kelvin liter |
@@ -10544,17 +10544,17 @@ testEqualDividedUnit
 	self deny: meterOverSecond = (meter / second / kelvin).
 	self deny: meterOverSecond = (kelvin / liter)! !
 
-!DividedUnitTest methodsFor: 'test comparing'!
+!DividedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualMultipliedUnit
 
 	self deny: meterOverSecond = (meter * second)! !
 
-!DividedUnitTest methodsFor: 'test comparing'!
+!DividedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualNullUnit
 
 	self deny: meterOverSecond = NullUnit new! !
 
-!DividedUnitTest methodsFor: 'test comparing'!
+!DividedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualSimpleUnit
 
 	| kelvin |
@@ -10567,7 +10567,7 @@ testMeasureCreation
 
 	self assert: (meterOverSecond with: 10) = (SimpleMeasure amount: 10 unit: meterOverSecond)! !
 
-!DividedUnitTest methodsFor: 'test querying'!
+!DividedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDividedUnit
 
 	self assert: (meterOverSecond sameDomainAs: meterOverSecond).
@@ -10575,19 +10575,19 @@ testSameDomainAsDividedUnit
 	
 	! !
 
-!DividedUnitTest methodsFor: 'test querying'!
+!DividedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsMultipliedUnit
 
 	self deny: (meterOverSecond sameDomainAs: (meter * second))! !
 
-!DividedUnitTest methodsFor: 'test querying'!
+!DividedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsNullUnit
 
 	self deny: (meterOverSecond sameDomainAs: NullUnit new)
 	
 	! !
 
-!DividedUnitTest methodsFor: 'test querying'!
+!DividedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsSameSimpleUnit
 
 	self deny: (meterOverSecond sameDomainAs: meter).
@@ -10596,12 +10596,12 @@ testSameDomainAsSameSimpleUnit
 	
 ! !
 
-!EvaluationTest methodsFor: 'test support'!
+!EvaluationTest methodsFor: 'test support' stamp: ''!
 assertAllTestShouldPassFor: aMessageName
 
 	self shouldPass: self genericTestsMessageNames for: aMessageName! !
 
-!EvaluationTest methodsFor: 'test support'!
+!EvaluationTest methodsFor: 'test support' stamp: ''!
 shouldFail: aTestsToFail for: aMessageName
 
 	messageName := aMessageName.
@@ -10619,7 +10619,7 @@ shouldFail: aTestsToFail for: aMessageName
 						self assert: anException leftOperand notNil.
 						self assert: anException rightOperand notNil]]]! !
 
-!EvaluationTest methodsFor: 'test support'!
+!EvaluationTest methodsFor: 'test support' stamp: ''!
 shouldFail: testsToFail shouldPassRestFor: aMessageName
 
 	| testToPass |
@@ -10629,36 +10629,36 @@ shouldFail: testsToFail shouldPassRestFor: aMessageName
 	self shouldPass: testToPass for: aMessageName.
 	self shouldFail: testsToFail for: aMessageName! !
 
-!EvaluationTest methodsFor: 'test support'!
+!EvaluationTest methodsFor: 'test support' stamp: ''!
 shouldPass: testsToPass for: aMessageName
 
 	messageName := aMessageName.
 	testsToPass do: [ :aTestMessageName | self perform: aTestMessageName ]! !
 
-!EvaluationTest methodsFor: 'accessing'!
+!EvaluationTest methodsFor: 'accessing' stamp: ''!
 genericTestsMessageNames
 
 	^(self class selectors select: [:aSelector | 'performWith*' match: aSelector])
 		asOrderedCollection! !
 
-!EvaluationTest methodsFor: 'accessing'!
+!EvaluationTest methodsFor: 'accessing' stamp: ''!
 messageName: aMessageName
 
 	messageName := aMessageName
 
 	! !
 
-!EvaluationTest methodsFor: 'accessing'!
+!EvaluationTest methodsFor: 'accessing' stamp: ''!
 tenDollars
 	
 	^dollar with: 10! !
 
-!EvaluationTest methodsFor: 'accessing'!
+!EvaluationTest methodsFor: 'accessing' stamp: ''!
 tenPesos
 
 	^peso with: 10! !
 
-!EvaluationTest methodsFor: 'accessing'!
+!EvaluationTest methodsFor: 'accessing' stamp: ''!
 twentyPesos
 
 	^peso with: 20! !
@@ -10688,49 +10688,49 @@ performWithFormulaWithFloat
 	self assert: (formulaOfTenPesos perform: messageName with: 1.01) value = 
 		(formulaOfTenPesos value perform: messageName with: 1.01 value)! !
 
-!EvaluationTest methodsFor: 'generic tests'!
+!EvaluationTest methodsFor: 'generic tests' stamp: ''!
 performWithFormulaWithFraction
 
 	self assert: (formulaOfTenPesos perform: messageName with: (1/3)) value = 
 		(formulaOfTenPesos value perform: messageName with: (1/3) value)! !
 
-!EvaluationTest methodsFor: 'generic tests'!
+!EvaluationTest methodsFor: 'generic tests' stamp: ''!
 performWithFormulaWithInteger
 
 	self assert: (formulaOfTenPesos perform: messageName with: 1) value = 
 		(formulaOfTenPesos value perform: messageName with: 1 value)! !
 
-!EvaluationTest methodsFor: 'generic tests'!
+!EvaluationTest methodsFor: 'generic tests' stamp: ''!
 performWithFormulaWithMeasure
 
 	self assert: (formulaOfTenPesos perform: messageName with: self twentyPesos) value = 
 		(formulaOfTenPesos value perform: messageName with: self twentyPesos value)! !
 
-!EvaluationTest methodsFor: 'generic tests'!
+!EvaluationTest methodsFor: 'generic tests' stamp: ''!
 performWithFormulas
 
 	self assert: (formulaOfTenPesos perform: messageName with: formulaOfTwentyPesos) value = 
 		(formulaOfTenPesos value perform: messageName with: formulaOfTwentyPesos value)! !
 
-!EvaluationTest methodsFor: 'generic tests'!
+!EvaluationTest methodsFor: 'generic tests' stamp: ''!
 performWithFractionWithFormula
 
 	self assert: (1/3 perform: messageName with: formulaOfTenPesos) value = 
 		((1/3) value perform: messageName with: formulaOfTenPesos value)! !
 
-!EvaluationTest methodsFor: 'generic tests'!
+!EvaluationTest methodsFor: 'generic tests' stamp: ''!
 performWithIntegerWithFormula
 
 	self assert: (1 perform: messageName with: formulaOfTenPesos) value = 
 		(1 value perform: messageName with: formulaOfTenPesos value)! !
 
-!EvaluationTest methodsFor: 'generic tests'!
+!EvaluationTest methodsFor: 'generic tests' stamp: ''!
 performWithMeasureWithFormula
 
 	self assert: (self twentyPesos perform: messageName with: formulaOfTenPesos) value = 
 		(self twentyPesos value perform: messageName with: formulaOfTenPesos value)! !
 
-!EvaluationTest methodsFor: 'initialization'!
+!EvaluationTest methodsFor: 'initialization' stamp: ''!
 setUp
 	
 	peso := BaseUnit named: 'Peso'.
@@ -10738,7 +10738,7 @@ setUp
 	formulaOfTenPesos := DummyEvaluation of: self tenPesos.
 	formulaOfTwentyPesos := DummyEvaluation of: self twentyPesos! !
 
-!EvaluationTest methodsFor: 'testing'!
+!EvaluationTest methodsFor: 'testing' stamp: ''!
 testAdd
 
 	self assertAllTestShouldPassFor: #+! !
@@ -10751,7 +10751,7 @@ testCeiling
 	self assert: (DummyEvaluation of: (peso with: 2.6)) ceiling = (peso with: 3).
 	! !
 
-!EvaluationTest methodsFor: 'testing'!
+!EvaluationTest methodsFor: 'testing' stamp: ''!
 testDivide
 
 	self assertAllTestShouldPassFor: #/! !
@@ -10794,12 +10794,12 @@ testModulo
 	testsToFail := #(performWithFormulaWithCompoundMeasure).
 	self shouldFail: testsToFail shouldPassRestFor: #//! !
 
-!EvaluationTest methodsFor: 'testing'!
+!EvaluationTest methodsFor: 'testing' stamp: ''!
 testMultiply
 
 	self assertAllTestShouldPassFor: #*! !
 
-!EvaluationTest methodsFor: 'testing'!
+!EvaluationTest methodsFor: 'testing' stamp: ''!
 testNegated
 
 	self assert: formulaOfTenPesos negated value = formulaOfTenPesos value negated.
@@ -10842,12 +10842,12 @@ testRemainder
 		).	
 	self shouldFail: testsToFail shouldPassRestFor: #\\! !
 
-!EvaluationTest methodsFor: 'testing'!
+!EvaluationTest methodsFor: 'testing' stamp: ''!
 testSubtract
 
 	self assertAllTestShouldPassFor: #-! !
 
-!EvaluationTest methodsFor: 'testing'!
+!EvaluationTest methodsFor: 'testing' stamp: ''!
 testTruncated
 
 	| formula |
@@ -10855,22 +10855,22 @@ testTruncated
 	formula := DummyEvaluation of: (peso with: 1.3).
 	self assert: formula truncated = (peso with: 1)! !
 
-!MeasureConverterTest methodsFor: 'initialization'!
+!MeasureConverterTest methodsFor: 'initialization' stamp: ''!
 createUnits
 
 	^UnitsTestResource current! !
 
-!MeasureConverterTest methodsFor: 'initialization'!
+!MeasureConverterTest methodsFor: 'initialization' stamp: ''!
 initializeMoneyConverter
 
 	moneyConverter := MeasureConverter on: self moneyConversionTable! !
 
-!MeasureConverterTest methodsFor: 'initialization'!
+!MeasureConverterTest methodsFor: 'initialization' stamp: ''!
 initializeUnitRegistry
 
 	units := self createUnits! !
 
-!MeasureConverterTest methodsFor: 'initialization'!
+!MeasureConverterTest methodsFor: 'initialization' stamp: ''!
 moneyConversionTable
 
 	| table |
@@ -10881,23 +10881,23 @@ moneyConversionTable
 	
 	^table! !
 
-!MeasureConverterTest methodsFor: 'initialization'!
+!MeasureConverterTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	self initializeUnitRegistry.
 	self initializeMoneyConverter! !
 
-!MeasureConverterTest methodsFor: 'accessing monetary units'!
+!MeasureConverterTest methodsFor: 'accessing monetary units' stamp: ''!
 dollar
 
 	^units dollar! !
 
-!MeasureConverterTest methodsFor: 'accessing monetary units'!
+!MeasureConverterTest methodsFor: 'accessing monetary units' stamp: ''!
 euro
 	
 	^units euro! !
 
-!MeasureConverterTest methodsFor: 'accessing monetary units'!
+!MeasureConverterTest methodsFor: 'accessing monetary units' stamp: ''!
 peso
 
 	^units peso! !
@@ -10928,12 +10928,12 @@ threePesos
 
 	^SimpleMeasure amount: 3 unit: self peso! !
 
-!MeasureConverterTest methodsFor: 'test'!
+!MeasureConverterTest methodsFor: 'test' stamp: ''!
 testCanConvertTo
 
 	self assert: (moneyConverter canConvert: self onePeso to: self dollar)! !
 
-!MeasureConverterTest methodsFor: 'test'!
+!MeasureConverterTest methodsFor: 'test' stamp: ''!
 testConvertToUsing
 
 	self assert: (moneyConverter findPathAndConvert: self onePeso to: self onePeso) = self onePeso.
@@ -10946,7 +10946,7 @@ testCompoundMeasureConversion
 	self assert: (moneyConverter convert: (self threePesos + self oneDollar) to: self peso) = (self threePesos * 2).
 	self assert: (moneyConverter convert: (self threePesos + self oneDollar + self oneEuro) to: self dollar) = ((self oneDollar * 2) + (self oneDollar * (13/10)))! !
 
-!MeasureConverterTest methodsFor: 'testing'!
+!MeasureConverterTest methodsFor: 'testing' stamp: ''!
 testDefaultGraphPathFinder
 
 	self assert: MeasureConverter defaultGraphPathFinder = GraphPathFinder! !
@@ -10957,13 +10957,13 @@ testDirectSearching
 	self assert: (moneyConverter convert: self onePeso to: self dollar) = (self dollar with: 1/3).
 	self assert: (moneyConverter convert: self oneEuro to: self dollar) = (self dollar with: 13/10)! !
 
-!MeasureConverterTest methodsFor: 'testing'!
+!MeasureConverterTest methodsFor: 'testing' stamp: ''!
 testIndirectSearching
 
 	self assert: (moneyConverter convert: self onePeso to: self euro) = (self euro with: 10/39).
 	self assert: (moneyConverter convert: self oneEuro to: self peso) = (self peso with: 39/10)! !
 
-!MeasureConverterTest methodsFor: 'testing'!
+!MeasureConverterTest methodsFor: 'testing' stamp: ''!
 testInvalidConversion
 
 	| patacon |
@@ -10978,7 +10978,7 @@ testInvalidConversion
 			self assert: anException targetUnit = patacon.
 			self assert: anException description notNil]! !
 
-!MeasureConverterTest methodsFor: 'testing'!
+!MeasureConverterTest methodsFor: 'testing' stamp: ''!
 testSameDomainConversion
 
 	| cents |
@@ -10988,12 +10988,12 @@ testSameDomainConversion
 	self assert: (moneyConverter convert: self onePeso to: self peso) = self onePeso.
 	self assert: (moneyConverter convert: self onePeso to: cents) = (cents with: 100)! !
 
-!MeasureConverterTest class methodsFor: 'resources'!
+!MeasureConverterTest class methodsFor: 'resources' stamp: ''!
 resources
 
 	^Array with: UnitsTestResource! !
 
-!MinusInfinityTest methodsFor: 'initialization'!
+!MinusInfinityTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	meter := BaseUnit named: 'meter'.
@@ -11390,19 +11390,19 @@ testToToFixed
 		assert: interval size = infinity;
 		assert: interval by = 1! !
 
-!MultipliedUnitTest methodsFor: 'initialization'!
+!MultipliedUnitTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	meter := BaseUnit named: 'meter' sign: 'm'.
 	second := BaseUnit named: 'second' sign: 's'.
 	meterBySecond := meter * second! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: ''!
 testBaseUnit
 
 	self assert: (meterBySecond baseUnit) = meterBySecond! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: ''!
 testDenominator
 
 	self assert: meterBySecond denominator = NullUnit new! !
@@ -11440,25 +11440,25 @@ testNameForOneWhenHavingAlias
 		during: [ self assert: '1 * something' equals: (1*meterBySecond) printString ].
 		! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNothingAmount
 
 	self assert: meterBySecond nothingAmount = 0.
 ! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNullMeasure
 
 	self assert: meterBySecond nullMeasure amount = 0.
 	self assert: meterBySecond nullMeasure unit = meterBySecond.
 ! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNumerator
 
 	self assert: meterBySecond numerator = meterBySecond! !
 
-!MultipliedUnitTest methodsFor: 'test accessing'!
+!MultipliedUnitTest methodsFor: 'test accessing' stamp: ''!
 testReciprocal
 
 	self assert: meterBySecond reciprocal = (NullUnit new / meterBySecond)! !
@@ -11468,7 +11468,7 @@ testSign
 
 	self assert: meterBySecond sign = 'm*s'! !
 
-!MultipliedUnitTest methodsFor: 'test converting'!
+!MultipliedUnitTest methodsFor: 'test converting' stamp: ''!
 testConvertAmountToBaseUnit
 
 	self assert: (meterBySecond convertAmountToBaseUnit: 0) = 0.
@@ -11497,7 +11497,7 @@ testConvertToBaseUnitFromDerivedUnitFactors
 	self assert: 10000 * 60 * meterBySecond equals: measure convertToBaseUnit 
 ! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDividedUnit
 
 	|  kelvin liter |
@@ -11548,7 +11548,7 @@ testDivideByMinusInfinity
 	self assert: (meterBySecond / minusInfinity) numerator = (meterBySecond with: 0).
 	self assert: (meterBySecond / minusInfinity) denominator = 1! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideBySimpleUnit
 
 	| kelvin |
@@ -11560,7 +11560,7 @@ testDivideBySimpleUnit
 	self assert: (meterBySecond / kelvin) numerator = meterBySecond.
 	self assert: (meterBySecond / kelvin) denominator = kelvin! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDividedByMultipliedUnit
 
 	|  kelvin liter |
@@ -11572,7 +11572,7 @@ testDividedByMultipliedUnit
 	self assert: (meterBySecond / (kelvin * liter)) numerator = meterBySecond.
 	self assert: (meterBySecond / (kelvin * liter)) denominator = (kelvin * liter)! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDividedByNullUnit
 
 	self assert: (meterBySecond / NullUnit new) = meterBySecond.
@@ -11653,7 +11653,7 @@ testIntegerMultipliedByUnitTwice
 	
 	! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByDividedUnit
 
 	|  kelvin liter |
@@ -11697,7 +11697,7 @@ testMultiplyByMinusInfinity
 	self assert: (meterBySecond * minusInfinity) numerator = (meterBySecond with: minusInfinity).
 	self assert: (meterBySecond * minusInfinity) denominator = 1! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByMultipliedUnit
 
 	self assert: (meterBySecond * meterBySecond) factorsSize = 4.
@@ -11706,13 +11706,13 @@ testMultiplyByMultipliedUnit
 	self assert: ((meterBySecond * meterBySecond) factors at: 3) = meter.
 	self assert: ((meterBySecond * meterBySecond) factors at: 4) = second! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByNullUnit
 
 	self assert: (meterBySecond * NullUnit new) = meterBySecond.
 ! !
 
-!MultipliedUnitTest methodsFor: 'test arithmetic operations'!
+!MultipliedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyBySimpleUnit
 
 	self assert: (meterBySecond * second) factorsSize = 3.
@@ -11744,12 +11744,12 @@ testToThePowerOfZeroReturnsOne
 
 	self assert: 1 equals: meterBySecond ^ 0! !
 
-!MultipliedUnitTest methodsFor: 'test comparing'!
+!MultipliedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDividedUnit
 
 	self deny: meterBySecond = (meter / second)! !
 
-!MultipliedUnitTest methodsFor: 'test comparing'!
+!MultipliedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualMultipliedUnit
 
 	| kelvin liter |
@@ -11764,12 +11764,12 @@ testEqualMultipliedUnit
 	self deny: meterBySecond = (meter * second * kelvin).
 	self deny: meterBySecond = (kelvin * liter)! !
 
-!MultipliedUnitTest methodsFor: 'test comparing'!
+!MultipliedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualNullUnit
 
 	self deny: meterBySecond = NullUnit new! !
 
-!MultipliedUnitTest methodsFor: 'test comparing'!
+!MultipliedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualSimpleUnit
 
 	| kelvin |
@@ -11782,13 +11782,13 @@ testMeasureCreation
 
 	self assert: (meterBySecond with: 10) = (SimpleMeasure amount: 10 unit: meterBySecond)! !
 
-!MultipliedUnitTest methodsFor: 'test querying'!
+!MultipliedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDividedUnit
 
 	self deny: (meterBySecond sameDomainAs: (meter / second))	
 	! !
 
-!MultipliedUnitTest methodsFor: 'test querying'!
+!MultipliedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsMultipliedUnit
 
 	| liter |
@@ -11801,14 +11801,14 @@ testSameDomainAsMultipliedUnit
 	
 	! !
 
-!MultipliedUnitTest methodsFor: 'test querying'!
+!MultipliedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsNullUnit
 
 	self deny: (meterBySecond sameDomainAs: NullUnit new)
 	
 	! !
 
-!MultipliedUnitTest methodsFor: 'test querying'!
+!MultipliedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsSameSimpleUnit
 
 	| unit |
@@ -11820,7 +11820,7 @@ testSameDomainAsSameSimpleUnit
 	
 ! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'initialization'!
+!NotProportionalDerivedUnitTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	kelvin := BaseUnit named: 'kelvin'! !
@@ -11853,7 +11853,7 @@ testDenominator
 		
 	self assert: unit denominator = NullUnit new! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testName
 
 	self assert: ( NotProportionalDerivedUnit 
@@ -11884,7 +11884,7 @@ testNameForMany
 		nameForMany: 'celcius'
 		sign: 'º') nameForMany = 'celcius'! !
 
-!NotProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!NotProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForOne
 
 	self assert: ( NotProportionalDerivedUnit 
@@ -12039,43 +12039,43 @@ setUp
 	nullUnit := NullUnit new
 	! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testBaseUnit
 
 	self assert: (nullUnit baseUnit) = nullUnit
 ! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testDenominator
 
 	self assert: nullUnit denominator = nullUnit! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testName
 
 	self assert: nullUnit name = ''! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForMany
 
 	self assert: nullUnit nameForMany = ''! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForOne
 
 	self assert: nullUnit nameForOne = ''! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testNumerator
 
 	self assert: nullUnit numerator = nullUnit! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testReciprocal
 
 	self assert: nullUnit reciprocal = nullUnit! !
 
-!NullUnitTest methodsFor: 'test accessing'!
+!NullUnitTest methodsFor: 'test accessing' stamp: ''!
 testSign
 
 	self assert: nullUnit sign = NullUnit defaultSign! !
@@ -12086,12 +12086,12 @@ testConvertAmountToBaseUnit
 	self assert: (nullUnit convertAmountToBaseUnit: 0) = 0.
 	self assert: (nullUnit convertAmountToBaseUnit: 10) = 10! !
 
-!NullUnitTest methodsFor: 'test converting'!
+!NullUnitTest methodsFor: 'test converting' stamp: ''!
 testConvertToBaseUnit
 
 	self assert: (nullUnit convertToBaseUnit: 0) == 0! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDividedUnit
 
 	| meter hour |
@@ -12101,7 +12101,7 @@ testDivideByDividedUnit
 	self assert: (nullUnit / (meter / hour)) numerator = hour.
 	self assert: (nullUnit / (meter / hour)) denominator = meter! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByMultipliedUnit
 
 	| meter |
@@ -12110,12 +12110,12 @@ testDivideByMultipliedUnit
 	self assert: (nullUnit / (meter * meter)) numerator = nullUnit.
 	self assert: (nullUnit / (meter * meter)) denominator = (meter*meter)! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByNullUnit
 
 	self assert: (nullUnit / nullUnit) = nullUnit! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideBySimpleUnit
 
 	| meter |
@@ -12124,7 +12124,7 @@ testDivideBySimpleUnit
 	self assert: (nullUnit / meter) numerator = nullUnit.
 	self assert: (nullUnit / meter) denominator = meter! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByDividedUnit
 
 	| meter second |
@@ -12135,7 +12135,7 @@ testMultiplyByDividedUnit
 	self assert: (nullUnit * (meter / second )) numerator = meter.
 	self assert: (nullUnit * (meter / second )) denominator = second! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByMultipliedUnit
 
 	| second kelvin |
@@ -12147,12 +12147,12 @@ testMultiplyByMultipliedUnit
 	self assert: ((nullUnit * (second * kelvin)) factors includes: second).
 	self assert: ((nullUnit * (second * kelvin)) factors includes: kelvin)! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByNullUnit
 
 	self assert: (nullUnit * nullUnit) = nullUnit! !
 
-!NullUnitTest methodsFor: 'test arithmetic operations'!
+!NullUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyBySimpleUnit
 
 	| meter |
@@ -12185,7 +12185,7 @@ testToThePowerOfZeroReturnsOne
 
 	self assert: 1 equals: nullUnit ^ 0! !
 
-!NullUnitTest methodsFor: 'test comparing'!
+!NullUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualBaseUnit
 
 	| meter |
@@ -12193,7 +12193,7 @@ testEqualBaseUnit
 	meter := BaseUnit named: 'meter'.
 	self deny: nullUnit = meter! !
 
-!NullUnitTest methodsFor: 'test comparing'!
+!NullUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDerivedUnit
 
 	| meter centimeter |
@@ -12203,7 +12203,7 @@ testEqualDerivedUnit
 	
 	self deny: nullUnit = centimeter! !
 
-!NullUnitTest methodsFor: 'test comparing'!
+!NullUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDividedUnit
 
 	| meter hour |
@@ -12212,7 +12212,7 @@ testEqualDividedUnit
 	hour := BaseUnit named: 'hour'.
 	self deny: nullUnit = (meter / hour)! !
 
-!NullUnitTest methodsFor: 'test comparing'!
+!NullUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualMultipliedUnit
 
 	| meter hour |
@@ -12221,18 +12221,18 @@ testEqualMultipliedUnit
 	hour := BaseUnit named: 'hour'.
 	self deny: nullUnit = (meter * hour)! !
 
-!NullUnitTest methodsFor: 'test comparing'!
+!NullUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualNullUnit
 
 	self assert: nullUnit = nullUnit.
 	self assert: NullUnit new = NullUnit new! !
 
-!NullUnitTest methodsFor: 'test measurement creation'!
+!NullUnitTest methodsFor: 'test measurement creation' stamp: ''!
 testMeasureCreation
 
 	self assert: (nullUnit with: 10) = 10! !
 
-!NullUnitTest methodsFor: 'test querying'!
+!NullUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsBaseUnit
 
 	| metro |
@@ -12240,7 +12240,7 @@ testSameDomainAsBaseUnit
 	metro := BaseUnit named: 'metro'.
 	self deny: (nullUnit sameDomainAs: metro)! !
 
-!NullUnitTest methodsFor: 'test querying'!
+!NullUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDerivedUnit
 
 	| meter centimeter |
@@ -12250,7 +12250,7 @@ testSameDomainAsDerivedUnit
 	
 	self deny: (nullUnit sameDomainAs: centimeter)! !
 
-!NullUnitTest methodsFor: 'test querying'!
+!NullUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDividedUnit
 
 	| meter hour |
@@ -12260,7 +12260,7 @@ testSameDomainAsDividedUnit
 	
 	self deny: (nullUnit sameDomainAs: (meter / hour))! !
 
-!NullUnitTest methodsFor: 'test querying'!
+!NullUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsMultipliedUnit
 
 	| meter hour |
@@ -12270,29 +12270,29 @@ testSameDomainAsMultipliedUnit
 	
 	self deny: (nullUnit sameDomainAs: (meter * hour))! !
 
-!NullUnitTest methodsFor: 'test querying'!
+!NullUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsNullUnit
 
 	self assert: (nullUnit sameDomainAs: nullUnit)
 	
 	! !
 
-!NumberMeasureProtocolTest methodsFor: 'test accessing'!
+!NumberMeasureProtocolTest methodsFor: 'test accessing' stamp: ''!
 testAmount
 
 	self assert: 1 amount = 1! !
 
-!NumberMeasureProtocolTest methodsFor: 'test accessing'!
+!NumberMeasureProtocolTest methodsFor: 'test accessing' stamp: ''!
 testBaseUnit
 
 	self assert: 1 baseUnit = NullUnit new! !
 
-!NumberMeasureProtocolTest methodsFor: 'test accessing'!
+!NumberMeasureProtocolTest methodsFor: 'test accessing' stamp: ''!
 testUnit
 
 	self assert: 1 unit = NullUnit new! !
 
-!NumberMeasureProtocolTest methodsFor: 'test'!
+!NumberMeasureProtocolTest methodsFor: 'test' stamp: ''!
 testConvertTo
 
 	self assert: (1 convertTo: NullUnit new) = 1.
@@ -12308,18 +12308,18 @@ testConvertToIfSuccessfullDoIfFails
 	self deny: (1 convertTo: (BaseUnit named: 'The base is') ifSuccessful: [ :aNumber | true] ifFails: [ false ]).
 ! !
 
-!NumberMeasureProtocolTest methodsFor: 'test converting'!
+!NumberMeasureProtocolTest methodsFor: 'test converting' stamp: ''!
 testConvertToBaseUnit
 
 	self assert: 1 convertToBaseUnit = 1! !
 
-!NumberMeasureProtocolTest methodsFor: 'test querying'!
+!NumberMeasureProtocolTest methodsFor: 'test querying' stamp: ''!
 testIsNothing
 
 	self assert: 0 isNothing.
 	self deny: 1 isNothing.! !
 
-!PlusInfinityTest methodsFor: 'initialization'!
+!PlusInfinityTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	meter := BaseUnit named: 'meter'.
@@ -12698,13 +12698,13 @@ testToToFixed
 		assert: interval size = infinity;
 		assert: interval by = 1! !
 
-!ProportionalDerivedUnitTest methodsFor: 'initialization'!
+!ProportionalDerivedUnitTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	peso := BaseUnit named: 'peso'.
 	centavo := ProportionalDerivedUnit baseUnit: peso conversionFactor: (1/100) named: 'centavo'! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testBaseUnit
 
 	| unit |
@@ -12712,7 +12712,7 @@ testBaseUnit
 	unit := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo'.
 	self assert: unit baseUnit = peso! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testDenominator
 
 	| unit |
@@ -12720,19 +12720,19 @@ testDenominator
 	unit := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo'.
 	self assert: unit denominator = NullUnit new! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testName
 
 	self assert: (ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo') name = 'centavo'! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForMany
 
 	self assert: (ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo') nameForMany = 'centavos'.
 	self assert: (ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo' sign: '$') nameForMany = 'centavos'.
 	self assert: (ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 nameForOne: 'centavo' nameForMany: 'pepe' sign: '$') nameForMany = 'pepe'! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNameForOne
 
 	| unit |
@@ -12740,7 +12740,7 @@ testNameForOne
 	unit := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo'.
 	self assert: unit name = unit nameForOne! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNothingAmount
 
 	| unit |
@@ -12748,7 +12748,7 @@ testNothingAmount
 	unit := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo'.
 	self assert: unit nothingAmount = 0! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNullMeasure
 
 	| unit |
@@ -12757,7 +12757,7 @@ testNullMeasure
 	self assert: unit nullMeasure amount = 0.
 	self assert: unit nullMeasure unit = peso! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testNumerator
 
 	| unit |
@@ -12765,7 +12765,7 @@ testNumerator
 	unit := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo'.
 	self assert: unit numerator = unit! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testReciprocal
 
 	| unit |
@@ -12773,7 +12773,7 @@ testReciprocal
 	unit := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo'.
 	self assert: unit reciprocal = (NullUnit new / unit)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test accessing'!
+!ProportionalDerivedUnitTest methodsFor: 'test accessing' stamp: ''!
 testSign
 
 	self assert:
@@ -12795,7 +12795,7 @@ testSign
 			sign: '$')
 				sign = '$'! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test converting'!
+!ProportionalDerivedUnitTest methodsFor: 'test converting' stamp: ''!
 testConversionFactor
 
 	| unit |
@@ -12803,7 +12803,7 @@ testConversionFactor
 	unit := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/100 named: 'centavo'.
 	self assert: unit conversionFactor = (1/100)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test converting'!
+!ProportionalDerivedUnitTest methodsFor: 'test converting' stamp: ''!
 testConvertAmountToBaseUnit
 
 	| unit |
@@ -12823,7 +12823,7 @@ testConvertToBaseUnit
 	self assert: (unit convertToBaseUnit: measure) amount = 1.
 	self assert: (unit convertToBaseUnit: measure) unit = peso! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDifferentBaseUnit
 
 	| meter |
@@ -12832,7 +12832,7 @@ testDivideByDifferentBaseUnit
 	self assert: (centavo / meter) numerator = centavo.
 	self assert: (centavo / meter) denominator = meter! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDifferentDomainDerivedUnit
 
 	| minutes hour |
@@ -12843,7 +12843,7 @@ testDivideByDifferentDomainDerivedUnit
 	self assert: (centavo / minutes) numerator = centavo.
 	self assert: (centavo / minutes) denominator = minutes! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDivideUnitSameDerivedUnitNumerator
 
 	| meter |
@@ -12852,7 +12852,7 @@ testDivideByDivideUnitSameDerivedUnitNumerator
 	
 	self assert: (centavo / (centavo/meter)) = meter! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByDividedUnitSameBaseUnitNumerator
 
 	|  hour |
@@ -12862,7 +12862,7 @@ testDivideByDividedUnitSameBaseUnitNumerator
 	self assert: (centavo / (peso / hour)) numerator = (centavo * hour).
 	self assert: (centavo / (peso / hour)) denominator = peso! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByMultipliedUnit
 
 	| meter |
@@ -12875,17 +12875,17 @@ testDivideByMultipliedUnit
 	self assert: (centavo / (meter * meter)) numerator = centavo.
 	self assert: (centavo / (meter * meter)) denominator = (meter * meter)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideByNullUnit
 
 	self assert: centavo / NullUnit new = centavo! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideBySameBaseUnit
 
 	self assert: centavo / centavo = NullUnit new! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testDivideBySameDomainDerivedUnit
 
 	| tenCents |
@@ -12895,7 +12895,7 @@ testDivideBySameDomainDerivedUnit
 	self assert: (centavo / tenCents) numerator = centavo.
 	self assert: (centavo / tenCents) denominator = tenCents! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByDividedUnit
 
 	| second kelvin |
@@ -12906,7 +12906,7 @@ testMultiplyByDividedUnit
 	self assert: (centavo * (second / kelvin)) numerator = (centavo * second).
 	self assert: (centavo * (second / kelvin)) denominator = kelvin! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByMultipliedUnit
 
 	| second kelvin |
@@ -12919,12 +12919,12 @@ testMultiplyByMultipliedUnit
 	self assert: ((centavo * (second * kelvin)) factors includes: second).
 	self assert: ((centavo * (second * kelvin)) factors includes: kelvin)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyByNullUnit
 
 	self assert: (centavo * NullUnit new) = centavo! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations'!
+!ProportionalDerivedUnitTest methodsFor: 'test arithmetic operations' stamp: ''!
 testMultiplyBySimpleUnit
 
 	| second|
@@ -12959,7 +12959,7 @@ testToThePowerOfZeroReturnsOne
 
 	self assert: 1 equals: centavo ^ 0! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test comparing'!
+!ProportionalDerivedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDerivedSameBaseUnit
 
 	| tenCents |
@@ -12967,7 +12967,7 @@ testEqualDerivedSameBaseUnit
 	tenCents := ProportionalDerivedUnit baseUnit: peso conversionFactor: 1/10 named: 'diez centavos'.	
 	self deny: centavo = tenCents! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test comparing'!
+!ProportionalDerivedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDifferentBaseUnit
 
 	| meter |
@@ -12975,7 +12975,7 @@ testEqualDifferentBaseUnit
 	meter := BaseUnit named: 'meter'.
 	self deny: centavo = meter! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test comparing'!
+!ProportionalDerivedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualDividedUnit
 
 	|  hour |
@@ -12983,7 +12983,7 @@ testEqualDividedUnit
 	hour := BaseUnit named: 'hour'.
 	self deny: centavo = (centavo / hour)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test comparing'!
+!ProportionalDerivedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualMultipliedUnit
 
 	| hour |
@@ -12991,17 +12991,17 @@ testEqualMultipliedUnit
 	hour := BaseUnit named: 'hour'.
 	self deny: centavo = (centavo * hour)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test comparing'!
+!ProportionalDerivedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualNullUnit
 
 	self deny: centavo = NullUnit new! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test comparing'!
+!ProportionalDerivedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualSameBaseUnit
 
 	self deny: centavo = peso! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test comparing'!
+!ProportionalDerivedUnitTest methodsFor: 'test comparing' stamp: ''!
 testEqualSameDerivedUnit
 
 	self assert: centavo = centavo! !
@@ -13011,7 +13011,7 @@ testMeasureCreation
 
 	self assert: (centavo with: 10) = (SimpleMeasure amount: 10 unit: centavo)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDerivedUnit
 
 	| tenCents |
@@ -13023,7 +13023,7 @@ testSameDomainAsDerivedUnit
 	
 ! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDerivedUnitOfOtherDomain
 
 	| hour minute|
@@ -13035,7 +13035,7 @@ testSameDomainAsDerivedUnitOfOtherDomain
 	
 	! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDifferentBaseUnit
 
 	| meter |
@@ -13046,7 +13046,7 @@ testSameDomainAsDifferentBaseUnit
 	
 ! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsDividedUnit
 
 	| meter hour |
@@ -13056,7 +13056,7 @@ testSameDomainAsDividedUnit
 	
 	self deny: (centavo sameDomainAs: (meter / hour))	! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsMultipliedUnit
 
 	| meter hour |
@@ -13066,24 +13066,24 @@ testSameDomainAsMultipliedUnit
 	
 	self deny: (centavo sameDomainAs: (meter * hour))	! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsNullUnit
 
 	self deny: (centavo sameDomainAs: NullUnit new)
 	
 	! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsSameBaseUnit
 
 	self assert: (centavo sameDomainAs: peso)! !
 
-!ProportionalDerivedUnitTest methodsFor: 'test querying'!
+!ProportionalDerivedUnitTest methodsFor: 'test querying' stamp: ''!
 testSameDomainAsUnit
 
 	self assert: (centavo sameDomainAs: centavo)! !
 
-!ProportionalUnitConversionFunctionTest methodsFor: 'initialization'!
+!ProportionalUnitConversionFunctionTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	peso := BaseUnit named: 'peso'.
@@ -13102,7 +13102,7 @@ testAccessing
 	self assert: function proportionalMeasure = (tenDollars/onePeso).
 	self assert: function printString = '10 * dollar / 1 * peso* valueToConvert'! !
 
-!ProportionalUnitConversionFunctionTest methodsFor: 'testing'!
+!ProportionalUnitConversionFunctionTest methodsFor: 'testing' stamp: ''!
 testEqual
 
 	| function |
@@ -13111,13 +13111,13 @@ testEqual
 	self assert: function = (ProportionalUnitConversionFunction measure: onePeso isProportionalTo: tenDollars).
 	self deny: function = (ProportionalUnitConversionFunction measure: tenDollars isProportionalTo: onePeso)! !
 
-!ProportionalUnitConversionFunctionTest methodsFor: 'testing'!
+!ProportionalUnitConversionFunctionTest methodsFor: 'testing' stamp: ''!
 testHash
 
 	self assert: (ProportionalUnitConversionFunction measure: onePeso isProportionalTo: tenDollars) hash =
 		(ProportionalUnitConversionFunction measure: onePeso isProportionalTo: tenDollars) hash! !
 
-!ProportionalUnitConversionFunctionTest methodsFor: 'testing'!
+!ProportionalUnitConversionFunctionTest methodsFor: 'testing' stamp: ''!
 testInvalidValues
 
 	| cent |
@@ -13139,7 +13139,7 @@ testInvalidValues
 			self assert: anException equivalentMeasure = (cent with: 100).
 			self assert: anException description notNil ]! !
 
-!ProportionalUnitConversionFunctionTest methodsFor: 'testing'!
+!ProportionalUnitConversionFunctionTest methodsFor: 'testing' stamp: ''!
 testValidValues
 
 	| function |
@@ -13153,42 +13153,42 @@ testValidValues
 	self assert: (function value:(dollar with: 1)) = (onePeso/10)
 	! !
 
-!SimpleMeasureTest methodsFor: 'accessing temperature units'!
+!SimpleMeasureTest methodsFor: 'accessing temperature units' stamp: ''!
 celsius
 
 	^units celsius! !
 
-!SimpleMeasureTest methodsFor: 'accessing temperature units'!
+!SimpleMeasureTest methodsFor: 'accessing temperature units' stamp: ''!
 fahrenheit
 
 	^units fahrenheit! !
 
-!SimpleMeasureTest methodsFor: 'accessing temperature units'!
+!SimpleMeasureTest methodsFor: 'accessing temperature units' stamp: ''!
 kelvin
 	
 	^units kelvin! !
 
-!SimpleMeasureTest methodsFor: 'accessing distance units'!
+!SimpleMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 centimeter
 	
 	^units centimeter! !
 
-!SimpleMeasureTest methodsFor: 'accessing distance units'!
+!SimpleMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 kilometer
 	
 	^units kilometer! !
 
-!SimpleMeasureTest methodsFor: 'accessing distance units'!
+!SimpleMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 meter
 
 	^units meter! !
 
-!SimpleMeasureTest methodsFor: 'accessing distance units'!
+!SimpleMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 metro
 
 	^units metro! !
 
-!SimpleMeasureTest methodsFor: 'accessing distance units'!
+!SimpleMeasureTest methodsFor: 'accessing distance units' stamp: ''!
 millimeter
 	
 	^units millimeter! !
@@ -13198,22 +13198,22 @@ composeWith: aMeasure
 
 	^aMeasure composeWithSimpleMeasure: self! !
 
-!SimpleMeasureTest methodsFor: 'converting'!
+!SimpleMeasureTest methodsFor: 'converting' stamp: ''!
 convertToBaseUnit
 	
 	^self! !
 
-!SimpleMeasureTest methodsFor: 'accessing monetary units'!
+!SimpleMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 dollar
 
 	^units dollar! !
 
-!SimpleMeasureTest methodsFor: 'accessing monetary units'!
+!SimpleMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 euro
 
 	^units euro! !
 
-!SimpleMeasureTest methodsFor: 'accessing monetary units'!
+!SimpleMeasureTest methodsFor: 'accessing monetary units' stamp: ''!
 peso
 
 	^units peso! !
@@ -13298,12 +13298,12 @@ zeroPesos
 
 	^SimpleMeasure amount: 0 unit: self peso! !
 
-!SimpleMeasureTest methodsFor: 'time units'!
+!SimpleMeasureTest methodsFor: 'time units' stamp: ''!
 minute
 
 	^units minute! !
 
-!SimpleMeasureTest methodsFor: 'time units'!
+!SimpleMeasureTest methodsFor: 'time units' stamp: ''!
 second
 	
 	^units second! !
@@ -13388,22 +13388,22 @@ twoSecond
 	
 	^SimpleMeasure amount: 2 unit: self second! !
 
-!SimpleMeasureTest methodsFor: 'testing'!
+!SimpleMeasureTest methodsFor: 'testing' stamp: ''!
 sameDomainAs: aMeasure 
 	
 	^false! !
 
-!SimpleMeasureTest methodsFor: 'initialization'!
+!SimpleMeasureTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	units := UnitsTestResource current! !
 
-!SimpleMeasureTest methodsFor: 'test integer remainder'!
+!SimpleMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 tesRemainderFractionByMeasure
 
 	self assert: (1/3) \\ self tenPesos = (1/3)! !
 
-!SimpleMeasureTest methodsFor: 'test integer remainder'!
+!SimpleMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderByMeasure
 
 	self assert: (self tenMeters \\ self tenMeters) = (self meter with: 10\\10).
@@ -13414,7 +13414,7 @@ testRemainderByMeasure
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer remainder'!
+!SimpleMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderByZero
 
 	self should: [ self tenPesos \\ 0 ] raise: Exception.
@@ -13427,20 +13427,20 @@ testRemainderCompoundMeasureByMeasure
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer remainder'!
+!SimpleMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderFloatByMeasure
 
 	self assert: (10.5 \\ self tenPesos) = 0.5
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer remainder'!
+!SimpleMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderIntegerByMeasure
 
 	self assert: 1 \\ self tenPesos = 1
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer remainder'!
+!SimpleMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderOfBaseUnit
 
 	self assert: (self tenMeters \\ 10) amount = 0.
@@ -13449,7 +13449,7 @@ testRemainderOfBaseUnit
 	self assert: (self tenMeters \\ 3) amount = 1.
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer remainder'!
+!SimpleMeasureTest methodsFor: 'test integer remainder' stamp: ''!
 testRemainderOfDerivedUnit
 
 	self assert: (self tenKilometers \\ 9 ) amount = 1.
@@ -13457,14 +13457,14 @@ testRemainderOfDerivedUnit
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testAbs
 
 	self assert: self onePeso abs = self onePeso.
 	self assert: (self onePeso unit with: 0)  abs = (self onePeso unit with: 0).
 	self assert: (self onePeso unit with: -1)  abs = (self onePeso unit with: 1)! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testAtBaseUnitIfNone
 
 	self assert: (self oneSecond atBaseUnit: self second ifNone: []) = self oneSecond.
@@ -13478,7 +13478,7 @@ testCeiling
 	self assert: ((SimpleMeasure amount: 1.6 unit: self celsius) ceiling) = (self celsius with: 2).
 	! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testCompareGreaterThan
 
 	self assert: (self oneCelsius compareGreaterThan: 0).
@@ -13515,7 +13515,7 @@ testIntegerDivideCompoundMeasure
 		(self fiveDollars moduloCompoundMeasure: self fiveDollars + self fivePesos) =
 			(1 + (self onePeso / self oneDollar))! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testInvalidGreaterThanAgainstScalar
 
 	self assert: (
@@ -13539,7 +13539,7 @@ testIsFraction
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testNegative
 
 	self assert: (self onePeso - self tenPesos) negative.
@@ -13559,13 +13559,13 @@ testOddInBaseUnit
 	self deny: (SimpleMeasure amount: 200 unit: self centimeter) oddInBaseUnit.
 		! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testPositive
 
 	self assert: self tenPesos positive.
 	self deny: self tenPesos negated positive.! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testRemFrom
 
 	self
@@ -13589,7 +13589,7 @@ testRoundTo
 	self assert: ((SimpleMeasure amount: -1 unit: self celsius) roundTo: 1) = (self celsius with: -1).
 	self assert: ((SimpleMeasure amount: -1.1 unit: self celsius) roundTo: 1) = (self celsius with: -1)! !
 
-!SimpleMeasureTest methodsFor: 'test'!
+!SimpleMeasureTest methodsFor: 'test' stamp: ''!
 testUnitNameOf
 
 	self
@@ -13598,13 +13598,13 @@ testUnitNameOf
 		assert: (self zeroDollars unitNameOf: self dollar) = self dollar nameForMany;
 		assert: (self oneDollar negated unitNameOf: self dollar) = self dollar nameForOne! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddAssociativity
 
 	self assert: (self oneMeter + (self oneMeter + self oneKilometer)) amount = ((self oneMeter + self oneMeter) + self oneKilometer) amount.
 	self assert: (self oneMeter + (self oneMeter + self oneKilometer)) unit = ((self oneMeter + self oneMeter) + self oneKilometer) unit! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddBaseUnit
 
 	self assert: (self oneMeter + self oneMeter) amount = 2.
@@ -13620,19 +13620,19 @@ testAddBaseUnitAndDerivedUnit
 	self assert: (self zeroCelsius + (SimpleMeasure amount: 32 unit: self fahrenheit)) unit = self kelvin
 ! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddCommutativity
 
 	self assert: (self oneMeter + self oneKilometer) amount = (self oneKilometer + self oneMeter) amount.
 	self assert: (self oneMeter + self oneKilometer) unit = (self oneKilometer + self oneMeter) unit! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddDerivedUnit
 
 	self assert: (self oneKilometer + self oneCentimeter) amount = (100001/100).
 	self assert: (self oneKilometer + self oneCentimeter) unit = self meter! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddDifferentBaseUnits
 
 	self should: [ (self tenPesos + self twentyDollars) amount ] raise: Exception.
@@ -13643,7 +13643,7 @@ testAddDifferentBaseUnits
 	self should: [ ((self tenPesos + self twentyDollars) + self tenEuros) amount ] raise: Exception.
 ! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddDifferentUnit
 
 	| a10pesosPlus20Dollars |
@@ -13661,44 +13661,44 @@ testAddDifferentUnit
 	
 	self assert: (self zeroPesos + self zeroDollars) = (self zeroDollars + self zeroPesos) description: 'Adding Zero'! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddDividedMeasure
 
 	self assert: ((self tenMeters + (self tenMeters / self fivePesos)) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((self tenMeters + (self tenMeters / self fivePesos)) atSameBaseUnitAs: (self meter / self peso)) = (self tenMeters / self fivePesos)! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddFloatWithMeasure
 
 	self assert: ((10.01 + self tenMeters) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((10.01 + self tenMeters) atSameBaseUnitAs: NullUnit new) = 10.01.	! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddFractionWithMeasure
 
 	self assert: ((1/3 + self tenMeters) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((1/3 + self tenMeters) atSameBaseUnitAs: NullUnit new) = (1/3).	! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddIntegerWithMeasure
 
 	self assert: ((10 + self tenMeters) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((10 + self tenMeters) atSameBaseUnitAs: NullUnit new) = 10.	! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddMultipliedMeasure
 
 	self assert: ((self tenMeters + (self tenMeters * self fivePesos)) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((self tenMeters + (self tenMeters * self fivePesos)) atSameBaseUnitAs: (self meter*self peso)) = (self tenMeters * self fivePesos)
 ! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testAddNumber
 
 	self assert: ((self tenMeters + 10) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((self tenMeters + 10) atSameBaseUnitAs: NullUnit new) = 10.	! !
 
-!SimpleMeasureTest methodsFor: 'test add'!
+!SimpleMeasureTest methodsFor: 'test add' stamp: ''!
 testSimplificationsAddingWithZero
 
 	self
@@ -13849,13 +13849,13 @@ testSubtractMinusInfinity
 	self assert: self oneMeter negated - minusInfinity = infinity.
 	self assert: minusInfinity - self oneMeter negated = minusInfinity! !
 
-!SimpleMeasureTest methodsFor: 'test accessing'!
+!SimpleMeasureTest methodsFor: 'test accessing' stamp: ''!
 testAmount
 
 	self assert: self oneMeter amount = 1 description: 'Amount'.
 	self assert: self tenMeters amount = 10 description: 'Amount'! !
 
-!SimpleMeasureTest methodsFor: 'test accessing'!
+!SimpleMeasureTest methodsFor: 'test accessing' stamp: ''!
 testBaseUnit
 
 	self assert: self oneMeter baseUnit = self meter.
@@ -13864,27 +13864,27 @@ testBaseUnit
 	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test accessing'!
+!SimpleMeasureTest methodsFor: 'test accessing' stamp: ''!
 testConvertAmountToBaseUnit
 
 	self assert: self oneMeter convertAmountToBaseUnit = 1.
 	self assert: self oneKilometer convertAmountToBaseUnit = 1000.
 	self assert: self oneCentimeter convertAmountToBaseUnit = (1/100)! !
 
-!SimpleMeasureTest methodsFor: 'test accessing'!
+!SimpleMeasureTest methodsFor: 'test accessing' stamp: ''!
 testDenominator
 
 	self assert: (self tenMeters ) denominator = 1.
 	self assert: (self tenMeters * self tenMeters) denominator = 1! !
 
-!SimpleMeasureTest methodsFor: 'test accessing'!
+!SimpleMeasureTest methodsFor: 'test accessing' stamp: ''!
 testMeasures
 
 	self
 		assert: self oneMeter measures size = 1 description: 'Must be included only the own measure';
 		assert: (self oneMeter measures includes: self oneMeter) description: 'Must be included the own measure'! !
 
-!SimpleMeasureTest methodsFor: 'test accessing'!
+!SimpleMeasureTest methodsFor: 'test accessing' stamp: ''!
 testNumerator
 
 	self assert: (self tenMeters ) numerator = self tenMeters.
@@ -13895,7 +13895,7 @@ testNumerator
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test accessing'!
+!SimpleMeasureTest methodsFor: 'test accessing' stamp: ''!
 testUnit
 
 	self assert: self onePeso unit = self peso.
@@ -13920,7 +13920,7 @@ testBetweenAndNotInclusive
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testGreaterThan
 
 	self assert: self tenMeters > self oneMeter.
@@ -13929,7 +13929,7 @@ testGreaterThan
 	self deny: self oneMeter > self oneMeter.
 	self deny: self thousandMillimeters > self oneMeter.! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testGreaterThanEquals
 
 	self assert: self tenMeters >= self oneMeter.
@@ -13939,7 +13939,7 @@ testGreaterThanEquals
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidBetweenAnd
 
 	self
@@ -13964,7 +13964,7 @@ testInvalidBetweenAnd
 			self assert: anException sourceMeasure = self tenMeters.
 			self assert: anException targetUnit = NullUnit new]! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidBetweenAndNotInclusive
 
 	self 
@@ -13988,7 +13988,7 @@ testInvalidBetweenAndNotInclusive
 				self assert: anException sourceMeasure = self tenMeters.
 				self assert: anException targetUnit = NullUnit new ]! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidGreaterThan
 
 	self assert: (
@@ -14000,7 +14000,7 @@ testInvalidGreaterThan
 				self assert: aSignal targetUnit = self peso.
 				aSignal return: true ])! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidGreaterThanEquals
 
 	self assert: (
@@ -14018,7 +14018,7 @@ testInvalidGreaterThanEquals
 			on: CanNotConvertMeasureException
 			do: [ :aSignal | aSignal return: true ]).! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidLessThan
 
 	self assert: (
@@ -14038,7 +14038,7 @@ testInvalidLessThan
 			
 ! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidLessThanEquals
 
 	self assert: (
@@ -14056,7 +14056,7 @@ testInvalidLessThanEquals
 			on: CanNotConvertMeasureException
 			do: [ :aSignal | aSignal return: true ])! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidMax
 
 	self assert: (
@@ -14074,7 +14074,7 @@ testInvalidMax
 			on: CanNotConvertMeasureException
 			do: [ :aSignal | aSignal return: true ])! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidMin
 
 	self assert: (
@@ -14092,7 +14092,7 @@ testInvalidMin
 			on: CanNotConvertMeasureException
 			do: [ :aSignal | aSignal return: true ])! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidNotInclusiveBetweenAnd
 
 	self 
@@ -14116,7 +14116,7 @@ testInvalidNotInclusiveBetweenAnd
 				self assert: anException sourceMeasure = self tenMeters.
 				self assert: anException targetUnit = NullUnit new ]! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testInvalidNotInclusiveBetweenAndNotInclusive
 
 	self 
@@ -14140,7 +14140,7 @@ testInvalidNotInclusiveBetweenAndNotInclusive
 				self assert: anException sourceMeasure = self tenMeters.
 				self assert: anException targetUnit = NullUnit new ]! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testLessThan
 
 	self assert: self oneMeter < self tenMeters.
@@ -14150,7 +14150,7 @@ testLessThan
 	self deny: self oneMeter < self thousandMillimeters.
 	self deny: self oneMeter < 0! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testLessThanEquals
 
 	self assert: self oneMeter <= self tenMeters.
@@ -14159,7 +14159,7 @@ testLessThanEquals
 	self assert: self oneMeter <= self thousandMillimeters.
 ! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testMax
 
 	self assert: (self tenMeters max: self oneMeter) = self tenMeters.
@@ -14171,7 +14171,7 @@ testMax
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test magnitude protocol'!
+!SimpleMeasureTest methodsFor: 'test magnitude protocol' stamp: ''!
 testMin
 
 	self assert: (self tenMeters min: self oneMeter) = self oneMeter.
@@ -14256,7 +14256,7 @@ testConvertToBaseUnit
 	self assert: self oneMeter convertToBaseUnit = self oneMeter.
 	self assert: self oneKilometer convertToBaseUnit = (SimpleMeasure amount: 1000 unit: self meter)! !
 
-!SimpleMeasureTest methodsFor: 'test converting'!
+!SimpleMeasureTest methodsFor: 'test converting' stamp: ''!
 testInvalidConvertTo
 
 	self assert: 
@@ -14310,7 +14310,7 @@ testDivisionByMeasureDerivedUnitOverBaseUnit
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionByNumber
 
 	self assert: (self zeroPesos / 1) amount = 0.
@@ -14318,34 +14318,34 @@ testDivisionByNumber
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionByZero
 
 	self should: [ self tenPesos / 0 ] raise: Exception description: 'Divition by 0'.
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionFloatByMeasure
 
 	self assert: (1.01 / self tenPesos) = ((NullUnit new / self peso) with: 1.01/10)
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionFractionByMeasure
 
 	self assert: ((1/3) / self tenPesos) = ((NullUnit new / self peso) with: (1/3)/10)
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionIntegerByMeasure
 
 	self assert: (1 / self tenPesos) = ((NullUnit new / self peso) with: 1/10)
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionOfBaseUnit
 
 	self assert: (self tenMeters / 10) amount = 1 description: 'Divition'.
@@ -14353,7 +14353,7 @@ testDivisionOfBaseUnit
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testDivisionOfDerivedUnit
 
 	self assert: (self oneKilometer / 10 ) amount = (1/10).
@@ -14361,7 +14361,7 @@ testDivisionOfDerivedUnit
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test division'!
+!SimpleMeasureTest methodsFor: 'test division' stamp: ''!
 testSimplificationsDividingFromZero
 
 	self assert: (0 / self oneMeter) = 0! !
@@ -14379,25 +14379,25 @@ testEqual
 	self assert: self zeroCelsius = (SimpleMeasure amount: 32 unit: self fahrenheit)
 	! !
 
-!SimpleMeasureTest methodsFor: 'test comparing'!
+!SimpleMeasureTest methodsFor: 'test comparing' stamp: ''!
 testEqualDifferentBaseUnit
 
 	self deny: self tenPesos = self tenDollars! !
 
-!SimpleMeasureTest methodsFor: 'test comparing'!
+!SimpleMeasureTest methodsFor: 'test comparing' stamp: ''!
 testEqualNothingWhenRepresentSameEntity
 
 	self
 		assert: self zeroDollars = self zeroPesos
 		description: 'Zeros of different units must be equivalent since they represent the same entities'! !
 
-!SimpleMeasureTest methodsFor: 'test comparing'!
+!SimpleMeasureTest methodsFor: 'test comparing' stamp: ''!
 testEqualNumber
 
 	self deny: self oneMeter = 1.
 	self deny: 1 = self oneMeter! !
 
-!SimpleMeasureTest methodsFor: 'test comparing'!
+!SimpleMeasureTest methodsFor: 'test comparing' stamp: ''!
 testHash
 
 	self assert: self oneMeter hash = self oneMeter hash.
@@ -14434,7 +14434,7 @@ testIsNothing
 	self assert: (SimpleMeasure amount: (-5463/20) unit: self celsius) isNothing.
 	! !
 
-!SimpleMeasureTest methodsFor: 'test testing'!
+!SimpleMeasureTest methodsFor: 'test testing' stamp: ''!
 testSameDomainAs
 
 	self assert: (self oneMeter sameDomainAs: self oneMeter).
@@ -14453,32 +14453,32 @@ testModuloByMeasure
 	self assert:
 		(self tenMeters // self twoSecond) = (SimpleMeasure amount: 5 unit: (self meter / self second))! !
 
-!SimpleMeasureTest methodsFor: 'test integer division'!
+!SimpleMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloByZero
 
 	self should: [ self tenPesos // 0 ] raise: Exception.
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer division'!
+!SimpleMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloFloatByMeasure
 
 	self assert: (10.01 // self tenPesos) = (1 / self onePeso)
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer division'!
+!SimpleMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloFractionByMeasure
 
 	self assert: (1/3) // self tenPesos = (0 / self onePeso)
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer division'!
+!SimpleMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloIntegerByMeasure
 
 	self assert: 1 // self tenPesos = (0 / self onePeso)
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer division'!
+!SimpleMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloOfBaseUnit
 
 	self assert: (self tenMeters // 10) amount = 1.
@@ -14487,7 +14487,7 @@ testModuloOfBaseUnit
 	self assert: (self tenMeters // 3) amount = 3.
 ! !
 
-!SimpleMeasureTest methodsFor: 'test integer division'!
+!SimpleMeasureTest methodsFor: 'test integer division' stamp: ''!
 testModuloOfDerivedUnit
 
 	self assert: (self tenKilometers // 10 ) amount = 1.
@@ -14528,7 +14528,7 @@ testToThePowerOfZeroReturnsOne
 
 	self assert: 1 equals: self tenPesos ^ 0! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplicationOfBaseUnit
 
 	self assert: (self tenMeters * 2) amount = 20.
@@ -14536,7 +14536,7 @@ testMultiplicationOfBaseUnit
 	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplicationOfDerivedUnit
 
 	self assert: (self oneKilometer * 2) amount = 2.
@@ -14544,7 +14544,7 @@ testMultiplicationOfDerivedUnit
 	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyByDividedMeasure
 
 	self assert: (self onePeso*(self tenPesos/self oneMeter)) amount = 10.
@@ -14552,7 +14552,7 @@ testMultiplyByDividedMeasure
 
 	self assert: (self onePeso*(self tenMeters/self onePeso)) = self tenMeters! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyByMeasure
 
 	self assert: (self onePeso*self tenPesos) amount = 10.
@@ -14561,20 +14561,20 @@ testMultiplyByMeasure
 	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyByMeasureAssociativity
 
 	self assert: ((self onePeso * self tenPesos) * self tenPesos) = (self onePeso * (self tenPesos * self tenPesos))	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyByMultipliedMeasure
 
 	self assert: (self onePeso * self tenPesos * self tenPesos) amount = 100.
 	self assert: (self onePeso * self tenPesos * self tenPesos) unit = (self peso * self peso * self peso)	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyByNumber
 
 	self assert: self onePeso * 10 = self tenPesos.	
@@ -14582,35 +14582,35 @@ testMultiplyByNumber
 	self assert: self onePeso * 0 = 0.
 	self assert: self onePeso * 0 = self zeroDollars! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyFloatByMeasure
 
 	self assert: (1.01 * self tenPesos) = ((NullUnit new * self peso) with: 1.01*10)
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyFractionByMeasure
 
 	self assert: ((1/3) * self tenPesos) = ((NullUnit new * self peso) with: (1/3)*10)
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test multiplication'!
+!SimpleMeasureTest methodsFor: 'test multiplication' stamp: ''!
 testMultiplyIntegerByMeasure
 
 	self assert: (3 * self tenPesos) = ((NullUnit new * self peso) with: 3*10)
 
 ! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testNegated
 
 	self assert: self tenPesos negated negated = self tenPesos description: 'Measure Negated'.
 	self assert: self minusTenPesos = self tenPesos negated description: 'Measure negated'.
 	self assert: self zeroPesos negated = self zeroPesos description: 'Measure negated'! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractAssociativity
 
 	self assert: (self tenMeters - self oneMeter - self oneMeter) amount = ((self tenMeters - self oneMeter) - self oneMeter) amount.
@@ -14618,14 +14618,14 @@ testSubtractAssociativity
 
 	! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractBaseUnit
 
 	self assert: (self tenMeters - self oneMeter) amount = 9.
 	self assert: (self tenMeters - self oneMeter) unit = self meter
 	! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractDerivedUnit
 
 	self assert: (self oneKilometer - self oneMeter) amount = 999.
@@ -14635,14 +14635,14 @@ testSubtractDerivedUnit
 
 	! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractDividedMeasure
 
 	self assert: ((self tenMeters - (self tenMeters / self fivePesos)) atSameBaseUnitAs: self meter) = self tenMeters.
 	self assert: ((self tenMeters - (self tenMeters / self fivePesos)) atSameBaseUnitAs: (self meter / self peso)) = (self tenMeters negated / self fivePesos)
 ! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractFloatWithMeasure
 
 	self assert: ((10.01 - self tenMeters) atSameBaseUnitAs: self meter) = self tenMeters negated.
@@ -14650,19 +14650,19 @@ testSubtractFloatWithMeasure
 	
 ! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractFractionWithMeasure
 
 	self assert: ((1/3 - self tenMeters) atSameBaseUnitAs: self meter) = self tenMeters negated.
 	self assert: ((1/3 - self tenMeters) atSameBaseUnitAs: NullUnit new) = (1/3).	! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractIntegerWithMeasure
 
 	self assert: ((10 - self tenMeters) atSameBaseUnitAs: self meter) = self tenMeters negated.
 	self assert: ((10 - self tenMeters) atSameBaseUnitAs: NullUnit new) = 10.	! !
 
-!SimpleMeasureTest methodsFor: 'test subtract'!
+!SimpleMeasureTest methodsFor: 'test subtract' stamp: ''!
 testSubtractMultipliedMeasure
 
 	self assert: ((self tenMeters - (self tenMeters * self fivePesos)) atSameBaseUnitAs: self meter) = self tenMeters.
@@ -14690,7 +14690,7 @@ testPrintingForOne
 	
 	! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testTo
 
 	self assert: (self oneMeter to: self tenMeters) from = self oneMeter.
@@ -14700,7 +14700,7 @@ testTo
 	self assert: (self tenMeters to: self oneKilometer) by = self oneMeter.
 	self assert: (self oneCentimeter to: self oneKilometer) by = self oneCentimeter! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToAt
 
 	| coll |
@@ -14708,7 +14708,7 @@ testToAt
 	coll := self tenMeters to: (self tenMeters * 2).
 	1 to: coll size do: [ :index | self assert: (coll at: index) amount = (9 + index) ]! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToAtByNegative
 
 	| coll |
@@ -14717,14 +14717,14 @@ testToAtByNegative
 	
 	1 to: coll size do: [ :index | self assert: (coll at: index) amount = (21 - index) ]	! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToBy
 
 	self assert: (self oneMeter to: self tenMeters by: self oneCentimeter ) from = self oneMeter.
 	self assert: (self oneMeter to: self tenMeters by: self oneCentimeter ) to = self tenMeters.
 	self assert: (self oneMeter to: self tenMeters by: self oneCentimeter ) by = self oneCentimeter! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToByDo
 
 	| value |
@@ -14735,7 +14735,7 @@ testToByDo
 		value := value + 1 ]
 ! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToCollect
 
 	| coll |
@@ -14743,27 +14743,27 @@ testToCollect
 	coll := (self oneMeter to: self tenMeters) collect: [ :aMeasure | aMeasure amount ].
 	coll inject: 1 into: [ :value :amount | self assert: value = amount. value + 1 ]! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToFirst
 
 
 	self assert: (self oneMeter to: self tenMeters) first = self oneMeter.
 	self assert: (self tenMeters to: self oneMeter by: self oneMeter negated) first = self tenMeters! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToLast
 
 
 	self assert: (self oneMeter to: self tenMeters) last = self tenMeters.
 	self assert: (self tenMeters to: self oneMeter by: self oneMeter negated) last = self oneMeter! !
 
-!SimpleMeasureTest methodsFor: 'test interval related protocol'!
+!SimpleMeasureTest methodsFor: 'test interval related protocol' stamp: ''!
 testToSize
 
 	self assert: (self oneCentimeter to: self oneKilometer) size = (100*1000)
 	! !
 
-!SimpleMeasureTest methodsFor: 'test truncated'!
+!SimpleMeasureTest methodsFor: 'test truncated' stamp: ''!
 testTruncated
 
 	self assert: (self meter with: 1.05) truncated = (self meter with: 1).
@@ -14771,7 +14771,7 @@ testTruncated
 	self assert: ((self peso * self meter ) with: 1.05) truncated = ((self peso * self meter) with: 1).
 	self assert: ((self peso / self meter ) with: 1.05) truncated = ((self peso / self meter) with: 1)	! !
 
-!SimpleMeasureTest class methodsFor: 'resources'!
+!SimpleMeasureTest class methodsFor: 'resources' stamp: ''!
 resources
 
 	^Array with: UnitsTestResource! !
@@ -14788,7 +14788,7 @@ testAccessing
 	self assert: (rule function value: 10) = 10.
 	! !
 
-!UnitConversionRuleTest methodsFor: 'testing'!
+!UnitConversionRuleTest methodsFor: 'testing' stamp: ''!
 testConvert
 
 	| block |
@@ -14796,7 +14796,7 @@ testConvert
 	block := [:aValue | aValue * 10].
 	self assert: ((UnitConversionRule from: 1 to: 2 use: block) value: 10) = 100! !
 
-!UnitConversionRuleTest methodsFor: 'testing'!
+!UnitConversionRuleTest methodsFor: 'testing' stamp: ''!
 testEqual
 
 	| rule block |
@@ -14806,7 +14806,7 @@ testEqual
 	
 	self assert: rule = (UnitConversionRule from: 1 to: 2 use: block)! !
 
-!UnitConversionRuleTest methodsFor: 'testing'!
+!UnitConversionRuleTest methodsFor: 'testing' stamp: ''!
 testHash
 
 	| block |
@@ -14814,7 +14814,7 @@ testHash
 	block := [:aValue | aValue ].
 	self assert: (UnitConversionRule from: 1 to: 2 use: block) hash = (UnitConversionRule from: 1 to: 2 use: block) hash! !
 
-!UnitConversionRuleToEdgeAdapterTest methodsFor: 'initialization'!
+!UnitConversionRuleToEdgeAdapterTest methodsFor: 'initialization' stamp: ''!
 setUp
 
 	peso := BaseUnit named: 'peso'.
@@ -14835,7 +14835,7 @@ testAccessing
 	self assert: adapter unitConversionRule == rule.
 ! !
 
-!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing'!
+!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing' stamp: ''!
 testEdgeProtocol
 
 	| adapter block rule |
@@ -14847,7 +14847,7 @@ testEdgeProtocol
 	self assert: (EdgeInterface selectors allSatisfy: [ :aSelector | adapter respondsTo: aSelector ]).
 ! !
 
-!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing'!
+!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing' stamp: ''!
 testEdgeProtocolBehavior
 
 	| adapter block rule |
@@ -14863,7 +14863,7 @@ testEdgeProtocolBehavior
 	self assert: (adapter goesFrom: peso to: dollar).
 	self deny: adapter convergesToSelf! !
 
-!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing'!
+!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing' stamp: ''!
 testEqual
 
 	| adapter block rule |
@@ -14873,7 +14873,7 @@ testEqual
 	adapter := UnitConversionRuleToEdgeAdapter for: rule.
 	self assert: adapter = (UnitConversionRuleToEdgeAdapter for: rule)! !
 
-!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing'!
+!UnitConversionRuleToEdgeAdapterTest methodsFor: 'testing' stamp: ''!
 testHash
 
 	| block rule |
@@ -14903,7 +14903,7 @@ pascalName
 
 	^'pascal'! !
 
-!UnitsTestResource methodsFor: 'initialization'!
+!UnitsTestResource methodsFor: 'initialization' stamp: ''!
 addUnit: aUnit
 
 	units at: aUnit name put: aUnit.
@@ -14964,42 +14964,42 @@ setUp
 		addUnit: self createKilogram
 ! !
 
-!UnitsTestResource methodsFor: 'meter units - accessing'!
+!UnitsTestResource methodsFor: 'meter units - accessing' stamp: ''!
 centimeter
 
 	^units at: self centimeterName! !
 
-!UnitsTestResource methodsFor: 'meter units - accessing'!
+!UnitsTestResource methodsFor: 'meter units - accessing' stamp: ''!
 decameter
 
 	^units at: self decameterName! !
 
-!UnitsTestResource methodsFor: 'meter units - accessing'!
+!UnitsTestResource methodsFor: 'meter units - accessing' stamp: ''!
 decimeter
 
 	^units at: self decimeterName! !
 
-!UnitsTestResource methodsFor: 'meter units - accessing'!
+!UnitsTestResource methodsFor: 'meter units - accessing' stamp: ''!
 hectometer
 
 	^units at: self hectometerName! !
 
-!UnitsTestResource methodsFor: 'meter units - accessing'!
+!UnitsTestResource methodsFor: 'meter units - accessing' stamp: ''!
 kilometer
 
 	^units at: self kilometerName! !
 
-!UnitsTestResource methodsFor: 'meter units - accessing'!
+!UnitsTestResource methodsFor: 'meter units - accessing' stamp: ''!
 meter
 
 	^units at: self meterName! !
 
-!UnitsTestResource methodsFor: 'meter units - accessing'!
+!UnitsTestResource methodsFor: 'meter units - accessing' stamp: ''!
 millimeter
 
 	^units at: self millimeterName! !
 
-!UnitsTestResource methodsFor: 'meter units - creating'!
+!UnitsTestResource methodsFor: 'meter units - creating' stamp: ''!
 createCentimeter
 
 	^ProportionalDerivedUnit 
@@ -15008,7 +15008,7 @@ createCentimeter
 		named: self centimeterName 
 		sign: 'cm'! !
 
-!UnitsTestResource methodsFor: 'meter units - creating'!
+!UnitsTestResource methodsFor: 'meter units - creating' stamp: ''!
 createDecameter
 
 	^ProportionalDerivedUnit 
@@ -15017,7 +15017,7 @@ createDecameter
 		named: self decameterName 
 		sign: 'dcm'! !
 
-!UnitsTestResource methodsFor: 'meter units - creating'!
+!UnitsTestResource methodsFor: 'meter units - creating' stamp: ''!
 createDecimeter
 
 	^ProportionalDerivedUnit 
@@ -15026,7 +15026,7 @@ createDecimeter
 		named: self decimeterName 
 		sign: 'dm'! !
 
-!UnitsTestResource methodsFor: 'meter units - creating'!
+!UnitsTestResource methodsFor: 'meter units - creating' stamp: ''!
 createHectometer
 
 	^ProportionalDerivedUnit 
@@ -15035,7 +15035,7 @@ createHectometer
 		named: self hectometerName 
 		sign: 'hm'! !
 
-!UnitsTestResource methodsFor: 'meter units - creating'!
+!UnitsTestResource methodsFor: 'meter units - creating' stamp: ''!
 createKilometer
 
 	^ProportionalDerivedUnit 
@@ -15044,7 +15044,7 @@ createKilometer
 		named: self kilometerName 
 		sign: 'km'! !
 
-!UnitsTestResource methodsFor: 'meter units - creating'!
+!UnitsTestResource methodsFor: 'meter units - creating' stamp: ''!
 createMeter
 
 	^BaseUnit named: self meterName sign: 'm'! !
@@ -15058,67 +15058,67 @@ createMillimeter
 		named: self millimeterName 
 		sign: 'mm'! !
 
-!UnitsTestResource methodsFor: 'meter units - naming'!
+!UnitsTestResource methodsFor: 'meter units - naming' stamp: ''!
 centimeterName
 
 	^'centimeter'! !
 
-!UnitsTestResource methodsFor: 'meter units - naming'!
+!UnitsTestResource methodsFor: 'meter units - naming' stamp: ''!
 decameterName
 
 	^'decameter'! !
 
-!UnitsTestResource methodsFor: 'meter units - naming'!
+!UnitsTestResource methodsFor: 'meter units - naming' stamp: ''!
 decimeterName
 
 	^'decimeter'! !
 
-!UnitsTestResource methodsFor: 'meter units - naming'!
+!UnitsTestResource methodsFor: 'meter units - naming' stamp: ''!
 hectometerName
 
 	^'hectometer'! !
 
-!UnitsTestResource methodsFor: 'meter units - naming'!
+!UnitsTestResource methodsFor: 'meter units - naming' stamp: ''!
 kilometerName
 
 	^'kilometer'! !
 
-!UnitsTestResource methodsFor: 'meter units - naming'!
+!UnitsTestResource methodsFor: 'meter units - naming' stamp: ''!
 meterName
 
 	^'meter'! !
 
-!UnitsTestResource methodsFor: 'meter units - naming'!
+!UnitsTestResource methodsFor: 'meter units - naming' stamp: ''!
 millimeterName
 
 	^'millimeter'! !
 
-!UnitsTestResource methodsFor: 'monetary units - accessing'!
+!UnitsTestResource methodsFor: 'monetary units - accessing' stamp: ''!
 centavo
 
 	^units at: self centavoName! !
 
-!UnitsTestResource methodsFor: 'monetary units - accessing'!
+!UnitsTestResource methodsFor: 'monetary units - accessing' stamp: ''!
 dollar
 
 	^units at: self dollarName! !
 
-!UnitsTestResource methodsFor: 'monetary units - accessing'!
+!UnitsTestResource methodsFor: 'monetary units - accessing' stamp: ''!
 euro
 
 	^units at: self euroName! !
 
-!UnitsTestResource methodsFor: 'monetary units - accessing'!
+!UnitsTestResource methodsFor: 'monetary units - accessing' stamp: ''!
 euroCent
 
 	^units at: self euroCentName! !
 
-!UnitsTestResource methodsFor: 'monetary units - accessing'!
+!UnitsTestResource methodsFor: 'monetary units - accessing' stamp: ''!
 peso
 
 	^units at: self pesoName! !
 
-!UnitsTestResource methodsFor: 'monetary units - accessing'!
+!UnitsTestResource methodsFor: 'monetary units - accessing' stamp: ''!
 quarter
 
 	^units at: self quarterName! !
@@ -15154,47 +15154,47 @@ createQuarter
 	^ProportionalDerivedUnit baseUnit: self dollar conversionFactor: 1/ 4 named: self quarterName sign: 'u$s quarter'
 	! !
 
-!UnitsTestResource methodsFor: 'monetary units - naming'!
+!UnitsTestResource methodsFor: 'monetary units - naming' stamp: ''!
 centavoName
 
 	^'centavo'! !
 
-!UnitsTestResource methodsFor: 'monetary units - naming'!
+!UnitsTestResource methodsFor: 'monetary units - naming' stamp: ''!
 dollarName
 
 	^'dollar'! !
 
-!UnitsTestResource methodsFor: 'monetary units - naming'!
+!UnitsTestResource methodsFor: 'monetary units - naming' stamp: ''!
 euroCentName
 
 	^'euro cent'! !
 
-!UnitsTestResource methodsFor: 'monetary units - naming'!
+!UnitsTestResource methodsFor: 'monetary units - naming' stamp: ''!
 euroName
 
 	^'euro'! !
 
-!UnitsTestResource methodsFor: 'monetary units - naming'!
+!UnitsTestResource methodsFor: 'monetary units - naming' stamp: ''!
 pesoName
 
 	^'peso'! !
 
-!UnitsTestResource methodsFor: 'monetary units - naming'!
+!UnitsTestResource methodsFor: 'monetary units - naming' stamp: ''!
 quarterName
 
 	^'quarter'! !
 
-!UnitsTestResource methodsFor: 'temperature units - accessing'!
+!UnitsTestResource methodsFor: 'temperature units - accessing' stamp: ''!
 celsius
 
 	^units at: self celsiusName! !
 
-!UnitsTestResource methodsFor: 'temperature units - accessing'!
+!UnitsTestResource methodsFor: 'temperature units - accessing' stamp: ''!
 fahrenheit 
 
 	^units at: self fahrenheitName! !
 
-!UnitsTestResource methodsFor: 'temperature units - accessing'!
+!UnitsTestResource methodsFor: 'temperature units - accessing' stamp: ''!
 kelvin
 
 	^units at: self kelvinName! !
@@ -15209,7 +15209,7 @@ createCelsius
 		named: self celsiusName 
 		sign: 'º'! !
 
-!UnitsTestResource methodsFor: 'temperature units - creating'!
+!UnitsTestResource methodsFor: 'temperature units - creating' stamp: ''!
 createFahrenheit 
 
 	^NotProportionalDerivedUnit 
@@ -15220,7 +15220,7 @@ createFahrenheit
 		sign: 'F'
 		! !
 
-!UnitsTestResource methodsFor: 'temperature units - creating'!
+!UnitsTestResource methodsFor: 'temperature units - creating' stamp: ''!
 createKelvin
 
 	^BaseUnit named: self kelvinName sign: 'K'! !
@@ -15230,32 +15230,32 @@ celsiusName
 
 	^'celsius'! !
 
-!UnitsTestResource methodsFor: 'temperature units - naming'!
+!UnitsTestResource methodsFor: 'temperature units - naming' stamp: ''!
 fahrenheitName
 
 	^'fahrenheit'! !
 
-!UnitsTestResource methodsFor: 'temperature units - naming'!
+!UnitsTestResource methodsFor: 'temperature units - naming' stamp: ''!
 kelvinName
 
 	^'kelvin'! !
 
-!UnitsTestResource methodsFor: 'time units - accessing'!
+!UnitsTestResource methodsFor: 'time units - accessing' stamp: ''!
 minute
 	
 	^units at: self minuteName! !
 
-!UnitsTestResource methodsFor: 'time units - accessing'!
+!UnitsTestResource methodsFor: 'time units - accessing' stamp: ''!
 second
 	
 	^units at: self secondName! !
 
-!UnitsTestResource methodsFor: 'time units - creating'!
+!UnitsTestResource methodsFor: 'time units - creating' stamp: ''!
 createMinute
 
 	^ProportionalDerivedUnit baseUnit: self second conversionFactor: 60 named: self minuteName! !
 
-!UnitsTestResource methodsFor: 'time units - creating'!
+!UnitsTestResource methodsFor: 'time units - creating' stamp: ''!
 createSecond
 
 	^BaseUnit named: self secondName! !
@@ -15341,7 +15341,7 @@ equalsSimpleMeasure: aMeasure
 
 	^false! !
 
-!Object methodsFor: '*Aconcagua-Extensions'!
+!Object methodsFor: '*Aconcagua-Extensions' stamp: ''!
 isNothing
 
 	^false! !
@@ -15351,12 +15351,12 @@ addCompoundMeasure: aMeasureBag
 
 	^aMeasureBag addSimpleMeasure: self! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 addInfinity: anInfinity
 
 	^anInfinity! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 addMinusInfinity: aMinusInfinity
 
 	^aMinusInfinity! !
@@ -15366,17 +15366,17 @@ addSimpleMeasure: aMeasure
 
 	^CompoundMeasure with: aMeasure with: self! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 amount
 
 	^self! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 baseUnit
 
 	^NullUnit new! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 compareGreaterThan: aNumber
 
 	^aNumber < self! !
@@ -15398,12 +15398,12 @@ composeWithSimpleMeasure: aMeasure
 		ifTrue: [aMeasure]
 		ifFalse: [aMeasure composeWithNumber: self]! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 convertAmountToBaseUnit
 
 	^self! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 convertTo: aTargetUnit 
 	"A number only can be converted in a number... therefore, if the unit to which it is wanted to convert
 	is the same to the one of the numbers returns self, else returns an error."
@@ -15426,7 +15426,7 @@ convertTo: aUnit ifSuccessful: aSuccessfulBlock ifFails: aFailureBlock
 		
 	^aSuccessfulBlock value: convertedMeasure ! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 convertToBaseUnit
 
 	^self! !
@@ -15436,7 +15436,7 @@ denominator
 
 	^self asFraction denominator! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 divideByUnit: aUnit
 
 	^aUnit with: 1 / self! !
@@ -15515,7 +15515,7 @@ isFixed
 
 	^true! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 isNothing
 
 	^self = 0! !
@@ -15551,7 +15551,7 @@ moduloSimpleMeasure: aMeasure
 
 	^SimpleMeasure amount: aMeasure amount // self unit: aMeasure unit! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 multiplyByUnit: aUnit
 
 	^aUnit with: self! !
@@ -15561,12 +15561,12 @@ multiplyCompoundMeasure: aMeasureBag
 
 	^aMeasureBag multiplySimpleMeasure: self! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 multiplyInfinity: anInfinity
 
 	^self > 0 ifTrue: [anInfinity] ifFalse: [anInfinity negated]! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 multiplyMinusInfinity: aMinusInfinity
 
 	^self > 0 ifTrue: [aMinusInfinity] ifFalse: [aMinusInfinity negated]! !
@@ -15610,12 +15610,12 @@ remainderSimpleMeasure: aMeasure
 
 	^SimpleMeasure amount: aMeasure amount \\ self unit: aMeasure unit! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 sameDomainAs: aMeasure
 
 	^self unit sameDomainAs: aMeasure unit! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 subtractFrom: aNumber
 
 	^aNumber - self! !
@@ -15648,12 +15648,12 @@ toMinusInfinity
 		by: 1
 		intervalStrategy: InfinityIntervalStrategy new! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 unit
 
 	^self baseUnit! !
 
-!Number methodsFor: '*Aconcagua-Extensions'!
+!Number methodsFor: '*Aconcagua-Extensions' stamp: ''!
 unitNameOf: aUnit
 
 	^self abs = 1 ifTrue: [aUnit nameForOne] ifFalse: [aUnit nameForMany]! !
